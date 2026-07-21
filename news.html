@@ -1,1 +1,573 @@
-news.html
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>News - Mangli Djaya Raya</title>
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <style>
+        /* ==========================
+         NEWS HERO
+      ========================== */
+        .news-hero {
+            position: relative;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            padding: 190px 0 90px;
+            overflow: hidden;
+            background: #0a0a0a;
+        }
+
+        .news-hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .news-hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .news-hero-bg::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(100deg,
+                    rgba(8, 8, 8, 0.96) 0%,
+                    rgba(8, 8, 8, 0.85) 30%,
+                    rgba(8, 8, 8, 0.45) 60%,
+                    rgba(8, 8, 8, 0.25) 100%),
+                linear-gradient(0deg,
+                    rgba(8, 8, 8, 0.85) 0%,
+                    rgba(8, 8, 8, 0.2) 45%,
+                    rgba(8, 8, 8, 0.55) 100%);
+        }
+
+        .news-hero-content {
+            position: relative;
+            z-index: 2;
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .news-hero-badge {
+            display: inline-block;
+            color: #d4af37;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+        }
+
+        .news-hero-title {
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 40px;
+            line-height: 1.25;
+            font-weight: 700;
+            max-width: 600px;
+            margin-bottom: 26px;
+            color: #fff;
+        }
+
+        .news-hero-title .gold {
+            color: #d4af37;
+        }
+
+        .news-hero-subtitle {
+            color: #d8d8d8;
+            max-width: 620px;
+            line-height: 1.9;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .detail-breadcrumb {
+            display: flex;
+            gap: 10px;
+            font-size: 13px;
+            color: #cfcfcf;
+            margin-bottom: 20px;
+        }
+
+        .detail-breadcrumb a {
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        /* ==========================
+         PAGE BACKGROUND (white theme)
+      ========================== */
+        body {
+            background: #ffffff;
+            color: #1a1a1a;
+        }
+
+        /* ==========================
+         RECENT NEWS SECTION HEADING
+      ========================== */
+        .recent-news-section {
+            padding: 100px 0 20px;
+            background: #ffffff;
+        }
+
+        .section-heading {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto 55px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .section-heading .bar {
+            width: 6px;
+            height: 34px;
+            background: #1a1a1a;
+            border-radius: 3px;
+        }
+
+        .section-heading h2 {
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+
+        /* ==========================
+         FEATURED GRID
+      ========================== */
+        .featured-grid {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto 100px;
+            display: grid;
+            grid-template-columns: 1.7fr 1fr;
+            gap: 30px;
+        }
+
+        .featured-main,
+        .featured-card {
+            position: relative;
+            border-radius: 18px;
+            overflow: hidden;
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        .featured-main {
+            min-height: 500px;
+        }
+
+        .featured-side {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .featured-card {
+            flex: 1;
+            min-height: 235px;
+        }
+
+        .featured-main img,
+        .featured-card img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .featured-main:hover img,
+        .featured-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .featured-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg,
+                    rgba(0, 0, 0, 0.95) 0%,
+                    rgba(0, 0, 0, 0.65) 40%,
+                    rgba(0, 0, 0, 0.1) 75%,
+                    rgba(0, 0, 0, 0) 100%);
+        }
+
+        .featured-text {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2;
+            padding: 38px;
+        }
+
+        .featured-card .featured-text {
+            padding: 26px;
+        }
+
+        .featured-meta {
+            display: block;
+            color: #d8d8d8;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 14px;
+        }
+
+        .featured-main .featured-text h3 {
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 30px;
+            line-height: 1.4;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 18px;
+            max-width: 620px;
+        }
+
+        .featured-card .featured-text h3 {
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 19px;
+            line-height: 1.45;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .featured-learn {
+            display: inline-block;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transition: 0.3s;
+        }
+
+        .featured-main:hover .featured-learn,
+        .featured-card:hover .featured-learn {
+            color: #d8d8d8;
+        }
+
+        /* ==========================
+         NEWS GRID (4 columns) - white cards
+      ========================== */
+        .news {
+            padding-top: 0;
+            background: #ffffff !important;
+        }
+
+        .news-grid {
+            grid-template-columns: repeat(4, 1fr) !important;
+        }
+
+        .news-card {
+            background: #ffffff !important;
+            border: 1px solid #ececec !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .news-card:hover {
+            border-color: #1a1a1a !important;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-content small {
+            color: #9a9a9a !important;
+        }
+
+        .news-content h3 {
+            font-family: "Playfair Display", Georgia, serif;
+            text-transform: uppercase;
+            font-size: 19px;
+            letter-spacing: 0.3px;
+            color: #1a1a1a !important;
+        }
+
+        .news-content p {
+            color: #666 !important;
+        }
+
+        .news-content a {
+            color: #1a1a1a !important;
+        }
+
+        .news-content a:hover {
+            color: #666 !important;
+        }
+
+        /* ==========================
+         FOOTER (custom columns) - matches repo's default dark/gold footer
+      ========================== */
+        .footer-container-news {
+            grid-template-columns: 1.7fr 1fr 1fr 1.3fr;
+        }
+
+        .footer-brand-title {
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 26px;
+            color: #fff;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .footer-news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .footer-news-list a {
+            display: block;
+            line-height: 1.6;
+            font-size: 14.5px;
+        }
+
+        .footer-bottom-split {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            text-align: left;
+        }
+
+        .footer-bottom-split i {
+            color: #e0245e;
+            margin: 0 3px;
+        }
+
+        /* ==========================
+         RESPONSIVE
+      ========================== */
+        @media (max-width: 992px) {
+            .featured-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .news-hero-title {
+                font-size: 40px;
+            }
+
+            .news-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+
+            .footer-container-news {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .news-hero-title {
+                font-size: 32px;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .featured-side {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader">
+            <img src="assets/logo/logo.png" alt="Mangli Logo" />
+            <span></span>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <div id="navbar-container"></div>
+
+    <!-- News Hero -->
+    <section class="news-hero">
+        <div class="news-hero-bg">
+            <img src="assets/images/gambar-tobacco.jpg" alt="Tobacco craftsmanship" />
+        </div>
+
+        <div class="news-hero-content reveal reveal-left">
+            <div class="detail-breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span>Service</span>
+            </div>
+
+            <h1 class="news-hero-title">
+                Stay <span class="gold">Informed</span> with Our
+                <span class="gold">Latest Updates</span>
+            </h1>
+        </div>
+    </section>
+
+    <!-- Recent News -->
+    <section class="recent-news-section">
+        <div class="section-heading reveal reveal-left">
+            <span class="bar"></span>
+            <h2>Recent News</h2>
+        </div>
+
+        <div class="featured-grid">
+            <!-- Main Featured Card -->
+            <a href="news-detail.html" class="featured-main reveal">
+                <img src="https://images.unsplash.com/photo-1527066236128-2ff79f7b9705?auto=format&fit=crop&w=1200&q=80"
+                    alt="Alliance targets unlawful tobacco exchange" />
+                <div class="featured-overlay"></div>
+
+                <div class="featured-text">
+                    <span class="featured-meta">By Arisona Permadi | October 8th, 2021</span>
+                    <h3>
+                        Alliance targets unlawful tobacco exchange, with Arizona among
+                        top states in stash
+                    </h3>
+                    <span class="featured-learn">Learn More</span>
+                </div>
+            </a>
+
+            <!-- Side Cards -->
+            <div class="featured-side">
+                <a href="news-detail.html" class="featured-card reveal reveal-right">
+                    <img src="https://images.unsplash.com/photo-1541543315-c8c5e70b3c8f?auto=format&fit=crop&w=800&q=80"
+                        alt="Drive In Denver Aims To Ban Flavored Tobacco Products" />
+                    <div class="featured-overlay"></div>
+
+                    <div class="featured-text">
+                        <span class="featured-meta">By Arisona Permadi | October 8th, 2021</span>
+                        <h3>Drive In Denver Aims To Ban Flavored Tobacco Products</h3>
+                        <span class="featured-learn">Learn More</span>
+                    </div>
+                </a>
+
+                <a href="news-detail.html" class="featured-card reveal reveal-right">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
+                        alt="Laguna Beach to return to prohibiting deals of tobacco and vape items" />
+                    <div class="featured-overlay"></div>
+
+                    <div class="featured-text">
+                        <span class="featured-meta">By Arisona Permadi | October 8th, 2021</span>
+                        <h3>
+                            Laguna Beach to return to prohibiting deals of tobacco and
+                            vape items
+                        </h3>
+                        <span class="featured-learn">Learn More</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Grid -->
+    <section class="news">
+        <div class="news-grid">
+            <div class="news-card reveal">
+                <div class="news-image">
+                    <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=700&q=80"
+                        alt="Pressured to ditch tobacco sponsors" />
+                </div>
+                <div class="news-content">
+                    <small>By Arisona Permadi | October 8th, 2021</small>
+                    <h3>Pressured to Ditch Tobacco Sponsors</h3>
+                    <p>
+                        Elite sports organizations have long been addicted to tobacco
+                        company sponsorships, almost since the inception of
+                        professional competition.
+                    </p>
+                    <a href="news-detail.html">Read More</a>
+                </div>
+            </div>
+
+            <div class="news-card reveal">
+                <div class="news-image">
+                    <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=700&q=80"
+                        alt="Pressured to ditch tobacco sponsors" />
+                </div>
+                <div class="news-content">
+                    <small>By Arisona Permadi | October 8th, 2021</small>
+                    <h3>Pressured to Ditch Tobacco Sponsors</h3>
+                    <p>
+                        Elite sports organizations have long been addicted to tobacco
+                        company sponsorships, almost since the inception of
+                        professional competition.
+                    </p>
+                    <a href="news-detail.html">Read More</a>
+                </div>
+            </div>
+
+            <div class="news-card reveal">
+                <div class="news-image">
+                    <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=700&q=80"
+                        alt="Pressured to ditch tobacco sponsors" />
+                </div>
+                <div class="news-content">
+                    <small>By Arisona Permadi | October 8th, 2021</small>
+                    <h3>Pressured to Ditch Tobacco Sponsors</h3>
+                    <p>
+                        Elite sports organizations have long been addicted to tobacco
+                        company sponsorships, almost since the inception of
+                        professional competition.
+                    </p>
+                    <a href="news-detail.html">Read More</a>
+                </div>
+            </div>
+
+            <div class="news-card reveal">
+                <div class="news-image">
+                    <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=700&q=80"
+                        alt="Pressured to ditch tobacco sponsors" />
+                </div>
+                <div class="news-content">
+                    <small>By Arisona Permadi | October 8th, 2021</small>
+                    <h3>Pressured to Ditch Tobacco Sponsors</h3>
+                    <p>
+                        Elite sports organizations have long been addicted to tobacco
+                        company sponsorships, almost since the inception of
+                        professional competition.
+                    </p>
+                    <a href="news-detail.html">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <script src="js/navbar.js"></script>
+    <script src="js/preloader.js"></script>
+    <script src="js/reveal.js"></script>
+    <script src="js/cursor.js"></script>
+    <script src="js/magnetic.js"></script>
+    <script src="js/script.js"></script>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+</body>
+
+</html>

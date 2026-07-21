@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Service - Mangli Djaya Raya</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold-primary: #d4af37;
+            --gold-light: #f4e8c1;
+            --gold-dark: #aa8c2c;
+            --black-primary: #0a0a0a;
+            --black-secondary: #1a1a1a;
+            --text-light: #f5f5f5;
+            --text-gray: #b0b0b0;
+
+            /* light content section */
+            --content-bg: #fbfaf7;
+            --card-bg: #f1efe9;
+            --text-dark: #1a1a1a;
+            --text-muted: #6b6b6b;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--black-primary);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ==========================
+         PAGE HEADER (gaya sama dengan about.html)
+      ========================== */
+        .page-header {
+            margin-top: 85px;
+            padding: 4rem 0;
+            background: linear-gradient(135deg,
+                    rgba(10, 10, 10, 0.95) 0%,
+                    rgba(26, 26, 26, 0.9) 100%);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .page-header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        .breadcrumb {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--text-gray);
+        }
+
+        .breadcrumb a {
+            color: var(--gold-primary);
+            text-decoration: none;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            font-weight: 400;
+            font-family: "Georgia", serif;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .page-title span {
+            color: var(--gold-primary);
+        }
+
+        .page-subtitle {
+            color: var(--text-gray);
+            font-size: 1rem;
+            max-width: 600px;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.1rem;
+            }
+        }
+
+        /* ==========================
+         SERVICE SHOWCASE
+      ========================== */
+        .svc-showcase {
+            padding: 130px 0;
+            background: var(--content-bg);
+        }
+
+        .svc-row {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto 80px;
+        }
+
+        .svc-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .svc-card {
+            position: relative;
+            height: 520px;
+            border-radius: 28px;
+            overflow: hidden;
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            cursor: pointer;
+            transition: box-shadow 0.5s ease;
+        }
+
+        .svc-card:hover {
+            box-shadow:
+                0 35px 60px -25px rgba(0, 0, 0, 0.22),
+                0 0 0 1px rgba(212, 175, 55, 0.35);
+        }
+
+        /* image panel */
+        .svc-image {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            overflow: hidden;
+            z-index: 2;
+            transition: width 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .svc-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 1s ease;
+        }
+
+        .svc-image::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+        }
+
+        .svc-row-left .svc-image {
+            left: 0;
+        }
+
+        .svc-row-left .svc-image::after {
+            background: linear-gradient(90deg,
+                    rgba(0, 0, 0, 0) 55%,
+                    rgba(0, 0, 0, 0.4) 100%);
+        }
+
+        .svc-row-right .svc-image {
+            right: 0;
+        }
+
+        .svc-row-right .svc-image::after {
+            background: linear-gradient(270deg,
+                    rgba(0, 0, 0, 0) 55%,
+                    rgba(0, 0, 0, 0.4) 100%);
+        }
+
+        .svc-card:hover .svc-image {
+            width: 52%;
+        }
+
+        .svc-card:hover .svc-image img {
+            transform: scale(1.08);
+        }
+
+        /* text panel */
+        .svc-text {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.5s ease 0.1s;
+        }
+
+        .svc-card:hover .svc-text {
+            opacity: 1;
+        }
+
+        .svc-row-left .svc-text {
+            padding: 70px 70px 70px calc(52% + 55px);
+        }
+
+        .svc-row-right .svc-text {
+            padding: 70px calc(52% + 55px) 70px 70px;
+        }
+
+        .svc-num {
+            display: inline-block;
+            color: var(--gold-dark);
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .svc-title {
+            font-family: Georgia, serif;
+            font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+            font-weight: 400;
+            color: var(--text-dark);
+            margin-bottom: 24px;
+        }
+
+        .svc-title .mask {
+            display: inline-block;
+            overflow: hidden;
+            vertical-align: top;
+        }
+
+        .svc-title .word {
+            display: inline-block;
+            transform: translateY(115%);
+            opacity: 0;
+            transition:
+                transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.5s ease;
+        }
+
+        .svc-card:hover .svc-title .word {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .svc-title .word:nth-child(1) {
+            transition-delay: 0.12s;
+        }
+
+        .svc-title .word:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .svc-title .word:nth-child(3) {
+            transition-delay: 0.28s;
+        }
+
+        /* sliding / marquee text */
+        .svc-marquee {
+            max-width: 460px;
+            height: 140px;
+            overflow: hidden;
+            -webkit-mask-image: linear-gradient(180deg,
+                    transparent 0,
+                    #000 14%,
+                    #000 86%,
+                    transparent 100%);
+            mask-image: linear-gradient(180deg,
+                    transparent 0,
+                    #000 14%,
+                    #000 86%,
+                    transparent 100%);
+        }
+
+        .svc-marquee-track {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            animation: svcScroll 18s linear infinite;
+            animation-play-state: paused;
+        }
+
+        .svc-card:hover .svc-marquee-track {
+            animation-play-state: running;
+        }
+
+        .svc-marquee-track p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.8;
+        }
+
+        @keyframes svcScroll {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(-50%);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .svc-marquee-track {
+                animation: none;
+            }
+
+            .svc-title .word {
+                transition: opacity 0.4s ease;
+                transform: none;
+            }
+        }
+
+        /* ==========================
+         RESPONSIVE (tablet & mobile)
+      ========================== */
+        @media (max-width: 900px) {
+            .svc-card {
+                height: auto;
+            }
+
+            .svc-image {
+                position: relative;
+                width: 100% !important;
+                height: 300px;
+                top: auto;
+                bottom: auto;
+            }
+
+            .svc-image img {
+                transform: none !important;
+            }
+
+            .svc-text {
+                position: relative;
+                opacity: 1 !important;
+                padding: 34px !important;
+            }
+
+            .svc-title .word {
+                transform: translateY(0) !important;
+                opacity: 1 !important;
+            }
+
+            .svc-marquee-track {
+                animation-play-state: running !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="preloader">
+        <div class="loader">
+            <img src="assets/logo/logo.png" alt="Mangli Logo" />
+            <span></span>
+        </div>
+    </div>
+
+    <div id="navbar-container"></div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header-content">
+            <div class="breadcrumb">
+                <a href="index.html">HOME</a>
+                <span>/</span>
+                <span>SERVICE</span>
+            </div>
+            <h1 class="page-title">
+                <span>Secure</span> Storage, <span>Professional</span> Handling,
+                <span>Trusted</span> Service.
+            </h1>
+
+        </div>
+    </section>
+
+    <!-- Service Showcase -->
+    <section class="svc-showcase">
+        <!-- Row 1 : image left -> hover slides left, text reveals on the right -->
+        <div class="svc-row svc-row-left reveal">
+            <div class="svc-card">
+                <div class="svc-image">
+                    <img src="assets/images/gambar1.jpg" alt="Working with Farmers" />
+                </div>
+                <div class="svc-text">
+                    <span class="svc-num">01</span>
+                    <h3 class="svc-title">
+                        <span class="mask"><span class="word">Working</span></span>
+                        <span class="mask"><span class="word">with</span></span>
+                        <span class="mask"><span class="word">Farmers</span></span>
+                    </h3>
+                    <div class="svc-marquee">
+                        <div class="svc-marquee-track">
+                            <p>
+                                In Indonesia, tobaccos are bought from farmers through an
+                                open market. Unlike other countries, we do not conduct any
+                                auctions — our ties with farmers are mostly commercial
+                                based.
+                            </p>
+                            <p>
+                                We understand the concerns facing tobacco manufacturers
+                                regarding traceability. This is one of the main reasons we
+                                continue to strengthen our relationship with farmers from
+                                an educational perspective.
+                            </p>
+                            <p>
+                                In areas such as Jember, Lombok, and Bali, we educate
+                                farmers on the proper use of Crop Protection Agents (CPA)
+                                and good agricultural practices to achieve high quality
+                                tobacco.
+                            </p>
+                            <p aria-hidden="true">
+                                In Indonesia, tobaccos are bought from farmers through an
+                                open market. Unlike other countries, we do not conduct any
+                                auctions — our ties with farmers are mostly commercial
+                                based.
+                            </p>
+                            <p aria-hidden="true">
+                                We understand the concerns facing tobacco manufacturers
+                                regarding traceability. This is one of the main reasons we
+                                continue to strengthen our relationship with farmers from
+                                an educational perspective.
+                            </p>
+                            <p aria-hidden="true">
+                                In areas such as Jember, Lombok, and Bali, we educate
+                                farmers on the proper use of Crop Protection Agents (CPA)
+                                and good agricultural practices to achieve high quality
+                                tobacco.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 2 : image right -> hover slides right, text reveals on the left -->
+        <div class="svc-row svc-row-right reveal">
+            <div class="svc-card">
+                <div class="svc-image">
+                    <img src="assets/images/gambar-tobacco.jpg" alt="Processing" />
+                </div>
+                <div class="svc-text">
+                    <span class="svc-num">02</span>
+                    <h3 class="svc-title">
+                        <span class="mask"><span class="word">Processing</span></span>
+                    </h3>
+                    <div class="svc-marquee">
+                        <div class="svc-marquee-track">
+                            <p>
+                                Upon receiving tobacco from the buying stations, it is our
+                                priority to deliver quality products to our customers.
+                            </p>
+                            <p>
+                                Tobaccos are sorted according to the grades desired. During
+                                sortation, we maximize the removal of non-tobacco related
+                                materials (NTRMs).
+                            </p>
+                            <p>
+                                Customers can then decide the final form of their product:
+                                Handstripped, Loose Leaf, Open Laid, Butted Loose Leaf,
+                                Bundled, or Fermented.
+                            </p>
+                            <p aria-hidden="true">
+                                Upon receiving tobacco from the buying stations, it is our
+                                priority to deliver quality products to our customers.
+                            </p>
+                            <p aria-hidden="true">
+                                Tobaccos are sorted according to the grades desired. During
+                                sortation, we maximize the removal of non-tobacco related
+                                materials (NTRMs).
+                            </p>
+                            <p aria-hidden="true">
+                                Customers can then decide the final form of their product:
+                                Handstripped, Loose Leaf, Open Laid, Butted Loose Leaf,
+                                Bundled, or Fermented.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- <footer class="footer">
+        <div class="footer-container reveal">
+            <div class="footer-col">
+                <img src="assets/logo/logo.png" alt="Logo" class="footer-logo" />
+                <p>
+                    PT Mangli Djaya Raya is committed to delivering premium Indonesian
+                    tobacco products through innovation, sustainability, and decades
+                    of expertise.
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="services.html" class="active">Services</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="career.html">Career</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Products</h3>
+                <ul>
+                    <li><a href="#">Rajangan Tobacco</a></li>
+                    <li><a href="#">Sun Cured</a></li>
+                    <li><a href="#">Dark Fired Cured</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <ul class="footer-contact">
+                    <li>
+                        <i class="fa-solid fa-location-dot"></i>
+                        Jember, East Java, Indonesia
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-phone"></i>
+                        +62 xxx xxxx xxxx
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-envelope"></i>
+                        info@manglidjayaraya.com
+                    </li>
+                </ul>
+                <div class="footer-social">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 PT Mangli Djaya Raya. All Rights Reserved.
+        </div>
+    </footer> -->
+
+    <script src="js/navbar.js"></script>
+    <script src="js/preloader.js"></script>
+    <script src="js/reveal.js"></script>
+    <script src="js/cursor.js"></script>
+    <script src="js/magnetic.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

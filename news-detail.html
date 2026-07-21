@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News Detail - Mangli Djaya Raya</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <style>
+      .detail-hero {
+        position: relative;
+        min-height: 420px;
+        display: flex;
+        align-items: flex-end;
+        padding: 190px 0 60px;
+        overflow: hidden;
+        background: #0a0a0a;
+      }
+
+      .detail-hero-bg {
+        position: absolute;
+        inset: 0;
+      }
+
+      .detail-hero-bg img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .detail-hero-bg::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          0deg,
+          rgba(8, 8, 8, 0.95) 0%,
+          rgba(8, 8, 8, 0.55) 55%,
+          rgba(8, 8, 8, 0.35) 100%
+        );
+      }
+
+      .detail-hero-content {
+        position: relative;
+        z-index: 2;
+        width: 90%;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .detail-breadcrumb {
+        display: flex;
+        gap: 10px;
+        font-size: 13px;
+        color: #cfcfcf;
+        margin-bottom: 20px;
+      }
+
+      .detail-breadcrumb a {
+        color: #d4af37;
+        text-decoration: none;
+      }
+
+      .detail-meta {
+        color: #d4af37;
+        font-size: 14px;
+        margin-bottom: 16px;
+        display: block;
+      }
+
+      .detail-title {
+        font-family: "Playfair Display", Georgia, serif;
+        font-size: 42px;
+        line-height: 1.3;
+        font-weight: 700;
+        color: #fff;
+      }
+
+      body {
+        background: #ffffff;
+        color: #1a1a1a;
+      }
+
+      .detail-body {
+        width: 90%;
+        max-width: 900px;
+        margin: 70px auto 120px;
+      }
+
+      .detail-body img {
+        width: 100%;
+        height: 420px;
+        object-fit: cover;
+        border-radius: 18px;
+        margin-bottom: 45px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+      }
+
+      .detail-body p {
+        color: #555;
+        line-height: 1.95;
+        font-size: 16px;
+        margin-bottom: 26px;
+      }
+
+      .detail-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 20px;
+        color: #1a1a1a;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      .detail-back:hover {
+        color: #777;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="preloader">
+      <div class="loader">
+        <img src="assets/logo/logo.png" alt="Mangli Logo" />
+        <span></span>
+      </div>
+    </div>
+
+    <div id="navbar-container"></div>
+
+    <section class="detail-hero">
+      <div class="detail-hero-bg">
+        <img
+          src="https://images.unsplash.com/photo-1527066236128-2ff79f7b9705?auto=format&fit=crop&w=1400&q=80"
+          alt="News detail"
+        />
+      </div>
+
+      <div class="detail-hero-content">
+        <div class="detail-breadcrumb">
+          <a href="index.html">Home</a>
+          <span>/</span>
+          <a href="news.html">News</a>
+          <span>/</span>
+          <span>Article</span>
+        </div>
+
+        <span class="detail-meta">By Arisona Permadi | October 8th, 2021</span>
+
+        <h1 class="detail-title">
+          Alliance targets unlawful tobacco exchange, with Arizona among top
+          states in stash
+        </h1>
+      </div>
+    </section>
+
+    <section class="detail-body">
+      <p>
+        This article is a placeholder for the full news story. Replace this
+        section with the complete write-up once the article content is
+        ready, including any relevant quotes, data, and context sourced from
+        the newsroom.
+      </p>
+
+      <img
+        src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1200&q=80"
+        alt="Article illustration"
+      />
+
+      <p>
+        Continue building out this page with additional paragraphs, pull
+        quotes, or media as needed. The layout, typography, and color palette
+        already match the rest of the Mangli Djaya Raya site so new content
+        will feel consistent.
+      </p>
+
+      <a href="news.html" class="detail-back">
+        <i class="fa-solid fa-arrow-left"></i> Back to News
+      </a>
+    </section>
+
+    <!-- <footer class="footer">
+      <div class="footer-container reveal">
+        <div class="footer-col">
+          <img src="assets/logo/logo.png" alt="Logo" class="footer-logo" />
+          <p>
+            PT Mangli Djaya Raya is committed to delivering premium
+            Indonesian tobacco products through innovation, sustainability,
+            and decades of expertise.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Products</h3>
+          <ul>
+            <li><a href="#">Rajangan Tobacco</a></li>
+            <li><a href="#">Sun Cured</a></li>
+            <li><a href="#">Dark Fired Cured</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Contact</h3>
+          <ul class="footer-contact">
+            <li>
+              <i class="fa-solid fa-location-dot"></i>
+              Jember, East Java, Indonesia
+            </li>
+            <li><i class="fa-solid fa-phone"></i> +62 xxx xxxx xxxx</li>
+            <li>
+              <i class="fa-solid fa-envelope"></i> info@manglidjayaraya.com
+            </li>
+          </ul>
+
+          <div class="footer-social">
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        © 2026 PT Mangli Djaya Raya. All Rights Reserved.
+      </div>
+    </footer> -->
+
+    <script src="js/navbar.js"></script>
+    <script src="js/preloader.js"></script>
+    <script src="js/reveal.js"></script>
+    <script src="js/cursor.js"></script>
+    <script src="js/magnetic.js"></script>
+    <script src="js/script.js"></script>
+
+    <div class="cursor"></div>
+  </body>
+</html>
