@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - Mangli Djaya Raya</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --gold-primary: #d4af37;
+        --gold-light: #f4e8c1;
+        --gold-dark: #aa8c2c;
+        --black-primary: #0a0a0a;
+        --black-secondary: #1a1a1a;
+        --black-tertiary: #2a2a2a;
+        --text-light: #f5f5f5;
+        --text-gray: #b0b0b0;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--black-primary);
+        color: var(--text-light);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* Page Header */
+      .page-header {
+        margin-top: 85px;
+        padding: 4rem 0;
+        background: linear-gradient(
+          135deg,
+          rgba(10, 10, 10, 0.95) 0%,
+          rgba(26, 26, 26, 0.9) 100%
+        );
+        border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+      }
+
+      .page-header-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 3rem;
+      }
+
+      .breadcrumb {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        font-size: 0.85rem;
+        color: var(--text-gray);
+      }
+
+      .breadcrumb a {
+        color: var(--gold-primary);
+        text-decoration: none;
+      }
+
+      .page-title {
+        font-size: 3rem;
+        font-weight: 400;
+        font-family: "Georgia", serif;
+        margin-bottom: 1rem;
+      }
+
+      .page-title span {
+        color: var(--gold-primary);
+      }
+
+      .page-subtitle {
+        color: var(--text-gray);
+        font-size: 1rem;
+        max-width: 600px;
+        line-height: 1.8;
+      }
+
+      /* Story Section */
+      .story-section {
+        padding: 6rem 0;
+        background: var(--black-primary);
+      }
+
+      .story-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 3rem;
+      }
+
+      .story-header {
+        margin-bottom: 4rem;
+      }
+
+      .story-label {
+        color: var(--gold-primary);
+        font-size: 0.85rem;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+      }
+
+      .story-title {
+        font-size: 2.5rem;
+        font-weight: 400;
+        font-family: "Georgia", serif;
+        line-height: 1.4;
+      }
+
+      .story-title span {
+        color: var(--gold-primary);
+      }
+
+      .story-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        margin-bottom: 4rem;
+      }
+
+      .story-card {
+        position: relative;
+        background: var(--black-secondary);
+        border: 1px solid rgba(212, 175, 55, 0.15);
+        overflow: hidden;
+      }
+
+      .story-card-number {
+        position: absolute;
+        top: 1.5rem;
+        left: 1.5rem;
+        width: 40px;
+        height: 40px;
+        background: var(--gold-primary);
+        color: var(--black-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 0.9rem;
+        z-index: 2;
+      }
+
+      .story-card-image {
+        height: 250px;
+        background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .story-card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.8;
+      }
+
+      .story-card-content {
+        padding: 2rem;
+      }
+
+      .story-card-title {
+        font-size: 1rem;
+        color: var(--gold-primary);
+        margin-bottom: 0.8rem;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+
+      .story-card-text {
+        color: var(--text-gray);
+        font-size: 0.9rem;
+        line-height: 1.7;
+      }
+
+      /* Stats Section */
+      .stats-section {
+        padding: 5rem 0;
+        background: var(--black-secondary);
+        border-top: 1px solid rgba(212, 175, 55, 0.15);
+        border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+      }
+
+      .stats-grid {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 3rem;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+      }
+
+      .stat-box {
+        text-align: center;
+        padding: 2rem;
+        border: 1px solid rgba(212, 175, 55, 0.15);
+        background: var(--black-tertiary);
+      }
+
+      .stat-box-icon {
+        width: 70px;
+        height: 70px;
+        margin: 0 auto 1.5rem;
+        border: 1px solid var(--gold-primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        color: var(--gold-primary);
+      }
+
+      .stat-box-value {
+        font-size: 2.5rem;
+        font-weight: 600;
+        color: var(--gold-primary);
+        margin-bottom: 0.5rem;
+        font-family: "Georgia", serif;
+      }
+
+      .stat-box-info {
+        color: var(--text-gray);
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+
+      /* Values Section */
+      .values-section {
+        padding: 6rem 0;
+        background: var(--black-primary);
+      }
+
+      .values-header {
+        max-width: 1400px;
+        margin: 0 auto 4rem;
+        padding: 0 3rem;
+      }
+
+      .values-label {
+        color: var(--gold-primary);
+        font-size: 0.85rem;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+      }
+
+      .values-title {
+        font-size: 2.5rem;
+        font-weight: 400;
+        font-family: "Georgia", serif;
+      }
+
+      .values-title span {
+        color: var(--gold-primary);
+      }
+
+      .values-grid {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 3rem;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+      }
+
+      .value-box {
+        background: var(--black-secondary);
+        border: 1px solid rgba(212, 175, 55, 0.15);
+        padding: 2.5rem 2rem;
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+
+      .value-box:hover {
+        border-color: var(--gold-primary);
+        transform: translateY(-5px);
+      }
+
+      .value-box-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 1.5rem;
+        border: 1px solid var(--gold-primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: var(--gold-primary);
+      }
+
+      .value-box-title {
+        font-size: 1rem;
+        color: var(--gold-primary);
+        margin-bottom: 1rem;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+
+      .value-box-text {
+        color: var(--text-gray);
+        font-size: 0.9rem;
+        line-height: 1.7;
+      }
+
+      /* Footer */
+      .footer {
+        background: var(--black-secondary);
+        border-top: 1px solid rgba(212, 175, 55, 0.15);
+        padding: 3rem 0 2rem;
+      }
+
+      .footer-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 3rem;
+        text-align: center;
+      }
+
+      .footer-text {
+        color: var(--text-gray);
+        font-size: 0.85rem;
+      }
+
+      /* Responsive */
+      @media (max-width: 1200px) {
+        .story-grid,
+        .values-grid,
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 992px) {
+        .nav-menu {
+          display: none;
+        }
+
+        .btn-contact {
+          display: none;
+        }
+
+        .mobile-menu {
+          display: block;
+        }
+
+        .page-title {
+          font-size: 2.5rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .story-grid,
+        .values-grid,
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .page-title {
+          font-size: 2rem;
+        }
+
+        .nav-container {
+          padding: 0 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar will be loaded here -->
+    <div id="navbar-container"></div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="page-header-content">
+        <div class="breadcrumb">
+          <a href="index.html">HOME</a>
+          <span>/</span>
+          <span>ABOUT US</span>
+        </div>
+        <h1 class="page-title">ABOUT <span>MANGLI DJAYA RAYA</span></h1>
+        <p class="page-subtitle">
+          For more than six decades, we have been rooted in Indonesia's rich
+          tobacco heritage, growing with tradition and evolving with innovation
+          to deliver the finest tobacco to the world.
+        </p>
+      </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story-section">
+      <div class="story-container">
+        <div class="story-header">
+          <p class="story-label">Our Story</p>
+          <h2 class="story-title">
+            ROOTED IN TRADITION, <span>GROWING FOR THE FUTURE</span>
+          </h2>
+        </div>
+
+        <div class="story-grid">
+          <div class="story-card">
+            <div class="story-card-number">01</div>
+            <div class="story-card-image">
+              <img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 250'%3E%3Crect fill='%232a2a2a' width='400' height='250'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia' font-size='18' fill='%23D4AF37' opacity='0.5'%3EFarmer%3C/text%3E%3C/svg%3E"
+                alt="Farmer Partnership"
+              />
+            </div>
+            <div class="story-card-content">
+              <h3 class="story-card-title">Farmer Partnership</h3>
+              <p class="story-card-text">
+                We work hand in hand with local farmers to cultivate the best
+                tobacco leaves.
+              </p>
+            </div>
+          </div>
+
+          <div class="story-card">
+            <div class="story-card-number">02</div>
+            <div class="story-card-image">
+              <img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 250'%3E%3Crect fill='%232a2a2a' width='400' height='250'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia' font-size='18' fill='%23D4AF37' opacity='0.5'%3EProcess%3C/text%3E%3C/svg%3E"
+                alt="Traditional Process"
+              />
+            </div>
+            <div class="story-card-content">
+              <h3 class="story-card-title">Traditional Process</h3>
+              <p class="story-card-text">
+                Years of expertise in fermentation and processing ensure rich
+                aroma and flavor.
+              </p>
+            </div>
+          </div>
+
+          <div class="story-card">
+            <div class="story-card-number">03</div>
+            <div class="story-card-image">
+              <img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 250'%3E%3Crect fill='%232a2a2a' width='400' height='250'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia' font-size='18' fill='%23D4AF37' opacity='0.5'%3EQuality%3C/text%3E%3C/svg%3E"
+                alt="Quality Control"
+              />
+            </div>
+            <div class="story-card-content">
+              <h3 class="story-card-title">Quality Control</h3>
+              <p class="story-card-text">
+                Every leaf goes through strict quality control to ensure
+                international standards.
+              </p>
+            </div>
+          </div>
+
+          <div class="story-card">
+            <div class="story-card-number">04</div>
+            <div class="story-card-image">
+              <img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 250'%3E%3Crect fill='%232a2a2a' width='400' height='250'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia' font-size='18' fill='%23D4AF37' opacity='0.5'%3EGlobal%3C/text%3E%3C/svg%3E"
+                alt="Global Distribution"
+              />
+            </div>
+            <div class="story-card-content">
+              <h3 class="story-card-title">Global Distribution</h3>
+              <p class="story-card-text">
+                Our tobacco is trusted by partners in more than 30+ countries
+                worldwide.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-box-icon">
+            <i class="fas fa-leaf"></i>
+          </div>
+          <div class="stat-box-value">60+</div>
+          <div class="stat-box-info">Years of Experience<br />Since 1960</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="stat-box-value">500+</div>
+          <div class="stat-box-info">Partner Farmers<br />Across Indonesia</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-icon">
+            <i class="fas fa-plane"></i>
+          </div>
+          <div class="stat-box-value">30+</div>
+          <div class="stat-box-info">Countries<br />Export Destinations</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-box-icon">
+            <i class="fas fa-award"></i>
+          </div>
+          <div class="stat-box-value">100%</div>
+          <div class="stat-box-info">
+            Quality Commitment<br />From Farm to Global Market
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+      <div class="values-header">
+        <p class="values-label">Our Values</p>
+        <h2 class="values-title">
+          THE PRINCIPLES THAT <span>GUIDE EVERYTHING WE DO</span>
+        </h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-box">
+          <div class="value-box-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3 class="value-box-title">Integrity</h3>
+          <p class="value-box-text">
+            We do business with honesty, transparency, and respect.
+          </p>
+        </div>
+        <div class="value-box">
+          <div class="value-box-icon">
+            <i class="fas fa-award"></i>
+          </div>
+          <h3 class="value-box-title">Quality</h3>
+          <p class="value-box-text">
+            We are committed to delivering the highest quality in everything.
+          </p>
+        </div>
+        <div class="value-box">
+          <div class="value-box-icon">
+            <i class="fas fa-handshake"></i>
+          </div>
+          <h3 class="value-box-title">Partnership</h3>
+          <p class="value-box-text">
+            We grow together with our farmers, customers, and communities.
+          </p>
+        </div>
+        <div class="value-box">
+          <div class="value-box-icon">
+            <i class="fas fa-leaf"></i>
+          </div>
+          <h3 class="value-box-title">Sustainability</h3>
+          <p class="value-box-text">
+            We care for the earth and future generations through responsible
+            practices.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <p class="footer-text">
+          &copy; 2026 PT Mangli Djaya Raya. All rights reserved. | Established
+          1960
+        </p>
+      </div>
+    </footer>
+
+    <script src="js/navbar.js"></script>
+    <script src="js/preloader.js"></script>
+    <script src="js/reveal.js"></script>
+    <script src="js/counter.js"></script>
+    <script src="js/parallax.js"></script>
+    <script src="js/cursor.js"></script>
+    <script src="js/magnetic.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>

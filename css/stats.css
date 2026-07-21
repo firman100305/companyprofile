@@ -1,0 +1,56 @@
+
+.company-stats {
+  background: #111;
+
+  padding: 110px 0;
+}
+
+.stats-container {
+  width: 90%;
+
+  max-width: 1400px;
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 30px;
+}
+
+.stat-box {
+  background: #181818;
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  border-radius: 20px;
+
+  padding: 45px;
+
+  text-align: center;
+
+  transition: 0.35s;
+}
+
+.stat-box:hover {
+  transform: translateY(-8px);
+
+  border-color: #d4af37;
+}
+
+.stat-box h2 {
+  font-size: 64px;
+
+  color: #d4af37;
+
+  font-family: Georgia, serif;
+
+  margin-bottom: 15px;
+}
+
+.stat-box span {
+  color: #bfbfbf;
+
+  letter-spacing: 1px;
+}
