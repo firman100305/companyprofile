@@ -130,6 +130,143 @@
       .detail-back:hover {
         color: #777;
       }
+
+      /* ==========================
+         RELATED NEWS (horizontal scroll)
+      ========================== */
+      .related-news {
+        width: 90%;
+        max-width: 900px;
+        margin: 60px auto 120px;
+      }
+
+      .related-news-heading {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 28px;
+      }
+
+      .related-news-heading .bar {
+        width: 5px;
+        height: 24px;
+        background: #1a1a1a;
+        border-radius: 3px;
+      }
+
+      .related-news-heading h3 {
+        font-family: "Playfair Display", Georgia, serif;
+        font-size: 22px;
+        font-weight: 700;
+        color: #1a1a1a;
+      }
+
+      .related-scroll-wrap {
+        overflow: hidden;
+      }
+
+      .related-scroll {
+        display: flex;
+        gap: 20px;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        cursor: grab;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      .related-scroll.dragging {
+        cursor: grabbing;
+        scroll-behavior: auto;
+      }
+
+      .related-scroll::-webkit-scrollbar {
+        display: none;
+      }
+
+      .related-card {
+        flex: 0 0 220px;
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1px solid #ececec;
+        background: #fff;
+        transition: border-color 0.35s ease;
+      }
+
+      .related-card:hover {
+        border-color: rgba(31, 31, 31, 0.28);
+      }
+
+      .related-card-image {
+        height: 140px;
+        overflow: hidden;
+      }
+
+      .related-card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        pointer-events: none;
+      }
+
+      .related-card:hover .related-card-image img {
+        transform: scale(1.08);
+      }
+
+      .related-card-content {
+        padding: 14px 16px 18px;
+      }
+
+      .related-card-content small {
+        display: block;
+        color: #9a9a9a;
+        font-size: 11px;
+        margin-bottom: 8px;
+      }
+
+      .related-card-content h4 {
+        font-family: "Playfair Display", Georgia, serif;
+        font-size: 15px;
+        line-height: 1.4;
+        font-weight: 700;
+        color: #1a1a1a;
+      }
+
+      .related-progress-track {
+        position: relative;
+        width: 100%;
+        height: 3px;
+        background: #ececec;
+        border-radius: 3px;
+        margin-top: 26px;
+        overflow: hidden;
+      }
+
+      .related-progress-thumb {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 20%;
+        background: rgba(31, 31, 31, 0.28);
+        border-radius: 3px;
+        transform: translateX(0);
+      }
+
+      @media (max-width: 576px) {
+        .related-card {
+          flex: 0 0 170px;
+        }
+
+        .related-card-image {
+          height: 110px;
+        }
+      }
     </style>
   </head>
 
@@ -192,6 +329,93 @@
       <a href="news.html" class="detail-back">
         <i class="fa-solid fa-arrow-left"></i> Back to News
       </a>
+    </section>
+
+    <section class="related-news">
+      <div class="related-news-heading">
+        <span class="bar"></span>
+        <h3>More News</h3>
+      </div>
+
+      <div class="related-scroll-wrap">
+        <div class="related-scroll" id="relatedScroll">
+          <a href="news-detail.html" class="related-card">
+            <div class="related-card-image">
+              <img
+                src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=500&q=80"
+                alt="Pressured to Ditch Tobacco Sponsors" />
+            </div>
+            <div class="related-card-content">
+              <small>By Arisona Permadi | October 8th, 2021</small>
+              <h4>Pressured to Ditch Tobacco Sponsors</h4>
+            </div>
+          </a>
+
+          <a href="news-detail.html" class="related-card">
+            <div class="related-card-image">
+              <img
+                src="https://images.unsplash.com/photo-1541543315-c8c5e70b3c8f?auto=format&fit=crop&w=500&q=80"
+                alt="Drive In Denver Aims To Ban Flavored Tobacco Products" />
+            </div>
+            <div class="related-card-content">
+              <small>By Arisona Permadi | October 8th, 2021</small>
+              <h4>Drive In Denver Aims To Ban Flavored Tobacco Products</h4>
+            </div>
+          </a>
+
+          <a href="news-detail.html" class="related-card">
+            <div class="related-card-image">
+              <img
+                src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=80"
+                alt="Laguna Beach to return to prohibiting deals of tobacco and vape items" />
+            </div>
+            <div class="related-card-content">
+              <small>By Arisona Permadi | October 8th, 2021</small>
+              <h4>Laguna Beach to return to prohibiting deals of tobacco and vape items</h4>
+            </div>
+          </a>
+
+          <a href="news-detail.html" class="related-card">
+            <div class="related-card-image">
+              <img
+                src="https://images.unsplash.com/photo-1527066236128-2ff79f7b9705?auto=format&fit=crop&w=500&q=80"
+                alt="Alliance targets unlawful tobacco exchange" />
+            </div>
+            <div class="related-card-content">
+              <small>By Arisona Permadi | October 8th, 2021</small>
+              <h4>Alliance targets unlawful tobacco exchange, with Arizona among top states in stash</h4>
+            </div>
+          </a>
+
+          <a href="news-detail.html" class="related-card">
+            <div class="related-card-image">
+              <img
+                src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=500&q=80"
+                alt="Pressured to Ditch Tobacco Sponsors" />
+            </div>
+            <div class="related-card-content">
+              <small>By Arisona Permadi | October 8th, 2021</small>
+              <h4>Pressured to Ditch Tobacco Sponsors</h4>
+            </div>
+          </a>
+
+          <a href="news-detail.html" class="related-card">
+            <div class="related-card-image">
+              <img
+                src="https://images.unsplash.com/photo-1541543315-c8c5e70b3c8f?auto=format&fit=crop&w=500&q=80"
+                alt="Drive In Denver Aims To Ban Flavored Tobacco Products" />
+            </div>
+            <div class="related-card-content">
+              <small>By Arisona Permadi | October 8th, 2021</small>
+              <h4>Drive In Denver Aims To Ban Flavored Tobacco Products</h4>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="related-progress-track">
+        <div class="related-progress-thumb" id="relatedProgressThumb"></div>
+      </div>
     </section>
 
     <!-- <footer class="footer">
@@ -258,6 +482,55 @@
     <script src="js/cursor.js"></script>
     <script src="js/magnetic.js"></script>
     <script src="js/script.js"></script>
+
+    <script>
+      // Progress bar untuk scroll horizontal "More News":
+      // track panjang + thumb kecil yang bergerak sesuai posisi scroll.
+      (function () {
+        const scrollEl = document.getElementById("relatedScroll");
+        const thumb = document.getElementById("relatedProgressThumb");
+        if (!scrollEl || !thumb) return;
+
+        function updateProgress() {
+          const maxScroll = scrollEl.scrollWidth - scrollEl.clientWidth;
+          const visibleRatio = scrollEl.clientWidth / scrollEl.scrollWidth;
+          thumb.style.width = Math.min(Math.max(visibleRatio * 100, 10), 100) + "%";
+
+          const track = thumb.parentElement;
+          const maxTranslate = track.clientWidth - thumb.offsetWidth;
+          const progress = maxScroll > 0 ? scrollEl.scrollLeft / maxScroll : 0;
+          thumb.style.transform = `translateX(${progress * maxTranslate}px)`;
+        }
+
+        scrollEl.addEventListener("scroll", updateProgress, { passive: true });
+        window.addEventListener("resize", updateProgress);
+        updateProgress();
+
+        // Drag-to-scroll pakai mouse (buat desktop, karena mouse biasa
+        // nggak punya scroll horizontal bawaan)
+        let isDown = false;
+        let startX = 0;
+        let startScroll = 0;
+
+        scrollEl.addEventListener("mousedown", (e) => {
+          isDown = true;
+          scrollEl.classList.add("dragging");
+          startX = e.pageX;
+          startScroll = scrollEl.scrollLeft;
+        });
+
+        window.addEventListener("mouseup", () => {
+          isDown = false;
+          scrollEl.classList.remove("dragging");
+        });
+
+        window.addEventListener("mousemove", (e) => {
+          if (!isDown) return;
+          e.preventDefault();
+          scrollEl.scrollLeft = startScroll - (e.pageX - startX);
+        });
+      })();
+    </script>
 
     <div class="cursor"></div>
   </body>

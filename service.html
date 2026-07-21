@@ -28,6 +28,11 @@
             --card-bg: #f1efe9;
             --text-dark: #1a1a1a;
             --text-muted: #6b6b6b;
+
+            /* aksen monokrom untuk area di luar hero (card, stepper, dll) */
+            --accent-strong: #1f1f1f;
+            --accent-mid: #4d4d4d;
+            --accent-soft: #d9d9d4;
         }
 
         body {
@@ -126,7 +131,7 @@
         .svc-card:hover {
             box-shadow:
                 0 35px 60px -25px rgba(0, 0, 0, 0.22),
-                0 0 0 1px rgba(212, 175, 55, 0.35);
+                0 0 0 1px rgba(31, 31, 31, 0.28);
         }
 
         /* image panel */
@@ -208,7 +213,7 @@
 
         .svc-num {
             display: inline-block;
-            color: var(--gold-dark);
+            color: var(--accent-mid);
             font-size: 0.85rem;
             letter-spacing: 3px;
             margin-bottom: 16px;
@@ -255,57 +260,63 @@
             transition-delay: 0.28s;
         }
 
-        /* sliding / marquee text */
-        .svc-marquee {
+        /* ==========================
+         STEPPER (dash segments, vertical)
+      ========================== */
+        .svc-stepper {
             max-width: 460px;
-            height: 140px;
-            overflow: hidden;
-            -webkit-mask-image: linear-gradient(180deg,
-                    transparent 0,
-                    #000 14%,
-                    #000 86%,
-                    transparent 100%);
-            mask-image: linear-gradient(180deg,
-                    transparent 0,
-                    #000 14%,
-                    #000 86%,
-                    transparent 100%);
+            display: flex;
+            gap: 28px;
+            height: 150px;
         }
 
-        .svc-marquee-track {
+        .stepper-track {
             display: flex;
             flex-direction: column;
-            gap: 22px;
-            animation: svcScroll 18s linear infinite;
-            animation-play-state: paused;
+            gap: 8px;
+            flex-shrink: 0;
         }
 
-        .svc-card:hover .svc-marquee-track {
-            animation-play-state: running;
+        .stepper-dash {
+            width: 4px;
+            height: 32px;
+            border-radius: 2px;
+            border: none;
+            padding: 0;
+            background: var(--accent-soft);
+            cursor: pointer;
+            transition: background 0.3s ease;
         }
 
-        .svc-marquee-track p {
+        .stepper-dash.active {
+            background: var(--accent-strong);
+        }
+
+        .stepper-content {
+            position: relative;
+            flex: 1;
+        }
+
+        .stepper-text {
+            position: absolute;
+            inset: 0;
             margin: 0;
             color: var(--text-muted);
             font-size: 0.92rem;
             line-height: 1.8;
+            opacity: 0;
+            transform: translateX(10px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            pointer-events: none;
         }
 
-        @keyframes svcScroll {
-            from {
-                transform: translateY(0);
-            }
-
-            to {
-                transform: translateY(-50%);
-            }
+        .stepper-text.active {
+            opacity: 1;
+            transform: translateX(0);
+            pointer-events: auto;
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .svc-marquee-track {
-                animation: none;
-            }
-
             .svc-title .word {
                 transition: opacity 0.4s ease;
                 transform: none;
@@ -343,8 +354,8 @@
                 opacity: 1 !important;
             }
 
-            .svc-marquee-track {
-                animation-play-state: running !important;
+            .svc-stepper {
+                height: 120px;
             }
         }
     </style>
@@ -391,39 +402,26 @@
                         <span class="mask"><span class="word">with</span></span>
                         <span class="mask"><span class="word">Farmers</span></span>
                     </h3>
-                    <div class="svc-marquee">
-                        <div class="svc-marquee-track">
-                            <p>
+                    <div class="svc-stepper" data-stepper>
+                        <div class="stepper-track" data-track>
+                            <button class="stepper-dash active" data-hit="0" aria-label="Open market"></button>
+                            <button class="stepper-dash" data-hit="1" aria-label="Education and traceability"></button>
+                            <button class="stepper-dash" data-hit="2" aria-label="Good agricultural practices"></button>
+                        </div>
+                        <div class="stepper-content">
+                            <p class="stepper-text" data-step-text="0">
                                 In Indonesia, tobaccos are bought from farmers through an
                                 open market. Unlike other countries, we do not conduct any
                                 auctions — our ties with farmers are mostly commercial
                                 based.
                             </p>
-                            <p>
+                            <p class="stepper-text" data-step-text="1">
                                 We understand the concerns facing tobacco manufacturers
                                 regarding traceability. This is one of the main reasons we
                                 continue to strengthen our relationship with farmers from
                                 an educational perspective.
                             </p>
-                            <p>
-                                In areas such as Jember, Lombok, and Bali, we educate
-                                farmers on the proper use of Crop Protection Agents (CPA)
-                                and good agricultural practices to achieve high quality
-                                tobacco.
-                            </p>
-                            <p aria-hidden="true">
-                                In Indonesia, tobaccos are bought from farmers through an
-                                open market. Unlike other countries, we do not conduct any
-                                auctions — our ties with farmers are mostly commercial
-                                based.
-                            </p>
-                            <p aria-hidden="true">
-                                We understand the concerns facing tobacco manufacturers
-                                regarding traceability. This is one of the main reasons we
-                                continue to strengthen our relationship with farmers from
-                                an educational perspective.
-                            </p>
-                            <p aria-hidden="true">
+                            <p class="stepper-text" data-step-text="2">
                                 In areas such as Jember, Lombok, and Bali, we educate
                                 farmers on the proper use of Crop Protection Agents (CPA)
                                 and good agricultural practices to achieve high quality
@@ -446,32 +444,23 @@
                     <h3 class="svc-title">
                         <span class="mask"><span class="word">Processing</span></span>
                     </h3>
-                    <div class="svc-marquee">
-                        <div class="svc-marquee-track">
-                            <p>
+                    <div class="svc-stepper" data-stepper>
+                        <div class="stepper-track" data-track>
+                            <button class="stepper-dash active" data-hit="0" aria-label="Receiving"></button>
+                            <button class="stepper-dash" data-hit="1" aria-label="Sorting by grade"></button>
+                            <button class="stepper-dash" data-hit="2" aria-label="Final product forms"></button>
+                        </div>
+                        <div class="stepper-content">
+                            <p class="stepper-text" data-step-text="0">
                                 Upon receiving tobacco from the buying stations, it is our
                                 priority to deliver quality products to our customers.
                             </p>
-                            <p>
+                            <p class="stepper-text" data-step-text="1">
                                 Tobaccos are sorted according to the grades desired. During
                                 sortation, we maximize the removal of non-tobacco related
                                 materials (NTRMs).
                             </p>
-                            <p>
-                                Customers can then decide the final form of their product:
-                                Handstripped, Loose Leaf, Open Laid, Butted Loose Leaf,
-                                Bundled, or Fermented.
-                            </p>
-                            <p aria-hidden="true">
-                                Upon receiving tobacco from the buying stations, it is our
-                                priority to deliver quality products to our customers.
-                            </p>
-                            <p aria-hidden="true">
-                                Tobaccos are sorted according to the grades desired. During
-                                sortation, we maximize the removal of non-tobacco related
-                                materials (NTRMs).
-                            </p>
-                            <p aria-hidden="true">
+                            <p class="stepper-text" data-step-text="2">
                                 Customers can then decide the final form of their product:
                                 Handstripped, Loose Leaf, Open Laid, Butted Loose Leaf,
                                 Bundled, or Fermented.
@@ -551,6 +540,49 @@
     <script src="js/cursor.js"></script>
     <script src="js/magnetic.js"></script>
     <script src="js/script.js"></script>
+    <script>
+        document.querySelectorAll('.svc-card').forEach((card) => {
+            const scope = card.querySelector('[data-stepper]');
+            if (!scope) return;
+
+            const dashes = scope.querySelectorAll('.stepper-dash');
+            const texts = scope.querySelectorAll('[data-step-text]');
+            const total = dashes.length;
+            let current = 0;
+
+            function setStep(i) {
+                current = i;
+                dashes.forEach((d) => {
+                    d.classList.toggle('active', d.getAttribute('data-hit') === String(i));
+                });
+                texts.forEach((t) => {
+                    t.classList.toggle('active', t.getAttribute('data-step-text') === String(i));
+                });
+            }
+
+            // klik langsung di dash tetap berfungsi (loncat ke step tsb)
+            dashes.forEach((btn) => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    setStep(parseInt(btn.getAttribute('data-hit')));
+                });
+            });
+
+            // klik di mana saja pada card -> maju/mundur berdasarkan posisi atas-bawah
+            card.addEventListener('click', (e) => {
+                if (!total) return;
+
+                const rect = card.getBoundingClientRect();
+                const relY = e.clientY - rect.top;
+                const goNext = relY > rect.height / 2;
+
+                const next = goNext ? (current + 1) % total : (current - 1 + total) % total;
+                setStep(next);
+            });
+
+            setStep(0);
+        });
+    </script>
 </body>
 
 </html>

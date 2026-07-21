@@ -166,6 +166,35 @@
             gap: 30px;
         }
 
+        /* ==========================
+         CARD REVEAL (khusus halaman ini — supaya bisa ditunda sampai
+         user benar-benar scroll, dan urutan munculnya bisa diatur manual)
+      ========================== */
+        .card-reveal {
+            opacity: 0;
+            transform: translateY(80px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .featured-grid.in-view .card-reveal,
+        .news-grid.in-view .card-reveal {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* Urutan muncul 3 card atas: main (besar) -> kanan atas -> kanan bawah */
+        .featured-main.card-reveal {
+            transition-delay: 0s;
+        }
+
+        .featured-side .featured-card.card-reveal:nth-child(1) {
+            transition-delay: 0.18s;
+        }
+
+        .featured-side .featured-card.card-reveal:nth-child(2) {
+            transition-delay: 0.36s;
+        }
+
         .featured-main,
         .featured-card {
             position: relative;
@@ -174,7 +203,6 @@
             display: block;
             text-decoration: none;
             color: inherit;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
         }
 
         .featured-main {
@@ -286,12 +314,39 @@
         .news-card {
             background: #ffffff !important;
             border: 1px solid #ececec !important;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            box-shadow: none !important;
+        }
+
+        .news-card .news-image {
+            overflow: hidden;
+        }
+
+        .news-card .news-image img {
+            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        /* Card tampil agak kecil dari awal, lalu "timbul" saat dihover.
+           Transform-nya sengaja disamakan durasi & easing-nya dengan zoom
+           gambar di atas supaya keduanya beranimasi barengan saat hover. */
+        .news-card.card-reveal {
+            --hover-scale: 0.94;
+            transform: translateY(80px) scale(var(--hover-scale));
+            transition: opacity 0.8s ease,
+                transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .news-grid.in-view .news-card.card-reveal {
+            transform: translateY(0) scale(var(--hover-scale));
         }
 
         .news-card:hover {
-            border-color: #1a1a1a !important;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.1);
+            --hover-scale: 1.04;
+            border-color: #ececec !important;
+            z-index: 2;
+        }
+
+        .news-card:hover .news-image img {
+            transform: scale(1.08);
         }
 
         .news-content small {
@@ -437,7 +492,7 @@
 
         <div class="featured-grid">
             <!-- Main Featured Card -->
-            <a href="news-detail.html" class="featured-main reveal">
+            <a href="news-detail.html" class="featured-main card-reveal">
                 <img src="https://images.unsplash.com/photo-1527066236128-2ff79f7b9705?auto=format&fit=crop&w=1200&q=80"
                     alt="Alliance targets unlawful tobacco exchange" />
                 <div class="featured-overlay"></div>
@@ -454,7 +509,7 @@
 
             <!-- Side Cards -->
             <div class="featured-side">
-                <a href="news-detail.html" class="featured-card reveal reveal-right">
+                <a href="news-detail.html" class="featured-card card-reveal">
                     <img src="https://images.unsplash.com/photo-1541543315-c8c5e70b3c8f?auto=format&fit=crop&w=800&q=80"
                         alt="Drive In Denver Aims To Ban Flavored Tobacco Products" />
                     <div class="featured-overlay"></div>
@@ -466,7 +521,7 @@
                     </div>
                 </a>
 
-                <a href="news-detail.html" class="featured-card reveal reveal-right">
+                <a href="news-detail.html" class="featured-card card-reveal">
                     <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
                         alt="Laguna Beach to return to prohibiting deals of tobacco and vape items" />
                     <div class="featured-overlay"></div>
@@ -487,7 +542,7 @@
     <!-- News Grid -->
     <section class="news">
         <div class="news-grid">
-            <div class="news-card reveal">
+            <div class="news-card card-reveal">
                 <div class="news-image">
                     <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=700&q=80"
                         alt="Pressured to ditch tobacco sponsors" />
@@ -495,16 +550,12 @@
                 <div class="news-content">
                     <small>By Arisona Permadi | October 8th, 2021</small>
                     <h3>Pressured to Ditch Tobacco Sponsors</h3>
-                    <p>
-                        Elite sports organizations have long been addicted to tobacco
-                        company sponsorships, almost since the inception of
-                        professional competition.
-                    </p>
+                  
                     <a href="news-detail.html">Read More</a>
                 </div>
             </div>
 
-            <div class="news-card reveal">
+            <div class="news-card card-reveal">
                 <div class="news-image">
                     <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=700&q=80"
                         alt="Pressured to ditch tobacco sponsors" />
@@ -512,16 +563,12 @@
                 <div class="news-content">
                     <small>By Arisona Permadi | October 8th, 2021</small>
                     <h3>Pressured to Ditch Tobacco Sponsors</h3>
-                    <p>
-                        Elite sports organizations have long been addicted to tobacco
-                        company sponsorships, almost since the inception of
-                        professional competition.
-                    </p>
+                 
                     <a href="news-detail.html">Read More</a>
                 </div>
             </div>
 
-            <div class="news-card reveal">
+            <div class="news-card card-reveal">
                 <div class="news-image">
                     <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=700&q=80"
                         alt="Pressured to ditch tobacco sponsors" />
@@ -529,16 +576,12 @@
                 <div class="news-content">
                     <small>By Arisona Permadi | October 8th, 2021</small>
                     <h3>Pressured to Ditch Tobacco Sponsors</h3>
-                    <p>
-                        Elite sports organizations have long been addicted to tobacco
-                        company sponsorships, almost since the inception of
-                        professional competition.
-                    </p>
+                  
                     <a href="news-detail.html">Read More</a>
                 </div>
             </div>
 
-            <div class="news-card reveal">
+            <div class="news-card card-reveal">
                 <div class="news-image">
                     <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=700&q=80"
                         alt="Pressured to ditch tobacco sponsors" />
@@ -546,11 +589,7 @@
                 <div class="news-content">
                     <small>By Arisona Permadi | October 8th, 2021</small>
                     <h3>Pressured to Ditch Tobacco Sponsors</h3>
-                    <p>
-                        Elite sports organizations have long been addicted to tobacco
-                        company sponsorships, almost since the inception of
-                        professional competition.
-                    </p>
+                   
                     <a href="news-detail.html">Read More</a>
                 </div>
             </div>
@@ -565,6 +604,30 @@
     <script src="js/cursor.js"></script>
     <script src="js/magnetic.js"></script>
     <script src="js/script.js"></script>
+
+    <script>
+        // .featured-grid dan .news-grid TIDAK auto-aktif walau sudah
+        // kelihatan pas halaman baru dibuka — baru nyala (in-view) setelah
+        // user benar-benar melakukan scroll. Urutan tampil masing-masing
+        // card diatur lewat transition-delay di CSS (.card-reveal).
+        (function () {
+            const groups = document.querySelectorAll('.featured-grid, .news-grid');
+            if (!groups.length) return;
+
+            function check() {
+                groups.forEach((el) => {
+                    if (el.classList.contains('in-view')) return;
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight * 0.9 && rect.bottom > 0) {
+                        el.classList.add('in-view');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', check, { passive: true });
+            window.addEventListener('resize', check);
+        })();
+    </script>
 
     <!-- Custom Cursor -->
     <div class="cursor"></div>
