@@ -1,1 +1,140 @@
-career.html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Career - Mangli Djaya Raya</title>
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    <!-- CSS Utama -->
+    <link rel="stylesheet" href="css/style.css" />
+    
+    <!-- CSS Khusus Career -->
+    <link rel="stylesheet" href="css/career.css" />
+  </head>
+
+  <body>
+    <!-- Preloader -->
+    <div id="preloader">
+      <div class="loader">
+        <img src="assets/logo/logo.png" alt="Mangli Logo" />
+        <span></span>
+      </div>
+    </div>
+
+    <!-- Navbar Container -->
+    <div id="navbar-container"></div>
+
+<!-- HERO SECTION CAREER -->
+<section class="career-hero">
+    <div class="hero-bg">
+        <img src="assets/images/gambar-tobacco.jpg" alt="Career Background" />
+    </div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content reveal reveal-left">
+        <div class="detail-breadcrumb">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <span>Career</span>
+        </div>
+
+        <h1 class="hero-title">
+            Want to <span class="gold">join the team?</span>
+        </h1>
+    </div>
+</section>
+
+    <!-- ======================
+         FOOTER (Sama seperti Contact & News)
+    ====================== -->
+    <footer class="footer">
+      <div class="footer-container reveal">
+        <!-- Company -->
+        <div class="footer-col">
+          <img src="assets/logo/logo.png" alt="Logo" class="footer-logo" />
+          <p>PT Mangli Djaya Raya is committed to delivering premium Indonesian tobacco products through innovation, sustainability, and decades of expertise.</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Products -->
+        <div class="footer-col">
+          <h3>Products</h3>
+          <ul>
+            <li><a href="#">Rajangan Tobacco</a></li>
+            <li><a href="#">Sun Cured</a></li>
+            <li><a href="#">Dark Fired Cured</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-col">
+          <h3>Contact</h3>
+          <ul class="footer-contact">
+            <li><i class="fa-solid fa-location-dot"></i> Jember, East Java, Indonesia</li>
+            <li><i class="fa-solid fa-phone"></i> +62 xxx xxxx xxxx</li>
+            <li><i class="fa-solid fa-envelope"></i> info@manglidjayaraya.com</li>
+          </ul>
+          <div class="footer-social">
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Maps -->
+      <div class="footer-map">
+        <iframe src="https://www.google.com/maps/embed?pb=" loading="lazy" allowfullscreen></iframe>
+      </div>
+
+      <!-- Copyright -->
+      <div class="footer-bottom">
+        © 2026 PT Mangli Djaya Raya. All Rights Reserved.
+      </div>
+    </footer>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+
+    <!-- ======================
+         JAVASCRIPT
+    ====================== -->
+    <script>
+      fetch('navbar.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('navbar-container').innerHTML = data;
+        })
+        .catch(error => console.error('Gagal memuat navbar:', error));
+    </script>
+
+    <script src="js/navbar.js"></script>
+    <script src="js/preloader.js"></script>
+    <script src="js/reveal.js"></script>
+    <script src="js/counter.js"></script>
+    <script src="js/parallax.js"></script>
+    <script src="js/cursor.js"></script>
+    <script src="js/magnetic.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>

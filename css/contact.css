@@ -1,0 +1,568 @@
+/* --- CONTACT PAGE SPECIFIC STYLES --- */
+
+/* Contact Hero - Structure sama seperti News */
+.contact-hero {
+    position: relative;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    padding: 190px 0 90px;
+    overflow: hidden;
+    background: #0a0a0a;
+}
+
+.contact-hero .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.contact-hero .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.contact-hero .hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+        linear-gradient(100deg,
+            rgba(8, 8, 8, 0.96) 0%,
+            rgba(8, 8, 8, 0.85) 30%,
+            rgba(8, 8, 8, 0.45) 60%,
+            rgba(8, 8, 8, 0.25) 100%),
+        linear-gradient(0deg,
+            rgba(8, 8, 8, 0.85) 0%,
+            rgba(8, 8, 8, 0.2) 45%,
+            rgba(8, 8, 8, 0.55) 100%);
+}
+
+.contact-hero .hero-content {
+    position: relative;
+    z-index: 2;
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.contact-hero .detail-breadcrumb {
+    display: flex;
+    gap: 10px;
+    font-size: 13px;
+    color: #cfcfcf;
+    margin-bottom: 20px;
+}
+
+.contact-hero .detail-breadcrumb a {
+    color: #d4af37;
+    text-decoration: none;
+}
+
+.contact-hero .hero-title {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 48px;
+    line-height: 1.25;
+    font-weight: 700;
+    max-width: 700px;
+    margin: 0;
+    color: #fff;
+}
+
+.contact-hero .hero-title .gold {
+    color: #d4af37;
+}
+
+.contact-hero .white { color: #ffffff; font-style: italic; }
+
+/* ==========================
+   SECTION HEADING (Let's Start a Conversation)
+========================== */
+.section-heading {
+    padding: 40px 5% 50px;
+    background-color: #ffffff;
+}
+
+.section-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section-content h2 {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.3;
+    margin: 0;
+    position: relative;
+}
+
+        /* .section-content h2::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            /* background: linear-gradient(90deg, #d4af37, #c99812); */
+            /* border-radius: 2px;
+        } */
+
+        /* Responsif */
+        /* @media (max-width: 768px) {
+            .section-content h2 {
+                font-size: 32px;
+            }
+        } */ 
+
+/* ==========================
+   INFO CARDS
+========================== */
+
+/* Icon Link - Hanya icon yang clickable */
+.icon-link {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* Hover effect pada icon */
+.icon-link:hover {
+    transform: scale(1.1);
+}
+
+.icon-link:hover .info-icon {
+    box-shadow: 0 15px 35px rgba(212,175,55,.5);
+}
+
+/* Khusus WhatsApp hover */
+.icon-link:hover .whatsapp-icon {
+    box-shadow: 0 15px 35px rgba(212,175,55,.5) !important;
+}
+
+/* Pastikan card tidak terpengaruh */
+.info-card {
+    cursor: default;
+}
+
+/* Cursor pointer hanya untuk icon */
+.info-icon {
+    cursor: pointer;
+}
+
+.card-note {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: #f8f4e6;
+    color: #b78b16;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.info-section {
+    padding: 10px 5% 80px;
+    background-color: #ffffff; /* PUTIH BERSIH */
+}
+
+.info-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    justify-content: center;
+}
+
+.info-card {
+    max-width: 250px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    background: #fff;
+    padding: 30px 20px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    border: 1px solid #ececec;
+    transition: .45s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+
+.info-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: #d4af37;
+    transform: scaleX(0);
+    transition: .45s;
+}
+
+.info-card:hover {
+    transform: translateY(-8px);
+    border-color: #d4af37;
+    box-shadow: 0 20px 40px rgba(0,0,0,.15);
+}
+
+.info-card:hover::before {
+    transform: scaleX(1);
+}
+
+.info-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f3cd53, #c99812);
+    box-shadow: 0 10px 20px rgba(212,175,55,.35);
+}
+
+.info-icon svg {
+    width: 28px;
+    height: 28px;
+    fill: white;
+}
+
+/* Khusus WhatsApp - Background Hijau */
+.whatsapp-icon {
+    background: linear-gradient(135deg, #f3cd53, #c99812) !important;
+    box-shadow: 0 10px 20px rgba(212,175,55,.35) !important;
+}
+
+.whatsapp-icon svg {
+    width: 28px;
+    height: 28px;
+    display: block;
+}
+
+.info-text {
+    flex: 1;
+}
+
+.info-text h4 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #111;
+}
+
+.info-text p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* ==========================
+   RESPONSIVE INFO CARDS
+========================== */
+@media (max-width: 1200px) {
+    .info-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .info-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .info-card {
+        padding: 25px 20px;
+    }
+    
+    .info-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .info-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .info-text h4 {
+        font-size: 16px;
+    }
+    
+    .info-text p {
+        font-size: 13px;
+    }
+}
+
+/* ==========================
+   STAGGER ANIMATION (Efek Bergelombang)
+========================== */
+.stagger-card {
+    opacity: 0 !important;
+    transform: translateY(60px) !important;
+    transition: opacity 0.8s ease, transform 0.8s ease !important;
+}
+
+.stagger-card.visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+.stagger-card.visible:hover {
+    transform: translateY(-8px) !important;
+}
+
+/* ==========================
+   FORM SECTION
+========================== */
+.form-section {
+    padding: 80px 10%;
+    background-color: #ffffff;
+}
+
+.form-container {
+    max-width: 760px;
+    margin: auto;
+    background: #fff;
+    padding: 60px;
+    border-radius: 25px;
+    border: 1px solid #ececec;
+    box-shadow: 0 20px 60px rgba(0,0,0,.08);
+}
+
+.form-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 40px;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-container label {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.form-container input,
+.form-container textarea {
+    width: 100%;
+    padding: 18px 22px;
+    border: 1px solid #ddd;
+    border-radius: 14px;
+    background: #fafafa;
+    transition: .35s;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.form-container input:focus,
+.form-container textarea:focus {
+    outline: none;
+    border-color: #d4af37;
+    background: #fff;
+    box-shadow: 0 0 0 5px rgba(212,175,55,.15);
+}
+
+.form-container textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+/* Button Send Message - Gold Gradient */
+.btn-send {
+    width: 100%;
+    margin-top: 15px;
+    padding: 18px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #d4af37, #c99812);
+    color: #fff !important;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.35s ease;
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn-send:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(135deg, #bf982d, #a6820f);
+    box-shadow: 0 15px 35px rgba(212, 175, 55, 0.5);
+}
+
+.btn-send:active {
+    transform: translateY(-1px);
+}
+
+/* ==========================
+   MAPS SECTION
+========================== */
+.maps-section {
+    padding: 80px 5%;
+    background-color: #ffffff;
+}
+
+.maps-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.maps-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.maps-header .section-subtitle {
+    color: #d4af37;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.maps-header h2 {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 15px;
+}
+
+.maps-header p {
+    font-size: 16px;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.maps-wrapper {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    border: 1px solid #eee;
+}
+
+.maps-wrapper iframe {
+    display: block;
+    width: 100%;
+    height: 450px;
+    filter: grayscale(20%);
+    transition: filter 0.3s ease;
+}
+
+.maps-wrapper iframe:hover {
+    filter: grayscale(0%);
+}
+
+/* ==========================
+   RESPONSIVE MAPS
+========================== */
+@media (max-width: 768px) {
+    .maps-header h2 {
+        font-size: 32px;
+    }
+    
+    .maps-wrapper iframe {
+        height: 300px;
+    }
+}
+
+/* ==========================
+   CTA SECTION
+========================== */
+.cta-section {
+    padding: 0 5% 80px;
+    background-color: #ffffff;
+}
+
+.cta-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    border: 1px solid #eee;
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cta-background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.cta-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cta-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.cta-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+}
+
+.cta-content h2 {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #fff;
+    margin: 0;
+}
+
+.cta-content h2 span {
+    color: #d4af37;
+    display: block;
+}
+
+/* ==========================
+   RESPONSIVE CTA
+========================== */
+@media (max-width: 768px) {
+    .cta-wrapper {
+        height: 300px;
+    }
+    
+    .cta-content h2 {
+        font-size: 32px;
+    }
+}

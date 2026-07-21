@@ -1,0 +1,97 @@
+/* ==========================
+   CAREER HERO (Sama seperti News & Contact)
+========================== */
+.career-hero {
+    position: relative;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    padding: 190px 0 90px;
+    overflow: hidden;
+    background: #0a0a0a;
+}
+
+.career-hero .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.career-hero .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.career-hero .hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+        linear-gradient(100deg,
+            rgba(8, 8, 8, 0.96) 0%,
+            rgba(8, 8, 8, 0.85) 30%,
+            rgba(8, 8, 8, 0.45) 60%,
+            rgba(8, 8, 8, 0.25) 100%),
+        linear-gradient(0deg,
+            rgba(8, 8, 8, 0.85) 0%,
+            rgba(8, 8, 8, 0.2) 45%,
+            rgba(8, 8, 8, 0.55) 100%);
+}
+
+.career-hero .hero-content {
+    position: relative;
+    z-index: 2;
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.career-hero .detail-breadcrumb {
+    display: flex;
+    gap: 10px;
+    font-size: 13px;
+    color: #cfcfcf;
+    margin-bottom: 20px;
+}
+
+.career-hero .detail-breadcrumb a {
+    color: #d4af37;
+    text-decoration: none;
+}
+
+.career-hero .hero-title {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 48px;
+    line-height: 1.25;
+    font-weight: 700;
+    max-width: 700px;
+    margin: 0 0 20px 0;
+    color: #fff;
+}
+
+.career-hero .hero-title .gold {
+    color: #d4af37;
+}
+
+.career-hero .hero-subtitle {
+    color: #d8d8d8;
+    max-width: 620px;
+    line-height: 1.9;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+@media (max-width: 768px) {
+    .career-hero .hero-title {
+        font-size: 32px;
+    }
+    
+    .career-hero .hero-subtitle {
+        font-size: 14px;
+    }
+}
