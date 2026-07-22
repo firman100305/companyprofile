@@ -1,109 +1,413 @@
+/*====================================
+            ABOUT HERO
+====================================*/
 
-.about-preview {
-  padding: 120px 0;
+.about-hero {
+  position: relative;
 
-  background: #151515;
+  width: 100%;
+
+  height: 85vh;
+
+  overflow: hidden;
 }
 
-.about-container {
-  width: 90%;
+.hero-overlay {
+  background: linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.42));
+}
 
-  max-width: 1400px;
+.about-content {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  padding-top: 130px; /* sesuaikan jika ingin lebih atas/bawah */
+
+  text-align: center;
+  z-index: 2;
+}
+
+.about-content h1 {
+  font-size: 40px;
+
+  color: #ffffff;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-weight: 600;
+
+  letter-spacing: 2px;
+
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.55);
+}
+
+.about-content p {
+  margin-top: 18px;
+
+  font-size: 24px;
+
+  color: rgba(255, 255, 255, 0.95);
+
+  letter-spacing: 1px;
+
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+/*====================================
+            VISION
+====================================*/
+
+.vision {
+  position: relative;
+
+  min-height: 700px;
+
+  overflow: hidden;
+}
+
+.vision img {
+  position: absolute;
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.vision-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.58);
+}
+
+.vision-container {
+  position: relative;
+
+  z-index: 2;
+
+  width: min(1200px, 90%);
 
   margin: auto;
 
+  padding: 110px 0;
+}
+
+.vision h2 {
+  text-align: center;
+
+  color: white;
+
+  font-size: 44px;
+
+  margin-bottom: 80px;
+}
+
+.vision-grid {
   display: grid;
 
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
 
-  gap: 80px;
+  gap: 90px;
+}
+
+.vision-left h3,
+.vision-right h3 {
+  color: #ffffff;
+
+  margin-bottom: 25px;
+}
+
+.vision-left p {
+  color: white;
+
+  line-height: 2;
+}
+
+.vision-right ul {
+  color: white;
+
+  padding-left: 18px;
+}
+
+.vision-right li {
+  margin-bottom: 18px;
+
+  line-height: 2;
+}
+
+.section-divider {
+  height: 50px;
+
+  background: #0c0c0c;
+
+  position: relative;
+
+  z-index: 5;
+}
+
+/*====================================
+        COMPANY STORY
+====================================*/
+
+.company-story {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 780px;
+
+  margin-top: 60px;
+
+  overflow: hidden;
+
+  display: flex;
+
+  justify-content: center;
 
   align-items: center;
 }
 
-.about-image {
-  overflow: hidden;
+.company-story > img {
+  position: absolute;
 
-  border-radius: 25px;
-}
+  inset: -80px 0;
 
-.about-image img {
   width: 100%;
 
-  display: block;
+  height: calc(100% + 160px);
 
-  border-radius: 25px;
+  object-fit: cover;
 
-  transition: 0.6s;
+  will-change: transform;
+
+  transform: translateY(0) scale(1.05);
+
+  transition: transform 0.1s linear;
 }
 
-.about-image:hover img {
-  transform: scale(1.06);
-}
-.section-subtitle {
-  display: inline-block;
+.story-overlay {
+  position: absolute;
 
-  color: #d4af37;
+  inset: 0;
 
-  letter-spacing: 4px;
+  background: linear-gradient(
+    to bottom,
 
-  font-size: 13px;
-
-  margin-bottom: 18px;
-}
-
-.about-content h2 {
-  font-size: 50px;
-
-  line-height: 1.2;
-
-  margin-bottom: 25px;
-
-  font-family: Georgia, serif;
+    rgba(0, 0, 0, 0.85),
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.85)
+  );
 }
 
-.about-content h2 span {
-  display: block;
+.story-container {
+  position: relative;
 
-  color: #d4af37;
+  z-index: 2;
+
+  width: min(980px, 90%);
+
+  margin: auto;
+
+  padding: 120px 0 70px;
+
+  text-align: center;
 }
 
-.about-content p {
-  color: #c9c9c9;
+.story-container h2 {
+  color: #d8c49a;
 
-  line-height: 1.9;
+  font-size: 52px;
 
-  margin-bottom: 45px;
+  font-family: "Cormorant Garamond", serif;
+
+  font-weight: 500;
+
+  letter-spacing: 2px;
+
+  margin-bottom: 70px;
 }
 
-.about-stats {
+.story-slider {
+  position: relative;
+
+  height: 240px;
+}
+
+.story-slide {
+  position: absolute;
+
+  inset: 0;
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  transform: translateY(20px);
+
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.story-slide.active {
+  opacity: 1;
+
+  visibility: visible;
+
+  transform: translateY(0);
+}
+
+.story-slide p {
+  color: rgba(255, 255, 255, 0.93);
+
+  font-size: 17px;
+
+  line-height: 2.1;
+
+  text-align: justify;
+}
+
+.story-dots {
+  margin-top: 60px;
+
   display: flex;
 
-  gap: 55px;
+  justify-content: center;
 
-  margin-bottom: 45px;
+  gap: 16px;
 }
 
-.stat h3 {
-  color: #d4af37;
+.story-dot {
+  width: 12px;
 
-  font-size: 42px;
+  height: 12px;
 
-  margin-bottom: 8px;
+  border-radius: 50%;
 
-  font-family: Georgia, serif;
+  background: rgba(255, 255, 255, 0.35);
+
+  cursor: pointer;
+
+  transition: 0.35s;
 }
 
-.stat span {
-  color: #bcbcbc;
+.story-dot.active {
+  background: white;
 
-  font-size: 14px;
+  transform: scale(1.15);
 }
 
-.stat-box h2{
-    margin-bottom:15px;
+.story-dot:hover {
+  background: #ffffff;
 }
 
-.stat-box span{
-    display:block;
+.story-slide {
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.story-slide.active {
+  animation: storyFade 0.8s ease;
+}
+
+@keyframes storyFade {
+  from {
+    opacity: 0;
+
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+.story-dot {
+  position: relative;
+}
+
+.story-dot::after {
+  content: "";
+
+  position: absolute;
+
+  inset: -8px;
+}
+
+/*====================================
+        GLOBAL PARALLAX
+====================================*/
+
+.parallax{
+
+    will-change:transform;
+
+    transition:transform .05s linear;
+
+}
+
+/*====================================
+        PREMIUM PARALLAX
+====================================*/
+
+.parallax-bg{
+
+    will-change:transform;
+
+    transition:transform .08s linear;
+
+}
+
+.parallax-content{
+
+    will-change:transform;
+
+    transition:transform .08s linear;
+
+}
+
+/*====================================
+            REVEAL
+====================================*/
+
+.reveal{
+
+    opacity:0;
+
+    transform:translateY(70px);
+
+    transition:
+
+        opacity 1s ease,
+
+        transform 1s ease;
+
+}
+
+.reveal.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+.about-hero img,
+.vision img,
+.company-story img{
+
+    transition:
+
+        transform .12s linear;
+
 }

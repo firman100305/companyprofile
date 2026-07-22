@@ -5,8 +5,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Service - Mangli Djaya Raya</title>
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap"
+        rel="stylesheet" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/footer.css" />
     <style>
         * {
             margin: 0;
@@ -36,7 +45,7 @@
         }
 
         body {
-            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--black-primary);
             color: var(--text-light);
             line-height: 1.6;
@@ -44,58 +53,102 @@
         }
 
         /* ==========================
-         PAGE HEADER (gaya sama dengan about.html)
+         SERVICE HERO (konsep sama dengan news-hero di news.html)
       ========================== */
-        .page-header {
-            margin-top: 85px;
-            padding: 4rem 0;
-            background: linear-gradient(135deg,
-                    rgba(10, 10, 10, 0.95) 0%,
-                    rgba(26, 26, 26, 0.9) 100%);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+        .news-hero {
+            position: relative;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            padding: 190px 0 90px;
+            overflow: hidden;
+            background: #0a0a0a;
         }
 
-        .page-header-content {
+        .news-hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .news-hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .news-hero-bg::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(100deg,
+                    rgba(8, 8, 8, 0.96) 0%,
+                    rgba(8, 8, 8, 0.85) 30%,
+                    rgba(8, 8, 8, 0.45) 60%,
+                    rgba(8, 8, 8, 0.25) 100%),
+                linear-gradient(0deg,
+                    rgba(8, 8, 8, 0.85) 0%,
+                    rgba(8, 8, 8, 0.2) 45%,
+                    rgba(8, 8, 8, 0.55) 100%);
+        }
+
+        .news-hero-content {
+            position: relative;
+            z-index: 2;
+            width: 90%;
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 3rem;
         }
 
-        .breadcrumb {
+        .news-hero-badge {
+            display: inline-block;
+            color: #d4af37;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+        }
+
+        .news-hero-title {
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 40px;
+            line-height: 1.25;
+            font-weight: 700;
+            max-width: 600px;
+            margin-bottom: 26px;
+            color: #fff;
+        }
+
+        .news-hero-title .gold {
+            color: #d4af37;
+        }
+
+        .news-hero-subtitle {
+            color: #d8d8d8;
+            max-width: 620px;
+            line-height: 1.9;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .detail-breadcrumb {
             display: flex;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            font-size: 0.85rem;
-            color: var(--text-gray);
+            gap: 10px;
+            font-size: 13px;
+            color: #cfcfcf;
+            margin-bottom: 20px;
         }
 
-        .breadcrumb a {
-            color: var(--gold-primary);
+        .detail-breadcrumb a {
+            color: #d4af37;
             text-decoration: none;
         }
 
-        .page-title {
-            font-size: 3rem;
-            font-weight: 400;
-            font-family: "Georgia", serif;
-            margin-bottom: 1rem;
-            line-height: 1.3;
-        }
-
-        .page-title span {
-            color: var(--gold-primary);
-        }
-
-        .page-subtitle {
-            color: var(--text-gray);
-            font-size: 1rem;
-            max-width: 600px;
-            line-height: 1.8;
-        }
-
-        @media (max-width: 768px) {
-            .page-title {
-                font-size: 2.1rem;
+        @media (max-width: 576px) {
+            .news-hero-title {
+                font-size: 32px;
             }
         }
 
@@ -125,13 +178,6 @@
             background: var(--card-bg);
             border: 1px solid rgba(0, 0, 0, 0.06);
             cursor: pointer;
-            transition: box-shadow 0.5s ease;
-        }
-
-        .svc-card:hover {
-            box-shadow:
-                0 35px 60px -25px rgba(0, 0, 0, 0.22),
-                0 0 0 1px rgba(31, 31, 31, 0.28);
         }
 
         /* image panel */
@@ -194,7 +240,8 @@
             z-index: 1;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
+            gap: 24px;
             opacity: 0;
             transition: opacity 0.5s ease 0.1s;
         }
@@ -211,21 +258,12 @@
             padding: 70px calc(52% + 55px) 70px 70px;
         }
 
-        .svc-num {
-            display: inline-block;
-            color: var(--accent-mid);
-            font-size: 0.85rem;
-            letter-spacing: 3px;
-            margin-bottom: 16px;
-            font-weight: 600;
-        }
-
         .svc-title {
-            font-family: Georgia, serif;
-            font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: clamp(1.8rem, 3.2vw, 2.4rem);
             font-weight: 400;
             color: var(--text-dark);
-            margin-bottom: 24px;
+            margin-bottom: 0;
         }
 
         .svc-title .mask {
@@ -260,14 +298,22 @@
             transition-delay: 0.28s;
         }
 
+        .svc-divider {
+            display: block;
+            width: 420px;
+            height: 2px;
+            background: var(--accent-mid);
+            border-radius: 1px;
+        }
+
         /* ==========================
          STEPPER (dash segments, vertical)
       ========================== */
         .svc-stepper {
-            max-width: 460px;
+            max-width: 480px;
             display: flex;
             gap: 28px;
-            height: 150px;
+            height: 48px;
         }
 
         .stepper-track {
@@ -275,11 +321,12 @@
             flex-direction: column;
             gap: 8px;
             flex-shrink: 0;
+            align-self: flex-start;
         }
 
         .stepper-dash {
-            width: 4px;
-            height: 32px;
+            width: 3px;
+            height: 16px;
             border-radius: 2px;
             border: none;
             padding: 0;
@@ -302,8 +349,8 @@
             inset: 0;
             margin: 0;
             color: var(--text-muted);
-            font-size: 0.92rem;
-            line-height: 1.8;
+            font-size: 0.98rem;
+            line-height: 1.85;
             opacity: 0;
             transform: translateX(10px);
             transition: opacity 0.4s ease, transform 0.4s ease;
@@ -346,7 +393,7 @@
             .svc-text {
                 position: relative;
                 opacity: 1 !important;
-                padding: 34px !important;
+                padding: 24px !important;
             }
 
             .svc-title .word {
@@ -355,7 +402,7 @@
             }
 
             .svc-stepper {
-                height: 120px;
+                height: 190px;
             }
         }
     </style>
@@ -371,19 +418,25 @@
 
     <div id="navbar-container"></div>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="page-header-content">
-            <div class="breadcrumb">
-                <a href="index.html">HOME</a>
+    <!-- Service Hero -->
+    <section class="news-hero">
+        <div class="news-hero-bg">
+            <img src="assets/images/gambar1.jpg" alt="Tobacco craftsmanship" />
+        </div>
+
+        <div class="news-hero-content reveal reveal-left">
+            <div class="detail-breadcrumb">
+                <a href="index.html">Home</a>
                 <span>/</span>
-                <span>SERVICE</span>
+                <span>Service</span>
             </div>
-            <h1 class="page-title">
-                <span>Secure</span> Storage, <span>Professional</span> Handling,
-                <span>Trusted</span> Service.
+
+            <h1 class="news-hero-title">
+                Secure <span class="gold">Storage</span>, Professional
+                <span class="gold">Handling</span>, Trusted Service
             </h1>
 
+           
         </div>
     </section>
 
@@ -396,12 +449,12 @@
                     <img src="assets/images/gambar1.jpg" alt="Working with Farmers" />
                 </div>
                 <div class="svc-text">
-                    <span class="svc-num">01</span>
                     <h3 class="svc-title">
                         <span class="mask"><span class="word">Working</span></span>
                         <span class="mask"><span class="word">with</span></span>
                         <span class="mask"><span class="word">Farmers</span></span>
                     </h3>
+                    <span class="svc-divider"></span>
                     <div class="svc-stepper" data-stepper>
                         <div class="stepper-track" data-track>
                             <button class="stepper-dash active" data-hit="0" aria-label="Open market"></button>
@@ -411,21 +464,29 @@
                         <div class="stepper-content">
                             <p class="stepper-text" data-step-text="0">
                                 In Indonesia, tobaccos are bought from farmers through an
-                                open market. Unlike other countries, we do not conduct any
-                                auctions — our ties with farmers are mostly commercial
-                                based.
+                                open market that has grown over decades of mutual trust.
+                                Unlike other countries, we do not conduct any auctions —
+                                our ties with farmers are mostly commercial based, built
+                                on long-term relationships rather than one-off bidding.
+                                This approach lets us maintain consistent quality and
+                                fair pricing season after season.
                             </p>
                             <p class="stepper-text" data-step-text="1">
                                 We understand the concerns facing tobacco manufacturers
                                 regarding traceability. This is one of the main reasons we
                                 continue to strengthen our relationship with farmers from
-                                an educational perspective.
+                                an educational perspective, sharing knowledge on best
+                                practices and quality benchmarks. By staying closely
+                                involved at the source, we can trace every batch back to
+                                the farms it came from with confidence.
                             </p>
                             <p class="stepper-text" data-step-text="2">
                                 In areas such as Jember, Lombok, and Bali, we educate
                                 farmers on the proper use of Crop Protection Agents (CPA)
                                 and good agricultural practices to achieve high quality
-                                tobacco.
+                                tobacco. These programs cover soil health, harvesting
+                                timing, and post-harvest handling, helping farmers raise
+                                both yield and consistency across every planting season.
                             </p>
                         </div>
                     </div>
@@ -440,10 +501,10 @@
                     <img src="assets/images/gambar-tobacco.jpg" alt="Processing" />
                 </div>
                 <div class="svc-text">
-                    <span class="svc-num">02</span>
                     <h3 class="svc-title">
                         <span class="mask"><span class="word">Processing</span></span>
                     </h3>
+                    <span class="svc-divider"></span>
                     <div class="svc-stepper" data-stepper>
                         <div class="stepper-track" data-track>
                             <button class="stepper-dash active" data-hit="0" aria-label="Receiving"></button>
@@ -454,16 +515,23 @@
                             <p class="stepper-text" data-step-text="0">
                                 Upon receiving tobacco from the buying stations, it is our
                                 priority to deliver quality products to our customers.
+                                Every incoming batch is inspected on arrival, checked
+                                against our internal quality standards before it moves
+                                any further into the process.
                             </p>
                             <p class="stepper-text" data-step-text="1">
                                 Tobaccos are sorted according to the grades desired. During
                                 sortation, we maximize the removal of non-tobacco related
-                                materials (NTRMs).
+                                materials (NTRMs), ensuring only clean, well-graded leaf
+                                moves forward. This stage is handled by experienced staff
+                                who understand the subtle differences between grades.
                             </p>
                             <p class="stepper-text" data-step-text="2">
                                 Customers can then decide the final form of their product:
                                 Handstripped, Loose Leaf, Open Laid, Butted Loose Leaf,
-                                Bundled, or Fermented.
+                                Bundled, or Fermented. Each form is prepared to the
+                                customer's exact specification, giving flexibility across
+                                different production and shipping needs.
                             </p>
                         </div>
                     </div>
@@ -472,67 +540,13 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <!-- <footer class="footer">
-        <div class="footer-container reveal">
-            <div class="footer-col">
-                <img src="assets/logo/logo.png" alt="Logo" class="footer-logo" />
-                <p>
-                    PT Mangli Djaya Raya is committed to delivering premium Indonesian
-                    tobacco products through innovation, sustainability, and decades
-                    of expertise.
-                </p>
-            </div>
-
-            <div class="footer-col">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="products.html">Products</a></li>
-                    <li><a href="services.html" class="active">Services</a></li>
-                    <li><a href="news.html">News</a></li>
-                    <li><a href="career.html">Career</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h3>Products</h3>
-                <ul>
-                    <li><a href="#">Rajangan Tobacco</a></li>
-                    <li><a href="#">Sun Cured</a></li>
-                    <li><a href="#">Dark Fired Cured</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h3>Contact</h3>
-                <ul class="footer-contact">
-                    <li>
-                        <i class="fa-solid fa-location-dot"></i>
-                        Jember, East Java, Indonesia
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-phone"></i>
-                        +62 xxx xxxx xxxx
-                    </li>
-                    <li>
-                        <i class="fa-solid fa-envelope"></i>
-                        info@manglidjayaraya.com
-                    </li>
-                </ul>
-                <div class="footer-social">
-                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            © 2026 PT Mangli Djaya Raya. All Rights Reserved.
-        </div>
-    </footer> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700&family=Outfit:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <div id="footer-container"></div>
 
     <script src="js/navbar.js"></script>
     <script src="js/preloader.js"></script>
@@ -540,6 +554,10 @@
     <script src="js/cursor.js"></script>
     <script src="js/magnetic.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/footer.js"></script>
+    <script>
+        loadFooter("footer-container", "footer.html");
+    </script>
     <script>
         document.querySelectorAll('.svc-card').forEach((card) => {
             const scope = card.querySelector('[data-stepper]');
@@ -574,7 +592,7 @@
 
                 const rect = card.getBoundingClientRect();
                 const relY = e.clientY - rect.top;
-                const goNext = relY > rect.height / 2;
+                const goNext = relY < rect.height / 2;
 
                 const next = goNext ? (current + 1) % total : (current - 1 + total) % total;
                 setStep(next);

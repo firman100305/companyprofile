@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Product Detail - Mangli Djaya Raya</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Product Detail Custom CSS -->
+    <link rel="stylesheet" href="css/product-detail.css" />
+  </head>
+
+  <body>
+    <!-- Preloader -->
+    <div id="preloader">
+      <div class="loader">
+        <img src="assets/logo/logo.png" alt="Mangli Logo" />
+        <span></span>
+      </div>
+    </div>
+
+    <!-- Navbar Container -->
+    <div id="navbar-container"></div>
+
+    <!-- ======================
+         HERO SECTION
+    ====================== -->
+    <section class="pd-hero">
+      <div class="pd-hero-overlay"></div>
+      <div class="pd-hero-content">
+        <p class="pd-hero-eyebrow">Est. 1965 &middot; Jember, East Java</p>
+        <h1 class="pd-hero-title">
+          Quality You can <span class="highlight">Trust</span>,<br />
+          Excellence You can <span class="highlight">Experience</span>
+        </h1>
+      </div>
+    </section>
+
+    <!-- ======================
+         PRODUCT RIBBON TAB
+    ====================== -->
+    <div class="pd-ribbon" id="pdRibbon">
+      <!-- Diinjeksi oleh product-detail.js -->
+    </div>
+
+    <!-- ======================
+         PRODUCT DETAIL CONTENT
+    ====================== -->
+    <section class="pd-main-section">
+      <div class="pd-split-container" id="pdLayout">
+        <div class="pd-loading">Loading product details&hellip;</div>
+      </div>
+    </section>
+
+    <!-- ======================
+         FOOTER (Exact Match)
+    ====================== -->
+    <footer id="contact" class="site-footer">
+      <div class="footer-container">
+        <div class="footer-grid">
+
+          <!-- Column 1: Brand Info & Socials -->
+          <div class="footer-col brand-col">
+            <h2 class="footer-brand-title">Mangli Djaya Raya</h2>
+            <p class="footer-brand-desc">
+              An Indonesian tobacco company established in 1965 in Jember, East Java. We focus on quality, consistency, and reliable supply for international markets.
+            </p>
+            <div class="footer-socials">
+              <a href="#" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#" class="social-icon" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+              <a href="#" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+          </div>
+
+          <!-- Column 2: Company Links -->
+          <div class="footer-col">
+            <h3 class="footer-col-title">COMPANY</h3>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="products.html">Products</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="news.html">News</a></li>
+              <li><a href="career.html">Career</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Products Links -->
+          <div class="footer-col">
+            <h3 class="footer-col-title">PRODUCTS</h3>
+            <ul class="footer-links">
+              <li><a href="product-detail.html?slug=rajangan">Rajangan</a></li>
+              <li><a href="product-detail.html?slug=sun-cured">Sun Cured</a></li>
+              <li><a href="product-detail.html?slug=burley">Burley</a></li>
+              <li><a href="product-detail.html?slug=flue-cured-virginia">Flue Cured Virginia</a></li>
+              <li><a href="product-detail.html?slug=dark-fired-cured">Dark Fired Cured</a></li>
+              <li><a href="product-detail.html?slug=dark-air-cured">Dark Air Cured</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 4: News Highlights -->
+          <div class="footer-col news-col">
+            <h3 class="footer-col-title">NEWS</h3>
+            <div class="footer-news-list">
+              <div class="news-item">
+                <a href="#" class="news-title">Alliance targets unlawful tobacco exchange, with Arizona among top states in stash</a>
+                <span class="news-date">July 18, 2026</span>
+              </div>
+              <div class="news-item">
+                <a href="#" class="news-title">Drive In Denver Aims To Ban Flavored Tobacco Products</a>
+                <span class="news-date">July 10, 2026</span>
+              </div>
+              <div class="news-item">
+                <a href="#" class="news-title">Laguna Beach to return to prohibiting deals of tobacco and vape items</a>
+                <span class="news-date">June 29, 2026</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="bottom-bar">
+        <div class="bottom-bar-container">
+          <p class="copyright-text">All rights reserved &nbsp;|&nbsp; Mangli Djaya Raya &copy; 2026</p>
+          <p class="credit-text">Made with <span class="heart">&hearts;</span> by MDR Team</p>
+        </div>
+      </div>
+
+      <!-- Scroll To Top Button -->
+      <a href="#" class="scroll-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" aria-label="Back to Top">
+        <i class="fa-solid fa-arrow-up"></i>
+      </a>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/navbar.js"></script>
+    <script src="js/preloader.js"></script>
+    <script src="js/reveal.js"></script>
+    <script src="js/script.js"></script>
+
+    <!-- Data and Renderer -->
+    <script src="js/products-data.js"></script>
+    <script src="js/product-detail.js"></script>
+  </body>
+</html>

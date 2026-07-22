@@ -1,9 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const preloader = document.getElementById("preloader");
 
-  if (preloader) {
+    const preloader = document.getElementById("preloader");
+
     setTimeout(() => {
-      preloader.classList.add("hide");
-    }, 250);
-  }
+
+        preloader.classList.add("hide");
+
+    }, 300);
+
 });

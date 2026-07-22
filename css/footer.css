@@ -1,145 +1,307 @@
+/* ======================
+   FOOTER (site-wide)
+   Diambil dari blok <style> di dalam <footer id="contact"> pada products.html
+====================== */
 
-.footer {
-  background: #0b0b0b;
-
-  color: #fff;
-
-  padding-top: 90px;
+#contact {
+  --accent: #f2ac45;
+  font-family: "Outfit", "Poppins", sans-serif;
+  background: linear-gradient(180deg, #131214 0%, #0b0b0c 55%, #060606 100%);
+  position: relative;
 }
 
-.footer-container {
-  width: 90%;
+#contact h2 {
+  font-family: "Cormorant Garamond", serif;
+}
 
+/* Layout */
+#contact .footer-inner {
   max-width: 1400px;
+  margin: 0 auto;
+  padding: 56px 16px;
+}
 
-  margin: auto;
-
+#contact .footer-top {
   display: grid;
-
-  grid-template-columns: 2fr 1fr 1fr 1.3fr;
-
-  gap: 50px;
-
-  padding-bottom: 70px;
-}
-.footer-logo {
-  width: 170px;
-
-  margin-bottom: 25px;
+  grid-template-columns: 1fr;
+  gap: 48px;
 }
 
-.footer-col p {
-  color: #bcbcbc;
-
-  line-height: 1.9;
+#contact .footer-links-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
 }
 
-.footer-col h3 {
-  color: #d4af37;
-
-  margin-bottom: 25px;
-
-  font-size: 22px;
+/* Brand */
+#contact .footer-brand h2 {
+  font-size: 30px;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 0.01em;
 }
 
-.footer-col ul {
-  list-style: none;
-
-  padding: 0;
-}
-
-.footer-col li {
-  margin-bottom: 14px;
-}
-
-.footer-col a {
-  color: #cfcfcf;
-
-  text-decoration: none;
-
-  transition: 0.3s;
-}
-
-.footer-col a:hover {
-  color: #d4af37;
-
-  padding-left: 6px;
-}
-
-.footer-contact li {
-  display: flex;
-
-  align-items: flex-start;
-
-  gap: 12px;
-
-  color: #cfcfcf;
-}
-
-.footer-contact i {
-  color: #d4af37;
-
-  margin-top: 4px;
-}
-
-.footer-social {
-  display: flex;
-
-  gap: 15px;
-
-  margin-top: 25px;
-}
-
-.footer-social a {
-  width: 42px;
-
-  height: 42px;
-
-  border-radius: 50%;
-
-  background: #1b1b1b;
-
-  display: flex;
-
-  justify-content: center;
-
-  align-items: center;
-
-  transition: 0.3s;
-}
-
-.footer-social a:hover {
-  background: #d4af37;
-
-  color: #111;
-}
-
-.footer-map {
-  width: 90%;
-
-  max-width: 1400px;
-
-  margin: 0 auto 50px;
-}
-
-.footer-map iframe {
-  width: 100%;
-
-  height: 320px;
-
-  border: none;
-
-  border-radius: 20px;
-}
-
-.footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-
-  text-align: center;
-
-  padding: 25px;
-
-  color: #9d9d9d;
-
+#contact .footer-brand p {
+  margin-top: 20px;
   font-size: 14px;
+  line-height: 1.7;
+  color: #6b6b70;
+  max-width: 320px;
+}
+
+#contact .footer-socials {
+  margin-top: 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#contact .social-icon {
+  display: inline-flex;
+  height: 32px;
+  width: 32px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #6b6b70;
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+#contact .social-icon svg {
+  height: 14px;
+  width: 14px;
+  fill: currentColor;
+}
+
+#contact .social-icon:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Column groups (Company / Products / News) */
+#contact .fc-title {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #d4d4d8;
+}
+
+#contact .fc-nav {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+#contact .footer-link {
+  position: relative;
+  display: inline-block;
+  font-size: 14px;
+  color: #8b8b8f;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+#contact .footer-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1px;
+  background-color: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+#contact .footer-link:hover {
+  color: #f2f2f2;
+}
+
+#contact .footer-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* News list */
+#contact .news-list {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#contact .news-link {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-decoration: none;
+}
+
+#contact .news-title {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #a3a3a7;
+  transition: color 0.25s ease;
+}
+
+#contact .news-link:hover .news-title {
+  color: #f2f2f2;
+}
+
+#contact .news-date {
+  font-size: 11px;
+  color: #4b4b4f;
+}
+
+/* Bottom bar */
+#contact .bottom-bar {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#contact .bottom-bar-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12px;
+  color: #4b4b4f;
+}
+
+#contact .made-with {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+#contact .made-with svg {
+  height: 12px;
+  width: 12px;
+  fill: #fff;
+}
+
+/* Scroll to top */
+#contact .scroll-top-btn {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(11, 11, 12, 0.9);
+  color: #cfcfd2;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+#contact .scroll-top-btn.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+#contact .scroll-top-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+#contact .scroll-top-btn svg {
+  height: 16px;
+  width: 16px;
+}
+
+/* Quiet entrance */
+#contact .fade-up {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: contactFadeUp 0.6s ease-out forwards;
+}
+
+#contact .fade-up:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+#contact .bottom-bar-inner {
+  opacity: 0;
+  animation: contactFadeUp 0.6s ease-out forwards;
+  animation-delay: 0.15s;
+}
+
+@keyframes contactFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (min-width: 640px) {
+  #contact .footer-inner {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  #contact .footer-links-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  #contact .bottom-bar-inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+@media (min-width: 768px) {
+  #contact .footer-top {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #contact .footer-inner {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  #contact .footer-top {
+    grid-template-columns: 1.2fr 2fr;
+    gap: 64px;
+  }
+
+  #contact .footer-brand {
+    padding-right: 32px;
+  }
+
+  #contact .footer-inner {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+
+  #contact .bottom-bar-inner {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
 }

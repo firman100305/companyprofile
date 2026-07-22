@@ -1,0 +1,344 @@
+/*==================================================
+                    NEWS SECTION
+==================================================*/
+
+.news {
+  width: 100%;
+  padding: 120px 8%;
+  background: #111111;
+}
+
+.news .section-header {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.news .section-label {
+  display: inline-block;
+  color: #ffffff;
+  font-size: 24px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.news .section-label::before,
+.news .section-label::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 55px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.news .section-label::before {
+  right: 120%;
+}
+
+.news .section-label::after {
+  left: 120%;
+}
+
+.news .section-subtitle {
+  display: block;
+  max-width: 650px;
+  margin: auto;
+  color: #cfcfcf;
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 35px;
+}
+
+.news-card {
+  background: #181818;
+
+  border-radius: 18px;
+
+  overflow: hidden;
+
+  position: relative;
+
+  transition: 0.45s;
+
+  cursor: pointer;
+
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.news-card:hover {
+  transform: translateY(-12px);
+
+  box-shadow: 0 30px 55px rgba(0, 0, 0, 0.45);
+}
+
+.news-card::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(0, 0, 0, 0.25),
+    rgba(0, 0, 0, 0.65)
+  );
+
+  opacity: 0;
+
+  transition: 0.4s;
+
+  z-index: 1;
+}
+
+.news-card:hover::before {
+  opacity: 1;
+}
+
+.news-image {
+  height: 220px;
+
+  overflow: hidden;
+}
+
+.news-image img {
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.7s ease,
+    filter 0.7s ease;
+}
+
+.news-card:hover img {
+  transform: scale(1.08);
+
+  filter: brightness(1.08) contrast(1.08);
+}
+
+.news-content {
+  padding: 25px;
+
+  position: relative;
+
+  z-index: 2;
+}
+
+.news-content h3 {
+  color: #fff;
+
+  font-size: 21px;
+
+  margin-bottom: 16px;
+
+  line-height: 1.4;
+
+  transition: 0.3s;
+}
+
+.news-card:hover h3 {
+  color: #ffffff;
+}
+
+.news-content p {
+  color: #bcbcbc;
+
+  font-size: 14px;
+
+  line-height: 1.8;
+
+  margin-bottom: 25px;
+}
+
+.news-date {
+  display: block;
+
+  color: #8f8f8f;
+
+  font-size: 13px;
+
+  margin-bottom: 25px;
+}
+
+.news-link {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  color: #fff;
+
+  text-decoration: none;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  transition: 0.3s;
+}
+
+.news-link i {
+  transition: 0.3s;
+}
+
+.news-card:hover .news-link {
+  color: #ffffff;
+}
+
+.news-card:hover .news-link i {
+  transform: translateX(6px);
+}
+
+.news-button {
+  text-align: center;
+
+  margin-top: 70px;
+}
+
+.view-all {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  border: 1px solid rgba(212, 175, 55, 0.35);
+
+  padding: 15px 34px;
+
+  border-radius: 50px;
+
+  letter-spacing: 2px;
+
+  font-size: 13px;
+
+  transition: 0.35s;
+}
+
+.view-all:hover {
+  background: #ffffff;
+
+  color: #111;
+
+  transform: translateY(-4px);
+}
+
+.view-all i {
+  transition: 0.3s;
+}
+
+.view-all:hover i {
+  transform: translateX(5px);
+}
+
+/* Reveal */
+
+.news-card {
+  opacity: 0;
+
+  transform: translateY(60px);
+}
+
+.news-card.show {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+/* Spotlight */
+
+.news-card::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background: radial-gradient(
+    320px circle at var(--x) var(--y),
+    rgba(255, 255, 255, 0.12),
+    transparent 60%
+  );
+
+  opacity: 0;
+
+  transition: 0.3s;
+
+  pointer-events: none;
+}
+
+.news-card:hover::after {
+  opacity: 1;
+}
+
+.view-all {
+  overflow: hidden;
+
+  position: relative;
+}
+
+.view-all::before {
+  content: "";
+
+  position: absolute;
+
+  width: 40px;
+
+  height: 180%;
+
+  background: rgba(255, 255, 255, 0.25);
+
+  transform: rotate(25deg);
+
+  left: -90px;
+
+  top: -30px;
+
+  transition: 0.6s;
+}
+
+.view-all:hover::before {
+  left: 220px;
+}
+
+.news-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+
+  left: 0;
+
+  width: 0;
+
+  height: 3px;
+
+  background: #ffffff;
+
+  transition: 0.45s;
+
+  z-index: 3;
+}
+
+.news-card:hover::before {
+  width: 100%;
+}

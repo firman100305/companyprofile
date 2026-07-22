@@ -2,373 +2,252 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Mangli Djaya Raya</title>
 
-    <!-- Font -->
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Font Awesome -->
+    <link rel="stylesheet" href="css/style.css" />
 
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
-
-    <!-- CSS -->
-
-    <link rel="stylesheet" href="css/style.css" />
   </head>
 
   <body>
-    <!-- ======================
-     PRELOADER
-====================== -->
 
     <div id="preloader">
-      <div class="loader">
-        <img src="assets/logo/logo.png" alt="Mangli Logo" />
-
-        <span></span>
-      </div>
+        <div class="loader">
+            <img src="assets/logo/logo.png" alt="Mangli Logo" />
+            <span></span>
+        </div>
     </div>
 
-    <!-- Navbar -->
     <div id="navbar-container"></div>
+    <div class="nav-overlay"></div>
 
-    <!-- Hero -->
     <section class="hero">
-      <div class="hero-overlay"></div>
+      <div class="hero-slider">
+        <!-- Slide 1 -->
+        <div class="slide active">
+          <img src="assets/images/rokok.jpg" alt="Hero 1">
+          <div class="hero-parallax"></div>
+          <div class="hero-overlay"></div>
 
-      <div class="hero-container">
-        <!-- LEFT -->
+          <div class="hero-content">
+            <p class="hero-subtitle">THE FINEST</p>
 
-        <div class="hero-left reveal reveal-left parallax-text">
-          <span class="hero-subtitle"> PREMIUM INDONESIAN TOBACCO </span>
+            <h1>
+              The Finest <br />
+              Indonesian Tobacco
+            </h1>
 
-          <h1>
-            THE FINEST
+            <div class="hero-divider">
+              <span></span>
 
-            <span> INDONESIAN TOBACCO </span>
-          </h1>
+              <img src="assets/logo/logo.png" />
 
-          <p>
-            PT Mangli Djaya Raya is one of Indonesia's trusted tobacco
-            producers, delivering premium quality tobacco through innovation,
-            sustainability, and decades of expertise.
-          </p>
-
-          <div class="hero-button">
-            <a href="#" class="btn-gold"> Explore Products </a>
-
-            <a href="about.html" class="btn-outline"> About Us </a>
+              <span></span>
+            </div>
           </div>
         </div>
 
-        <!-- RIGHT -->
+        <!-- Slide 2 -->
+        <div class="slide">
+          <img src="assets/images/rokok2.jpg" alt="Hero 2">
+          <div class="hero-parallax"></div>
+          <div class="hero-overlay"></div>
 
-        <div class="hero-right reveal reveal-right parallax-image">
-          <img src="assets/images/gambar-tobacco.jpg" alt="Tobacco" />
+          <div class="hero-content">
+            <p class="hero-subtitle">PREMIUM QUALITY</p>
+
+            <h1>
+              Premium Tobacco<br />
+              Since 1960
+            </h1>
+
+            <div class="hero-divider">
+              <span></span>
+
+              <img src="assets/logo/logo.png" />
+
+              <span></span>
+            </div>
+          </div>
         </div>
+
+        <!-- Slide 3 -->
+        <div class="slide">
+          <img src="assets/images/rokok3.jpg" alt="Hero 3">
+          <div class="hero-parallax"></div>
+          <div class="hero-overlay"></div>
+
+          <div class="hero-content">
+            <p class="hero-subtitle">EXPORT QUALITY</p>
+
+            <h1>
+              Trusted by<br />
+              International Market
+            </h1>
+
+            <div class="hero-divider">
+              <span></span>
+
+              <img src="assets/logo/logo.png" />
+
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Arrow -->
+
+      <button class="slider-arrow prev">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+
+      <button class="slider-arrow next">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+
+      <!-- Bottom -->
+
+      <div class="hero-bottom">
+        <div class="story-dots">
+          <span class="story-dot active"></span>
+
+          <span class="story-dot"></span>
+
+          <span class="story-dot"></span>
+        </div>
+      </div>
+
+      <!-- Scroll -->
+
+      <div class="scroll-indicator">
+        <span></span>
+
+        Scroll
       </div>
     </section>
 
-    <!-- ======================
-     ABOUT PREVIEW
-====================== -->
+    <section class="about-video">
+      <div class="video-wrapper">
+        <video autoplay muted loop playsinline>
+          <source src="assets/video/video1.mp4" type="video/mp4" />
+        </video>
 
-    <section class="about-preview">
-      <div class="about-container">
-        <!-- LEFT -->
+        <div class="video-overlay"></div>
 
-        <div class="about-image reveal reveal-left">
-          <img src="assets/images/gambar1.jpg" alt="Mangli" />
-        </div>
+        <div class="video-content">
+          <span class="section-label"> ABOUT MANGLI DJAYA RAYA </span>
 
-        <!-- RIGHT -->
+          <span class="section-subtitle">
+            From carefully cultivated tobacco leaves to premium export products,
+            every process reflects our commitment to quality, sustainability,
+            and excellence.
+          </span>
 
-        <div class="about-content reveal reveal-right">
-          <span class="section-subtitle"> ABOUT MANGLI DJAYA RAYA </span>
-
-          <h2>
-            ROOTED IN TRADITION,
-            <span>GROWING WITH QUALITY</span>
-          </h2>
-
-          <p>
-            PT Mangli Djaya Raya has decades of experience in producing premium
-            Indonesian tobacco. We combine traditional expertise with modern
-            processing to ensure consistent quality for the global market.
-          </p>
-
-          <div class="about-stats">
-            <div class="stat">
-              <h3>60+</h3>
-
-              <span>Years Experience</span>
-            </div>
-
-            <div class="stat">
-              <h3>500+</h3>
-
-              <span>Partner Farmers</span>
-            </div>
-
-            <div class="stat">
-              <h3>30+</h3>
-
-              <span>Export Countries</span>
-            </div>
-          </div>
-
-          <a href="about.html" class="btn-gold"> Learn More </a>
+          <a href="about.html" class="video-btn"> WATCH OUR STORY </a>
         </div>
       </div>
     </section>
-
-    <!-- ======================
-     WHY CHOOSE US
-====================== -->
-
-    <section class="why-us">
-      <div class="section-header reveal">
-        <span class="section-subtitle"> WHY CHOOSE US </span>
-
-        <h2>
-          Excellence in
-          <span>Every Tobacco Leaf</span>
-        </h2>
-
-        <p>
-          We are committed to providing premium tobacco products through
-          sustainable farming, advanced processing, and international quality
-          standards.
-        </p>
-      </div>
-
-      <div class="why-grid">
-        <div class="why-card reveal">
-          <div class="why-icon">
-            <i class="fa-solid fa-leaf"></i>
-          </div>
-
-          <h3>Premium Quality</h3>
-
-          <p>Carefully selected tobacco leaves from trusted farmers.</p>
-        </div>
-
-        <div class="why-card">
-          <div class="why-icon">
-            <i class="fa-solid fa-award"></i>
-          </div>
-
-          <h3>60+ Years Experience</h3>
-
-          <p>Decades of expertise in tobacco cultivation and processing.</p>
-        </div>
-
-        <div class="why-card">
-          <div class="why-icon">
-            <i class="fa-solid fa-earth-asia"></i>
-          </div>
-
-          <h3>Global Market</h3>
-
-          <p>
-            Exporting premium tobacco products to various countries worldwide.
-          </p>
-        </div>
-
-        <div class="why-card">
-          <div class="why-icon">
-            <i class="fa-solid fa-handshake"></i>
-          </div>
-
-          <h3>Trusted Partnership</h3>
-
-          <p>Building long-term relationships with customers and farmers.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======================
-     PRODUCTS PREVIEW
-====================== -->
 
     <section class="products">
       <div class="section-header">
-        <span class="section-subtitle"> OUR PRODUCTS </span>
+        <span class="section-label"> OUR PRODUCTS </span>
 
-        <h2>
-          Premium
-          <span>Indonesian Tobacco</span>
-        </h2>
-
-        <p>
+        <span class="section-subtitle">
           Carefully processed tobacco products with consistent quality, trusted
           by customers around the world.
-        </p>
+        </span>
       </div>
 
       <div class="product-grid">
-        <!-- Product 1 -->
-        <div class="product-card reveal reveal-zoom">
-          <img src="assets/images/gambar-tobacco.jpg" alt="Rajangan" />
-          <div class="product-overlay">
+        <a href="#" class="product-card">
+          <img src="assets/images/rajangan.jpg" alt="Rajangan" />
+          <div class="product-glass"></div>
+          <div class="product-overlay"></div>
+
+          <div class="product-content">
             <h3>Rajangan</h3>
-            <a href="#">View Product</a>
           </div>
-        </div>
+        </a>
 
-        <!-- Product 2 -->
-        <div class="product-card reveal reveal-zoom">
-          <img src="assets/images/gambar1.jpg" alt="Sun Cured" />
-          <div class="product-overlay">
-            <h3>Sun Cured</h3>
-            <a href="#">View Product</a>
-          </div>
-        </div>
+        <a href="#" class="product-card">
+          <img src="assets/images/burley.jpg" alt="Burley" />
+          <div class="product-glass"></div>
+          <div class="product-overlay"></div>
 
-        <!-- Product 3 -->
-        <div class="product-card reveal reveal-zoom">
-          <img src="assets/images/gambar-tobacco.jpg" alt="Dark Fired Cured" />
-          <div class="product-overlay">
-            <h3>Dark Fired Cured</h3>
-            <a href="#">View Product</a>
-          </div>
-        </div>
-
-        <!-- Product 4 -->
-        <div class="product-card reveal reveal-zoom">
-          <img src="assets/images/gambar1.jpg" alt="Burley" />
-          <div class="product-overlay">
+          <div class="product-content">
             <h3>Burley</h3>
-            <a href="#">View Product</a>
           </div>
-        </div>
+        </a>
 
-        <!-- Product 5 -->
-        <div class="product-card reveal reveal-zoom">
-          <img src="assets/images/gambar-tobacco.jpg" alt="Dark Air Cured" />
-          <div class="product-overlay">
+        <a href="#" class="product-card">
+          <img src="assets/images/suncured.jpg" alt="Sun Cured" />
+          <div class="product-glass"></div>
+          <div class="product-overlay"></div>
+
+          <div class="product-content">
+            <h3>Sun Cured</h3>
+          </div>
+        </a>
+
+        <a href="#" class="product-card">
+          <img src="assets/images/darkair.jpg" alt="Dark Air Cured" />
+          <div class="product-glass"></div>
+          <div class="product-overlay"></div>
+
+          <div class="product-content">
             <h3>Dark Air Cured</h3>
-            <a href="#">View Product</a>
           </div>
-        </div>
+        </a>
 
-        <!-- Product 6 -->
-        <div class="product-card reveal reveal-zoom">
-          <img src="assets/images/gambar1.jpg" alt="Virginia" />
-          <div class="product-overlay">
-            <h3>Virginia</h3>
-            <a href="#">View Product</a>
+        <a href="#" class="product-card">
+          <div class="product-glass"></div>
+          <img src="assets/images/darkfired.jpg" alt="Dark Fired Cured" />
+
+          <div class="product-overlay"></div>
+
+          <div class="product-content">
+            <h3>Dark Fired Cured</h3>
           </div>
-        </div>
-      </div>
-    </section>
+        </a>
 
-    <!-- ======================
-     VIDEO BANNER
-====================== -->
+        <a href="#" class="product-card">
+          <div class="product-glass"></div>
+          <img src="assets/images/fluecured.jpg" alt="Flue Cured Virginia" />
 
-    <section class="video-banner">
-      <video autoplay muted loop playsinline preload="metadata">
-        <source src="assets/video/video-tobacco.mp4" type="video/mp4" />
-      </video>
+          <div class="product-overlay"></div>
 
-      <div class="video-overlay"></div>
-
-      <div class="video-content">
-        <span class="section-subtitle"> COMPANY PROFILE </span>
-
-        <h2>
-          THE ART OF
-          <span>PREMIUM TOBACCO</span>
-        </h2>
-
-        <p>
-          From carefully cultivated tobacco leaves to premium export products,
-          every process reflects our commitment to quality.
-        </p>
-
-        <a href="#" class="btn-gold">
-          <i class="fa-solid fa-play"></i>
-
-          Watch Our Story
+          <div class="product-content">
+            <h3>Flue Cured Virginia</h3>
+          </div>
         </a>
       </div>
     </section>
 
-    <!-- ======================
-     COMPANY STATS
-====================== -->
-
-    <section class="company-stats">
-      <div class="stats-container">
-        <article class="stat-box reveal">
-          <h2 class="counter" data-target="60">0</h2>
-          <span>Years Experience</span>
-        </article>
-
-        <article class="stat-box reveal">
-          <h2 class="counter" data-target="500">0</h2>
-          <span>Partner Farmers</span>
-        </article>
-
-        <article class="stat-box reveal">
-          <h2 class="counter" data-target="30">0</h2>
-          <span>Export Countries</span>
-        </article>
-
-        <article class="stat-box reveal">
-          <h2 class="counter" data-target="100">0</h2>
-          <span>Quality Commitment</span>
-        </article>
-      </div>
-    </section>
-
-    <!-- ======================
-     LATEST NEWS
-====================== -->
-
+    <!-- ================= NEWS ================= -->
     <section class="news">
       <div class="section-header">
-        <span class="section-subtitle"> LATEST NEWS </span>
+        <span class="section-label">NEWS</span>
 
-        <h2>
-          News &
-          <span>Insights</span>
-        </h2>
-
-        <p>
-          Discover the latest company updates, industry trends, and insights
-          from PT Mangli Djaya Raya.
-        </p>
+        <span class="section-subtitle">
+          Discover the latest updates, innovations, partnerships, and company
+          activities from Mangli Djaya Raya.
+        </span>
       </div>
 
       <div class="news-grid">
-        <!-- News 1 -->
-
+        <!-- Card 1 -->
         <article class="news-card">
           <div class="news-image">
-            <img src="assets/images/gambar1.jpg" alt="News" />
-
-            <span class="news-badge"> News </span>
+            <img src="assets/images/news1.jpg" alt="" />
           </div>
 
           <div class="news-content">
-            <small> 17 July 2026 </small>
-
             <h3>Improving Tobacco Quality Through Modern Processing</h3>
 
             <p>
@@ -376,22 +255,22 @@
               while preserving traditional craftsmanship.
             </p>
 
-            <a href="#"> Read More → </a>
+            <span class="news-date"> 30 July 2026 </span>
+
+            <a href="#" class="news-link">
+              Read More
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
           </div>
         </article>
 
-        <!-- News 2 -->
-
+        <!-- Card 2 -->
         <article class="news-card">
           <div class="news-image">
-            <img src="assets/images/gambar-tobacco.jpg" alt="Event" />
-
-            <span class="news-badge"> Event </span>
+            <img src="assets/images/news2.jpg" alt="" />
           </div>
 
           <div class="news-content">
-            <small> 08 July 2026 </small>
-
             <h3>Partnership Program with Local Farmers</h3>
 
             <p>
@@ -399,22 +278,22 @@
               productivity and sustainability.
             </p>
 
-            <a href="#"> Read More → </a>
+            <span class="news-date"> 25 July 2026 </span>
+
+            <a href="#" class="news-link">
+              Read More
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
           </div>
         </article>
 
-        <!-- News 3 -->
-
+        <!-- Card 3 -->
         <article class="news-card">
           <div class="news-image">
-            <img src="assets/images/gambar1.jpg" alt="Export" />
-
-            <span class="news-badge"> Export </span>
+            <img src="assets/images/news3.jpg" alt="" />
           </div>
 
           <div class="news-content">
-            <small> 01 July 2026 </small>
-
             <h3>Expanding Indonesian Tobacco to Global Markets</h3>
 
             <p>
@@ -422,127 +301,115 @@
               consistent product quality.
             </p>
 
-            <a href="#"> Read More → </a>
+            <span class="news-date"> 18 July 2026 </span>
+
+            <a href="#" class="news-link">
+              Read More
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="news-card">
+          <div class="news-image">
+            <img src="assets/images/news1.jpg" alt="" />
+          </div>
+
+          <div class="news-content">
+            <h3>Sustainable Tobacco Cultivation</h3>
+
+            <p>
+              Developing environmentally friendly farming practices to produce
+              high-quality tobacco.
+            </p>
+
+            <span class="news-date"> 12 July 2026 </span>
+
+            <a href="#" class="news-link">
+              Read More
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="news-card">
+          <div class="news-image">
+            <img src="assets/images/news2.jpg" alt="" />
+          </div>
+
+          <div class="news-content">
+            <h3>Harvest Season Successfully Completed</h3>
+
+            <p>
+              This year's harvest shows excellent quality through collaboration
+              with local farmers.
+            </p>
+
+            <span class="news-date"> 8 July 2026 </span>
+
+            <a href="#" class="news-link">
+              Read More
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- Card 6 -->
+        <article class="news-card">
+          <div class="news-image">
+            <img src="assets/images/news3.jpg" alt="" />
+          </div>
+
+          <div class="news-content">
+            <h3>Tobacco Processing Innovation</h3>
+
+            <p>
+              New processing technology improves efficiency while preserving the
+              natural tobacco aroma.
+            </p>
+
+            <span class="news-date"> 3 July 2026 </span>
+
+            <a href="#" class="news-link">
+              Read More
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
           </div>
         </article>
       </div>
+
+      <div class="news-button">
+        <a href="#" class="view-all">
+          VIEW ALL
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
     </section>
+    <!-- ================= END NEWS ================= -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700&family=Outfit:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <div id="footer-container"></div>
 
-    <!-- ======================
-     FOOTER
-====================== -->
-
-    <footer class="footer">
-      <div class="footer-container reveal">
-        <!-- Company -->
-
-        <div class="footer-col">
-          <img src="assets/logo/logo.png" alt="Logo" class="footer-logo" />
-
-          <p>
-            PT Mangli Djaya Raya is committed to delivering premium Indonesian
-            tobacco products through innovation, sustainability, and decades of
-            expertise.
-          </p>
-        </div>
-
-        <!-- Quick Links -->
-
-        <div class="footer-col">
-          <h3>Quick Links</h3>
-
-          <ul>
-            <li><a href="index.html">Home</a></li>
-
-            <li><a href="about.html">About Us</a></li>
-
-            <li><a href="#">Products</a></li>
-
-            <li><a href="#">News</a></li>
-
-            <li><a href="#">Contact</a></li>
-          </ul>
-        </div>
-
-        <!-- Products -->
-
-        <div class="footer-col">
-          <h3>Products</h3>
-
-          <ul>
-            <li><a href="#">Rajangan Tobacco</a></li>
-
-            <li><a href="#">Sun Cured</a></li>
-
-            <li><a href="#">Dark Fired Cured</a></li>
-          </ul>
-        </div>
-
-        <!-- Contact -->
-
-        <div class="footer-col">
-          <h3>Contact</h3>
-
-          <ul class="footer-contact">
-            <li>
-              <i class="fa-solid fa-location-dot"></i>
-              Jember, East Java, Indonesia
-            </li>
-
-            <li>
-              <i class="fa-solid fa-phone"></i>
-              +62 xxx xxxx xxxx
-            </li>
-
-            <li>
-              <i class="fa-solid fa-envelope"></i>
-              info@manglidjayaraya.com
-            </li>
-          </ul>
-
-          <div class="footer-social">
-            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-
-            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-
-            <a href="#"><i class="fa-brands fa-youtube"></i></a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Maps -->
-
-      <div class="footer-map">
-        <iframe
-          src="https://www.google.com/maps/embed?pb="
-          loading="lazy"
-          allowfullscreen
-        >
-        </iframe>
-      </div>
-
-      <!-- Copyright -->
-
-      <div class="footer-bottom">
-        © 2026 PT Mangli Djaya Raya. All Rights Reserved.
-      </div>
-    </footer>
-
+    <script src="js/hero-slider.js"></script>
+    <script src="js/about-video.js"></script>
     <script src="js/navbar.js"></script>
+    <script src="js/products-home.js"></script>
+    <script src="js/news-home.js"></script>
+    <script src="js/footer.js"></script>
     <script src="js/preloader.js"></script>
-    <script src="js/reveal.js"></script>
-    <script src="js/counter.js"></script>
-    <script src="js/parallax.js"></script>
-    <script src="js/cursor.js"></script>
-    <script src="js/magnetic.js"></script>
-    <script src="js/script.js"></script>
 
-    <!-- ======================
-     CUSTOM CURSOR
-====================== -->
-
-    <div class="cursor"></div>
+     
+    <script>
+        loadFooter("footer-container", "footer.html");
+    </script>
   </body>
+
+  <!-- PRELOADER -->
+  
 </html>

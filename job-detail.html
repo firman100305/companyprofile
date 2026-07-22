@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Detail - Career | Mangli Djaya Raya</title>
+    
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    <!-- CSS Utama & Job Detail (PERHATIKAN PATH 'css/' BUKAN 'assets/css/') -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/job-detail.css" />
+</head>
+<body>
+    
+    <!-- Navbar Container (Sama seperti career.html) -->
+    <div id="navbar-container"></div>
+
+    <!-- HERO SECTION DENGAN GAMBAR DINAMIS -->
+    <section class="job-detail-hero" id="jobHero">
+        <div class="container">
+            <div class="detail-breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <a href="career.html">Career</a>
+                <span>/</span>
+                <span id="breadcrumbJobTitle">Job Title</span>
+            </div>
+            <h1 id="heroJobTitle">Job Title</h1>
+            <div class="job-tags" id="jobTags">
+                <!-- Tags akan diisi oleh JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Content -->
+    <section class="job-content">
+        <div class="container">
+            <div class="job-grid">
+                
+                <!-- KOLOM KIRI: Job Details -->
+                <div class="job-main">
+                    <div class="job-section">
+                        <h2>Job Description</h2>
+                        <p id="jobDescription">Loading...</p>
+                        <ul id="jobResponsibilities"></ul>
+                    </div>
+
+                    <div class="job-section">
+                        <h2>Requirements</h2>
+                        <ul id="jobRequirements"></ul>
+                    </div>
+
+                    <div class="job-section">
+                        <h2>Benefits</h2>
+                        <ul id="jobBenefits"></ul>
+                    </div>
+                </div>
+
+                <!-- KOLOM KANAN: Application Form -->
+                <div class="job-sidebar">
+                    <div class="apply-box">
+                        <h3>Apply for this position</h3>
+                        <p>Send us your CV and cover letter</p>
+                        <form class="apply-form" enctype="multipart/form-data" onsubmit="event.preventDefault(); alert('Application submitted successfully!'); this.reset();">
+                            <input type="text" placeholder="Full Name *" required>
+                            <input type="email" placeholder="Email Address *" required>
+                            <input type="tel" placeholder="Phone Number *" required>
+                            <input type="file" accept=".pdf,.doc,.docx" required>
+                            <textarea placeholder="Cover Letter (optional)" rows="4"></textarea>
+                            <button type="submit" class="btn-submit-application">Submit Application</button>
+                        </form>
+                        <p class="apply-note">Or send directly to: <a href="mailto:career@manglijaya.com">career@manglijaya.com</a></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Sama seperti career.html) -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <img src="assets/logo/logo.png" alt="Logo" class="footer-logo" />
+                <p>PT Mangli Djaya Raya is committed to delivering premium Indonesian tobacco products.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="career.html">Career</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 PT Mangli Djaya Raya. All Rights Reserved.</div>
+    </footer>
+
+    <!-- Load Navbar -->
+    <script>
+      fetch('navbar.html')
+        .then(response => response.text())
+        .then(data => { document.getElementById('navbar-container').innerHTML = data; })
+        .catch(error => console.error('Gagal memuat navbar:', error));
+    </script>
+
+    <!-- Script untuk Load Data Pekerjaan secara Dinamis -->
+    <script>
+        const jobData = {
+            'agricultural-specialist': {
+                title: 'Agricultural Specialist',
+                image: 'job1.jfif', // Pastikan gambar ini ada di assets/images/
+                location: 'Indonesia',
+                type: 'Full Time',
+                salary: 'Competitive',
+                description: 'Partner with tobacco farmers to ensure premium quality and sustainable cultivation. Provide expert guidance on best farming practices across Indonesia.',
+                responsibilities: ['Monitor and improve tobacco leaf quality', 'Provide training to farmers', 'Conduct field research', 'Ensure compliance with agricultural standards'],
+                requirements: ["Bachelor's degree in Agriculture", 'Minimum 3 years experience', 'Willing to travel across Indonesia'],
+                benefits: ['Competitive salary', 'Health insurance', 'Travel allowances', 'Career development']
+            },
+            'production-supervisor': {
+                title: 'Production Supervisor',
+                image: 'job2.jfif',
+                location: 'Factory',
+                type: 'Full Time',
+                salary: 'Competitive',
+                description: 'Oversee daily operations in our tobacco processing facility. Manage production teams and ensure quality standards are met.',
+                responsibilities: ['Supervise daily production operations', 'Manage production teams', 'Ensure quality control standards', 'Implement safety protocols'],
+                requirements: ["Bachelor's degree in Engineering", 'Minimum 4 years experience in manufacturing', 'Strong leadership skills'],
+                benefits: ['Competitive salary', 'Health insurance', 'Shift allowances', 'Performance bonuses']
+            },
+            'quality-control-analyst': {
+                title: 'Quality Control Analyst',
+                image: 'job3.jfif',
+                location: 'Laboratory',
+                type: 'Full Time',
+                salary: 'Competitive',
+                description: 'Conduct rigorous quality checks on tobacco products. Analyze samples and ensure compliance with industry standards.',
+                responsibilities: ['Perform quality testing', 'Analyze samples using lab equipment', 'Document test results', 'Ensure compliance with standards'],
+                requirements: ["Bachelor's degree in Chemistry", 'Minimum 2 years experience in QC', 'Attention to detail'],
+                benefits: ['Competitive salary', 'Health insurance', 'Lab training opportunities', 'Stable work environment']
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const jobKey = urlParams.get('job') || 'agricultural-specialist'; // Default fallback
+            const job = jobData[jobKey];
+
+            if (job) {
+                document.title = job.title + ' - Career | Mangli Djaya Raya';
+                
+                // Set background image hero
+                const heroSection = document.getElementById('jobHero');
+                heroSection.style.backgroundImage = `url('assets/images/${job.image}')`;
+
+                // Set text content
+                document.getElementById('breadcrumbJobTitle').textContent = job.title;
+                document.getElementById('heroJobTitle').textContent = job.title;
+                document.getElementById('jobDescription').textContent = job.description;
+
+                // Set tags
+                document.getElementById('jobTags').innerHTML = `
+                    <span><i class="fa-solid fa-location-dot"></i> ${job.location}</span>
+                    <span><i class="fa-solid fa-briefcase"></i> ${job.type}</span>
+                    <span><i class="fa-solid fa-coins"></i> ${job.salary}</span>
+                `;
+
+                // Helper function to populate lists
+                const populateList = (elementId, dataArray) => {
+                    const list = document.getElementById(elementId);
+                    list.innerHTML = '';
+                    dataArray.forEach(item => {
+                        const li = document.createElement('li');
+                        li.textContent = item;
+                        list.appendChild(li);
+                    });
+                };
+
+                populateList('jobResponsibilities', job.responsibilities);
+                populateList('jobRequirements', job.requirements);
+                populateList('jobBenefits', job.benefits);
+            }
+        });
+    </script>
+
+        <script src="js/navbar.js"></script>
+    <script src="js/preloader.js"></script>
+    <script src="js/reveal.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

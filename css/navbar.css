@@ -320,9 +320,9 @@
 
     background:transparent;
 
-    border:2px solid #d4af37;
+    border:2px solid #ffffff;
 
-    color:#d4af37;
+    color:#ffffff;
 
     font-size:13px;
 
@@ -333,17 +333,17 @@
 
 .navbar.scrolled .contact-btn{
 
-    background:#d4af37;
+    background:#ffffff;
 
     color:#111;
 
-    border-color:#d4af37;
+    border-color:#ffffff;
 
 }
 
 .contact-btn:hover{
 
-    background:#d4af37;
+    background:#ffffff;
 
     color:#111;
 

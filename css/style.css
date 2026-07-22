@@ -3,11 +3,20 @@
 @import url("hero.css");
 @import url("about.css");
 @import url("why-us.css");
-@import url("product.css");
+@import url("products.css");
 @import url("video.css");
 @import url("stats.css");
-@import url("news.css");
+/* @import url("news.css"); */
 @import url("footer.css");
 @import url("animation.css");
 @import url("cursor.css");
 @import url("responsive.css");
+@import url("career.css");        /* ← Tambahkan ini */
+@import url("job-detail.css");
+@import url("about-video.css");
+@import url("hero.css");
+@import url("news-home.css");
+@import url("preloader.css");
+@import url("products-home.css");
+@import url("product-detail.css");
+@import url("contact.css");

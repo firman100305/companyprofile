@@ -132,30 +132,42 @@
   </div>
 </section>
 
-      <!-- FORM SECTION -->
-      <section class="form-section">
-        <div class="form-container">
-          <h2 class="form-title">Send Us A Message</h2>
-          <form>
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Your Full Name" required>
+<!-- FORM PARALLAX SECTION -->
+<section class="form-parallax-section" id="formParallaxSection">
+    <!-- Background Image dengan Parallax -->
+    <div class="form-parallax-background">
+        <img src="assets/images/background.jpg" alt="Parallax Background" />
+        <div class="form-parallax-overlay"></div>
+    </div>
+    
+    <!-- Form Container -->
+    <div class="form-floating-container">
+        <h2 class="form-title-simple">Send Us A Message</h2>
+        
+        <form class="contact-form-simple">
+            <!-- Name -->
+            <div class="form-group-simple">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your Full Name" required>
+            </div>
             
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+            <!-- Email -->
+            <div class="form-group-simple">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Your @email.com" required>
+            </div>
             
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+            <!-- Message -->
+            <div class="form-group-simple">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="4" placeholder="How can we help you?" required></textarea>
+            </div>
             
-            <button
-type="submit"
-class="btn-send">
-
-Send Message →
-
-</button>
-          </form>
-        </div>
-      </section>
+            <!-- Submit Button -->
+            <button type="submit" class="btn-send-simple">SEND MESSAGE</button>
+        </form>
+    </div>
+</section>
 
       <!-- MAPS SECTION (TAMBAHKAN INI) -->
     <section class="maps-section">
@@ -380,6 +392,37 @@ document.addEventListener('DOMContentLoaded', function() {
     staggerCards.forEach(card => {
         observer.observe(card);
     });
+});
+</script>
+
+<script>
+// Parallax Effect - SMOOTH VERSION
+let ticking = false;
+
+window.addEventListener('scroll', function() {
+    if (!ticking) {
+        window.requestAnimationFrame(function() {
+            const scrolled = window.pageYOffset;
+            
+            // Parallax untuk Form Background
+            const formSection = document.getElementById('formParallaxSection');
+            if (formSection) {
+                const parallaxBg = formSection.querySelector('.form-parallax-background');
+                const sectionTop = formSection.offsetTop;
+                const sectionHeight = formSection.offsetHeight;
+                const windowHeight = window.innerHeight;
+                
+                if (scrolled < sectionTop + sectionHeight && scrolled + windowHeight > sectionTop) {
+                    const speed = 0.25; // ✅ Lebih lambat = lebih smooth
+                    const yPos = (scrolled - sectionTop) * speed;
+                    parallaxBg.style.transform = `translate3d(0, ${yPos}px, 0)`;
+                }
+            }
+            
+            ticking = false;
+        });
+        ticking = true;
+    }
 });
 </script>
 

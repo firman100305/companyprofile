@@ -1,0 +1,779 @@
+/* =========================================================
+   PRODUCT DETAIL PAGE — Modern Dark Theme (Revised)
+   Mangli Djaya Raya
+========================================================= */
+
+/* Modern geometric display face to replace Georgia/Times.
+   Loaded here so you don't need to touch the <head> — but for
+   best performance, move this <link> into product-detail.html
+   next to the Poppins import:
+   https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap
+*/
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap');
+
+:root {
+  --pd-gold: #b5905e;
+  --pd-gold-light: #d9b17e;
+  --pd-gold-deep: #8f6a34;
+  --pd-dark-bg: #0a0a0a;
+  --pd-content-bg: #000000;
+  --pd-text-muted: #c9c9c9;
+  --pd-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --pd-display: 'Bricolage Grotesque', 'Poppins', sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------------------------------------------------------
+   HERO BANNER
+--------------------------------------------------------- */
+.pd-hero {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background: url('../assets/images/daun.png') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 8%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Removed the radial vignette ::after — flat linear gradient reads
+   cleaner and less "aged photograph". */
+.pd-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.55) 42%, rgba(0,0,0,0.2) 78%, rgba(0,0,0,0.08) 100%);
+  z-index: 1;
+}
+
+.pd-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.pd-hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--pd-gold-light);
+  margin-bottom: 18px;
+  opacity: 0;
+  animation: pdFadeUp 0.9s var(--pd-ease) 0.15s forwards;
+}
+
+.pd-hero-eyebrow::before {
+  content: '';
+  width: 24px;
+  height: 2px;
+  background: var(--pd-gold);
+}
+
+/* Display face swapped from Georgia serif + italic accent to a bold
+   modern grotesk with tight tracking — the single biggest lever for
+   "vintage vs modern". */
+.pd-hero-title {
+  font-family: var(--pd-display);
+  font-size: 46px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.18;
+  letter-spacing: -0.015em;
+  opacity: 0;
+  animation: pdFadeUp 0.9s var(--pd-ease) 0.3s forwards;
+}
+
+/* Highlight now reads as emphasis through color + weight, not italics */
+.pd-hero-title .highlight {
+  color: var(--pd-gold-light);
+  font-style: normal;
+  font-weight: 700;
+}
+
+@keyframes pdFadeUp {
+  0% { opacity: 0; transform: translateY(14px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------------------------------------------------------
+   RIBBON / TICKER NAV
+--------------------------------------------------------- */
+.pd-ribbon {
+  background: #000000;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 16px 0;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.pd-ribbon::before,
+.pd-ribbon::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 90px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.pd-ribbon::before {
+  left: 0;
+  background: linear-gradient(90deg, #000 0%, rgba(0,0,0,0) 100%);
+}
+
+.pd-ribbon::after {
+  right: 0;
+  background: linear-gradient(270deg, #000 0%, rgba(0,0,0,0) 100%);
+}
+
+.pd-ribbon-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: marqueeRightToLeft 32s linear infinite;
+}
+
+.pd-ribbon:hover .pd-ribbon-track {
+  animation-play-state: paused;
+}
+
+.pd-ribbon-group {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding-right: 32px;
+}
+
+.pd-ribbon-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 22px;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  opacity: 0.55;
+  white-space: nowrap;
+  transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.pd-ribbon-item:hover,
+.pd-ribbon-item.active {
+  opacity: 1;
+  color: var(--pd-gold-light);
+}
+
+/* Leaf icon simplified: no more rotate/scale flourish on hover —
+   it just brightens, which reads calmer and more contemporary. */
+.pd-ribbon-item .leaf-icon {
+  width: 14px;
+  height: 14px;
+  fill: var(--pd-gold);
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.pd-ribbon-item:hover .leaf-icon {
+  opacity: 0.9;
+}
+
+@keyframes marqueeRightToLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ---------------------------------------------------------
+   MAIN PRODUCT CONTENT (SPLIT VIEW)
+--------------------------------------------------------- */
+.pd-main-section {
+  background-color: var(--pd-dark-bg);
+  min-height: 600px;
+  padding: 0;
+  color: #ffffff;
+}
+
+.pd-split-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  min-height: 600px;
+}
+
+@media (min-width: 900px) {
+  .pd-split-container {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+.pd-left-media {
+  width: 100%;
+  height: 100%;
+  min-height: 450px;
+  position: relative;
+  overflow: hidden;
+  background: #111;
+}
+
+.pd-left-media::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .pd-left-media::after { display: block; }
+}
+
+.pd-left-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(1) contrast(1.02);
+  opacity: 0;
+  animation: pdImageSettle 1s var(--pd-ease) 0.1s forwards;
+  transition: transform 1.2s var(--pd-ease);
+}
+
+.pd-left-media:hover img {
+  transform: scale(1.02);
+}
+
+@keyframes pdImageSettle {
+  0% { transform: scale(1.03); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.pd-right-info {
+  background: var(--pd-content-bg);
+  padding: 80px 80px 60px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.pd-title-group {
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: pdFadeUp 0.7s var(--pd-ease) 0.2s forwards;
+}
+
+.pd-product-eyebrow {
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  margin: 0 0 10px 0;
+}
+
+/* Product title — same grotesk display face as the hero, no serif */
+.pd-product-title {
+  font-family: var(--pd-display);
+  font-size: 46px;
+  font-weight: 600;
+  color: var(--pd-gold-light);
+  margin: 0 0 18px 0;
+  letter-spacing: -0.01em;
+}
+
+.pd-title-mark {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pd-title-underline {
+  display: block;
+  width: 0;
+  height: 2px;
+  background-color: var(--pd-gold);
+  animation: pdUnderlineGrow 0.8s var(--pd-ease) 0.45s forwards;
+}
+
+@keyframes pdUnderlineGrow {
+  to { width: 48px; }
+}
+
+.pd-title-leaf {
+  width: 12px;
+  height: 12px;
+  fill: var(--pd-gold);
+  opacity: 0;
+  animation: pdLeafIn 0.5s var(--pd-ease) 0.8s forwards;
+}
+
+@keyframes pdLeafIn {
+  to { opacity: 0.75; }
+}
+
+/* ---------------------------------------------------------
+   HOVER PILLS & PAGE CONTENT
+--------------------------------------------------------- */
+.pd-hover-pills {
+  display: flex;
+  gap: 8px 26px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+  padding-bottom: 4px;
+  opacity: 0;
+  animation: pdFadeUp 0.7s var(--pd-ease) 0.35s forwards;
+}
+
+.pd-pill-btn {
+  position: relative;
+  isolation: isolate;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.55);
+  padding: 9px 2px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  transition: color 0.3s var(--pd-ease);
+  outline: none;
+  white-space: nowrap;
+}
+
+.pd-pill-btn::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -1px;
+  height: 2px;
+  background: var(--pd-gold);
+  transition: right 0.35s var(--pd-ease);
+}
+
+.pd-pill-btn:hover,
+.pd-pill-btn.active {
+  color: var(--pd-gold-light);
+}
+
+.pd-pill-btn:hover::before,
+.pd-pill-btn.active::before {
+  right: 0;
+}
+
+.pd-pill-btn:focus-visible {
+  color: var(--pd-gold-light);
+  outline: 1px solid rgba(200, 155, 90, 0.6);
+  outline-offset: 4px;
+}
+
+.pd-description-body {
+  position: relative;
+  min-height: 180px;
+  opacity: 0;
+  animation: pdFadeUp 0.7s var(--pd-ease) 0.5s forwards;
+}
+
+.pd-quote-wrapper {
+  opacity: 1;
+  transform: translateY(0);
+  /* Curly-quote pull-quote treatment removed; a left accent bar
+     reads as modern editorial rather than antique letterhead. */
+  border-left: 2px solid rgba(181, 144, 94, 0.4);
+  padding-left: 20px;
+  transition: opacity 0.28s var(--pd-ease), transform 0.28s var(--pd-ease);
+}
+
+.pd-quote-wrapper.fade-out {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.pd-quote-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--pd-text-muted);
+  font-weight: 300;
+  letter-spacing: 0;
+  margin: 0;
+}
+
+.pd-specs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 24px;
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.pd-spec-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pd-spec-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+
+.pd-spec-value {
+  font-size: 13.5px;
+  font-weight: 300;
+  color: #f1f1f1;
+}
+
+.pd-footer-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 40px;
+  opacity: 0;
+  animation: pdFadeUp 0.7s var(--pd-ease) 0.65s forwards;
+}
+
+.pd-accent-line {
+  width: 48px;
+  height: 2px;
+  background-color: var(--pd-gold);
+  opacity: 0.6;
+}
+
+.pd-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.pd-back-btn:hover {
+  color: var(--pd-gold);
+  transform: translateX(-4px);
+}
+
+.pd-loading,
+.pd-notfound {
+  text-align: center;
+  padding: 100px 20px;
+  color: #ffffff;
+}
+
+.pd-loading {
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  position: relative;
+}
+
+.pd-loading::after {
+  content: '';
+  display: block;
+  width: 30px;
+  height: 1px;
+  background: var(--pd-gold);
+  margin: 14px auto 0;
+  animation: pdLoadingPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pdLoadingPulse {
+  0%, 100% { opacity: 0.3; width: 30px; }
+  50% { opacity: 1; width: 60px; }
+}
+
+.pd-notfound h1 {
+  font-family: var(--pd-display);
+  font-weight: 600;
+  color: var(--pd-gold);
+}
+
+@media (max-width: 899px) {
+  .pd-hero { height: 300px; }
+  .pd-hero-title { font-size: 28px; }
+  .pd-right-info { padding: 48px 24px 40px; }
+  .pd-product-title { font-size: 34px; }
+  .pd-hover-pills { gap: 6px 18px; }
+  .pd-pill-btn { font-size: 10.5px; }
+  .pd-specs-grid { grid-template-columns: 1fr; }
+}
+
+/* =========================================================
+   FOOTER STYLES
+========================================================= */
+.site-footer {
+  background-color: #0b0c0d;
+  color: #a0a0a0;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+
+.site-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(181,144,94,0) 0%, rgba(181,144,94,0.5) 50%, rgba(181,144,94,0) 100%);
+}
+
+.footer-container {
+  max-width: 1350px;
+  margin: 0 auto;
+  padding: 80px 60px 60px 60px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: minmax(320px, 1.6fr) 130px 170px 220px;
+  gap: 80px;
+  justify-content: flex-start;
+}
+
+.footer-col-title {
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 26px;
+}
+
+/* Brand title now matches the modern grotesk display face used
+   everywhere else — no more mismatched serif in the footer. */
+.footer-brand-title {
+  font-family: var(--pd-display);
+  font-size: 26px;
+  color: #ffffff;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  margin-bottom: 24px;
+}
+
+.footer-brand-desc {
+  font-size: 13.5px;
+  line-height: 1.9;
+  color: #8a8a8a;
+  max-width: 400px;
+  margin-bottom: 28px;
+  font-weight: 300;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 12px;
+}
+
+.social-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  border-color: var(--pd-gold);
+  color: #000000;
+  background: var(--pd-gold);
+  transform: translateY(-3px);
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 14px;
+}
+
+.footer-links a {
+  position: relative;
+  color: #9a9a9a;
+  font-size: 13.5px;
+  font-weight: 300;
+  text-decoration: none;
+  transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+  padding-left: 10px;
+}
+
+.footer-links a::before {
+  content: '';
+  position: absolute;
+  left: -14px;
+  top: 50%;
+  width: 0;
+  height: 1px;
+  background: var(--pd-gold);
+  transform: translateY(-50%);
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.footer-links a:hover::before {
+  width: 8px;
+  left: -2px;
+}
+
+.footer-news-list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.news-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.news-title {
+  color: #a8a8a8;
+  font-size: 12.5px;
+  line-height: 1.55;
+  font-weight: 300;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.news-title:hover {
+  color: var(--pd-gold);
+}
+
+.news-date {
+  font-size: 10.5px;
+  color: #4a4a4a;
+}
+
+.bottom-bar {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 24px 0;
+}
+
+.bottom-bar-container {
+  max-width: 1350px;
+  margin: 0 auto;
+  padding: 0 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #555555;
+}
+
+.bottom-bar .heart {
+  color: var(--pd-gold);
+}
+
+.scroll-top-btn {
+  position: absolute;
+  right: 28px;
+  bottom: 24px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #111111;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 13px;
+  transition: all 0.3s ease;
+}
+
+.scroll-top-btn:hover {
+  background: var(--pd-gold);
+  border-color: var(--pd-gold);
+  color: #000000;
+  transform: translateY(-4px);
+}
+
+@media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+  .bottom-bar-container {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+  .footer-container {
+    padding: 50px 24px 40px 24px;
+  }
+}
+
+.pd-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s var(--pd-ease), transform 0.7s var(--pd-ease);
+}
+
+.pd-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

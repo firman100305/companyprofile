@@ -1,0 +1,187 @@
+/*====================================
+            PRELOADER
+====================================*/
+
+#preloader{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#000;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:99999;
+
+    transition:.8s;
+
+}
+
+#preloader.hide{
+
+    opacity:0;
+
+    visibility:hidden;
+
+}
+
+/* Loader */
+
+.loader{
+
+    position:relative;
+
+    width:220px;
+
+    height:220px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+/* Logo */
+
+.loader img{
+
+    width:120px;
+
+    position:relative;
+
+    z-index:5;
+
+    filter:
+
+        drop-shadow(0 0 8px rgba(212,175,55,.35))
+
+        drop-shadow(0 0 18px rgba(212,175,55,.25));
+
+    animation:logoPulse 2s ease-in-out infinite;
+
+}
+
+/* Ring */
+
+.ring{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    border:2px solid transparent;
+
+}
+
+/* Ring luar */
+
+.ring1{
+
+    width:180px;
+
+    height:180px;
+
+    border-top-color:#d4af37;
+
+    border-right-color:#d4af37;
+
+    animation:spin 4s linear infinite;
+
+}
+
+/* Ring dalam */
+
+.ring2{
+
+    width:155px;
+
+    height:155px;
+
+    border-bottom-color:rgba(212,175,55,.65);
+
+    border-left-color:rgba(212,175,55,.65);
+
+    animation:spinReverse 3s linear infinite;
+
+}
+
+/* Glow */
+
+.loader::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+
+    height:180px;
+
+    border-radius:50%;
+
+    background:
+
+    radial-gradient(circle,
+
+    rgba(212,175,55,.18),
+
+    transparent 70%);
+
+    filter:blur(20px);
+
+}
+
+@keyframes spin{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+@keyframes spinReverse{
+
+    from{
+
+        transform:rotate(360deg);
+
+    }
+
+    to{
+
+        transform:rotate(0deg);
+
+    }
+
+}
+
+@keyframes logoPulse{
+
+    0%,100%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.08);
+
+    }
+
+}
