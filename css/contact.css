@@ -1,11 +1,6 @@
-/* --- CONTACT PAGE SPECIFIC STYLES --- */
-
-/* ==========================
-   CONTACT HERO (BALANCED & NATURAL)
-========================== */
 .contact-hero {
     position: relative;
-    min-height: 100vh;
+    min-height: 65vh;
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -23,7 +18,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* ✅ Filter BALANCED - tidak pecah, tetap jelas */
     filter: 
         brightness(0.7) 
         contrast(1.15) 
@@ -42,7 +36,6 @@
     transform: scale(1.05);
 }
 
-/* ✅ Overlay sedikit lebih gelap untuk kompensasi brightness */
 .contact-hero .hero-overlay {
     position: absolute;
     inset: 0;
@@ -53,15 +46,13 @@
             rgba(10, 10, 10, 0.3) 100%);
 }
 
-/* Hide elemen lama yang tidak perlu */
 .contact-hero .detail-breadcrumb,
 .contact-hero .hero-content {
     display: none;
 }
 
-/* CONTACT Label */
 /* ==========================
-   CONTACT HERO LABEL (Matched with About Hero)
+   CONTACT HERO LABEL
 ========================== */
 .contact-hero-label {
     position: absolute;
@@ -73,7 +64,7 @@
 
 .contact-hero-label span {
     margin: 0;
-    font-family: "Poppins", sans-serif;
+    font-family: "Poppins", sans-serif; /* ✅ DESCRIPTION */
     font-size: clamp(120px, 8vw, 260px);
     font-weight: 900;
     line-height: 0.82;
@@ -81,10 +72,8 @@
     -webkit-text-stroke: 2px #fff;
     letter-spacing: 1px;
     text-transform: uppercase;
-    display: block;
 }
 
-/* Responsive adjustments untuk Tablet */
 @media (max-width: 992px) {
     .contact-hero-label {
         right: 20px;
@@ -92,7 +81,6 @@
     }
 }
 
-/* Responsive adjustments untuk Mobile */
 @media (max-width: 768px) {
     .contact-hero-label {
         right: 15px;
@@ -133,8 +121,9 @@
     text-align: center;
 }
 
+/* ✅ TITLE: Georgia */
 .section-content h2 {
-    font-family: "Playfair Display", Georgia, serif;
+    font-family: "Georgia", serif;
     font-size: 42px;
     font-weight: 700;
     color: #fff;
@@ -161,6 +150,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
+    align-items: stretch;
 }
 
 .icon-link {
@@ -175,7 +165,7 @@
     border: 1px solid rgba(212, 175, 55, 0.18);
     border-radius: 4px;
     padding: 34px 26px 30px;
-    min-height: 240px;
+    height: 210px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -187,8 +177,8 @@
     position: absolute;
     top: 18px;
     left: 24px;
-    font-family: "Playfair Display", Georgia, serif;
-    font-size: 14px;
+    font-family: "Cormorant Garamond", serif; /* ✅ SUBTITLE */
+    font-size: 16px;
     font-weight: 600;
     color: #c89b5a;
     letter-spacing: 2px;
@@ -250,8 +240,8 @@
 }
 
 .info-icon svg {
-    width: 26px;
-    height: 26px;
+    width: 50px;
+    height: 50px;
     fill: #c89b5a;
     transition: fill 0.4s ease;
 }
@@ -269,9 +259,10 @@
     z-index: 3;
 }
 
+/* ✅ TITLE: Georgia */
 .info-text h4 {
-    font-family: "Poppins", sans-serif;
-    font-size: 17px;
+    font-family: "Georgia", serif;
+    font-size: 18px;
     font-weight: 700;
     color: #fff;
     margin: 0 0 8px 0;
@@ -279,6 +270,7 @@
     transition: color 0.4s ease;
 }
 
+/* ✅ DESCRIPTION: Poppins */
 .info-text p {
     font-family: "Poppins", sans-serif;
     font-size: 13px;
@@ -392,9 +384,10 @@
     50% { transform: translateY(-8px); }
 }
 
+/* ✅ TITLE: Georgia */
 .form-title-simple {
     text-align: center;
-    font-family: "Playfair Display", Georgia, serif;
+    font-family: "Georgia", serif;
     font-size: 30px;
     font-weight: 700;
     color: #fff;
@@ -413,8 +406,9 @@
     gap: 8px;
 }
 
+/* ✅ DESCRIPTION: Poppins */
 .form-group-simple label {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 14px;
     font-weight: 600;
     color: #fff;
@@ -427,7 +421,7 @@
     border: 1.5px solid #e0e0e0;
     border-radius: 12px;
     background: #fff;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif; /* ✅ DESCRIPTION */
     font-size: 14px;
     color: #333;
     transition: all 0.3s ease;
@@ -449,17 +443,17 @@
 .form-group-simple textarea {
     resize: vertical;
     min-height: 110px;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif; /* ✅ DESCRIPTION */
 }
 
 .btn-send-simple {
     width: 100%;
     padding: 17px;
-    background: linear-gradient(135deg, #d4af37, #b8942e);
+    background: linear-gradient(135deg, #c89b5a, #b8962e);
     color: #fff;
     border: none;
     border-radius: 12px;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif; /* ✅ DESCRIPTION */
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 1.5px;
@@ -502,9 +496,11 @@
     padding: 0 5%;
 }
 
+/* ✅ SUBTITLE: Cormorant Garamond */
 .maps-header .section-subtitle {
-    color: #d4af37;
-    font-size: 14px;
+    font-family: "Cormorant Garamond", serif;
+    color: #c89b5a;
+    font-size: 18px;
     font-weight: 600;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -512,15 +508,18 @@
     margin-bottom: 15px;
 }
 
+/* ✅ TITLE: Georgia */
 .maps-header h2 {
-    font-family: "Playfair Display", Georgia, serif;
+    font-family: "Georgia", serif;
     font-size: 42px;
     font-weight: 700;
     color: #fff;
     margin-bottom: 15px;
 }
 
+/* ✅ DESCRIPTION: Poppins */
 .maps-header p {
+    font-family: "Poppins", sans-serif;
     font-size: 16px;
     color: #fff;
     max-width: 600px;
@@ -596,10 +595,10 @@
 
 .cta-background {
     position: absolute;
-    top: -15%;
+    top: -50%;
     left: 0;
     width: 100%;
-    height: 130%;
+    height: 200%;
     z-index: 0;
     will-change: transform;
 }
@@ -609,6 +608,7 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
+    display: block;
 }
 
 .cta-overlay {
@@ -628,8 +628,9 @@
     margin: 0 auto;
 }
 
+/* ✅ TITLE: Georgia */
 .cta-content h2 {
-    font-family: "Playfair Display", Georgia, serif;
+    font-family: "Georgia", serif;
     font-size: 48px;
     font-weight: 700;
     line-height: 1.3;
@@ -637,9 +638,15 @@
     margin: 0;
 }
 
+/* ✅ SUBTITLE: Cormorant Garamond (untuk span yang berwarna gold) */
 .cta-content h2 span {
-    color: #d4af37;
+    font-family: "Georgia", serif;
+    color: #c89b5a;
     display: block;
+    font-size: 56px; /* Sedikit lebih besar agar elegan */
+    font-weight: 600;
+    font-style: italic; /* Tambah italic untuk Cormorant Garamond */
+    margin-top: 8px;
 }
 
 /* ==========================
@@ -687,6 +694,10 @@
     
     .cta-content h2 {
         font-size: 32px;
+    }
+    
+    .cta-content h2 span {
+        font-size: 40px;
     }
 }
 
