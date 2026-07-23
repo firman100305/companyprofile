@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap');
+
 .about-video {
   position: relative;
 
   width: 100%;
 
-  padding: 120px 0;
+  padding: 20px 0;
 
   background: #111;
 
@@ -19,9 +21,9 @@
 
   margin: auto;
 
-  height: 760px;
+  height: 620px;
 
-  border-radius: 30px;
+  border-radius: 0px;
 
   overflow: hidden;
 }
@@ -73,7 +75,9 @@
 
   color: #ffffff;
 
-  font-size: 28px;
+font-family: "Cormorant Garamond", serif;
+
+  font-size: 16px;
 
   letter-spacing: 4px;
 
@@ -85,21 +89,25 @@
 
   color: #ffffff;
 
+font-family: "Cormorant Garamond", serif;
+
   font-size: 16px;
 
   letter-spacing: 4px;
 }
 
 .video-content h2 {
-  font-size: 64px;
+  font-size: 68px;
 
-  font-family: Georgia, serif;
+  font-family: "Cormorant Garamond", serif;
 
-  font-weight: 500;
+  font-weight: 300;
+
+  line-height: 1.08;
+
+  letter-spacing: 0.4px;
 
   margin-bottom: 30px;
-
-  line-height: 1.15;
 }
 
 .video-content p {
@@ -158,4 +166,149 @@
   opacity: 1;
 
   transform: none;
+}
+
+/*=====================================
+ABOUT RIBBON
+======================================*/
+
+.about-ribbon{
+
+    width:100%;
+
+    background:#000;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    overflow:hidden;
+
+    position:relative;
+
+    padding:18px 0;
+
+}
+
+.about-ribbon::before,
+.about-ribbon::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    bottom:0;
+
+    width:90px;
+
+    z-index:2;
+
+    pointer-events:none;
+
+}
+
+.about-ribbon::before{
+
+    left:0;
+
+    background:linear-gradient(90deg,#000 0%,transparent 100%);
+
+}
+
+.about-ribbon::after{
+
+    right:0;
+
+    background:linear-gradient(270deg,#000 0%,transparent 100%);
+
+}
+
+.about-ribbon-track{
+
+    display:flex;
+
+    width:max-content;
+
+    animation:aboutTicker 30s linear infinite;
+
+}
+
+.about-ribbon:hover .about-ribbon-track{
+
+    animation-play-state:paused;
+
+}
+
+.about-ribbon-group{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:45px;
+
+    padding-right:45px;
+
+}
+
+.about-ribbon-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    white-space:nowrap;
+
+    color:rgba(255,255,255,.55);
+
+    font-family:"Cormorant Garamond", serif;
+
+    font-size:24px;
+
+    font-weight:500;
+
+    transition:.35s;
+
+}
+
+.about-ribbon-item i{
+
+    color:#b5905e;
+
+    font-size:14px;
+
+    opacity:.6;
+
+}
+
+.about-ribbon-item:hover{
+
+    color:#d9b17e;
+
+}
+
+.about-ribbon-item:hover i{
+
+    opacity:1;
+
+}
+
+@keyframes aboutTicker{
+
+    from{
+
+        transform:translateX(0);
+
+    }
+
+    to{
+
+        transform:translateX(-50%);
+
+    }
+
 }

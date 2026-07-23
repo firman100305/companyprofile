@@ -15,99 +15,72 @@
     />
   </head>
 
-  <body>
-    <div id="preloader">
-        <div class="loader">
-            <img src="assets/logo/logo.png" alt="Mangli Logo" />
-            <span></span>
-        </div>
+  <!-- =========================
+        PRELOADER
+========================== -->
+<div id="preloader">
+
+    <div class="loader">
+
+        <div class="loader-ring"></div>
+
+        <img src="assets/logo/logo.png" alt="MDR Logo" class="loader-logo">
+
     </div>
+
+</div>
     <!-- Navbar -->
     <div id="navbar-container"></div>
     <div class="nav-overlay"></div>
 
     <!-- Hero -->
     <section class="about-hero">
-      <img
-        src="assets/images/gedung.jpg"
-        class="parallax-bg"
-        data-speed="0.20"
-        alt=""
-      />
-      <div class="hero-overlay"></div>
+      <img src="assets/images/gedung.jpg" alt="" />
 
-      <div class="about-content reveal parallax-content" data-speed="0.05">
-        <h1>PT. MANGLI DJAYA RAYA</h1>
-
-        <p>The Finest Indonesian Tobacco</p>
+      <div class="about-content">
+        <h1 class="hero-title-outline">ABOUT US</h1>
       </div>
     </section>
+    
+    <!-- ================= PARALLAX BACKGROUND ================= -->
 
-    <div class="section-divider"></div>
+<div class="fixed-parallax">
 
-    <!-- Vision -->
-    <section class="vision">
-      <img
-        src="assets/images/pabrik.jpg"
-        class="parallax-bg"
-        data-speed="0.15"
-        alt=""
-      />
+    <img src="assets/images/gedung.jpg" alt="">
 
-      <div class="vision-overlay"></div>
+    <div class="fixed-overlay"></div>
 
-      <div class="vision-container reveal parallax-content" data-speed="0.04">
-        <h2>VISION & MISSION</h2>
+    <div class="fixed-content">
 
-        <div class="vision-grid">
-          <div class="vision-left">
-            <h3>OUR VISION</h3>
+        <span>THE FINEST</span>
 
-            <p>"Expose The World With Quality Agriculture Products"</p>
-          </div>
+        <h2>INDONESIAN TOBACCO</h2>
 
-          <div class="vision-right">
-            <h3>OUR MISSION</h3>
+    </div>
 
-            <ul>
-              <li>
-                Mangli Djaya Raya is committed in preserving its heritage as a
-                tobacco company and pursuing high product quality.
-              </li>
+</div>
 
-              <li>
-                Maintain and develop cultivation of tobacco plantation and
-                continuous improvement system.
-              </li>
-
-              <li>Improve human resources and environment aspect.</li>
-
-              <li>
-                Improve welfare of stakeholders which include farmers,
-                suppliers, employees and customers.
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+<div class="content-wrapper">
 
     <!-- ================= COMPANY STORY ================= -->
 
+    <!-- =========================================
+                COMPANY STORY
+========================================== -->
+
     <section class="company-story">
-      <img
-        src="assets/images/gedung2.jpg"
-        class="parallax-bg"
-        data-speed="0.14"
-        alt=""
-      />
+
       <div class="story-overlay"></div>
 
-      <div class="story-container reveal parallax-content" data-speed="0.03">
+      <div class="story-container reveal">
+        <span class="story-label"> OUR STORY </span>
+        
+
         <h2>PT. MANGLI DJAYA RAYA</h2>
 
         <div class="story-slider">
           <!-- Slide 1 -->
+
           <div class="story-slide active">
             <p>
               (MDR) is an Indonesian tobacco company established in 1960.
@@ -122,6 +95,7 @@
           </div>
 
           <!-- Slide 2 -->
+
           <div class="story-slide">
             <p>
               In the effort of developing its business within 42 years. PT.MDR
@@ -140,6 +114,7 @@
           </div>
 
           <!-- Slide 3 -->
+
           <div class="story-slide">
             <p>
               MDR continues to strive as a leading tobacco leaf supplier around
@@ -156,8 +131,6 @@
           </div>
         </div>
 
-        <!-- Dots -->
-
         <div class="story-dots">
           <span class="story-dot active"></span>
 
@@ -166,12 +139,131 @@
           <span class="story-dot"></span>
         </div>
       </div>
+      
     </section>
 
     <!-- ================= END COMPANY STORY ================= -->
 
+    <section class="parallax-gap reveal-parallax"></section>
+
+    <!-- =========================================
+                VISION & MISSION
+========================================== -->
+
+    <section class="vision-mission">
+      <!-- Decorative Leaf -->
+      <img src="assets/images/leaf.png" class="leaf-top" alt="" />
+      <img src="assets/images/leaf.png" class="leaf-bottom" alt="" />
+
+      <div class="vm-container reveal">
+        <!-- ================= VISION ================= -->
+
+        <div class="vision-box">
+          <span class="vm-label">OUR VISION</span>
+          
+
+          <div class="vm-line"></div>
+
+          <h2>
+            Expose The World
+            <br />
+            With Quality Agriculture Products
+          </h2>
+
+          
+        </div>
+
+        <!-- ================= MISSION ================= -->
+
+        <div class="mission-box">
+          <div class="mission-title">
+            <span>OUR MISSION</span>
+
+            <div class="mission-line"></div>
+          </div>
+
+          <div class="mission-grid">
+            <!-- Item 1 -->
+
+            <div class="mission-item">
+              <div class="mission-icon">
+                <i class="fa-solid fa-building-columns"></i>
+              </div>
+
+              <h3>01</h3>
+
+              <span></span>
+
+              <p>
+                Mangli Djaya Raya is committed in preserving its heritage as a
+                tobacco company and pursuing high product quality.
+              </p>
+            </div>
+
+            <!-- Item 2 -->
+
+            <div class="mission-item">
+              <div class="mission-icon">
+                <i class="fa-solid fa-seedling"></i>
+              </div>
+
+              <h3>02</h3>
+
+              <span></span>
+
+              <p>
+                Maintain and develop cultivation of tobacco plantation and
+                continuous improvement system.
+              </p>
+            </div>
+
+            <!-- Item 3 -->
+
+            <div class="mission-item">
+              <div class="mission-icon">
+                <i class="fa-regular fa-user"></i>
+              </div>
+
+              <h3>03</h3>
+
+              <span></span>
+
+              <p>Improve human resources and environment aspect.</p>
+            </div>
+
+            <!-- Item 4 -->
+
+            <div class="mission-item">
+              <div class="mission-icon">
+                <i class="fa-solid fa-users"></i>
+              </div>
+
+              <h3>04</h3>
+
+              <span></span>
+
+              <p>
+                Improve welfare of stakeholders which include farmers,
+                suppliers, employees and customers.
+              </p>
+            </div>
+          </div>
+
+          
+        </div>
+      </div>
+    </section>
+</div>
     <!-- Footer -->
     <div id="footer-container"></div>
+
+ <script>
+fetch("footer.html")
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById("footer-container").innerHTML = data;
+    });
+</script>
 
     <script src="js/navbar.js"></script>
 
@@ -179,7 +271,4 @@
     <script src="js/about.js"></script>
     <script src="js/preloader.js"></script>
   </body>
-
-  <!-- PRELOADER -->
-  
 </html>

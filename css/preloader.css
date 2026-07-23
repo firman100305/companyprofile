@@ -1,44 +1,33 @@
-/*====================================
-            PRELOADER
-====================================*/
+/*==================================================
+                    PRELOADER
+==================================================*/
 
 #preloader{
-
     position:fixed;
-
     inset:0;
-
-    background:#000;
-
+    background:#070707;
     display:flex;
-
     justify-content:center;
-
     align-items:center;
-
     z-index:99999;
-
-    transition:.8s;
-
+    transition:opacity .8s ease,
+               visibility .8s ease;
 }
 
 #preloader.hide{
-
     opacity:0;
-
     visibility:hidden;
-
 }
 
-/* Loader */
+/*============================*/
 
 .loader{
 
     position:relative;
 
-    width:220px;
+    width:180px;
 
-    height:220px;
+    height:180px;
 
     display:flex;
 
@@ -48,104 +37,88 @@
 
 }
 
-/* Logo */
+/*============================*/
 
-.loader img{
+.loader-logo{
 
     width:120px;
 
     position:relative;
 
-    z-index:5;
+    z-index:2;
+
+    animation:
+        logoFade 1.8s ease,
+        pulse 2.5s ease infinite;
 
     filter:
-
-        drop-shadow(0 0 8px rgba(212,175,55,.35))
-
-        drop-shadow(0 0 18px rgba(212,175,55,.25));
-
-    animation:logoPulse 2s ease-in-out infinite;
+        drop-shadow(0 0 12px rgba(212,170,82,.35));
 
 }
 
-/* Ring */
+/*============================*/
 
-.ring{
+.loader-ring{
 
     position:absolute;
 
+    width:170px;
+
+    height:170px;
+
     border-radius:50%;
 
-    border:2px solid transparent;
+    border:2px solid rgba(255,255,255,.06);
 
 }
 
-/* Ring luar */
-
-.ring1{
-
-    width:180px;
-
-    height:180px;
-
-    border-top-color:#d4af37;
-
-    border-right-color:#d4af37;
-
-    animation:spin 4s linear infinite;
-
-}
-
-/* Ring dalam */
-
-.ring2{
-
-    width:155px;
-
-    height:155px;
-
-    border-bottom-color:rgba(212,175,55,.65);
-
-    border-left-color:rgba(212,175,55,.65);
-
-    animation:spinReverse 3s linear infinite;
-
-}
-
-/* Glow */
-
-.loader::before{
+.loader-ring::before{
 
     content:"";
 
     position:absolute;
 
-    width:180px;
-
-    height:180px;
+    inset:-2px;
 
     border-radius:50%;
 
-    background:
+    border:2px solid transparent;
 
-    radial-gradient(circle,
+    border-top-color:#d8b05a;
 
-    rgba(212,175,55,.18),
+    border-right-color:#d8b05a;
 
-    transparent 70%);
-
-    filter:blur(20px);
+    animation:spin 1.3s linear infinite;
 
 }
+
+/*============================*/
+
+.loader::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:230px;
+
+    height:230px;
+
+    border-radius:50%;
+
+    background:radial-gradient(circle,
+    rgba(212,170,82,.18) 0%,
+    rgba(212,170,82,.05) 45%,
+    transparent 70%);
+
+    animation:glow 3s ease infinite;
+
+}
+
+/*============================*/
 
 @keyframes spin{
 
-    from{
-
-        transform:rotate(0deg);
-
-    }
-
     to{
 
         transform:rotate(360deg);
@@ -154,33 +127,71 @@
 
 }
 
-@keyframes spinReverse{
+@keyframes pulse{
 
-    from{
+    0%{
 
-        transform:rotate(360deg);
-
-    }
-
-    to{
-
-        transform:rotate(0deg);
-
-    }
-
-}
-
-@keyframes logoPulse{
-
-    0%,100%{
-
-        transform:scale(1);
+        transform:scale(.95);
 
     }
 
     50%{
 
-        transform:scale(1.08);
+        transform:scale(1.05);
+
+    }
+
+    100%{
+
+        transform:scale(.95);
+
+    }
+
+}
+
+@keyframes glow{
+
+    0%{
+
+        transform:scale(.9);
+
+        opacity:.3;
+
+    }
+
+    50%{
+
+        transform:scale(1.05);
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:scale(.9);
+
+        opacity:.3;
+
+    }
+
+}
+
+@keyframes logoFade{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.75);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
 
     }
 

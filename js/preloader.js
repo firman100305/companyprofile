@@ -2,10 +2,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const preloader = document.getElementById("preloader");
 
-    setTimeout(() => {
+    window.addEventListener("load", () => {
 
-        preloader.classList.add("hide");
+        setTimeout(() => {
 
-    }, 300);
+            preloader.classList.add("hide");
+
+            document.body.style.overflow = "auto";
+
+        }, 1200);
+
+    });
 
 });
+
+document.body.style.overflow = "hidden";

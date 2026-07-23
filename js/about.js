@@ -1,167 +1,3 @@
-// ======================================
-// COMPANY STORY SLIDER
-// ======================================
-
-const slides = document.querySelectorAll(".story-slide");
-const dots = document.querySelectorAll(".story-dot");
-
-let currentSlide = 0;
-let autoSlide;
-
-// ==========================
-// Show Slide
-// ==========================
-
-function showSlide(index) {
-
-    slides.forEach((slide) => {
-
-        slide.classList.remove("active");
-
-    });
-
-    dots.forEach((dot) => {
-
-        dot.classList.remove("active");
-
-    });
-
-    slides[index].classList.add("active");
-
-    dots[index].classList.add("active");
-
-    currentSlide = index;
-
-}
-
-// ==========================
-// Next Slide
-// ==========================
-
-function nextSlide() {
-
-    currentSlide++;
-
-    if (currentSlide >= slides.length) {
-
-        currentSlide = 0;
-
-    }
-
-    showSlide(currentSlide);
-
-}
-
-// ==========================
-// Auto Slide
-// ==========================
-
-function startSlider() {
-
-    autoSlide = setInterval(nextSlide, 5000);
-
-}
-
-// ==========================
-// Stop Slider
-// ==========================
-
-function stopSlider() {
-
-    clearInterval(autoSlide);
-
-}
-
-// ==========================
-// Dot Click
-// ==========================
-
-dots.forEach((dot, index) => {
-
-    dot.addEventListener("click", () => {
-
-        stopSlider();
-
-        showSlide(index);
-
-        startSlider();
-
-    });
-
-});
-
-// ==========================
-// Pause On Hover
-// ==========================
-
-const slider = document.querySelector(".story-slider");
-
-slider.addEventListener("mouseenter", stopSlider);
-
-slider.addEventListener("mouseleave", startSlider);
-
-// ==========================
-// Init
-// ==========================
-
-showSlide(0);
-
-startSlider();
-
-/*====================================
-        PREMIUM PARALLAX
-====================================*/
-
-const backgrounds = document.querySelectorAll(".parallax-bg");
-const contents = document.querySelectorAll(".parallax-content");
-
-function updateParallax(){
-
-    const scroll = window.pageYOffset;
-
-    backgrounds.forEach(bg=>{
-
-        const speed=parseFloat(bg.dataset.speed);
-
-        bg.style.transform=
-
-        `translateY(${scroll*speed}px) scale(1.12)`;
-
-    });
-
-    contents.forEach(item=>{
-
-        const speed=parseFloat(item.dataset.speed);
-
-        item.style.transform=
-
-        `translateY(${scroll*speed}px)`;
-
-    });
-
-}
-
-let ticking=false;
-
-window.addEventListener("scroll",()=>{
-
-    if(!ticking){
-
-        requestAnimationFrame(()=>{
-
-            updateParallax();
-
-            revealSections();
-
-            ticking=false;
-
-        });
-
-        ticking=true;
-
-    }
-
-});
 
 /*====================================
         REVEAL SECTION
@@ -187,10 +23,148 @@ function revealSections(){
 
 }
 
-window.addEventListener("load",()=>{
+window.addEventListener("scroll", revealSections);
 
-    updateParallax();
-
+window.addEventListener("load", () => {
     revealSections();
+});
+
+/*==================================================
+                COMPANY STORY
+==================================================*/
+
+const storySlides = document.querySelectorAll(".story-slide");
+const storyDots = document.querySelectorAll(".story-dot");
+const storySection = document.querySelector(".company-story");
+
+let currentStory = 0;
+let storyInterval;
+
+/*==================================
+        SHOW SLIDE
+==================================*/
+
+function showStory(index){
+
+    storySlides.forEach(slide=>{
+
+        slide.classList.remove("active");
+
+    });
+
+    storyDots.forEach(dot=>{
+
+        dot.classList.remove("active");
+
+    });
+
+    storySlides[index].classList.add("active");
+
+    storyDots[index].classList.add("active");
+
+    currentStory=index;
+
+}
+
+/*==================================
+        NEXT
+==================================*/
+
+function nextStory(){
+
+    currentStory++;
+
+    if(currentStory>=storySlides.length){
+
+        currentStory=0;
+
+    }
+
+    showStory(currentStory);
+
+}
+
+/*==================================
+        START
+==================================*/
+
+function startStory(){
+
+    storyInterval=setInterval(nextStory,6000);
+
+}
+
+/*==================================
+        STOP
+==================================*/
+
+function stopStory(){
+
+    clearInterval(storyInterval);
+
+}
+
+/*==================================
+        DOT CLICK
+==================================*/
+
+storyDots.forEach((dot,index)=>{
+
+    dot.addEventListener("click",()=>{
+
+        stopStory();
+
+        showStory(index);
+
+        startStory();
+
+    });
 
 });
+
+/*==================================
+        HOVER
+==================================*/
+
+storySection.addEventListener("mouseenter",stopStory);
+
+storySection.addEventListener("mouseleave",startStory);
+
+/*==================================
+        INIT
+==================================*/
+
+showStory(0);
+
+startStory();
+
+/*==================================================
+                FIXED PARALLAX
+==================================================*/
+
+const parallaxGap = document.querySelector(".reveal-parallax");
+const fixedContent = document.querySelector(".fixed-content");
+
+function revealParallax(){
+
+    if(!parallaxGap || !fixedContent) return;
+
+    const rect = parallaxGap.getBoundingClientRect();
+
+    const trigger = window.innerHeight * 0.25;
+
+    if(rect.top < trigger && rect.bottom > trigger){
+
+        fixedContent.classList.add("show");
+
+    }else{
+
+        fixedContent.classList.remove("show");
+
+    }
+
+}   
+
+window.addEventListener("scroll", revealParallax);
+
+window.addEventListener("load", revealParallax);

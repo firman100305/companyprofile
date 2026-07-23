@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap');
+
 /*==================================================
                     NEWS SECTION
 ==================================================*/
 
 .news {
   width: 100%;
-  padding: 120px 8%;
+  padding: 80px 5%;
   background: #111111;
 }
 
@@ -16,8 +18,9 @@
 .news .section-label {
   display: inline-block;
   color: #ffffff;
-  font-size: 24px;
+  font-size: 30px;
   letter-spacing: 4px;
+  font-family: "Cormorant Garamond", serif;
   text-transform: uppercase;
   margin-bottom: 20px;
   position: relative;
@@ -46,8 +49,9 @@
   max-width: 650px;
   margin: auto;
   color: #cfcfcf;
+  font-family: "Cormorant Garamond", serif;
   line-height: 1.8;
-  font-size: 15px;
+  font-size: 18px;
 }
 
 .news-grid {
@@ -59,7 +63,7 @@
 .news-card {
   background: #181818;
 
-  border-radius: 18px;
+  border-radius: 0px;
 
   overflow: hidden;
 
@@ -130,21 +134,25 @@
 }
 
 .news-content {
-  padding: 25px;
-
+  padding: 18px 20px;
   position: relative;
-
   z-index: 2;
 }
 
 .news-content h3 {
   color: #fff;
 
-  font-size: 21px;
+  font-size: 25px;
 
-  margin-bottom: 16px;
+  font-family: "Cormorant Garamond", serif;
 
-  line-height: 1.4;
+  font-weight: 300;
+
+  line-height: 1.1;
+
+  letter-spacing: 0px;
+
+  margin-bottom: 12px;
 
   transition: 0.3s;
 }
@@ -158,9 +166,9 @@
 
   font-size: 14px;
 
-  line-height: 1.8;
+  line-height: 1.6;
 
-  margin-bottom: 25px;
+  margin-bottom: 16px;
 }
 
 .news-date {
@@ -168,9 +176,9 @@
 
   color: #8f8f8f;
 
-  font-size: 13px;
+  font-size: 12px;
 
-  margin-bottom: 25px;
+  margin-bottom: 12px;
 }
 
 .news-link {
@@ -178,7 +186,7 @@
 
   align-items: center;
 
-  gap: 10px;
+  gap: 8px;
 
   color: #fff;
 
@@ -189,6 +197,8 @@
   font-weight: 600;
 
   transition: 0.3s;
+
+  margin-top: 4px;
 }
 
 .news-link i {
@@ -218,17 +228,19 @@
 
   color: #ffffff;
 
+  font-family: "Cormorant Garamond", serif;
+
   text-decoration: none;
 
   border: 1px solid rgba(212, 175, 55, 0.35);
 
-  padding: 15px 34px;
+  padding: 15px 25px;
 
   border-radius: 50px;
 
   letter-spacing: 2px;
 
-  font-size: 13px;
+  font-size: 16px;
 
   transition: 0.35s;
 }
@@ -263,31 +275,6 @@
   transform: translateY(0);
 }
 
-/* Spotlight */
-
-.news-card::after {
-  content: "";
-
-  position: absolute;
-
-  inset: 0;
-
-  background: radial-gradient(
-    320px circle at var(--x) var(--y),
-    rgba(255, 255, 255, 0.12),
-    transparent 60%
-  );
-
-  opacity: 0;
-
-  transition: 0.3s;
-
-  pointer-events: none;
-}
-
-.news-card:hover::after {
-  opacity: 1;
-}
 
 .view-all {
   overflow: hidden;
@@ -342,3 +329,4 @@
 .news-card:hover::before {
   width: 100%;
 }
+

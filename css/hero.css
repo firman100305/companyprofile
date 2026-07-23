@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -108,21 +110,19 @@ body {
 }
 
 .hero-content h1 {
-  font-size: 76px;
+  font-size: 82px;
 
-  line-height: 1.08;
+  line-height: 1.05;
 
-  font-family: Georgia, serif;
+  font-family: "Cormorant Garamond", serif;
 
-  font-weight: 400;
+  font-weight: 300;
+
+  letter-spacing: 0.5px;
 
   margin-bottom: 45px;
 
-  opacity: 0;
-
-  transform: translateY(50px);
-
-  transition: 1s;
+  animation: textFade 0.9s;
 }
 
 .slide.active .hero-content h1 {
@@ -131,35 +131,6 @@ body {
   transform: translateY(0);
 }
 
-.hero-divider {
-  display: flex;
-
-  align-items: center;
-
-  gap: 24px;
-
-  margin-top: 40px;
-
-  opacity: 0;
-
-  transition: 1.2s;
-}
-
-.slide.active .hero-divider {
-  opacity: 1;
-}
-
-.hero-divider span {
-  width: 150px;
-
-  height: 2px;
-
-  background: #c9a227;
-}
-
-.hero-divider img {
-  width: 36px;
-}
 
 .slider-btn {
   position: absolute;
@@ -332,31 +303,29 @@ body {
 }
 
 .hero-divider {
+  display: flex;
+  align-items: center;
+  margin-top: 40px;
   opacity: 0;
-
   transform: translateY(30px);
-
   transition: 1s;
-
   transition-delay: 0.5s;
 }
 
 .slide.active .hero-divider {
   opacity: 1;
-
   transform: translateY(0);
 }
 
 .hero-divider span {
-  width: 160px;
-
+  display: block;
+  width: 250px; /* sesuaikan panjang garis */
   height: 2px;
-
   background: #d4af37;
 }
 
 .hero-divider img {
-  width: 34px;
+  display: none;
 }
 
 .hero-bottom {

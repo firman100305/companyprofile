@@ -6,7 +6,18 @@
 
     <title>Mangli Djaya Raya</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700&family=Outfit:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="css/style.css" />
+  
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
 
     <link
       rel="stylesheet"
@@ -15,13 +26,20 @@
   </head>
 
   <body>
+    <!-- =========================
+        PRELOADER
+========================== -->
+<div id="preloader">
 
-    <div id="preloader">
-        <div class="loader">
-            <img src="assets/logo/logo.png" alt="Mangli Logo" />
-            <span></span>
-        </div>
+    <div class="loader">
+
+        <div class="loader-ring"></div>
+
+        <img src="assets/logo/logo.png" alt="MDR Logo" class="loader-logo">
+
     </div>
+
+</div>
 
     <div id="navbar-container"></div>
     <div class="nav-overlay"></div>
@@ -30,7 +48,7 @@
       <div class="hero-slider">
         <!-- Slide 1 -->
         <div class="slide active">
-          <img src="assets/images/rokok.jpg" alt="Hero 1">
+          <img src="assets/images/cerutu.jpg" alt="Hero 1" />
           <div class="hero-parallax"></div>
           <div class="hero-overlay"></div>
 
@@ -54,7 +72,7 @@
 
         <!-- Slide 2 -->
         <div class="slide">
-          <img src="assets/images/rokok2.jpg" alt="Hero 2">
+          <img src="assets/images/rokok2.jpg" alt="Hero 2" />
           <div class="hero-parallax"></div>
           <div class="hero-overlay"></div>
 
@@ -78,7 +96,7 @@
 
         <!-- Slide 3 -->
         <div class="slide">
-          <img src="assets/images/rokok3.jpg" alt="Hero 3">
+          <img src="assets/images/cerutu2.jpg" alt="Hero 3" />
           <div class="hero-parallax"></div>
           <div class="hero-overlay"></div>
 
@@ -131,6 +149,82 @@
         Scroll
       </div>
     </section>
+
+    <section class="about-ribbon">
+    <div class="about-ribbon-track">
+
+        <div class="about-ribbon-group">
+
+            <span class="about-ribbon-item">
+                <i class="fa-solid fa-bolt"></i>
+                Rajangan
+            </span>
+
+            <span class="about-ribbon-item">
+                <i class="fa-solid fa-bolt"></i>
+                Sun-Cured
+            </span>
+
+            <span class="about-ribbon-item">
+                <i class="fa-solid fa-bolt"></i>
+                Dark Air Cured
+            </span>
+
+            <span class="about-ribbon-item">
+                <i class="fa-solid fa-bolt"></i>
+                Dark Fired Cured
+            </span>
+
+            <span class="about-ribbon-item">
+                <i class="fa-solid fa-bolt"></i>
+                Burley
+            </span>
+
+            <span class="about-ribbon-item">
+                <i class="fa-solid fa-bolt"></i>
+                Flue-Cured Virginia
+            </span>
+
+        </div>
+
+        <!-- Duplicate supaya loop tidak putus -->
+
+        <div class="about-ribbon-group">
+
+            <span class="about-ribbon-item">
+                <i class="fa-solid fa-bolt"></i>
+                Rajangan
+            </span>
+
+            <span class="about-ribbon-item">
+                <i class="fa-solid fa-bolt"></i>
+                Sun-Cured
+            </span>
+
+            <span class="about-ribbon-item">
+                <i class="fa-solid fa-bolt"></i>
+                Dark Air Cured
+            </span>
+
+            <span class="about-ribbon-item">
+                <i class="fa-solid fa-bolt"></i>
+                Dark Fired Cured
+            </span>
+
+            <span class="about-ribbon-item">
+                <i class="fa-solid fa-bolt"></i>
+                Burley
+            </span>
+
+            <span class="about-ribbon-item">
+                <i class="fa-solid fa-bolt"></i>
+                Flue-Cured Virginia
+            </span>
+
+        </div>
+
+    </div>
+</section>
 
     <section class="about-video">
       <div class="video-wrapper">
@@ -388,13 +482,18 @@
       </div>
     </section>
     <!-- ================= END NEWS ================= -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700&family=Outfit:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
+
     <div id="footer-container"></div>
+
+    <script>
+fetch("footer.html")
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById("footer-container").innerHTML = data;
+    });
+</script>
+
+<script src="js/footer.js"></script>
 
     <script src="js/hero-slider.js"></script>
     <script src="js/about-video.js"></script>
@@ -403,13 +502,7 @@
     <script src="js/news-home.js"></script>
     <script src="js/footer.js"></script>
     <script src="js/preloader.js"></script>
-
-     
-    <script>
-        loadFooter("footer-container", "footer.html");
-    </script>
   </body>
 
   <!-- PRELOADER -->
-  
 </html>
