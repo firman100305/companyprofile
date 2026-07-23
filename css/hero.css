@@ -517,3 +517,119 @@ body {
 
   inset: -8px;
 }
+
+/*====================================
+            HERO ADS
+====================================*/
+
+.hero-ads {
+  display: flex;
+  gap: 18px;
+  margin-top: 38px;
+  animation: storyFade 1s ease;
+}
+
+.hero-ad {
+  width: 185px;
+  height: 85px;
+
+  padding: 16px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  border: 1px solid rgba(255,255,255,.12);
+
+  background: rgba(255,255,255,.04);
+
+  backdrop-filter: blur(14px);
+
+  border-radius: 14px;
+
+  transition: .35s;
+}
+
+.hero-ad:hover{
+  transform: translateY(-6px);
+
+  border-color: rgba(201,162,39,.7);
+
+  background: rgba(201,162,39,.12);
+
+  box-shadow: 0 12px 35px rgba(201,162,39,.18);
+}
+
+.ad-label{
+  font-size:9px;
+
+  letter-spacing:2px;
+
+  color:rgba(255,255,255,.55);
+
+  margin-bottom:8px;
+}
+
+.hero-ad h4{
+  font-size:18px;
+
+  font-family:"Cormorant Garamond",serif;
+
+  font-weight:500;
+
+  color:#fff;
+
+  margin-bottom:4px;
+}
+
+.hero-ad p{
+  font-size:12px;
+
+  color:rgba(255,255,255,.55);
+}
+
+/* muncul mengikuti animasi slide */
+
+.hero-ads{
+  opacity:0;
+
+  transform:translateY(25px);
+
+  transition:.8s;
+
+  transition-delay:.7s;
+}
+
+.slide.active .hero-ads{
+  opacity:1;
+
+  transform:translateY(0);
+}
+
+/* Responsive */
+
+@media (max-width:991px){
+
+.hero-ads{
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.hero-ad{
+    width:160px;
+    height:78px;
+}
+}
+
+@media (max-width:768px){
+
+.hero-ads{
+    flex-direction:column;
+    width:100%;
+    max-width:280px;
+}
+
+.hero-ad{
+    width:100%;
+}
+}

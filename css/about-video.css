@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@800;900&display=swap");
 
 .about-video {
   position: relative;
@@ -70,30 +71,47 @@
   z-index: 10;
 }
 
-.section-subtitle {
+.section-video-label {
   display: inline-block;
-
-  color: #ffffff;
-
-font-family: "Cormorant Garamond", serif;
-
-  font-size: 16px;
-
+  position: relative;
+  font-size: 30px;
+  font-family: Georgia, serif;
+  color: #fff;
   letter-spacing: 4px;
+  text-transform: uppercase;
 
-  margin-bottom: 80px;
+  padding: 0 80px;
 }
 
-.section-label{
- 
+.section-video-label::before,
+.section-video-label::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 60px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.6);
+}
 
-  color: #ffffff;
+.section-video-label::before {
+  left: 0;
+}
 
-font-family: "Cormorant Garamond", serif;
+.section-video-label::after {
+  right: 0;
+}
 
+.section-video-subtitle {
+  display: block;
+  max-width: 700px;
+  margin: 25px auto 0;
+  text-align: center;
+
+  font-family: Poppins, sans-serif;
   font-size: 16px;
-
-  letter-spacing: 4px;
+  line-height: 1.8;
+  color: #ffffff;
+  margin-bottom: 40px;
 }
 
 .video-content h2 {
@@ -135,7 +153,9 @@ font-family: "Cormorant Garamond", serif;
 
   border-radius: 999px;
 
-  background: #ffffff;
+  font-family: Poppins, sans-serif;
+
+  background: rgba(230, 221, 221, 0.651);
 
   color: #111;
 
@@ -172,143 +192,115 @@ font-family: "Cormorant Garamond", serif;
 ABOUT RIBBON
 ======================================*/
 
-.about-ribbon{
+.about-ribbon {
+  width: 100%;
 
-    width:100%;
+  background: #000;
 
-    background:#000;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 
-    border-top:1px solid rgba(255,255,255,.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 
-    border-bottom:1px solid rgba(255,255,255,.08);
+  overflow: hidden;
 
-    overflow:hidden;
+  position: relative;
 
-    position:relative;
-
-    padding:18px 0;
-
+  padding: 18px 0;
 }
 
 .about-ribbon::before,
-.about-ribbon::after{
+.about-ribbon::after {
+  content: "";
 
-    content:"";
+  position: absolute;
 
-    position:absolute;
+  top: 0;
 
-    top:0;
+  bottom: 0;
 
-    bottom:0;
+  width: 90px;
 
-    width:90px;
+  z-index: 2;
 
-    z-index:2;
-
-    pointer-events:none;
-
+  pointer-events: none;
 }
 
-.about-ribbon::before{
+.about-ribbon::before {
+  left: 0;
 
-    left:0;
-
-    background:linear-gradient(90deg,#000 0%,transparent 100%);
-
+  background: linear-gradient(90deg, #000 0%, transparent 100%);
 }
 
-.about-ribbon::after{
+.about-ribbon::after {
+  right: 0;
 
-    right:0;
-
-    background:linear-gradient(270deg,#000 0%,transparent 100%);
-
+  background: linear-gradient(270deg, #000 0%, transparent 100%);
 }
 
-.about-ribbon-track{
+.about-ribbon-track {
+  display: flex;
 
-    display:flex;
+  width: max-content;
 
-    width:max-content;
-
-    animation:aboutTicker 30s linear infinite;
-
+  animation: aboutTicker 30s linear infinite;
 }
 
-.about-ribbon:hover .about-ribbon-track{
-
-    animation-play-state:paused;
-
+.about-ribbon:hover .about-ribbon-track {
+  animation-play-state: paused;
 }
 
-.about-ribbon-group{
+.about-ribbon-group {
+  display: flex;
 
-    display:flex;
+  align-items: center;
 
-    align-items:center;
+  gap: 45px;
 
-    gap:45px;
-
-    padding-right:45px;
-
+  padding-right: 45px;
 }
 
-.about-ribbon-item{
+.about-ribbon-item {
+  display: flex;
 
-    display:flex;
+  align-items: center;
 
-    align-items:center;
+  gap: 18px;
 
-    gap:18px;
+  white-space: nowrap;
 
-    white-space:nowrap;
+  color: rgba(255, 255, 255, 0.55);
 
-    color:rgba(255,255,255,.55);
+  font-family: "Cormorant Garamond", serif;
 
-    font-family:"Cormorant Garamond", serif;
+  font-size: 24px;
 
-    font-size:24px;
+  font-weight: 500;
 
-    font-weight:500;
-
-    transition:.35s;
-
+  transition: 0.35s;
 }
 
-.about-ribbon-item i{
+.about-ribbon-item i {
+  color: #b5905e;
 
-    color:#b5905e;
+  font-size: 14px;
 
-    font-size:14px;
-
-    opacity:.6;
-
+  opacity: 0.6;
 }
 
-.about-ribbon-item:hover{
-
-    color:#d9b17e;
-
+.about-ribbon-item:hover {
+  color: #d9b17e;
 }
 
-.about-ribbon-item:hover i{
-
-    opacity:1;
-
+.about-ribbon-item:hover i {
+  opacity: 1;
 }
 
-@keyframes aboutTicker{
+@keyframes aboutTicker {
+  from {
+    transform: translateX(0);
+  }
 
-    from{
-
-        transform:translateX(0);
-
-    }
-
-    to{
-
-        transform:translateX(-50%);
-
-    }
-
+  to {
+    transform: translateX(-50%);
+  }
 }

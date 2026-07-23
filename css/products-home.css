@@ -11,70 +11,82 @@ PRODUCTS
 }
 
 .section-header {
-  max-width: 700px;
+  display: flex;
 
-  margin: auto;
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
 
   text-align: center;
 
-  margin-bottom: 0px;
+  max-width: 900px;
+
+  margin: 0 auto 70px;
 }
 
-.section-label {
-  display: inline-block;
+.product-home-label {
+  display: flex;
 
-  position: relative;
+  align-items: center;
 
-  color: #ffffff;
+  justify-content: center;
 
-  font-family: "Cormorant Garamond", serif;
+  gap: 24px;
+
+  width: 100%;
+
+  font-family: Georgia, serif;
 
   font-size: 30px;
 
   letter-spacing: 4px;
 
-  text-transform: uppercase;
+  margin-bottom: 50px;
 
-  margin-bottom: 25px;
+  color: #fff;
+
+  text-transform: uppercase;
 }
 
-.section-label::before,
-.section-label::after {
+.product-home-label::before,
+.product-home-label::after {
   content: "";
 
-  position: absolute;
+  flex: 1;
 
-  top: 50%;
-
-  width: 55px;
+  max-width: 60px;
 
   height: 1px;
 
   background: rgba(255, 255, 255, 0.5);
 }
 
-.section-label::before {
-  right: 110%;
+.product-home-label::before {
+  left: 0;
 }
 
-.section-label::after {
-  left: 110%;
+.product-home-label::after {
+  right: 0;
 }
 
-.section-subtitle {
-  display: inline-block;
+.product-home-subtitle {
+  display: block;
 
-  color: #ffffff;
+  max-width: 720px;
 
-  font-family: "Cormorant Garamond", serif;
+  text-align: center;
 
-  letter-spacing: 4px;
+  font-family: Poppins, sans-serif;
 
   font-size: 16px;
 
-  text-transform: uppercase;
+  font-weight: 400;
 
-  margin-top: 25px;
+  line-height: 1.8;
+
+  color: #ffffff;
 }
 
 .section-header h2 {

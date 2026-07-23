@@ -1,19 +1,18 @@
-
 /*====================================
         REVEAL SECTION
 ====================================*/
 
-const reveals=document.querySelectorAll(".reveal");
+const reveals = document.querySelectorAll(".reveal");
 
-function revealSections(){
+function revealSections() {
 
-    const trigger=window.innerHeight*0.82;
+    const trigger = window.innerHeight * 0.82;
 
-    reveals.forEach(section=>{
+    reveals.forEach(section => {
 
-        const top=section.getBoundingClientRect().top;
+        const top = section.getBoundingClientRect().top;
 
-        if(top<trigger){
+        if (top < trigger) {
 
             section.classList.add("show");
 
@@ -24,10 +23,8 @@ function revealSections(){
 }
 
 window.addEventListener("scroll", revealSections);
+window.addEventListener("load", revealSections);
 
-window.addEventListener("load", () => {
-    revealSections();
-});
 
 /*==================================================
                 COMPANY STORY
@@ -38,45 +35,36 @@ const storyDots = document.querySelectorAll(".story-dot");
 const storySection = document.querySelector(".company-story");
 
 let currentStory = 0;
-let storyInterval;
+let storyInterval = null;
 
-/*==================================
-        SHOW SLIDE
-==================================*/
+function showStory(index) {
 
-function showStory(index){
-
-    storySlides.forEach(slide=>{
+    storySlides.forEach(slide => {
 
         slide.classList.remove("active");
 
     });
 
-    storyDots.forEach(dot=>{
+    storyDots.forEach(dot => {
 
         dot.classList.remove("active");
 
     });
 
     storySlides[index].classList.add("active");
-
     storyDots[index].classList.add("active");
 
-    currentStory=index;
+    currentStory = index;
 
 }
 
-/*==================================
-        NEXT
-==================================*/
-
-function nextStory(){
+function nextStory() {
 
     currentStory++;
 
-    if(currentStory>=storySlides.length){
+    if (currentStory >= storySlides.length) {
 
-        currentStory=0;
+        currentStory = 0;
 
     }
 
@@ -84,87 +72,171 @@ function nextStory(){
 
 }
 
-/*==================================
-        START
-==================================*/
-
-function startStory(){
-
-    storyInterval=setInterval(nextStory,6000);
-
-}
-
-/*==================================
-        STOP
-==================================*/
-
-function stopStory(){
+function stopStory() {
 
     clearInterval(storyInterval);
 
 }
 
-/*==================================
-        DOT CLICK
-==================================*/
+function startStory() {
 
-storyDots.forEach((dot,index)=>{
+    stopStory();
 
-    dot.addEventListener("click",()=>{
+    storyInterval = setInterval(nextStory, 6000);
 
-        stopStory();
+}
 
-        showStory(index);
+if (storySlides.length) {
 
-        startStory();
+    storyDots.forEach((dot, index) => {
+
+        dot.addEventListener("click", () => {
+
+            showStory(index);
+
+            startStory();
+
+        });
 
     });
 
-});
+    storySection.addEventListener("mouseenter", stopStory);
 
-/*==================================
-        HOVER
-==================================*/
+    storySection.addEventListener("mouseleave", startStory);
 
-storySection.addEventListener("mouseenter",stopStory);
+    showStory(0);
 
-storySection.addEventListener("mouseleave",startStory);
+    startStory();
 
-/*==================================
-        INIT
-==================================*/
+}
 
-showStory(0);
-
-startStory();
 
 /*==================================================
-                FIXED PARALLAX
+            STICKY PARALLAX
 ==================================================*/
 
-const parallaxGap = document.querySelector(".reveal-parallax");
-const fixedContent = document.querySelector(".fixed-content");
+const stickyImage = document.querySelector(".sticky-image img");
+const stickyContent = document.querySelector(".sticky-content");
+const parallaxSpace = document.querySelector(".parallax-space");
 
-function revealParallax(){
+function stickyParallax() {
 
-    if(!parallaxGap || !fixedContent) return;
+    if (!stickyImage || !stickyContent || !parallaxSpace) return;
 
-    const rect = parallaxGap.getBoundingClientRect();
+    const rect = parallaxSpace.getBoundingClientRect();
 
-    const trigger = window.innerHeight * 0.25;
+    const progress = Math.min(
+        Math.max(
+            (window.innerHeight - rect.top) /
+            (window.innerHeight + rect.height),
+            0
+        ),
+        1
+    );
 
-    if(rect.top < trigger && rect.bottom > trigger){
+    const scale = 1.15 - progress * 0.15;
 
-        fixedContent.classList.add("show");
+    stickyImage.style.transform = `scale(${scale})`;
 
-    }else{
+    if (progress > 0.18 && progress < 0.82) {
 
-        fixedContent.classList.remove("show");
+        stickyContent.classList.add("show");
+
+    } else {
+
+        stickyContent.classList.remove("show");
 
     }
 
-}   
+}
 
-window.addEventListener("scroll", revealParallax);
+window.addEventListener("scroll", stickyParallax);
 
-window.addEventListener("load", revealParallax);
+window.addEventListener("load", stickyParallax);
+
+
+/*==================================================
+            SMOOTH PARALLAX
+==================================================*/
+
+let currentScale = 1.15;
+let targetScale = 1.15;
+
+function animateParallax() {
+
+    currentScale += (targetScale - currentScale) * 0.08;
+
+    if (stickyImage) {
+
+        stickyImage.style.transform = `scale(${currentScale})`;
+
+    }
+
+    requestAnimationFrame(animateParallax);
+
+}
+
+window.addEventListener("scroll", () => {
+
+    if (!parallaxSpace) return;
+
+    const rect = parallaxSpace.getBoundingClientRect();
+
+    const progress = Math.min(
+        Math.max(
+            (window.innerHeight - rect.top) /
+            (window.innerHeight + rect.height),
+            0
+        ),
+        1
+    );
+
+    targetScale = 1.15 - progress * 0.15;
+
+});
+
+animateParallax();
+
+/*==================================
+        PARALLAX CARD ANIMATION
+==================================*/
+
+const cards = document.querySelectorAll(".parallax-card");
+
+function animateCards(){
+
+    if(!parallaxSpace) return;
+
+    const rect = parallaxSpace.getBoundingClientRect();
+
+    const progress =
+        (window.innerHeight - rect.top) /
+        (window.innerHeight + rect.height);
+
+    if(progress > .18 && progress < .82){
+
+        cards.forEach((card,index)=>{
+
+            setTimeout(()=>{
+
+                card.classList.add("active");
+
+            },index*180);
+
+        });
+
+    }else{
+
+        cards.forEach(card=>{
+
+            card.classList.remove("active");
+
+        });
+
+    }
+
+}
+
+window.addEventListener("scroll",animateCards);
+
+window.addEventListener("load",animateCards);
