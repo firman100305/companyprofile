@@ -10,6 +10,7 @@
   --pp-gold-light: #e8d3b4;
   --pp-white: #ffffff;
   --pp-ink: #1c1a17;
+  --pp-black: #0f0d0b;      /* FIX: was used by .carousel-dot.active but never defined */
   --pp-gray: #6b6660;
   --pp-card: #f9f7f2;
 
@@ -19,7 +20,7 @@
 }
 
 /* ---------------------------------------------------------
-   HERO BANNER
+   HERO BANNER — split background + masked "Products" title
 --------------------------------------------------------- */
 
 .products-hero {
@@ -27,46 +28,118 @@
   min-height: 70vh;
   display: flex;
   align-items: center;
+  justify-content: center;
   overflow: hidden;
-  background: #0f0f0f;
+  background: #000000;
 }
 
-.products-hero-bg {
+.products-hero-split {
   position: absolute;
   inset: 0;
+  display: flex;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transform: scale(1.05);
+  z-index: 0;
 }
 
-@keyframes heroPulse {
-  0% { transform: scale(1.05); }
-  100% { transform: scale(1.12); }
+.products-hero-split-leaf {
+  position: relative;
+  flex: 0 0 50%;
+  width: 50%;
+  height: 100%;
+  background-image: url("../assets/images/daun.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
-@keyframes cardPopIn {
-  0% {
-    filter: brightness(0.9);
-  }
-  45% {
-    filter: brightness(1.1);
-    box-shadow: 0 34px 65px -10px rgba(200, 155, 90, 0.35);
-  }
-  100% {
-    filter: brightness(1);
-  }
-}
-
-.product-card-3d.pop-in {
-  animation: cardPopIn 0.55s ease-out;
-}
-
-.products-hero-overlay {
+.products-hero-leaf-darken {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(10, 8, 6, 0.8) 0%, rgba(10, 8, 6, 0.4) 50%, rgba(10, 8, 6, 0.85) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(10, 8, 6, 0.5) 0%,
+    rgba(10, 8, 6, 0.15) 45%,
+    rgba(10, 8, 6, 0.65) 100%
+  );
+  pointer-events: none;
 }
+
+.products-hero-split-leaf::after{
+    content:"";
+    position:absolute;
+    top:0;
+    right:-1px;
+    width:180px;
+    height:100%;
+    background:linear-gradient(
+        to right,
+        transparent,
+        rgba(0,0,0,.15),
+        rgba(0,0,0,.45),
+        #000
+    );
+    z-index:2;
+}
+
+.products-hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  background-image:url("../assets/images/noise.png");
+
+  opacity:.03;
+
+  mix-blend-mode:soft-light;
+
+  pointer-events:none;
+}
+
+/* Sisi hitam — juga menjadi wadah untuk dekorasi watermark daun */
+.products-hero-split-black {
+  flex: 0 0 50%;
+  width: 50%;
+  height: 100%;
+  background: #000000;
+  position: relative;
+  overflow: hidden;
+}
+
+.products-hero-masktitle{
+
+  text-shadow:
+  
+  0 10px 30px rgba(0,0,0,.45),
+  
+  0 0 35px rgba(200,155,90,.08);
+  
+  }
+
+/* Dekorasi watermark daun di sisi hitam hero — konsisten dengan
+   gaya .showcase-header::after dan .carousel-wrapper::before di section
+   "Our Tobacco Products" (icon Font Awesome besar, opacity gold rendah) */
+   .hero-black-leaf-1,
+.hero-black-leaf-2 {
+  position: absolute;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  color: rgba(200, 155, 90, 0.07);
+  pointer-events: none;
+  z-index: 1;
+  line-height: 1;
+}
+
+/* FIX: ukuran diperkecil dan posisi disesuaikan agar bentuk daun
+   terlihat utuh, tidak terpotong parah oleh overflow:hidden panel */
+.hero-black-leaf-1 {
+  top: 60%;
+  right: -6%;
+  font-size: clamp(110px, 13vw, 200px);
+  transform: scaleX(-1) rotate(-15deg);
+}
+
+
 
 .products-hero-inner {
   position: relative;
@@ -74,24 +147,189 @@
   width: 90%;
   max-width: 1400px;
   margin: 0 auto;
-  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.products-hero-title {
-  font-family: Georgia, serif;
-  font-weight: 400;
-  font-size: 52px;
-  line-height: 1.25;
-  color: #ffffff;
-  max-width: 850px;
-  letter-spacing: -0.01em;
-}
-
-.products-hero-title .gold-text {
-  color: var(--pp-gold);
-  font-style: italic;
+.products-hero-masktitle {
   position: relative;
+  display: flex;
+  align-items: baseline;
+  width: 100%;
+  margin: 0;
+  font-family: Georgia, serif;
+  font-weight: 700;
+  text-transform: uppercase !important;
+  letter-spacing: 0.02em;
+  line-height: 0.92;
+  font-size: clamp(52px, 10vw, 160px);
+  filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.45));
+}
+
+.products-hero-masktitle .title-white {
+  flex: 0 0 50%;
+  text-align: right;
+  text-transform: uppercase !important;
+  font-size: inherit;
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+  white-space: nowrap;
   display: inline-block;
+  opacity: 0;
+  animation: heroTitleFadeUp 0.9s cubic-bezier(0.25, 1, 0.35, 1) 0.1s forwards;
+}
+
+.products-hero-masktitle .title-masked {
+  flex: 0 0 50%;
+  text-align: left;
+  text-transform: uppercase !important;
+  font-size: inherit;
+  white-space: nowrap;
+  display: inline-block;
+  background-image: url("../assets/images/daun.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  opacity: 0;
+  animation: heroTitleFadeUp 0.9s cubic-bezier(0.25, 1, 0.35, 1) 0.3s forwards;
+
+  /* ADD THIS: Naikkan brightness dan saturate */
+  filter: brightness(0,9) contrast(1) saturate(1.7);
+}
+
+
+@keyframes heroTitleFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  .products-hero-masktitle .title-masked {
+    background: none;
+    color: var(--pp-gold);
+    -webkit-text-fill-color: initial;
+  }
+}
+/* ---------------------------------------------------------
+   GLOW EFFECT under the masked "ucts" text
+--------------------------------------------------------- */
+.products-hero-masktitle .title-masked {
+  position: relative;
+}
+
+.products-hero-masktitle .title-masked::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -18%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(200, 155, 90, 0.28) 0%,
+    rgba(200, 155, 90, 0.1) 45%,
+    transparent 75%
+  );
+  filter: blur(28px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Tagline — pojok kiri bawah, dibatasi agar tidak melebihi lebar panel leaf (50%) */
+.products-hero-subtitle {
+  position: absolute;
+  left: clamp(20px, 4vw, 40px);
+  bottom: clamp(20px, 4vw, 40px);
+  z-index: 3;
+  /* max-width dihitung dari 50% (lebar panel leaf) dikurangi jarak kiri-kanan,
+     jadi teks tidak akan pernah menyentuh/melewati sisi hitam */
+  max-width: min(460px, calc(50% - clamp(20px, 4vw, 40px) - 16px));
+  margin: 0;
+  font-size: clamp(12px, 1.6vw, 16px);
+  line-height: 1.6;
+  color: #ffffff;
+  font-weight: 300;
+  text-align: left;
+  opacity: 0;
+  word-wrap: break-word;
+  animation: heroTitleFadeUp 0.9s cubic-bezier(0.25, 1, 0.35, 1) 0.55s forwards;
+}
+
+.products-hero-subtitle .gold-text {
+  color: #ffffff;
+  font-style: normal;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .products-hero {
+    min-height: 62vh;
+  }
+  .products-hero-masktitle {
+    font-size: clamp(38px, 12vw, 90px);
+  }
+  .hero-black-leaf-1,
+  .hero-black-leaf-2 {
+    display: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .products-hero-subtitle {
+    font-size: 11px;
+    line-height: 1.5;
+  }
+}
+
+@keyframes cardPopIn {
+  0% {
+    transform: scale(0.97);
+    filter: brightness(0.9);
+  }
+  45% {
+    transform: scale(1.02);
+    filter: brightness(1.1);
+    box-shadow: 0 34px 65px -10px rgba(200, 155, 90, 0.35);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+/* FIX: pop-in animation was fighting the inline transform set by JS
+   (both tried to control `transform`, causing a visible snap).
+   We now animate box-shadow/filter only, and let JS own transform. */
+@keyframes cardPopGlow {
+  0% {
+    filter: brightness(0.92);
+    box-shadow: 0 15px 35px -10px rgba(28, 26, 23, 0.1);
+  }
+  45% {
+    filter: brightness(1.12);
+    box-shadow: 0 34px 65px -10px rgba(200, 155, 90, 0.45);
+  }
+  100% {
+    filter: brightness(1);
+    box-shadow: 0 25px 50px -12px rgba(200, 155, 90, 0.25),
+                0 10px 25px -5px rgba(28, 26, 23, 0.12);
+  }
+}
+
+.product-card-3d.pop-in {
+  animation: cardPopGlow 0.6s ease-out;
 }
 
 /* ---------------------------------------------------------
@@ -100,43 +338,14 @@
 
 .product-showcase-section {
   position: relative;
-  background: var(--pp-white);
+  background: #000000;
   padding: 90px 0 120px;
   overflow: hidden;
 }
 
-.product-showcase-section::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(rgba(169, 127, 67, 0.16) 1px, transparent 1.6px),
-    repeating-linear-gradient(
-      135deg,
-      rgba(200, 155, 90, 0.05) 0px,
-      rgba(200, 155, 90, 0.05) 1px,
-      transparent 1px,
-      transparent 16px
-    );
-  background-size: 26px 26px, auto;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Ambient blurred circles */
+.product-showcase-section::after,
 .product-showcase-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 6% 12%, rgba(169, 127, 67, 0.30) 0%, rgba(169, 127, 67, 0) 60%),
-    radial-gradient(circle at 94% 18%, rgba(232, 211, 180, 0.45) 0%, rgba(232, 211, 180, 0) 60%),
-    radial-gradient(circle at 8% 88%, rgba(200, 155, 90, 0.30) 0%, rgba(200, 155, 90, 0) 60%),
-    radial-gradient(circle at 92% 90%, rgba(169, 127, 67, 0.28) 0%, rgba(169, 127, 67, 0) 60%),
-    radial-gradient(ellipse at 50% 25%, rgba(200, 155, 90, 0.18) 0%, rgba(224, 194, 145, 0.08) 40%, rgba(255, 255, 255, 0) 70%);
-  filter: blur(60px);
-  pointer-events: none;
-  z-index: 0;
+  content: none; /* no dot/glow pattern */
 }
 
 .showcase-header {
@@ -165,53 +374,55 @@
   font-family: Georgia, serif;
   font-weight: 400;
   font-size: 38px;
-  color: var(--pp-ink);
+  color: #f5f0e8;
   letter-spacing: -0.01em;
 }
 
 .showcase-header h2 span {
-  color: var(--pp-gold-dark);
+  color: var(--pp-gold);
   font-style: italic;
 }
 
 .showcase-header p {
   margin-top: 14px;
-  color: var(--pp-gray);
+  color: #a89f92;
   font-size: 15px;
   line-height: 1.8;
   font-weight: 300;
 }
 
 /* Divider with animated leaf */
-.section-divider {
+.product-divider {
   position: relative;
   z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 18px;
   width: 85%;
   max-width: 900px;
   margin: 36px auto 70px;
+  background: transparent;
 }
 
-.section-divider::before,
-.section-divider::after {
+.product-divider::before,
+.product-divider::after {
   content: "";
   flex: 1;
   height: 1px;
-  background: linear-gradient(to right, transparent, var(--pp-gold), transparent);
+  background: linear-gradient(to right, transparent, #c89b5a, transparent);
 }
 
-.section-divider i {
-  color: var(--pp-gold);
-  font-size: 16px;
-  transform: rotate(-40deg);
-  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+.product-divider i {
+  margin: 0 18px;
+  color: #dda14e;
+  font-size: 18px;
+  animation: leafSway 3.2s ease-in-out infinite;
+  transform-origin: center;
 }
 
-.section-divider:hover i {
-  transform: rotate(0deg) scale(1.2);
+@keyframes leafSway {
+  0%, 100% { transform: rotate(-8deg); }
+  50% { transform: rotate(8deg); }
 }
 
 /* ---------------------------------------------------------
@@ -274,6 +485,7 @@
   filter: blur(12px);
   z-index: 0;
   pointer-events: none;
+  transition: opacity 0.4s ease;
 }
 
 /* Card Item */
@@ -289,14 +501,15 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(200, 155, 90, 0.25);
-  border-radius: 22px;
-  padding: 20px 20px 22px;
+  border-radius: 14px;
+  padding: 0 0 20px;
   box-shadow: 0 15px 35px -10px rgba(28, 26, 23, 0.1);
+  overflow: hidden; /* keep the full-bleed image inside the card's rounded corners */
   transition:
     transform 0.65s cubic-bezier(0.25, 1, 0.35, 1),
-    opacity 0.65s ease,
-    filter 0.65s ease,
-    box-shadow 0.65s ease,
+    opacity 0.5s ease,
+    filter 0.5s ease,
+    box-shadow 0.5s ease,
     border-color 0.4s ease,
     background 0.4s ease;
   cursor: pointer;
@@ -317,11 +530,12 @@
               0 10px 25px -5px rgba(28, 26, 23, 0.12);
 }
 
-/* Image Wrapper */
+/* Image Wrapper — full-bleed, flush with the card's top/left/right edges */
 .card-image {
-  flex: 0 0 52%;
+  flex: 0 0 55%;
   width: 100%;
-  border-radius: 14px;
+  margin: 0;
+  border-radius: 0; /* card itself clips the corners via overflow:hidden */
   overflow: hidden;
   position: relative;
   background: #121212;
@@ -340,7 +554,7 @@
   opacity: 1;
 }
 
-/* Badge (Overlay di pojok kiri atas gambar) */
+/* Badge */
 .card-badge {
   position: absolute;
   top: 12px;
@@ -360,16 +574,20 @@
   border: 1px solid rgba(255, 255, 255, 0.15);
   display: inline-block;
   pointer-events: none;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.card-badge::after {
-  display: none;
+.product-card-3d.is-active:hover .card-badge {
+  background: rgba(200, 155, 90, 0.85);
+  transform: translateY(-2px);
 }
 
 /* Description Text */
 .card-desc {
-  flex: 1 1 auto;
-  margin-top: 14px;
+  flex: 0 1 auto;
+  margin-top: auto;   /* centers this + .card-link as a group in the remaining space */
+  margin-bottom: 0;
+  padding: 0 20px;
   font-size: 12.5px;
   line-height: 1.65;
   color: #555048;
@@ -377,33 +595,56 @@
   text-align: center;
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
 }
 
-/* Link Button */
+/* ---------------------------------------------------------
+   VIEW DETAIL LINK — text + underline only (no border/pill)
+--------------------------------------------------------- */
 .card-link {
   flex: 0 0 auto;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin: auto auto 0;
-  padding: 8px 18px;
-  border-radius: 20px;
+  gap: 6px;
+  margin: 22px auto auto;
+  padding-bottom: 3px;
   font-size: 11.5px;
   font-weight: 600;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--pp-ink);
-  background: rgba(200, 155, 90, 0.12);
+  background: none;
   border: none;
-  cursor: pointer;
+  border-radius: 0;
+  text-decoration: none;
   position: relative;
   opacity: 0;
   transform: translateY(10px);
-  transition: all 0.35s ease;
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    color 0.3s ease,
+    letter-spacing 0.3s ease;
   pointer-events: none;
+}
+
+.card-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0.35);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.35, 1), background 0.3s ease;
+}
+
+.card-link i {
+  font-size: 10px;
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.35, 1);
 }
 
 .product-card-3d.is-active .card-link {
@@ -412,9 +653,18 @@
   pointer-events: auto;
 }
 
-.product-card-3d.is-active .card-link:hover {
-  background: var(--pp-ink);
-  color: var(--pp-gold);
+.card-link:hover {
+  color: var(--pp-gold-dark);
+  letter-spacing: 0.12em;
+}
+
+.card-link:hover::after {
+  transform: scaleX(1);
+  background: var(--pp-gold-dark);
+}
+
+.card-link:hover i {
+  transform: translateX(3px);
 }
 
 /* Navigation Buttons */
@@ -447,7 +697,18 @@
   box-shadow: 0 12px 30px rgba(28, 26, 23, 0.22);
 }
 
-/* Didekatkan agar tidak terlalu ke samping luar layar */
+.carousel-nav-btn:active {
+  transform: translateY(-50%) scale(0.96);
+}
+
+/* FIX: disabled state so the nav buttons give clear feedback while a
+   transition is in progress (prevents the "double click looks broken" bug) */
+.carousel-nav-btn[disabled] {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}
+
 .carousel-nav-btn.prev { left: 45px; }
 .carousel-nav-btn.next { right: 45px; }
 
@@ -459,25 +720,31 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin-top: 65px; 
+  margin-top: 65px;
 }
 
 .carousel-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #e2d7c3;
+  background: rgba(14, 10, 10, 0.25);
   border: none;
   cursor: pointer;
   padding: 0;
   transition: all 0.4s cubic-bezier(0.25, 1, 0.35, 1);
 }
 
+.carousel-dot:hover {
+  background: rgba(200, 155, 90, 0.55);
+}
+
+/* FIX: --pp-black is now defined above, so the active dot renders correctly */
 .carousel-dot.active {
   width: 30px;
   height: 8px;
   border-radius: 4px;
-  background: var(--pp-ink);
+  background: var(--pp-gold-dark);
+  box-shadow: 0 0 0 3px rgba(200, 155, 90, 0.15);
 }
 
 /* ---------------------------------------------------------
@@ -492,9 +759,6 @@
 }
 
 @media (max-width: 1024px) {
-  .products-hero-title {
-    font-size: 40px;
-  }
   :root {
     --card-w: 260px;
     --card-h: 430px;
@@ -507,11 +771,8 @@
 }
 
 @media (max-width: 768px) {
-  .products-hero {
-    min-height: 50vh;
-  }
-  .products-hero-title {
-    font-size: 28px;
+  .products-hero-subtitle {
+    font-size: 14px;
   }
   .showcase-header h2 {
     font-size: 28px;
@@ -533,5 +794,21 @@
   :root {
     --card-w: 78vw;
     --card-h: 400px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .products-hero-split-leaf,
+  .product-divider i,
+  .product-card-3d.pop-in,
+  .products-hero-masktitle .title-white,
+  .products-hero-masktitle .title-masked,
+  .products-hero-subtitle {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .product-card-3d {
+    transition-duration: 0.01ms !important;
   }
 }

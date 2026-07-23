@@ -18,10 +18,16 @@ document.addEventListener("DOMContentLoaded", () => {
   let prevOffsets = new Array(total).fill(0);
   let prevActiveIndex = current;
 
+  // FIX: without a lock, rapid clicking on prev/next (or spamming dots)
+  // during an in-flight transition made the layout jump/stutter because
+  // multiple renders overlapped mid-animation.
+  let isAnimating = false;
+  const TRANSITION_MS = 650;
+
   function getMaxVisibleRing() {
     const w = window.innerWidth;
-    if (w <= 767) return 1;  // Tampilkan 3 kartu di HP
-    return 2;                // Tampilkan 5 kartu di Tablet & Desktop
+    if (w <= 640) return 1; // 3 cards visible on phones
+    return 2; // 5 cards visible on tablet & desktop
   }
 
   function getCardWidth() {
@@ -41,6 +47,11 @@ document.addEventListener("DOMContentLoaded", () => {
     return offset;
   }
 
+  function setNavDisabled(disabled) {
+    if (prevBtn) prevBtn.disabled = disabled;
+    if (nextBtn) nextBtn.disabled = disabled;
+  }
+
   function render() {
     const cardW = getCardWidth();
     const maxRing = getMaxVisibleRing();
@@ -53,7 +64,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const offset = computeOffset(i);
       const prevOffset = prevOffsets[i];
 
-      // Deteksi jika kartu melompat dari sisi paling kanan ke kiri (atau sebaliknya)
+      // Detect a card jumping from one end of the loop to the other,
+      // so we can skip the transition for just that one frame (no seam glitch).
       const isSeamJump = Math.abs(offset - prevOffset) > total / 2 + 0.001;
 
       const abs = Math.abs(offset);
@@ -66,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
       let pointer = "auto";
 
       if (abs === 0) {
-        // --- KARTU UTAMA (TENGAH) ---
+        // --- MAIN (CENTER) CARD ---
         translateX = 0;
         scale = 1.08;
         rotate = 0;
@@ -74,31 +86,31 @@ document.addEventListener("DOMContentLoaded", () => {
         blur = 0;
         z = 50;
       } else if (abs === 1) {
-        // --- KARTU SAMPING DEKAT (2 KIRI-KANAN PERTAMA) ---
-        translateX = offset * cardW * 0.95;
-        scale = 0.88;
+        // --- NEAR SIDE CARDS ---
+        translateX = offset * cardW * 0.75;
+        scale = 0.86;
         rotate = offset * -10;
         opacity = 0.9;
         blur = 0;
         z = 40;
         pointer = "auto";
       } else if (abs === 2) {
-        // --- KARTU SAMPING LUAR (2 KIRI-KANAN KEDUA) ---
-        translateX = offset * cardW * 1.65;
-        scale = 0.72;
-        rotate = offset * -15;
+        // --- CARDS BEHIND abs=1 ---
+        translateX = offset * cardW * 0.76;
+        scale = 0.78;
+        rotate = offset * -10;
         opacity = maxRing >= 2 ? 0.65 : 0;
-        blur = maxRing >= 2 ? 1.5 : 5;
+        blur = maxRing >= 2 ? 1 : 6;
         z = 30;
         pointer = maxRing >= 2 ? "auto" : "none";
       } else {
-        // --- KARTU SISA (DISEMBUNYIKAN SEBAGAI BUFFER) ---
-        translateX = offset * cardW * 2.2;
-        scale = 0.55;
-        rotate = offset * -20;
+        // --- REMAINING BUFFER CARDS ---
+        translateX = offset * cardW * 0.77;
+        scale = 0.7;
+        rotate = offset * -10;
         opacity = 0;
-        blur = 6;
-        z = 10;
+        blur = 4;
+        z = 20;
         pointer = "none";
       }
 
@@ -125,7 +137,10 @@ document.addEventListener("DOMContentLoaded", () => {
       prevOffsets[i] = offset;
     });
 
-    // Animasi pop halus ketika berganti kartu utama
+    // Subtle glow/pop pulse on the new active card.
+    // FIX: the animation now only touches filter/box-shadow (see CSS),
+    // so it no longer fights the inline `transform` set above — that
+    // conflict was the cause of the visible "snap" on the previous version.
     if (current !== prevActiveIndex) {
       const activeCard = cards[current];
       if (activeCard) {
@@ -145,14 +160,26 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function goTo(index, direction) {
+    if (isAnimating) return; // ignore input mid-transition
     const target = (index + total) % total;
+    if (target === current) return;
+
     if (direction === undefined) {
       const diff = (target - current + total) % total;
       direction = diff <= total / 2 ? 1 : -1;
     }
+
+    isAnimating = true;
+    setNavDisabled(true);
+
     lastDirection = direction;
     current = target;
     render();
+
+    window.setTimeout(() => {
+      isAnimating = false;
+      setNavDisabled(false);
+    }, TRANSITION_MS);
   }
 
   if (prevBtn) prevBtn.addEventListener("click", () => goTo(current - 1, -1));
@@ -184,6 +211,15 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       { passive: true }
     );
+  }
+
+  // Optional: keyboard navigation for accessibility.
+  if (viewport) {
+    viewport.setAttribute("tabindex", "0");
+    viewport.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") goTo(current - 1, -1);
+      if (e.key === "ArrowRight") goTo(current + 1, 1);
+    });
   }
 
   let resizeTimer = null;

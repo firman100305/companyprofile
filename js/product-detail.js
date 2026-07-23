@@ -95,12 +95,6 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="pd-title-group">
           <p class="pd-product-eyebrow">${product.badge || "Signature Leaf"}</p>
           <h1 class="pd-product-title">${product.title}</h1>
-          <div class="pd-title-mark">
-            <span class="pd-title-underline"></span>
-            <svg class="pd-title-leaf" viewBox="0 0 24 24">
-              <path d="M17,8C8,10,5,16,5,22C11.5,22,15.5,19,17,13C18,9,17,8,17,8M17,2C17,2,11,3,7,7C3,11,2,16,2,16C2,16,7,15,11,11C14,8.8,16,5,17,2Z"/>
-            </svg>
-          </div>
         </div>
 
         <!-- Hover Pill Navigation -->
