@@ -1,3 +1,4 @@
+
 .navbar {
   position: fixed;
 
@@ -59,7 +60,7 @@
 }
 
 .logo span {
-  color: #d4af37;
+  color: #c89b5a;
 
   font-size: 22px;
 
@@ -83,7 +84,7 @@
 
   list-style: none;
 
-  gap: 45px;
+  gap: 30px;
 }
 
 .nav-link {
@@ -93,11 +94,11 @@
 
   color: white;
 
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Poppins", "Segoe UI", sans-serif;
 
   font-size: 16px;
 
-  font-weight: 500;
+  font-weight: 200;
 
   letter-spacing: 1px;
 
@@ -105,7 +106,7 @@
 }
 
 .nav-link:hover {
-  color: #d4af37;
+  color: #c89b5a;
 }
 
 /* garis bawah */
@@ -123,7 +124,7 @@
 
   height: 2px;
 
-  background: #d4af37;
+  background: #c89b5a;
 
   transform: translateX(-50%);
 
@@ -136,7 +137,7 @@
 }
 
 .nav-link.active {
-  color: #d4af37;
+  color: #c89b5a;
 }
 
 /* ==========================
@@ -178,7 +179,7 @@
 
   list-style: none;
 
-  background: #141414;
+  background: rgba(20, 20, 20, 0.55);
 
   border-radius: 12px;
 
@@ -218,7 +219,7 @@
 
   text-decoration: none;
 
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Poppins", "Segoe UI", sans-serif;
 
   font-size: 15px;
 
@@ -230,7 +231,7 @@
 }
 
 .dropdown-menu a:hover {
-  background: #202020;
+  background: rgba(20, 20, 20, 0.55);
 
   color: white;
 }
@@ -290,11 +291,11 @@
 
   color: #ffffff;
 
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Poppins", "Segoe UI", sans-serif;
 
   font-size: 15px;
 
-  font-weight: 800;
+  font-weight: 400;
 
   letter-spacing: 0.5px;
 
