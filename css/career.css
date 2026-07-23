@@ -1,14 +1,15 @@
+
 /* ==========================
-   CAREER HERO (Sama seperti News & Contact)
+   CAREER HERO (MINIMALIST & SHARP - MATCHING CONTACT)
 ========================== */
 .career-hero {
     position: relative;
-    min-height: 400px;
+    min-height: 100vh; /* Full screen premium feel */
     display: flex;
     align-items: center;
-    padding: 190px 0 90px;
     overflow: hidden;
     background: #0a0a0a;
+    z-index: 1;
 }
 
 .career-hero .hero-bg {
@@ -21,159 +22,112 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 100%;
+    /* ✅ Filter BALANCED - tajam, detail terlihat, TIDAK PECAH */
+    filter: 
+        brightness(0.7) 
+        contrast(1.15) 
+        saturate(1.05);
+    transform: scale(1.02);
+    transition: transform 10s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation: slowZoom 15s ease-in-out infinite alternate;
 }
 
+/* Animasi Slow Zoom Cinematic */
+@keyframes slowZoom {
+    from { transform: scale(1.02); }
+    to { transform: scale(1.06); }
+}
+
+.career-hero:hover .hero-bg img {
+    transform: scale(1.05);
+}
+
+/* ✅ Overlay radial yang subtle agar gambar tetap terlihat jelas */
 .career-hero .hero-overlay {
     position: absolute;
     inset: 0;
     z-index: 1;
-    background:
-        linear-gradient(100deg,
-            rgba(8, 8, 8, 0.96) 0%,
-            rgba(8, 8, 8, 0.85) 30%,
-            rgba(8, 8, 8, 0.45) 60%,
-            rgba(8, 8, 8, 0.25) 100%),
-        linear-gradient(0deg,
-            rgba(8, 8, 8, 0.85) 0%,
-            rgba(8, 8, 8, 0.2) 45%,
-            rgba(8, 8, 8, 0.55) 100%);
+    background: 
+        radial-gradient(ellipse at center, 
+            transparent 40%, 
+            rgba(10, 10, 10, 0.3) 100%);
 }
 
-.career-hero .hero-content {
-    position: relative;
-    z-index: 2;
-    width: 90%;
-    max-width: 1400px;
-    margin: 0 auto;
+/* Sembunyikan elemen lama jika masih ada sisa */
+.career-hero .products-hero-inner,
+.career-hero .detail-breadcrumb,
+.career-hero .products-hero-title {
+    display: none;
 }
 
-.career-hero .detail-breadcrumb {
-    display: flex;
-    gap: 10px;
-    font-size: 13px;
-    color: #cfcfcf;
-    margin-bottom: 20px;
-}
-
-.career-hero .detail-breadcrumb a {
-    color: #d4af37;
-    text-decoration: none;
-}
-
-.career-hero .hero-title {
-    font-family: "Playfair Display", Georgia, serif;
-    font-size: 48px;
-    line-height: 1.25;
-    font-weight: 700;
-    max-width: 700px;
-    margin: 0 0 20px 0;
-    color: #fff;
-}
-
-.career-hero .hero-title .gold {
-    color: #d4af37;
-}
-
-.career-hero .hero-subtitle {
-    color: #d8d8d8;
-    max-width: 620px;
-    line-height: 1.9;
-    font-size: 16px;
-    font-weight: 500;
-    margin: 0;
-}
-
+/* CAREER Label - Outline Text (Posisi Bawah Tengah) */
 /* ==========================
-   RESPONSIVE
+   CAREER HERO LABEL (Matched with About Hero Typography)
 ========================== */
-@media (max-width: 768px) {
-    .career-hero .hero-title {
-        font-size: 32px;
+.career-hero-label {
+    position: absolute;
+    bottom: -15px; /* Disesuaikan agar baseline-nya sama dengan about.css */
+    right: 10px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.career-hero-label span {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    font-size: clamp(120px, 8vw, 260px);
+    font-weight: 900;
+    line-height: 0.82;
+
+    color: transparent;
+    -webkit-text-stroke: 2px #fff; /* Outline putih solid seperti About */
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: block;
+}
+
+/* Responsive Tablet */
+@media (max-width: 992px) {
+    .career-hero-label {
+        bottom: -10px;
     }
     
-    .career-hero .hero-subtitle {
-        font-size: 14px;
+    .career-hero-label span {
+        font-size: clamp(90px, 10vw, 180px);
+        -webkit-text-stroke: 1.5px #fff;
     }
 }
 
-/* ==========================
-   CAREER HIGHLIGHTS
-========================== */
-.career-highlights {
-    padding: 60px 0;
-    background: #fff; /* ✅ FIXED: #ffff → #fff */
-}
-
-.highlights-container {
-    width: 90%;
-    max-width: 1400px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-}
-
-.highlight-card {
-    border-radius: 16px;
-    overflow: hidden;
-    aspect-ratio: 16 / 10;
-    background: #111;
-}
-
-.highlight-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.4s ease;
-}
-
-.highlight-card:hover img {
-    transform: scale(1.05);
-}
-
-/* Card tengah (logo) - background hitam solid */
-.highlight-card.highlight-logo {
-    background: #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.highlight-card.highlight-logo img {
-    object-fit: contain;
-    padding: 30px;
-    max-width: 80%;
-    max-height: 80%;
-}
-
-/* ==========================
-   RESPONSIVE
-========================== */
+/* Responsive Mobile */
 @media (max-width: 768px) {
-    .highlights-container {
-        grid-template-columns: 1fr;
-        gap: 16px;
+    .career-hero-label {
+        bottom: -10px;
     }
-
-    .highlight-card {
-        aspect-ratio: 16 / 9;
+    
+    .career-hero-label span {
+        font-size: clamp(70px, 12vw, 120px);
+        -webkit-text-stroke: 1.5px #fff;
     }
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
-    .highlights-container {
-        gap: 16px;
+/* Responsive Small Mobile */
+@media (max-width: 480px) {
+    .career-hero-label {
+        bottom: -5px;
+    }
+    
+    .career-hero-label span {
+        font-size: clamp(50px, 15vw, 90px);
+        -webkit-text-stroke: 1px #fff;
     }
 }
 
 /* ==========================
-   CAREER BENEFITS
+   CAREER BENEFITS (DESAIN BARU - GOLD)
 ========================== */
 .career-benefits {
     padding: 80px 0;
-    background: #fff; /* ✅ FIXED: #ffff → #fff */
+    background: #0a0a0a;
 }
 
 .career-benefits .container {
@@ -187,69 +141,83 @@
     font-family: "Playfair Display", Georgia, serif;
     font-size: 36px;
     font-weight: 700;
-    color: #1a1a1a;
+    color: #fff;
     margin: 0 0 60px 0;
 }
 
 .benefits-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
+    gap: 24px;
 }
 
+/* ===== CARD BARU ===== */
 .benefit-card {
     position: relative;
-    background: #fff;
-    border-radius: 16px;
-    padding: 50px 24px 32px;
-    text-align: center;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-    border: 1px solid #f0e6d0;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #D4AF37; /* Gold solid */
+    border-radius: 20px;
+    padding: 32px 24px 28px;
+    color: #000;
+    overflow: hidden; /* PENTING: memotong icon */
+    min-height: 380px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+    transition: transform 0.3s ease;
 }
 
 .benefit-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 30px rgba(212, 175, 55, 0.15);
+    transform: translateY(-6px);
 }
 
-/* Icon bulat yang overlap di atas card */
+/* ===== ICON BESAR DI KIRI, TERPOTONG ===== */
 .benefit-icon {
     position: absolute;
-    top: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    background: #e8a838;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 12px rgba(232, 168, 56, 0.35);
+    top: 50%;
+    left: -70px; /* Geser ke kiri biar terpotong */
+    transform: translateY(-50%);
+    font-size: 260px;
+    color: rgba(255, 255, 255, 0.18);
+    line-height: 1;
+    z-index: 0;
+    user-select: none;
+    pointer-events: none;
 }
 
 .benefit-icon svg {
-    width: 30px;
-    height: 30px;
+    width: 260px;
+    height: 260px;
+    fill: rgba(255, 255, 255, 0.18);
 }
 
+/* ===== TEKS DI ATAS ICON ===== */
 .benefit-card h3 {
     font-family: "Poppins", sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    color: #1a1a1a;
-    line-height: 1.5;
-    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #000;
+    line-height: 1.3;
+    margin: 0 0 12px 0;
+    position: relative;
+    z-index: 1;
 }
 
-/* ==========================
-   RESPONSIVE
-========================== */
+.benefit-card p {
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.8);
+    line-height: 1.6;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== RESPONSIVE ===== */
 @media (max-width: 992px) {
     .benefits-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 40px 24px;
+        gap: 24px;
     }
 }
 
@@ -258,15 +226,20 @@
         font-size: 26px;
         margin-bottom: 40px;
     }
-
     .benefits-grid {
         grid-template-columns: 1fr;
-        gap: 36px;
+        gap: 24px;
     }
-
     .benefit-card {
-        max-width: 320px;
-        margin: 0 auto;
+        min-height: 320px;
+    }
+    .benefit-icon {
+        font-size: 200px;
+        left: -50px;
+    }
+    .benefit-icon svg {
+        width: 200px;
+        height: 200px;
     }
 }
 
@@ -274,13 +247,13 @@
    CURRENT OPENINGS
 ========================== */
 .current-openings {
-    padding: 100px 0;
-    background: #fff;
+    padding: 100px 0 0 0;
+    background: #0a0a0a;
 }
 
 .current-openings .container {
     width: 90%;
-    max-width: 1200px; /* ✅ FIXED: Gabungkan jadi satu (1200px) */
+    max-width: 1200px;
     margin: 0 auto;
     text-align: center;
 }
@@ -300,73 +273,140 @@
     font-family: "Playfair Display", Georgia, serif;
     font-size: 42px;
     font-weight: 700;
-    color: #1a1a1a;
+    color: #fff;
     margin: 0 0 60px 0;
     line-height: 1.3;
 }
 
 .openings-visual {
-    margin: 60px 0;
+    position: relative;
+    margin: 60px 0 0 0;
     padding: 0;
-    border-radius: 24px;
+    border-radius: 0;
     overflow: hidden;
-    background: #fff; /* ✅ FIXED: #ffff → #fff */
+    width: 100vw;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .workspace-image {
     width: 100%;
-    height: auto;
-    display: block;
+    height: clamp(280px, 35vw, 450px);
     object-fit: cover;
-    max-height: 500px;
+    object-position: center 30%;
+    display: block;
+}
+
+.openings-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.75) 0%,
+        rgba(0, 0, 0, 0.55) 50%,
+        rgba(0, 0, 0, 0.75) 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.overlay-content {
+    text-align: center;
+    padding: 40px;
+    max-width: 700px;
+    animation: fadeInUp 0.8s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.overlay-content h3 {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 32px;
+    color: #fff;
+    margin: 0 0 12px 0;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.overlay-content p {
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    font-weight: 500;
 }
 
 .no-positions {
-    font-family: "Poppins", sans-serif;
-    font-size: 16px;
-    color: #888;
-    margin: 40px 0 0;
-    line-height: 1.6;
+    display: none;
 }
 
-/* ==========================
-   RESPONSIVE
-========================== */
 @media (max-width: 768px) {
     .openings-title {
         font-size: 28px;
     }
-
     .workspace-image {
-        max-height: 300px;
+        height: clamp(220px, 50vw, 300px);
+    }
+    .overlay-content {
+        padding: 30px 20px;
+    }
+    .overlay-content h3 {
+        font-size: 22px;
+    }
+    .overlay-content p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .overlay-content h3 {
+        font-size: 18px;
+    }
+    .overlay-content p {
+        font-size: 13px;
     }
 }
 
 /* ==========================
    CURRENT OPENINGS JOB LIST
 ========================== */
-/* Job List */
 .job-list {
     display: flex;
     flex-direction: column;
-    gap: 32px;
-    max-width: 1000px;
-    margin: 0 auto;
+    gap: 50px;
+    width: 100%;
+    margin: 60px 0 0 0;
 }
 
-/* Job Card Full Width */
 .job-card-full {
     position: relative;
-    width: 100%;
-    height: 320px;
-    border-radius: 16px;
+    width: 100vw;
+    height: 450px;
+    border-radius: 0;
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.3s ease;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-left: calc(-50vw + 50%);
 }
 
 .job-card-full:hover {
-    transform: translateY(-4px);
+    transform: translateX(-50%) translateY(-4px);
 }
 
 .job-card-bg {
@@ -386,50 +426,50 @@
     transform: scale(1.05);
 }
 
-/* Dark overlay agar text readable */
 .job-card-overlay {
     position: absolute;
     inset: 0;
     z-index: 1;
     background: linear-gradient(
         90deg,
-        rgba(0, 0, 0, 0.75) 0%,
-        rgba(0, 0, 0, 0.5) 50%,
-        rgba(0, 0, 0, 0.1) 100%
+        rgba(0, 0, 0, 0.85) 0%,
+        rgba(0, 0, 0, 0.6) 40%,
+        rgba(0, 0, 0, 0.3) 100%
     );
 }
 
-/* Content overlay di kiri bawah */
 .job-card-content {
     position: relative;
     z-index: 2;
-    padding: 40px;
+    padding: 60px;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-start;
     text-align: left;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .job-card-content h3 {
     font-family: "Playfair Display", serif;
-    font-size: 28px;
+    font-size: 36px;
     color: #fff;
-    margin: 0 0 12px 0;
+    margin: 0 0 16px 0;
 }
 
 .job-card-content p {
     color: rgba(255, 255, 255, 0.9);
-    font-size: 14px;
-    line-height: 1.7;
-    margin: 0 0 24px 0;
-    max-width: 500px;
+    font-size: 15px;
+    line-height: 1.8;
+    margin: 0 0 32px 0;
+    max-width: 600px;
 }
 
 .btn-apply-now {
     display: inline-block;
-    padding: 12px 28px;
+    padding: 14px 32px;
     background: #d4af37;
     color: #fff;
     text-decoration: none;
@@ -444,47 +484,107 @@
     transform: translateY(-2px);
 }
 
-/* Responsive */
 @media (max-width: 768px) {
-    .openings-title {
+    .job-list {
+        gap: 30px;
+    }
+    .job-card-full {
+        height: 400px;
+        margin-left: calc(-50vw + 50%);
+    }
+    .job-card-content {
+        padding: 40px 30px;
+    }
+    .job-card-content h3 {
         font-size: 28px;
     }
-
-    .job-card-full {
-        height: 280px;
-    }
-
-    .job-card-content {
-        padding: 24px;
-    }
-
-    .job-card-content h3 {
-        font-size: 22px;
-    }
-
     .job-card-content p {
-        font-size: 13px;
+        font-size: 14px;
     }
 }
 
 @media (max-width: 480px) {
+    .job-list {
+        gap: 24px;
+    }
     .job-card-full {
-        height: 240px;
+        height: 350px;
     }
-
     .job-card-content {
-        padding: 20px;
+        padding: 30px 20px;
     }
-
     .job-card-content h3 {
-        font-size: 20px;
+        font-size: 24px;
+    }
+    .job-card-content p {
+        font-size: 13px;
+        line-height: 1.6;
+    }
+}
+
+/* ==========================
+   JOB DETAIL PAGE - TAGS
+========================== */
+.job-tags {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.job-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    background: rgba(212, 175, 55, 0.15);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 8px;
+    font-size: 14px;
+    color: #d4af37;
+    white-space: nowrap;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+}
+
+.job-tag svg {
+    width: 16px;
+    height: 16px;
+}
+
+@media (max-width: 768px) {
+    .job-tags {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: flex-start;
+    }
+    .job-tag {
+        padding: 8px 16px;
+        font-size: 13px;
+        flex-shrink: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .job-tags {
+        gap: 8px;
+    }
+    .job-tag {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+    .job-tag svg {
+        width: 14px;
+        height: 14px;
     }
 }
 
 /* ==========================
    MODAL
 ========================== */
-/* Modal Background */
 .modal {
     display: none;
     position: fixed;
@@ -505,7 +605,6 @@
     padding: 40px 20px;
 }
 
-/* Modal Content */
 .modal-content {
     background: #fff;
     border-radius: 20px;
@@ -528,7 +627,6 @@
     }
 }
 
-/* Close Button */
 .modal-close {
     position: absolute;
     top: 20px;
@@ -549,7 +647,6 @@
     transform: rotate(90deg);
 }
 
-/* Modal Header */
 .modal-header {
     background: linear-gradient(135deg, #d4af37 0%, #b8962e 100%);
     color: #fff;
@@ -577,7 +674,6 @@
     font-size: 14px;
 }
 
-/* Modal Body */
 .modal-body {
     padding: 40px;
 }
@@ -601,7 +697,6 @@
     margin: 0;
 }
 
-/* Lists */
 .requirements-list,
 .benefits-list {
     list-style: none;
@@ -618,7 +713,7 @@
 }
 
 .requirements-list li:before {
-    content: "✗";
+    content: "";
     position: absolute;
     left: 0;
     color: #e74c3c;
@@ -633,7 +728,6 @@
     font-weight: bold;
 }
 
-/* Application Form */
 .application-form .form-group {
     margin-bottom: 20px;
 }
@@ -686,25 +780,20 @@
     transform: translateY(-2px);
 }
 
-/* Responsive Modal */
 @media (max-width: 768px) {
     .modal-content {
         max-height: 100vh;
         border-radius: 0;
     }
-
     .modal-header {
         padding: 30px 20px;
     }
-
     .modal-header h2 {
         font-size: 24px;
     }
-
     .modal-body {
         padding: 30px 20px;
     }
-
     .modal-section h3 {
         font-size: 18px;
     }

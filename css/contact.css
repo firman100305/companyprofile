@@ -1,14 +1,13 @@
 /* --- CONTACT PAGE SPECIFIC STYLES --- */
 
 /* ==========================
-   CONTACT HERO
+   CONTACT HERO (BALANCED & NATURAL)
 ========================== */
 .contact-hero {
     position: relative;
-    min-height: 500px;
+    min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: 190px 0 90px;
     overflow: hidden;
     background: #0a0a0a;
     z-index: 1;
@@ -24,60 +23,99 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    /* ✅ Filter BALANCED - tidak pecah, tetap jelas */
+    filter: 
+        brightness(0.7) 
+        contrast(1.15) 
+        saturate(1.05);
+    transform: scale(1.02);
+    transition: transform 10s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation: slowZoom 15s ease-in-out infinite alternate;
 }
 
+@keyframes slowZoom {
+    from { transform: scale(1.02); }
+    to { transform: scale(1.06); }
+}
+
+.contact-hero:hover .hero-bg img {
+    transform: scale(1.05);
+}
+
+/* ✅ Overlay sedikit lebih gelap untuk kompensasi brightness */
 .contact-hero .hero-overlay {
     position: absolute;
     inset: 0;
     z-index: 1;
-    background:
-        linear-gradient(100deg,
-            rgba(8, 8, 8, 0.96) 0%,
-            rgba(8, 8, 8, 0.85) 30%,
-            rgba(8, 8, 8, 0.45) 60%,
-            rgba(8, 8, 8, 0.25) 100%),
-        linear-gradient(0deg,
-            rgba(8, 8, 8, 0.85) 0%,
-            rgba(8, 8, 8, 0.2) 45%,
-            rgba(8, 8, 8, 0.55) 100%);
+    background: 
+        radial-gradient(ellipse at center, 
+            transparent 40%, 
+            rgba(10, 10, 10, 0.3) 100%);
 }
 
+/* Hide elemen lama yang tidak perlu */
+.contact-hero .detail-breadcrumb,
 .contact-hero .hero-content {
-    position: relative;
+    display: none;
+}
+
+/* CONTACT Label */
+/* ==========================
+   CONTACT HERO LABEL (Matched with About Hero)
+========================== */
+.contact-hero-label {
+    position: absolute;
+    right: 20px;
+    bottom: -15px;
     z-index: 2;
-    width: 90%;
-    max-width: 1400px;
-    margin: 0 auto;
+    pointer-events: none;
 }
 
-.contact-hero .detail-breadcrumb {
-    display: flex;
-    gap: 10px;
-    font-size: 13px;
-    color: #cfcfcf;
-    margin-bottom: 20px;
-}
-
-.contact-hero .detail-breadcrumb a {
-    color: #d4af37;
-    text-decoration: none;
-}
-
-.contact-hero .hero-title {
-    font-family: "Playfair Display", Georgia, serif;
-    font-size: 48px;
-    line-height: 1.25;
-    font-weight: 700;
-    max-width: 700px;
+.contact-hero-label span {
     margin: 0;
-    color: #fff;
+    font-family: "Poppins", sans-serif;
+    font-size: clamp(120px, 8vw, 260px);
+    font-weight: 900;
+    line-height: 0.82;
+    color: transparent;
+    -webkit-text-stroke: 2px #fff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: block;
 }
 
-.contact-hero .hero-title .gold {
-    color: #d4af37;
+/* Responsive adjustments untuk Tablet */
+@media (max-width: 992px) {
+    .contact-hero-label {
+        right: 20px;
+        bottom: -10px;
+    }
 }
 
-.contact-hero .white { color: #ffffff; font-style: italic; }
+/* Responsive adjustments untuk Mobile */
+@media (max-width: 768px) {
+    .contact-hero-label {
+        right: 15px;
+        bottom: -10px;
+    }
+    
+    .contact-hero-label span {
+        font-size: clamp(80px, 12vw, 150px);
+        -webkit-text-stroke: 1.5px #fff;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-hero-label {
+        right: 10px;
+        bottom: -5px;
+    }
+    
+    .contact-hero-label span {
+        font-size: clamp(60px, 15vw, 100px);
+        -webkit-text-stroke: 1px #fff;
+    }
+}
 
 /* ==========================
    SECTION HEADING
@@ -86,7 +124,7 @@
     position: relative;
     z-index: 10;
     padding: 40px 5% 50px;
-    background-color: #ffffff;
+    background-color: #000;
 }
 
 .section-content {
@@ -99,222 +137,207 @@
     font-family: "Playfair Display", Georgia, serif;
     font-size: 42px;
     font-weight: 700;
-    color: #1a1a1a;
+    color: #fff;
     line-height: 1.3;
     margin: 0;
     position: relative;
 }
 
 /* ==========================
-   INFO CARDS
+   INFO CARDS (EDITORIAL PREMIUM)
 ========================== */
-.icon-link {
-    text-decoration: none;
-    color: inherit;
-    display: inline-block;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.icon-link:hover {
-    transform: scale(1.1);
-}
-
-.icon-link:hover .info-icon {
-    box-shadow: 0 15px 35px rgba(212,175,55,.5);
-}
-
-.icon-link:hover .whatsapp-icon {
-    box-shadow: 0 15px 35px rgba(212,175,55,.5) !important;
-}
-
-.info-card {
-    cursor: default;
-}
-
-.info-icon {
-    cursor: pointer;
-}
-
-.card-note {
-    display: inline-block;
-    margin-top: 12px;
-    padding: 6px 14px;
-    border-radius: 20px;
-    background: #f8f4e6;
-    color: #b78b16;
-    font-size: 12px;
-    font-weight: 600;
-}
-
 .info-section {
     position: relative;
     z-index: 10;
-    padding: 10px 5% 80px;
-    background-color: #ffffff;
+    padding: 10px 5% 90px;
+    background-color: #000;
 }
 
 .info-container {
     position: relative;
     z-index: 10;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-    justify-content: center;
+    gap: 24px;
+}
+
+.icon-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }
 
 .info-card {
     position: relative;
-    z-index: 10;
-    max-width: 250px;
-    width: 100%;
-    margin: 0 auto;
-    background: #fff;
-    padding: 30px 20px;
-    border-radius: 16px;
+    background: linear-gradient(160deg, #161616 0%, #0d0d0d 100%);
+    border: 1px solid rgba(212, 175, 55, 0.18);
+    border-radius: 4px;
+    padding: 34px 26px 30px;
+    min-height: 240px;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    overflow: hidden;
-    border: 1px solid #ececec;
-    transition: .45s ease;
-    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    justify-content: flex-end;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.card-index {
+    position: absolute;
+    top: 18px;
+    left: 24px;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(212, 175, 55, 0.7);
+    letter-spacing: 2px;
+    z-index: 3;
+}
+
+.card-icon-bg {
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    width: 160px;
+    height: 160px;
+    opacity: 0.06;
+    z-index: 1;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease;
+}
+
+.card-icon-bg svg {
+    width: 100%;
+    height: 100%;
+    fill: #d4af37;
 }
 
 .info-card::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: #d4af37;
-    transform: scaleX(0);
-    transition: .45s;
-}
-
-.info-card:hover {
-    transform: translateY(-8px);
-    border-color: #d4af37;
-    box-shadow: 0 20px 40px rgba(0,0,0,.15);
+    inset: 0;
+    background: linear-gradient(135deg, #d4af37 0%, #e9c95f 50%, #b8942e 100%);
+    transform: translateY(101%);
+    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 0;
 }
 
 .info-card:hover::before {
-    transform: scaleX(1);
+    transform: translateY(0%);
+}
+
+.info-card:hover {
+    transform: translateY(-10px);
+    border-color: transparent;
+    box-shadow: 0 25px 50px rgba(212, 175, 55, 0.25);
+}
+
+.info-card:hover .card-icon-bg {
+    opacity: 0.12;
+    transform: scale(1.1) rotate(-6deg);
 }
 
 .info-icon {
-    width: 60px;
-    height: 60px;
+    position: relative;
+    z-index: 3;
+    width: 48px;
+    height: 48px;
     margin-bottom: 18px;
-    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #f3cd53, #c99812);
-    box-shadow: 0 10px 20px rgba(212,175,55,.35);
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .info-icon svg {
-    width: 28px;
-    height: 28px;
-    fill: white;
+    width: 26px;
+    height: 26px;
+    fill: #d4af37;
+    transition: fill 0.4s ease;
 }
 
-.whatsapp-icon {
-    background: linear-gradient(135deg, #f3cd53, #c99812) !important;
-    box-shadow: 0 10px 20px rgba(212,175,55,.35) !important;
+.info-card:hover .info-icon {
+    transform: scale(1.1) rotate(-8deg);
 }
 
-.whatsapp-icon svg {
-    width: 28px;
-    height: 28px;
-    display: block;
+.info-card:hover .info-icon svg {
+    fill: #000;
 }
 
 .info-text {
-    flex: 1;
+    position: relative;
+    z-index: 3;
 }
 
 .info-text h4 {
-    font-size: 18px;
+    font-family: "Poppins", sans-serif;
+    font-size: 17px;
     font-weight: 700;
-    margin-bottom: 10px;
-    color: #111;
+    color: #fff;
+    margin: 0 0 8px 0;
+    letter-spacing: 0.3px;
+    transition: color 0.4s ease;
 }
 
 .info-text p {
-    font-size: 16px;
-    color: #666;
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
     line-height: 1.6;
+    margin: 0;
+    transition: color 0.4s ease;
 }
 
-/* ==========================
-   RESPONSIVE INFO CARDS
-========================== */
+.info-card:hover .info-text h4,
+.info-card:hover .info-text p {
+    color: #000;
+}
+
+.info-card:hover .info-text p {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.card-arrow {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    font-size: 20px;
+    color: rgba(212, 175, 55, 0.5);
+    z-index: 3;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), color 0.4s ease;
+}
+
+.info-card:hover .card-arrow {
+    color: #000;
+    transform: translate(4px, -4px);
+}
+
 @media (max-width: 1200px) {
     .info-container {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 576px) {
     .info-container {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 18px;
     }
-    
     .info-card {
-        padding: 25px 20px;
+        min-height: 200px;
+        padding: 28px 22px 26px;
     }
-    
-    .info-icon {
-        width: 50px;
-        height: 50px;
-    }
-    
-    .info-icon svg {
-        width: 24px;
-        height: 24px;
-    }
-    
-    .info-text h4 {
-        font-size: 16px;
-    }
-    
-    .info-text p {
-        font-size: 13px;
+    .card-icon-bg {
+        width: 130px;
+        height: 130px;
     }
 }
 
 /* ==========================
-   STAGGER ANIMATION
-========================== */
-.stagger-card {
-    opacity: 0 !important;
-    transform: translateY(60px) !important;
-    transition: opacity 0.8s ease, transform 0.8s ease !important;
-}
-
-.stagger-card.visible {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-}
-
-.stagger-card.visible:hover {
-    transform: translateY(-8px) !important;
-}
-
-/* ==========================
-   FORM PARALLAX SECTION - COMPACT & SMOOTH
+   FORM PARALLAX SECTION
 ========================== */
 .form-parallax-section {
     position: relative;
-    /* Hapus z-index: 1 karena tidak diperlukan */
     padding: 50px 20px;
     min-height: 350px;
     display: flex;
@@ -330,7 +353,6 @@
     left: 0;
     width: 100%;
     height: 120%;
-    /* Hapus z-index: 0 */
     will-change: transform;
 }
 
@@ -344,24 +366,24 @@
 .form-parallax-overlay {
     position: absolute;
     inset: 0;
-    /* ✅ Overlay lebih gelap agar form lebih menonjol */
     background: rgba(0, 0, 0, 0.55);
 }
 
-/* Form Container */
 .form-floating-container {
     position: relative;
-    z-index: 100; /* ✅ Dinaikkan menjadi 100 */
+    z-index: 100;
     max-width: 520px;
     width: 100%;
     margin: 0 auto;
     margin-top: -20px;
     margin-bottom: -20px;
-    background: #f5f6f8;
-    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
     padding: 45px 40px;
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3), 
-                0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
     animation: floatFormSmooth 8s ease-in-out infinite;
 }
 
@@ -370,24 +392,21 @@
     50% { transform: translateY(-8px); }
 }
 
-/* Form Title */
 .form-title-simple {
     text-align: center;
     font-family: "Playfair Display", Georgia, serif;
     font-size: 30px;
     font-weight: 700;
-    color: #1a1a1a;
+    color: #fff;
     margin: 0 0 30px 0;
 }
 
-/* Form Layout */
 .contact-form-simple {
     display: flex;
     flex-direction: column;
     gap: 18px;
 }
 
-/* Form Group */
 .form-group-simple {
     display: flex;
     flex-direction: column;
@@ -398,10 +417,9 @@
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
     font-weight: 600;
-    color: #1a1a1a;
+    color: #fff;
 }
 
-/* Input & Textarea */
 .form-group-simple input,
 .form-group-simple textarea {
     width: 100%;
@@ -434,7 +452,6 @@
     font-family: 'Poppins', sans-serif;
 }
 
-/* Submit Button */
 .btn-send-simple {
     width: 100%;
     padding: 17px;
@@ -468,19 +485,21 @@
 .maps-section {
     position: relative;
     z-index: 10;
-    padding: 80px 5%;
-    padding-top: 100px; /* ✅ Kurangi padding top */
-    background-color: #ffffff;
+    padding: 80px 0 0 0;
+    background-color: #000;
+    overflow: hidden;
 }
 
 .maps-container {
-    max-width: 1200px;
+    width: 100%;
+    max-width: 100%;
     margin: 0 auto;
 }
 
 .maps-header {
     text-align: center;
     margin-bottom: 50px;
+    padding: 0 5%;
 }
 
 .maps-header .section-subtitle {
@@ -497,37 +516,67 @@
     font-family: "Playfair Display", Georgia, serif;
     font-size: 42px;
     font-weight: 700;
-    color: #1a1a1a;
+    color: #fff;
     margin-bottom: 15px;
 }
 
 .maps-header p {
     font-size: 16px;
-    color: #666;
+    color: #fff;
     max-width: 600px;
     margin: 0 auto;
     line-height: 1.6;
 }
 
 .maps-wrapper {
-    border-radius: 20px;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    border-radius: 0;
     overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-    border: 1px solid #eee;
-    width: 100%;
+    box-shadow: none;
+    border: none;
+    position: relative;
 }
 
 .maps-wrapper iframe {
     display: block;
     width: 100%;
-    height: 450px;
-    filter: grayscale(20%);
-    transition: filter 0.3s ease;
+    height: 500px;
+    filter: grayscale(30%) brightness(0.9);
+    transition: filter 0.5s ease;
     border: 0;
 }
 
 .maps-wrapper iframe:hover {
-    filter: grayscale(0%);
+    filter: grayscale(0%) brightness(1);
+}
+
+@media (max-width: 768px) {
+    .maps-section {
+        padding: 60px 0 0 0;
+    }
+    .maps-header {
+        padding: 0 20px;
+        margin-bottom: 30px;
+    }
+    .maps-header h2 {
+        font-size: 32px;
+    }
+    .maps-header p {
+        font-size: 14px;
+    }
+    .maps-wrapper iframe {
+        height: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    .maps-header h2 {
+        font-size: 26px;
+    }
+    .maps-wrapper iframe {
+        height: 280px;
+    }
 }
 
 /* ==========================
@@ -536,28 +585,23 @@
 .cta-section {
     position: relative;
     z-index: 10;
-    padding: 0 5% 80px;
-    background-color: #ffffff;
-}
-
-.cta-wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-    border: 1px solid #eee;
-    height: 450px;
+    padding: 100px 20px;
+    min-height: 450px;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+    background-color: #000;
 }
 
 .cta-background {
     position: absolute;
-    inset: 0;
+    top: -15%;
+    left: 0;
+    width: 100%;
+    height: 130%;
     z-index: 0;
+    will-change: transform;
 }
 
 .cta-background img {
@@ -580,6 +624,8 @@
     text-align: center;
     color: white;
     padding: 0 20px;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .cta-content h2 {
@@ -639,11 +685,21 @@
         padding-top: 70px;
     }
     
-    .cta-wrapper {
-        height: 300px;
-    }
-    
     .cta-content h2 {
         font-size: 32px;
     }
+}
+
+/* ==========================
+   ANIMASI REVEAL
+========================== */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
 }
