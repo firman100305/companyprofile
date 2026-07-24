@@ -1,112 +1,262 @@
+/* =========================================================
+  CAREER HERO — Same Style as Products Page
+========================================================= */
+
 .career-hero {
-    position: relative;
-    min-height: 65vh; 
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    background: #0a0a0a;
-    z-index: 1;
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #000000;
 }
 
-.career-hero .hero-bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
+.career-hero-split {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
 }
 
-.career-hero .hero-bg img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: 
-        brightness(0.7) 
-        contrast(1.15) 
-        saturate(1.05);
-    transform: scale(1.02);
-    transition: transform 10s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    animation: slowZoom 15s ease-in-out infinite alternate;
+.career-hero-split-leaf {
+  position: relative;
+  flex: 0 0 50%;
+  width: 50%;
+  height: 100%;
+  background-image: url("../assets/images/processing.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
-@keyframes slowZoom {
-    from { transform: scale(1.02); }
-    to { transform: scale(1.06); }
+.career-hero-leaf-darken {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 8, 6, 0.5) 0%,
+    rgba(10, 8, 6, 0.15) 45%,
+    rgba(10, 8, 6, 0.65) 100%
+  );
+  pointer-events: none;
 }
 
-.career-hero:hover .hero-bg img {
-    transform: scale(1.05);
+.career-hero-split-leaf::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -1px;
+  width: 180px;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.45),
+    #000
+  );
+  z-index: 2;
 }
 
-.career-hero .hero-overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background: 
-        radial-gradient(ellipse at center, 
-            transparent 40%, 
-            rgba(10, 10, 10, 0.3) 100%);
+.career-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("../assets/images/noise.png");
+  opacity: 0.03;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
 }
 
-.career-hero .products-hero-inner,
-.career-hero .detail-breadcrumb,
-.career-hero .products-hero-title {
-    display: none;
+/* Sisi hitam — juga menjadi wadah untuk dekorasi watermark daun */
+.career-hero-split-black {
+  flex: 0 0 50%;
+  width: 50%;
+  height: 100%;
+  background: #000000;
+  position: relative;
+  overflow: hidden;
 }
 
-/* ==========================
-   CAREER HERO LABEL
-========================== */
-.career-hero-label {
-    position: absolute;
-    bottom: -15px;
-    right: 19%;
-    transform: translateX(50%);
-    z-index: 2;
-    pointer-events: none;
-    white-space: nowrap;
+/* Dekorasi watermark daun di sisi hitam */
+.hero-black-leaf-1,
+.hero-black-leaf-2 {
+  position: absolute;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  color: rgba(200, 155, 90, 0.07);
+  pointer-events: none;
+  z-index: 1;
+  line-height: 1;
 }
 
-/* ✅ DESCRIPTION: Poppins */
-.career-hero-label span {
-    margin: 0;
-    font-family: "Poppins", sans-serif;
-    font-size: clamp(120px, 8vw, 260px);
-    font-weight: 900;
-    line-height: 0.82;
-    color: transparent;
-    -webkit-text-stroke: 2px #fff;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    display: block;
+.hero-black-leaf-1 {
+  top: 60%;
+  right: -6%;
+  font-size: clamp(110px, 13vw, 200px);
+  transform: scaleX(-1) rotate(-15deg);
 }
 
-@media (max-width: 992px) {
-    .career-hero-label {
-        bottom: -10px;
-    }
-    .career-hero-label span {
-        font-size: clamp(90px, 10vw, 180px);
-        -webkit-text-stroke: 1.5px #fff;
-    }
+.hero-black-leaf-2 {
+  bottom: 10%;
+  right: 15%;
+  font-size: clamp(80px, 10vw, 150px);
+  transform: rotate(25deg);
+  opacity: 0.05;
 }
 
+.career-hero-inner {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.career-hero-masktitle {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  width: 100%;
+  margin: 0;
+  font-family: Georgia, serif;
+  font-weight: 700;
+  text-transform: uppercase !important;
+  letter-spacing: 0.02em;
+  line-height: 0.92;
+  font-size: clamp(52px, 10vw, 160px);
+  filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.45));
+}
+
+.career-hero-masktitle .title-white {
+  flex: 0 0 50%;
+  text-align: right;
+  text-transform: uppercase !important;
+  font-size: inherit;
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+  white-space: nowrap;
+  display: inline-block;
+  opacity: 0;
+  animation: careerTitleFadeUp 0.9s cubic-bezier(0.25, 1, 0.35, 1) 0.1s forwards;
+}
+
+.career-hero-masktitle .title-masked {
+  flex: 0 0 50%;
+  text-align: left;
+  text-transform: uppercase !important;
+  font-size: inherit;
+  white-space: nowrap;
+  display: inline-block;
+  background-image: url("../assets/images/processing.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0px #ffffff;
+  filter: brightness(0.9) contrast(1) saturate(1.7);
+  opacity: 0;
+  animation: careerTitleFadeUp 0.9s cubic-bezier(0.25, 1, 0.35, 1) 0.3s forwards;
+}
+
+/* Glow effect under the masked text */
+.career-hero-masktitle .title-masked::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -18%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(200, 155, 90, 0.28) 0%,
+    rgba(200, 155, 90, 0.1) 45%,
+    transparent 75%
+  );
+  filter: blur(28px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes careerTitleFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tagline — pojok kiri bawah */
+.career-hero-subtitle {
+  position: absolute;
+  left: clamp(20px, 4vw, 40px);
+  bottom: clamp(20px, 4vw, 40px);
+  z-index: 3;
+  max-width: min(460px, calc(50% - clamp(20px, 4vw, 40px) - 16px));
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(12px, 1.6vw, 16px);
+  line-height: 1.6;
+  color: #ffffff;
+  font-weight: 300;
+  text-align: left;
+  opacity: 0;
+  word-wrap: break-word;
+  animation: careerTitleFadeUp 0.9s cubic-bezier(0.25, 1, 0.35, 1) 0.55s forwards;
+}
+
+.career-hero-subtitle .gold-text {
+  color: #c89b5a;
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-    .career-hero-label {
-        bottom: -10px;
-    }
-    .career-hero-label span {
-        font-size: clamp(70px, 12vw, 120px);
-        -webkit-text-stroke: 1.5px #fff;
-    }
+  .career-hero {
+    min-height: 62vh;
+  }
+  .career-hero-masktitle {
+    font-size: clamp(38px, 12vw, 90px);
+  }
+  .hero-black-leaf-1,
+  .hero-black-leaf-2 {
+    display: none;
+  }
+  .career-hero-subtitle {
+    font-size: 13px;
+    max-width: calc(100% - 40px);
+  }
 }
 
 @media (max-width: 480px) {
-    .career-hero-label {
-        bottom: -5px;
-    }
-    .career-hero-label span {
-        font-size: clamp(50px, 15vw, 90px);
-        -webkit-text-stroke: 1px #fff;
-    }
+  .career-hero-subtitle {
+    font-size: 11px;
+    line-height: 1.5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .career-hero-masktitle .title-white,
+  .career-hero-masktitle .title-masked,
+  .career-hero-subtitle {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 /* ==========================
@@ -126,12 +276,63 @@
 /* ✅ TITLE: Georgia */
 .benefits-title {
     text-align: center;
-    font-family: "Georgia", serif;
-    font-size: 42px;
-    font-weight: 700;
-    color: #fff;
-    margin: 0 0 60px 0;
+    font-family: "Cormorant Garamond", serif;  /* Changed from Georgia */
+    font-weight: 400;                          /* Changed from 700 */
+    font-size: 38px;                           /* Changed from 42px */
+    color: #f5f0e8;                            /* Changed from #fff */
+    letter-spacing: -0.01em;                   /* Added */
+    margin: 0 0 14px 0;                        /* Changed from 0 0 60px 0 */
     line-height: 1.3;
+}
+
+.benefits-title span {
+    color: #c89b5a;                            /* Gold color untuk span */
+    font-style: italic;
+}
+
+.benefits-subtitle {
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;                           /* Sama dengan Products */
+    line-height: 1.8;                          /* Sama dengan Products */
+    font-weight: 300;                          /* Sama dengan Products */
+    color: #a89f92;                            /* Sama dengan Products */
+    max-width: 680px;                          /* Tambahkan untuk keterbacaan */
+    margin: 0 auto 60px auto;                  /* Centered dengan spacing */
+}
+
+/* Divider with animated leaf - sama seperti Products */
+.career-divider {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 85%;
+    max-width: 900px;
+    margin: 36px auto 70px;
+    background: transparent;
+}
+
+.career-divider::before,
+.career-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #c89b5a, transparent);
+}
+
+.career-divider i {
+    margin: 0 18px;
+    color: #dda14e;
+    font-size: 18px;
+    animation: leafSway 3.2s ease-in-out infinite;
+    transform-origin: center;
+}
+
+@keyframes leafSway {
+    0%, 100% { transform: rotate(-8deg); }
+    50% { transform: rotate(8deg); }
 }
 
 .benefits-grid {

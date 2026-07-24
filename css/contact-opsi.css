@@ -1,0 +1,952 @@
+/* =========================================================
+  CONTACT HERO — Same Style as Products Page
+========================================================= */
+
+.contact-hero {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #000000;
+}
+
+.contact-hero-split {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.contact-hero-split-leaf {
+  position: relative;
+  flex: 0 0 50%;
+  width: 50%;
+  height: 100%;
+  background-image: url("../assets/images/background.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.contact-hero-leaf-darken {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 8, 6, 0.5) 0%,
+    rgba(10, 8, 6, 0.15) 45%,
+    rgba(10, 8, 6, 0.65) 100%
+  );
+  pointer-events: none;
+}
+
+.contact-hero-split-leaf::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -1px;
+  width: 180px;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.45),
+    #000
+  );
+  z-index: 2;
+}
+
+.contact-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("../assets/images/noise.png");
+  opacity: 0.03;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+
+/* Sisi hitam — juga menjadi wadah untuk dekorasi watermark daun */
+.contact-hero-split-black {
+  flex: 0 0 50%;
+  width: 50%;
+  height: 100%;
+  background: #000000;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Dekorasi watermark daun di sisi hitam */
+.hero-black-leaf-1,
+.hero-black-leaf-2 {
+  position: absolute;
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  color: rgba(200, 155, 90, 0.07);
+  pointer-events: none;
+  z-index: 1;
+  line-height: 1;
+}
+
+.hero-black-leaf-1 {
+  top: 60%;
+  right: -6%;
+  font-size: clamp(110px, 13vw, 200px);
+  transform: scaleX(-1) rotate(-15deg);
+}
+
+.hero-black-leaf-2 {
+  bottom: 10%;
+  right: 15%;
+  font-size: clamp(80px, 10vw, 150px);
+  transform: rotate(25deg);
+  opacity: 0.05;
+}
+
+.contact-hero-inner {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-hero-masktitle {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  width: 100%;
+  margin: 0;
+  font-family: Georgia, serif;
+  font-weight: 700;
+  text-transform: uppercase !important;
+  letter-spacing: 0.02em;
+  line-height: 0.92;
+  font-size: clamp(52px, 10vw, 160px);
+  filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.45));
+}
+
+.contact-hero-masktitle .title-white {
+  flex: 0 0 50%;
+  text-align: right;
+  text-transform: uppercase !important;
+  font-size: inherit;
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+  white-space: nowrap;
+  display: inline-block;
+  opacity: 0;
+  animation: contactTitleFadeUp 0.9s cubic-bezier(0.25, 1, 0.35, 1) 0.1s forwards;
+}
+
+.contact-hero-masktitle .title-masked {
+  flex: 0 0 50%;
+  text-align: left;
+  text-transform: uppercase !important;
+  font-size: inherit;
+  white-space: nowrap;
+  display: inline-block;
+  background-image: url("../assets/images/background.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0px #ffffff;
+  filter: brightness(0.9) contrast(1) saturate(1.7);
+  opacity: 0;
+  animation: contactTitleFadeUp 0.9s cubic-bezier(0.25, 1, 0.35, 1) 0.3s forwards;
+  
+  /* ✅ TAMBAHAN INI: Memberi jarak antar huruf agar "US" lebih berisi */
+  letter-spacing: 0.15em; 
+  margin-left: 10px; /* Sedikit jarak dari kata CONTACT agar tidak terlalu mepet */
+}
+
+/* Glow effect under the masked text */
+.contact-hero-masktitle .title-masked::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -18%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(200, 155, 90, 0.28) 0%,
+    rgba(200, 155, 90, 0.1) 45%,
+    transparent 75%
+  );
+  filter: blur(28px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes contactTitleFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tagline — pojok kiri bawah */
+.contact-hero-subtitle {
+  position: absolute;
+  left: clamp(20px, 4vw, 40px);
+  bottom: clamp(20px, 4vw, 40px);
+  z-index: 3;
+  max-width: min(460px, calc(50% - clamp(20px, 4vw, 40px) - 16px));
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(12px, 1.6vw, 16px);
+  line-height: 1.6;
+  color: #ffffff;
+  font-weight: 300;
+  text-align: left;
+  opacity: 0;
+  word-wrap: break-word;
+  animation: contactTitleFadeUp 0.9s cubic-bezier(0.25, 1, 0.35, 1) 0.55s forwards;
+}
+
+.contact-hero-subtitle .gold-text {
+  color: #c89b5a;
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* Responsive Hero */
+@media (max-width: 768px) {
+  .contact-hero {
+    min-height: 62vh;
+  }
+  .contact-hero-masktitle {
+    font-size: clamp(38px, 12vw, 90px);
+  }
+  .hero-black-leaf-1,
+  .hero-black-leaf-2 {
+    display: none;
+  }
+  .contact-hero-subtitle {
+    font-size: 13px;
+    max-width: calc(100% - 40px);
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-hero-subtitle {
+    font-size: 11px;
+    line-height: 1.5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-hero-masktitle .title-white,
+  .contact-hero-masktitle .title-masked,
+  .contact-hero-subtitle {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ==========================
+   SECTION HEADING
+========================== */
+
+/* ==========================
+   SECTION HEADING (Same as Products)
+========================== */
+.contact-section-header {
+    position: relative;
+    z-index: 10;
+    width: 90%;
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 60px 0 40px;
+}
+
+.contact-section-header h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 400;
+    font-size: 38px;
+    color: #f5f0e8;
+    letter-spacing: -0.01em;
+    margin: 0;
+}
+
+.contact-section-header h2 span {
+    color: #c89b5a;
+    font-style: italic;
+}
+
+.contact-section-header p {
+    margin-top: 14px;
+    color: #a89f92;
+    font-size: 15px;
+    line-height: 1.8;
+    font-weight: 300;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Divider with animated leaf - sama seperti Products */
+.contact-divider {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 85%;
+    max-width: 900px;
+    margin: 36px auto 70px;
+    background: transparent;
+}
+
+.contact-divider::before,
+.contact-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #c89b5a, transparent);
+}
+
+.contact-divider i {
+    margin: 0 18px;
+    color: #dda14e;
+    font-size: 18px;
+    animation: leafSway 3.2s ease-in-out infinite;
+    transform-origin: center;
+}
+
+@keyframes leafSway {
+    0%, 100% { transform: rotate(-8deg); }
+    50% { transform: rotate(8deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contact-section-header {
+        padding: 40px 20px 30px;
+    }
+    .contact-section-header h2 {
+        font-size: 28px;
+    }
+    .contact-section-header p {
+        font-size: 14px;
+        padding: 0 10px;
+    }
+    .contact-divider {
+        margin: 30px auto 50px;
+    }
+}
+
+.section-heading {
+  position: relative;
+  z-index: 10;
+  padding: 40px 5% 50px;
+  background-color: #000;
+}
+
+.section-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section-content h2 {
+  font-family: "Georgia", serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.3;
+  margin: 0;
+  position: relative;
+}
+
+/* ==========================
+   INFO CARDS (EDITORIAL PREMIUM)
+========================== */
+.info-section {
+  position: relative;
+  z-index: 10;
+  padding: 10px 5% 90px;
+  background-color: #000;
+}
+
+.info-container {
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.icon-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.info-card {
+  position: relative;
+  background: linear-gradient(160deg, #161616 0%, #0d0d0d 100%);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  border-radius: 4px;
+  padding: 34px 26px 30px;
+  height: 210px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.card-index {
+  position: absolute;
+  top: 18px;
+  left: 24px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #c89b5a;
+  letter-spacing: 2px;
+  z-index: 3;
+}
+
+.card-icon-bg {
+  position: absolute;
+  bottom: -30px;
+  right: -30px;
+  width: 160px;
+  height: 160px;
+  opacity: 0.06;
+  z-index: 1;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease;
+}
+
+.card-icon-bg svg {
+  width: 100%;
+  height: 100%;
+  fill: #c89b5a;
+}
+
+.info-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #c89b5a;
+  transform: translateY(101%);
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 0;
+}
+
+.info-card:hover::before {
+  transform: translateY(0%);
+}
+
+.info-card:hover {
+  transform: translateY(-10px);
+  border-color: transparent;
+  box-shadow: 0 25px 50px rgba(212, 175, 55, 0.25);
+}
+
+.info-card:hover .card-icon-bg {
+  opacity: 0.12;
+  transform: scale(1.1) rotate(-6deg);
+}
+
+.info-icon {
+  position: relative;
+  z-index: 3;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.info-icon svg {
+  width: 50px;
+  height: 50px;
+  fill: #c89b5a;
+  transition: fill 0.4s ease;
+}
+
+.info-card:hover .info-icon {
+  transform: scale(1.1) rotate(-8deg);
+}
+
+.info-card:hover .info-icon svg {
+  fill: #000;
+}
+
+.info-text {
+  position: relative;
+  z-index: 3;
+}
+
+.info-text h4 {
+  font-family: "Georgia", serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 8px 0;
+  letter-spacing: 0.3px;
+  transition: color 0.4s ease;
+}
+
+.info-text p {
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.6;
+  margin: 0;
+  transition: color 0.4s ease;
+}
+
+.info-card:hover .info-text h4,
+.info-card:hover .info-text p {
+  color: #000;
+}
+
+.info-card:hover .info-text p {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.card-arrow {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 20px;
+  color: rgba(212, 175, 55, 0.5);
+  z-index: 3;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), color 0.4s ease;
+}
+
+.info-card:hover .card-arrow {
+  color: #000;
+  transform: translate(4px, -4px);
+}
+
+@media (max-width: 1200px) {
+  .info-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .info-container {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .info-card {
+    min-height: 200px;
+    padding: 28px 22px 26px;
+  }
+  .card-icon-bg {
+    width: 130px;
+    height: 130px;
+  }
+}
+
+/* ==========================
+   FORM PARALLAX SECTION
+========================== */
+.form-parallax-section {
+  position: relative;
+  padding: 50px 20px;
+  min-height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.form-parallax-background {
+  position: absolute;
+  top: -10%;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  will-change: transform;
+}
+
+.form-parallax-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.form-parallax-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.form-floating-container {
+  position: relative;
+  z-index: 100;
+  max-width: 520px;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: -20px;
+  margin-bottom: -20px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  padding: 45px 40px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+  animation: floatFormSmooth 8s ease-in-out infinite;
+}
+
+@keyframes floatFormSmooth {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.form-title-simple {
+  text-align: center;
+  font-family: "Georgia", serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 30px 0;
+}
+
+.contact-form-simple {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-group-simple {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group-simple label {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.form-group-simple input,
+.form-group-simple textarea {
+  width: 100%;
+  padding: 15px 18px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 12px;
+  background: #fff;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  color: #333;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-group-simple input::placeholder,
+.form-group-simple textarea::placeholder {
+  color: #aaa;
+}
+
+.form-group-simple input:focus,
+.form-group-simple textarea:focus {
+  outline: none;
+  border-color: #c99812;
+  box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15);
+}
+
+.form-group-simple textarea {
+  resize: vertical;
+  min-height: 110px;
+  font-family: "Poppins", sans-serif;
+}
+
+.btn-send-simple {
+  width: 100%;
+  padding: 17px;
+  background: linear-gradient(135deg, #c89b5a, #b8962e);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.35);
+  margin-top: 8px;
+}
+
+.btn-send-simple:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #c99812, #a6820f);
+  box-shadow: 0 15px 35px rgba(212, 175, 55, 0.5);
+}
+
+.btn-send-simple:active {
+  transform: translateY(0);
+}
+
+/* ==========================
+   MAPS SECTION
+========================== */
+.maps-section {
+  position: relative;
+  z-index: 10;
+  padding: 80px 0 0 0;
+  background-color: #000;
+  overflow: hidden;
+}
+
+.maps-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.maps-header {
+  text-align: center;
+  margin-bottom: 50px;
+  padding: 0 5%;
+}
+
+.maps-header .section-subtitle {
+  font-family: "Cormorant Garamond", serif;
+  color: #c89b5a;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.maps-header h2 {
+  font-family: "Georgia", serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.maps-header p {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  color: #fff;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.maps-wrapper {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: none;
+  border: none;
+  position: relative;
+}
+
+.maps-wrapper iframe {
+  display: block;
+  width: 100%;
+  height: 500px;
+  filter: grayscale(30%) brightness(0.9);
+  transition: filter 0.5s ease;
+  border: 0;
+}
+
+.maps-wrapper iframe:hover {
+  filter: grayscale(0%) brightness(1);
+}
+
+@media (max-width: 768px) {
+  .maps-section {
+    padding: 60px 0 0 0;
+  }
+  .maps-header {
+    padding: 0 20px;
+    margin-bottom: 30px;
+  }
+  .maps-header h2 {
+    font-size: 32px;
+  }
+  .maps-header p {
+    font-size: 14px;
+  }
+  .maps-wrapper iframe {
+    height: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .maps-header h2 {
+    font-size: 26px;
+  }
+  .maps-wrapper iframe {
+    height: 280px;
+  }
+}
+
+/* ==========================
+   CTA SECTION
+========================== */
+.cta-section {
+  position: relative;
+  z-index: 10;
+  padding: 100px 20px;
+  min-height: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.cta-background {
+  position: absolute;
+  top: -50%;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  z-index: 0;
+  will-change: transform;
+}
+
+.cta-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.cta-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.cta-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  padding: 0 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.cta-content h2 {
+  font-family: "Georgia", serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #fff;
+  margin: 0;
+}
+
+.cta-content h2 span {
+  font-family: "Cormorant Garamond", serif;
+  color: #c89b5a;
+  display: block;
+  font-size: 56px;
+  font-weight: 600;
+  font-style: italic;
+  margin-top: 8px;
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+@media (max-width: 768px) {
+  .form-parallax-section {
+    padding: 80px 15px;
+    min-height: auto;
+  }
+  
+  .form-floating-container {
+    padding: 35px 25px;
+    margin-top: -30px;
+    margin-bottom: -30px;
+    animation: none;
+  }
+  
+  .form-title-simple {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+  
+  .form-group-simple input,
+  .form-group-simple textarea {
+    padding: 14px 16px;
+  }
+  
+  .btn-send-simple {
+    padding: 16px;
+    font-size: 14px;
+  }
+  
+  .maps-header h2 {
+    font-size: 32px;
+  }
+  
+  .maps-wrapper iframe {
+    height: 300px;
+  }
+  
+  .maps-section {
+    padding-top: 70px;
+  }
+  
+  .cta-content h2 {
+    font-size: 32px;
+  }
+  
+  .cta-content h2 span {
+    font-size: 40px;
+  }
+}
+
+/* ==========================
+   ANIMASI REVEAL
+========================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
