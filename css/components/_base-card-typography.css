@@ -1,0 +1,38 @@
+/* ==========================================================
+   Base — Card Typography
+   Elemen teks yang dipakai berulang di semua varian kartu: .svc-overline, .svc-title, .svc-divider, .svc-desc. Load sebelum file komponen.
+   ========================================================== */
+
+.svc-overline {
+    display: inline-block;
+    color: var(--gold-primary);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.svc-title {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(1.4rem, 2vw, 1.9rem);
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.25;
+    margin: 0;
+    max-width: 520px;
+}
+
+.svc-divider {
+    display: block;
+    width: 70px;
+    height: 3px;
+    background: var(--gold-primary);
+    border-radius: 2px;
+}
+
+.svc-desc {
+    color: var(--text-gray);
+    font-size: 0.98rem;
+    line-height: 1.85;
+    max-width: 440px;
+}

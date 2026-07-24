@@ -1,0 +1,1747 @@
+/* ==========================================================
+   servicev2.css
+   Dipisahkan dari inline <style> di servicev2.html
+   ========================================================== */
+
+/* -- Global page styles (was: <style> in <head>) -- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold-primary: #d6d6d6;
+            --gold-light: #f2f2f2;
+            --gold-dark: #8a8a8a;
+            --black-primary: #0a0a0a;
+            --black-secondary: #1a1a1a;
+            --text-light: #f5f5f5;
+            --text-gray: #b0b0b0;
+
+            /* light content section */
+            --content-bg: #fbfaf7;
+            --card-bg: #f1efe9;
+            --text-dark: #1a1a1a;
+            --text-muted: #6b6b6b;
+
+            /* aksen monokrom untuk area di luar hero (card, stepper, dll) */
+            --accent-strong: #1f1f1f;
+            --accent-mid: #4d4d4d;
+            --accent-soft: #d9d9d4;
+        }
+
+        body {
+            font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--black-primary);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ==========================
+         SERVICE HERO (konsep sama dengan news-hero di news.html)
+      ========================== */
+        .news-hero {
+            position: relative;
+            min-height: 84vh;
+            display: flex;
+            align-items: flex-end;
+            padding: 190px 0 0;
+            overflow: hidden;
+            background: #0a0a0a;
+        }
+
+        .news-hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .news-hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .news-hero-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background: linear-gradient(180deg,
+                    rgba(10, 8, 6, 0.55) 0%,
+                    rgba(10, 8, 6, 0.25) 45%,
+                    rgba(10, 8, 6, 0.7) 100%);
+        }
+
+        .news-hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 0 2%;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .news-hero-badge {
+            display: inline-block;
+            color: var(--gold-primary);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 22px;
+        }
+
+        .news-hero-title {
+            font-family: "Poppins", "Segoe UI", sans-serif;
+            font-size: clamp(8rem, 24vw, 11rem);
+            line-height: 0.9;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin: 0;
+            padding-bottom: 0.05em;
+            color: rgba(0, 0, 0, 0.9);
+            /* -webkit-text-stroke: 3px rgba(0, 0, 0, 0.9);
+            text-stroke: 3px rgba(0, 0, 0, 0.9); */
+            text-transform: uppercase;
+            text-align: right;
+            --hero-shift: 20%;
+            animation: heroTitleUp 2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+        }
+
+        @keyframes heroTitleUp {
+            0% {
+                opacity: 0;
+                transform: translateY(calc(var(--hero-shift) + 70px));
+            }
+
+            100% {
+                opacity: 0.85;
+                transform: translateY(var(--hero-shift));
+            }
+        }
+
+        .news-hero-title .gold {
+            color: #ffffff;
+        }
+
+        .news-hero-subtitle {
+            color: #d8d8d8;
+            max-width: 620px;
+            line-height: 1.9;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 576px) {
+            .news-hero-title {
+                font-size: 2.2rem;
+                --hero-shift: 20%;
+            }
+        }
+
+
+        /* ==========================
+         SERVICE SHOWCASE — full width, dark, editorial impact
+      ========================== */
+        .svc-showcase {
+            padding: 70px 0 0;
+            background: var(--black-primary);
+        }
+
+        .svc-intro {
+            position: relative;
+            z-index: 1;
+            width: 90%;
+            max-width: 950px;
+            margin: 0 auto 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 18px;
+        }
+
+        .svc-intro::after {
+            content: "\f06c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            top: -50px;
+            right: -20px;
+            font-size: 150px;
+            color: rgba(214, 214, 214, 0.08);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .svc-intro-label {
+            display: block;
+            color: var(--gold-primary);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .svc-intro-title {
+            font-family: "Cormorant Garamond", serif;
+            font-weight: 400;
+            font-size: 38px;
+            color: #f5f0e8;
+            letter-spacing: -0.01em;
+            line-height: 1.32;
+            max-width: 780px;
+            margin: 0 auto;
+        }
+
+        .svc-intro-title span {
+            color: var(--pp-gold);
+            font-style: italic;
+        }
+
+        .svc-intro-desc {
+            margin-top: 14px;
+            color: #a89f92;
+            max-width: 640px;
+            font-size: 15px;
+            line-height: 1.8;
+            font-weight: 300;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (max-width: 768px) {
+            .svc-intro-title {
+                font-size: 28px;
+            }
+        }
+
+        .svc-row {
+            width: 100%;
+            margin: 0;
+        }
+
+        /* card is now a full-width image; the text panel is revealed on hover,
+           not full width — sized to fit its own content instead */
+        .svc-card {
+            position: relative;
+            display: block;
+            min-height: 640px;
+            background: var(--black-secondary);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            overflow: hidden;
+        }
+
+        .svc-row:last-child .svc-card {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* image panel — full width / full height of the card */
+        .svc-image {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .svc-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .svc-card:hover .svc-image img {
+            transform: scale(1.06);
+        }
+
+        /* constant soft gradient so the card never reads as a flat photo,
+           even before the hover panel appears */
+        .svc-image::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            background: linear-gradient(180deg, rgba(8, 8, 8, 0) 45%, rgba(8, 8, 8, 0.55) 100%);
+            pointer-events: none;
+        }
+
+        /* ---- text panel base : sized to its content, not full width ---- */
+        .svc-text {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            z-index: 4;
+            width: min(46%, 620px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 90px 80px;
+        }
+
+        .svc-text-inner {
+            display: flex;
+            flex-direction: column;
+            gap: 26px;
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.5s ease 0.12s, transform 0.5s ease 0.12s;
+        }
+
+        .svc-card:hover .svc-text-inner,
+        .svc-card:focus-within .svc-text-inner {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============================================================
+           Row 1 style — panel slides in from the left (like "Processing
+           Factory" in the gallery)
+        ============================================================= */
+        .svc-row-left .svc-text {
+            left: 0;
+            background: rgba(10, 10, 10, 0.9);
+            transform: translateX(-100%);
+            transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .svc-row-left .svc-card:hover .svc-text,
+        .svc-row-left .svc-card:focus-within .svc-text {
+            transform: translateX(0);
+        }
+
+        /* ============================================================
+           Row 2 style — diagonal panel wipes in from the right (like
+           "Rajangan Grading" in the gallery)
+        ============================================================= */
+        .svc-row-right .svc-text {
+            right: 0;
+            width: min(52%, 680px);
+            background: rgba(10, 10, 10, 0.9);
+            clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+            transition: clip-path 0.65s cubic-bezier(0.7, 0, 0.3, 1);
+        }
+
+        .svc-row-right .svc-card:hover .svc-text,
+        .svc-row-right .svc-card:focus-within .svc-text {
+            clip-path: polygon(20% 0, 100% 0, 100% 100%, 2% 100%);
+        }
+
+        .svc-row-right .svc-text-inner {
+            padding-left: 6%;
+        }
+
+        .svc-overline {
+            display: inline-block;
+            color: var(--gold-primary);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .svc-title {
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: clamp(1.4rem, 2vw, 1.9rem);
+            font-weight: 600;
+            color: #fff;
+            line-height: 1.25;
+            margin: 0;
+            max-width: 520px;
+        }
+
+        .svc-divider {
+            display: block;
+            width: 70px;
+            height: 3px;
+            background: var(--gold-primary);
+            border-radius: 2px;
+        }
+
+        .svc-desc {
+            color: var(--text-gray);
+            font-size: 0.98rem;
+            line-height: 1.85;
+            max-width: 440px;
+        }
+
+        /* ============================================================
+           Row 3 style — "Split Reveal": permanently visible split
+           layout with a diagonal cut between image and text (no hover
+           needed — deliberately different rhythm from row 1 & 2)
+        ============================================================= */
+        .svc-card-split {
+            display: flex;
+            flex-wrap: wrap;
+            min-height: 560px;
+            background: var(--black-secondary);
+        }
+
+        .svc-split-media {
+            position: relative;
+            flex: 1 1 56%;
+            overflow: hidden;
+        }
+
+        .svc-split-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .svc-card-split:hover .svc-split-media img {
+            transform: scale(1.05);
+        }
+
+        .svc-split-media::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent 68%, rgba(10, 10, 10, 0.9) 100%);
+            pointer-events: none;
+        }
+
+        .svc-split-text {
+            position: relative;
+            z-index: 2;
+            flex: 1 1 44%;
+            margin-left: -4%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 22px;
+            padding: 70px 8% 70px 9%;
+            background: var(--black-secondary);
+            clip-path: polygon(7% 0, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        /* ============================================================
+           Row 4 style — "Glass Spotlight": frosted-glass panel that
+           condenses into focus at the centre of the frame on hover
+        ============================================================= */
+        .svc-card-glass {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .svc-glass-panel {
+            position: relative;
+            z-index: 4;
+            width: min(560px, 86%);
+            padding: 56px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 20px;
+            background: rgba(15, 15, 15, 0.4);
+            backdrop-filter: blur(18px) saturate(140%);
+            -webkit-backdrop-filter: blur(18px) saturate(140%);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            opacity: 0;
+            transform: scale(0.94);
+            transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .svc-card-glass:hover .svc-glass-panel,
+        .svc-card-glass:focus-within .svc-glass-panel {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .svc-glass-panel .svc-divider {
+            margin: 0 auto;
+        }
+
+        .svc-glass-panel .svc-desc {
+            max-width: 420px;
+        }
+
+        .svc-glass-cue {
+            position: absolute;
+            left: 50%;
+            bottom: 34px;
+            z-index: 3;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 11.5px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: opacity 0.4s ease;
+        }
+
+        .svc-card-glass:hover .svc-glass-cue,
+        .svc-card-glass:focus-within .svc-glass-cue {
+            opacity: 0;
+        }
+
+        /* ============================================================
+           Row 5 style — "Framed Editorial": bordered photo frame with
+           an overlapping caption card and a line that draws across
+        ============================================================= */
+        .svc-row-frame {
+            padding-bottom: 60px;
+        }
+
+        .svc-card-frame {
+            position: relative;
+            min-height: auto;
+            background: transparent;
+            padding: 60px 6% 0;
+            display: flex;
+            justify-content: flex-end;
+            overflow: visible;
+        }
+
+        .svc-frame-media {
+            position: relative;
+            width: 100%;
+            height: 560px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+        }
+
+        .svc-frame-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(0.4) contrast(1.05);
+            transition: filter 0.7s ease, transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .svc-card-frame:hover .svc-frame-media img {
+            filter: grayscale(0) contrast(1);
+            transform: scale(1.04);
+        }
+
+        .svc-frame-card {
+            position: absolute;
+            left: 6%;
+            bottom: -48px;
+            z-index: 5;
+            width: min(420px, 82%);
+            background: var(--black-secondary);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            padding: 40px 40px 44px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .svc-frame-line {
+            display: block;
+            height: 2px;
+            width: 0;
+            background: var(--gold-primary);
+            transition: width 0.7s ease;
+        }
+
+        .svc-card-frame:hover .svc-frame-line {
+            width: 56px;
+        }
+
+        /* ============================================================
+           Row 6 style — "Venetian Blinds": staggered strips wipe in
+           from alternating sides to seat a dark caption panel
+        ============================================================= */
+        .svc-card-blinds {
+            position: relative;
+        }
+
+        .svc-blinds {
+            position: absolute;
+            inset: 0;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            pointer-events: none;
+        }
+
+        .svc-blinds span {
+            flex: 1;
+            background: rgba(10, 10, 10, 0.94);
+            transform: scaleX(0);
+            transition: transform 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+        }
+
+        .svc-blinds span:nth-child(odd) {
+            transform-origin: left;
+        }
+
+        .svc-blinds span:nth-child(even) {
+            transform-origin: right;
+        }
+
+        .svc-card-blinds:hover .svc-blinds span {
+            transform: scaleX(1);
+        }
+
+        .svc-blinds span:nth-child(1) {
+            transition-delay: 0s;
+        }
+
+        .svc-blinds span:nth-child(2) {
+            transition-delay: 0.06s;
+        }
+
+        .svc-blinds span:nth-child(3) {
+            transition-delay: 0.12s;
+        }
+
+        .svc-blinds span:nth-child(4) {
+            transition-delay: 0.18s;
+        }
+
+        .svc-blinds span:nth-child(5) {
+            transition-delay: 0.24s;
+        }
+
+        .svc-blinds-text {
+            position: absolute;
+            inset: 0;
+            z-index: 4;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 90px 80px;
+            gap: 22px;
+            max-width: 560px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.4s ease 0.5s, transform 0.4s ease 0.5s;
+            pointer-events: none;
+        }
+
+        .svc-card-blinds:hover .svc-blinds-text {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        /* ============================================================
+           Row 7 style — "Magnetic Tilt": floating caption card lifts
+           with a fixed 3D tilt and a soft glow on hover
+        ============================================================= */
+        .svc-card-tilt {
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            padding: 0 6% 60px;
+            perspective: 1400px;
+        }
+
+        .svc-tilt-card {
+            position: relative;
+            z-index: 4;
+            width: min(440px, 90%);
+            background: var(--black-secondary);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 40px 40px 44px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transform: rotateX(0deg) rotateY(0deg) translateY(0);
+            transform-style: preserve-3d;
+            box-shadow: 0 0 0 rgba(214, 214, 214, 0);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease, border-color 0.5s ease;
+        }
+
+        .svc-card-tilt:hover .svc-tilt-card {
+            transform: rotateX(4deg) rotateY(-6deg) translateY(-10px);
+            border-color: rgba(214, 214, 214, 0.5);
+            box-shadow: -18px 24px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(214, 214, 214, 0.08);
+        }
+
+        /* ============================================================
+           Row 8 style — "Duotone Wash": image desaturates by default
+           and washes into full colour as a minimal caption rises
+        ============================================================= */
+        .svc-card-duotone .svc-image img {
+            filter: grayscale(1) contrast(1.05) brightness(0.9);
+            transition: filter 0.9s ease, transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .svc-card-duotone:hover .svc-image img {
+            filter: grayscale(0) contrast(1) brightness(1);
+            transform: scale(1.04);
+        }
+
+        .svc-duotone-text {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 4;
+            padding: 60px 80px;
+            max-width: 640px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            transform: translateY(18px);
+            opacity: 0;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s, opacity 0.5s ease 0.1s;
+        }
+
+        .svc-card-duotone:hover .svc-duotone-text {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* ============================================================
+           Row 9 style — "Corner Peel": a folded corner lifts away and
+           a caption fades up from beneath it
+        ============================================================= */
+        .svc-card-peel {
+            position: relative;
+        }
+
+        .svc-peel-panel {
+            position: absolute;
+            inset: 0;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 60px 80px;
+            max-width: 640px;
+            gap: 18px;
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity 0.5s ease 0.15s, transform 0.5s ease 0.15s;
+        }
+
+        .svc-card-peel:hover .svc-peel-panel {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .svc-peel-flap {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 5;
+            width: 140px;
+            height: 140px;
+            background: linear-gradient(225deg, var(--black-secondary) 0%, var(--black-secondary) 50%, transparent 52%);
+            transform-origin: top right;
+            transform: rotate(0deg);
+            box-shadow: -6px 6px 18px rgba(0, 0, 0, 0.35);
+            transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .svc-card-peel:hover .svc-peel-flap {
+            transform: rotate(-18deg) translate(4px, -4px);
+        }
+
+        /* ============================================================
+           Row 10 style — "Ticker Reveal": a thin accent rule draws
+           edge-to-edge while a compact caption settles at the corner
+        ============================================================= */
+        .svc-card-ticker {
+            position: relative;
+        }
+
+        .svc-ticker-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 5;
+            height: 3px;
+            width: 0;
+            background: var(--gold-primary);
+            transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .svc-card-ticker:hover .svc-ticker-line {
+            width: 100%;
+        }
+
+        .svc-ticker-text {
+            position: absolute;
+            left: 6%;
+            bottom: 56px;
+            z-index: 4;
+            max-width: 440px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            transform: translateY(12px);
+            opacity: 0;
+            transition: transform 0.5s ease 0.2s, opacity 0.5s ease 0.2s;
+        }
+
+        .svc-card-ticker:hover .svc-ticker-text {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .svc-ticker-text .svc-desc {
+            max-width: 380px;
+            font-size: 0.92rem;
+        }
+
+        /* ==========================
+         COMPACT SERVICE GRID — boxed cards, contained width
+         (deliberately NOT full-bleed, sits inside a max-width grid)
+      ========================== */
+        .svc-compact {
+            padding: 20px 0 130px;
+            background: var(--black-primary);
+        }
+
+        .svc-compact-intro {
+            width: 90%;
+            max-width: 950px;
+            margin: 0 auto 56px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 18px;
+        }
+
+        .svc-compact-title {
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: clamp(1.6rem, 2.4vw, 2.1rem);
+            font-weight: 600;
+            color: #fff;
+            max-width: 720px;
+            line-height: 1.35;
+        }
+
+        .svc-compact-grid {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .cc-card {
+            position: relative;
+            overflow: hidden;
+            background: var(--black-secondary);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .cc-title {
+            font-family: "Playfair Display", Georgia, serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        .cc-desc {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            line-height: 1.75;
+            max-width: 340px;
+        }
+
+        /* ---- Card A — "Flip Reveal" : mini 3D flip on hover ---- */
+        .cc-flip {
+            min-height: 420px;
+            perspective: 1400px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cc-flip-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+        }
+
+        .cc-flip:hover .cc-flip-inner {
+            transform: rotateY(180deg);
+        }
+
+        .cc-flip-front,
+        .cc-flip-back {
+            position: absolute;
+            inset: 0;
+            backface-visibility: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .cc-flip-front {
+            overflow: hidden;
+        }
+
+        .cc-flip-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .cc-flip-front::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(8, 8, 8, 0) 50%, rgba(8, 8, 8, 0.88) 100%);
+        }
+
+        .cc-flip-tag {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 24px 28px;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .cc-flip-back {
+            background: var(--black-secondary);
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px;
+            gap: 16px;
+        }
+
+        /* ---- Card B — "Icon Rise" : image zoom + accent rule grows ---- */
+        .cc-rise {
+            display: flex;
+            flex-direction: column;
+            min-height: 420px;
+        }
+
+        .cc-rise-media {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .cc-rise-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .cc-rise:hover .cc-rise-media img {
+            transform: scale(1.08);
+        }
+
+        .cc-rise-body {
+            position: relative;
+            padding: 30px 30px 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .cc-rise-body::before {
+            content: "";
+            position: absolute;
+            left: 30px;
+            top: 0;
+            height: 2px;
+            width: 0;
+            background: var(--gold-primary);
+            transition: width 0.5s ease;
+        }
+
+        .cc-rise:hover .cc-rise-body::before {
+            width: 40px;
+        }
+
+        /* ---- Card C — "Line Frame" : rule draws across top & bottom ---- */
+        .cc-lineframe {
+            display: flex;
+            flex-direction: column;
+            min-height: 420px;
+        }
+
+        .cc-lineframe-media {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .cc-lineframe-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: grayscale(0.55);
+            transition: filter 0.6s ease;
+        }
+
+        .cc-lineframe:hover .cc-lineframe-media img {
+            filter: grayscale(0);
+        }
+
+        .cc-lineframe-body {
+            position: relative;
+            padding: 30px 30px 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex: 1;
+        }
+
+        .cc-lineframe-border {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .cc-lineframe-border::before,
+        .cc-lineframe-border::after {
+            content: "";
+            position: absolute;
+            height: 2px;
+            width: 0;
+            background: var(--gold-primary);
+            transition: width 0.6s ease;
+        }
+
+        .cc-lineframe-border::before {
+            top: 0;
+            left: 0;
+        }
+
+        .cc-lineframe:hover .cc-lineframe-border::before {
+            width: 100%;
+        }
+
+        .cc-lineframe-border::after {
+            bottom: 0;
+            right: 0;
+        }
+
+        .cc-lineframe:hover .cc-lineframe-border::after {
+            width: 100%;
+        }
+
+        /* ---- Card D — "Shutter Split" : halves part to reveal caption ---- */
+        .cc-shutter {
+            position: relative;
+            min-height: 420px;
+        }
+
+        .cc-shutter-half {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+            overflow: hidden;
+            z-index: 2;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .cc-shutter-left {
+            left: 0;
+        }
+
+        .cc-shutter-right {
+            right: 0;
+        }
+
+        .cc-shutter-half img {
+            position: absolute;
+            top: 0;
+            width: 200%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cc-shutter-left img {
+            left: 0;
+        }
+
+        .cc-shutter-right img {
+            right: 0;
+        }
+
+        .cc-shutter:hover .cc-shutter-left {
+            transform: translateX(-100%);
+        }
+
+        .cc-shutter:hover .cc-shutter-right {
+            transform: translateX(100%);
+        }
+
+        .cc-shutter-body {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 30px;
+            gap: 14px;
+        }
+
+        .cc-shutter-body .cc-desc {
+            max-width: 300px;
+        }
+
+        /* ---- Card E — "Underline Slide" : wide banner, animated title rule ---- */
+        .cc-underline {
+            grid-column: 1 / -1;
+            display: flex;
+            flex-wrap: wrap;
+            min-height: 260px;
+        }
+
+        .cc-underline-media {
+            position: relative;
+            flex: 1 1 260px;
+            min-height: 220px;
+            overflow: hidden;
+        }
+
+        .cc-underline-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.8s ease;
+        }
+
+        .cc-underline:hover .cc-underline-media img {
+            transform: scale(1.05);
+        }
+
+        .cc-underline-body {
+            flex: 1 1 320px;
+            padding: 34px 36px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 14px;
+        }
+
+        .cc-underline-title {
+            position: relative;
+            display: inline-block;
+        }
+
+        .cc-underline-rule {
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            height: 2px;
+            width: 0;
+            background: var(--gold-primary);
+            transition: width 0.5s ease;
+        }
+
+        .cc-underline:hover .cc-underline-rule {
+            width: 100%;
+        }
+
+        @media (max-width: 900px) {
+            .svc-compact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cc-flip,
+            .cc-shutter {
+                min-height: 340px;
+            }
+
+            .cc-flip-inner {
+                transform: none !important;
+            }
+
+            .cc-flip-back {
+                display: none;
+            }
+
+            .cc-rise,
+            .cc-lineframe {
+                min-height: auto;
+            }
+
+            .cc-shutter-left,
+            .cc-shutter-right {
+                transform: none !important;
+            }
+
+            .cc-shutter-body {
+                background: rgba(10, 10, 10, 0.6);
+            }
+
+            .cc-underline {
+                flex-direction: column;
+            }
+
+            .cc-underline-media {
+                min-height: 200px;
+            }
+        }
+
+        /* ==========================
+         STEPPER (dash segments, vertical) — dark theme
+      ========================== */
+        .svc-stepper {
+            max-width: 480px;
+            display: flex;
+            gap: 28px;
+            height: 48px;
+        }
+
+        .stepper-track {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex-shrink: 0;
+            align-self: flex-start;
+        }
+
+        .stepper-dash {
+            width: 3px;
+            height: 16px;
+            border-radius: 2px;
+            border: none;
+            padding: 0;
+            background: rgba(255, 255, 255, 0.18);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .stepper-dash.active {
+            background: var(--gold-primary);
+        }
+
+        .stepper-content {
+            position: relative;
+            flex: 1;
+        }
+
+        .stepper-text {
+            position: absolute;
+            inset: 0;
+            margin: 0;
+            color: var(--text-gray);
+            font-size: 0.98rem;
+            line-height: 1.85;
+            opacity: 0;
+            transform: translateX(10px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            pointer-events: none;
+        }
+
+        .stepper-text.active {
+            opacity: 1;
+            transform: translateX(0);
+            pointer-events: auto;
+        }
+
+        /* ==========================
+         RESPONSIVE (tablet & mobile)
+      ========================== */
+        @media (max-width: 900px) {
+            .svc-intro {
+                margin-bottom: 60px;
+            }
+
+            /* hover isn't reliable on touch — stack image on top,
+               panel below, always visible */
+            .svc-card {
+                min-height: auto;
+            }
+
+            .svc-image {
+                position: relative;
+                height: 320px;
+            }
+
+            .svc-image::after {
+                background: linear-gradient(180deg, rgba(8, 8, 8, 0) 55%, rgba(8, 8, 8, 0.6) 100%);
+            }
+
+            .svc-text,
+            .svc-row-left .svc-text,
+            .svc-row-right .svc-text {
+                position: relative;
+                top: auto;
+                bottom: auto;
+                left: auto;
+                right: auto;
+                width: 100%;
+                transform: none !important;
+                clip-path: none !important;
+                background: transparent;
+                padding: 36px 28px;
+            }
+
+            .svc-row-right .svc-text-inner {
+                padding-left: 0;
+            }
+
+            .svc-text-inner {
+                opacity: 1 !important;
+                transform: none !important;
+                gap: 22px;
+            }
+
+            .svc-stepper {
+                height: 190px;
+            }
+
+            /* Row 3 — split becomes stacked */
+            .svc-card-split {
+                flex-direction: column;
+                min-height: auto;
+            }
+
+            .svc-split-media {
+                flex: none;
+                height: 300px;
+            }
+
+            .svc-split-text {
+                flex: none;
+                margin-left: 0;
+                clip-path: none;
+                padding: 36px 28px;
+            }
+
+            /* Row 4 — glass panel always visible on touch */
+            .svc-card-glass {
+                min-height: auto;
+            }
+
+            .svc-glass-panel {
+                position: relative;
+                width: 100%;
+                opacity: 1;
+                transform: none;
+                padding: 36px 28px;
+                border-left: none;
+                border-right: none;
+            }
+
+            .svc-glass-cue {
+                display: none;
+            }
+
+            /* Row 5 — frame card drops below the photo, no overlap */
+            .svc-row-frame {
+                padding-bottom: 0;
+            }
+
+            .svc-card-frame {
+                flex-direction: column;
+                padding: 0;
+            }
+
+            .svc-frame-media {
+                height: 300px;
+            }
+
+            .svc-frame-card {
+                position: relative;
+                left: auto;
+                bottom: auto;
+                width: 100%;
+                margin-top: -1px;
+                padding: 32px 28px 36px;
+            }
+
+            /* Row 6 — blinds: strips removed, caption always visible */
+            .svc-blinds {
+                display: none;
+            }
+
+            .svc-blinds-text {
+                position: relative;
+                inset: auto;
+                opacity: 1;
+                transform: none;
+                pointer-events: auto;
+                padding: 36px 28px;
+                max-width: 100%;
+            }
+
+            /* Row 7 — tilt: flatten, no perspective on touch */
+            .svc-card-tilt {
+                padding: 0;
+                align-items: stretch;
+                perspective: none;
+            }
+
+            .svc-tilt-card {
+                position: relative;
+                width: 100%;
+                transform: none !important;
+                box-shadow: none;
+                padding: 32px 28px 36px;
+            }
+
+            /* Row 8 — duotone: full colour, caption always visible */
+            .svc-card-duotone .svc-image img {
+                filter: none;
+            }
+
+            .svc-duotone-text {
+                position: relative;
+                padding: 36px 28px;
+                max-width: 100%;
+                opacity: 1;
+                transform: none;
+            }
+
+            /* Row 9 — peel: flap hidden, caption always visible */
+            .svc-peel-flap {
+                display: none;
+            }
+
+            .svc-peel-panel {
+                position: relative;
+                opacity: 1;
+                transform: none;
+                padding: 36px 28px;
+                justify-content: flex-start;
+            }
+
+            /* Row 10 — ticker: line + caption always visible */
+            .svc-ticker-line {
+                width: 100%;
+            }
+
+            .svc-ticker-text {
+                position: relative;
+                left: auto;
+                bottom: auto;
+                opacity: 1;
+                transform: none;
+                padding: 20px 28px 0;
+                max-width: 100%;
+            }
+        }
+
+/* -- Footer-scoped styles (was: inline <style> inside <footer id="contact">) -- */
+            #contact {
+                --accent: #d6d6d6;
+                font-family: "Outfit", "Poppins", sans-serif;
+                background: linear-gradient(180deg, #131214 0%, #0b0b0c 55%, #060606 100%);
+                position: relative;
+            }
+
+            #contact h2 {
+                font-family: "Cormorant Garamond", serif;
+            }
+
+            /* Layout */
+            #contact .footer-inner {
+                max-width: 1400px;
+                margin: 0 auto;
+                padding: 56px 16px;
+            }
+
+            #contact .footer-top {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            #contact .footer-links-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            /* Brand */
+            #contact .footer-brand h2 {
+                font-size: 30px;
+                font-weight: 500;
+                color: #fff;
+                letter-spacing: 0.01em;
+            }
+
+            #contact .footer-brand p {
+                margin-top: 20px;
+                font-size: 14px;
+                line-height: 1.7;
+                color: #6b6b70;
+                max-width: 320px;
+            }
+
+            #contact .footer-socials {
+                margin-top: 28px;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+            #contact .social-icon {
+                display: inline-flex;
+                height: 32px;
+                width: 32px;
+                align-items: center;
+                justify-content: center;
+                border-radius: 9999px;
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                color: #6b6b70;
+                transition:
+                    color 0.25s ease,
+                    border-color 0.25s ease;
+            }
+
+            #contact .social-icon svg {
+                height: 14px;
+                width: 14px;
+                fill: currentColor;
+            }
+
+            #contact .social-icon:hover {
+                color: var(--accent);
+                border-color: var(--accent);
+            }
+
+            /* Column groups (Company / Products / News) */
+            #contact .fc-title {
+                font-size: 12px;
+                font-weight: 500;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+                color: #d4d4d8;
+            }
+
+            #contact .fc-nav {
+                margin-top: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            #contact .footer-link {
+                position: relative;
+                display: inline-block;
+                font-size: 14px;
+                color: #8b8b8f;
+                text-decoration: none;
+                transition: color 0.25s ease;
+            }
+
+            #contact .footer-link::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: -3px;
+                width: 100%;
+                height: 1px;
+                background-color: var(--accent);
+                transform: scaleX(0);
+                transform-origin: left;
+                transition: transform 0.3s ease;
+            }
+
+            #contact .footer-link:hover {
+                color: #f2f2f2;
+            }
+
+            #contact .footer-link:hover::after {
+                transform: scaleX(1);
+            }
+
+            /* News list */
+            #contact .news-list {
+                margin-top: 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            #contact .news-link {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                text-decoration: none;
+            }
+
+            #contact .news-title {
+                font-size: 14px;
+                line-height: 1.5;
+                color: #a3a3a7;
+                transition: color 0.25s ease;
+            }
+
+            #contact .news-link:hover .news-title {
+                color: #f2f2f2;
+            }
+
+            #contact .news-date {
+                font-size: 11px;
+                color: #4b4b4f;
+            }
+
+            /* Bottom bar */
+            #contact .bottom-bar {
+                border-top: 1px solid rgba(255, 255, 255, 0.08);
+            }
+
+            #contact .bottom-bar-inner {
+                max-width: 1400px;
+                margin: 0 auto;
+                padding: 20px 16px;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                font-size: 12px;
+                color: #4b4b4f;
+            }
+
+            #contact .made-with {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+            }
+
+            #contact .made-with svg {
+                height: 12px;
+                width: 12px;
+                fill: #fff;
+            }
+
+            /* Scroll to top */
+            #contact .scroll-top-btn {
+                position: fixed;
+                right: 22px;
+                bottom: 22px;
+                z-index: 40;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                border-radius: 9999px;
+                border: 1px solid rgba(255, 255, 255, 0.14);
+                background: rgba(11, 11, 12, 0.9);
+                color: #cfcfd2;
+                cursor: pointer;
+                opacity: 0;
+                visibility: hidden;
+                transition:
+                    opacity 0.3s ease,
+                    visibility 0.3s ease,
+                    color 0.25s ease,
+                    border-color 0.25s ease;
+            }
+
+            #contact .scroll-top-btn.is-visible {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            #contact .scroll-top-btn:hover {
+                color: var(--accent);
+                border-color: var(--accent);
+            }
+
+            #contact .scroll-top-btn svg {
+                height: 16px;
+                width: 16px;
+            }
+
+            /* Quiet entrance */
+            #contact .fade-up {
+                opacity: 0;
+                transform: translateY(10px);
+                animation: contactFadeUp 0.6s ease-out forwards;
+            }
+
+            #contact .fade-up:nth-child(2) {
+                animation-delay: 0.08s;
+            }
+
+            #contact .bottom-bar-inner {
+                opacity: 0;
+                animation: contactFadeUp 0.6s ease-out forwards;
+                animation-delay: 0.15s;
+            }
+
+            @keyframes contactFadeUp {
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            /* Responsive */
+            @media (min-width: 640px) {
+                #contact .footer-inner {
+                    padding-left: 32px;
+                    padding-right: 32px;
+                }
+
+                #contact .footer-links-grid {
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 24px;
+                }
+
+                #contact .bottom-bar-inner {
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding-left: 32px;
+                    padding-right: 32px;
+                }
+            }
+
+            @media (min-width: 768px) {
+                #contact .footer-top {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+
+                #contact .footer-inner {
+                    padding-left: 40px;
+                    padding-right: 40px;
+                }
+            }
+
+            @media (min-width: 1024px) {
+                #contact .footer-top {
+                    grid-template-columns: 1.2fr 2fr;
+                    gap: 64px;
+                }
+
+                #contact .footer-brand {
+                    padding-right: 32px;
+                }
+
+                #contact .footer-inner {
+                    padding-top: 80px;
+                    padding-bottom: 80px;
+                    padding-left: 48px;
+                    padding-right: 48px;
+                }
+
+                #contact .bottom-bar-inner {
+                    padding-left: 48px;
+                    padding-right: 48px;
+                }
+            }

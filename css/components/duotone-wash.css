@@ -1,0 +1,53 @@
+/* ==========================================================
+   Component — Duotone Wash (Row 8)
+   Gambar default hitam-putih (grayscale) yang beralih ke warna penuh sambil caption naik dari bawah saat di-hover. Dipakai pada kartu 'Sun Cured Leaf'.
+   ========================================================== */
+
+/* ============================================================
+   Row 8 style — "Duotone Wash": image desaturates by default
+   and washes into full colour as a minimal caption rises
+============================================================= */
+.svc-card-duotone .svc-image img {
+    filter: grayscale(1) contrast(1.05) brightness(0.9);
+    transition: filter 0.9s ease, transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.svc-card-duotone:hover .svc-image img {
+    filter: grayscale(0) contrast(1) brightness(1);
+    transform: scale(1.04);
+}
+
+.svc-duotone-text {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 4;
+    padding: 60px 80px;
+    max-width: 640px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    transform: translateY(18px);
+    opacity: 0;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s, opacity 0.5s ease 0.1s;
+}
+
+.svc-card-duotone:hover .svc-duotone-text {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+@media (max-width: 900px) {
+    .svc-card-duotone .svc-image img {
+        filter: none;
+    }
+
+    .svc-duotone-text {
+        position: relative;
+        padding: 36px 28px;
+        max-width: 100%;
+        opacity: 1;
+        transform: none;
+    }
+}

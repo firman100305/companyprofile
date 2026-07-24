@@ -1,0 +1,44 @@
+/* ==========================================================
+   Component — Diagonal Wipe Right (Row 2)
+   Panel teks muncul dengan efek clip-path diagonal dari kanan saat kartu di-hover. Dipakai pada kartu 'Processing'.
+   ========================================================== */
+
+/* ============================================================
+   Row 2 style — diagonal panel wipes in from the right (like
+   "Rajangan Grading" in the gallery)
+============================================================= */
+.svc-row-right .svc-text {
+    right: 0;
+    width: min(52%, 680px);
+    background: rgba(10, 10, 10, 0.9);
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+    transition: clip-path 0.65s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+.svc-row-right .svc-card:hover .svc-text,
+.svc-row-right .svc-card:focus-within .svc-text {
+    clip-path: polygon(20% 0, 100% 0, 100% 100%, 2% 100%);
+}
+
+.svc-row-right .svc-text-inner {
+    padding-left: 6%;
+}
+
+@media (max-width: 900px) {
+    .svc-row-right .svc-text {
+        position: relative;
+        top: auto;
+        bottom: auto;
+        left: auto;
+        right: auto;
+        width: 100%;
+        transform: none !important;
+        clip-path: none !important;
+        background: transparent;
+        padding: 36px 28px;
+    }
+
+    .svc-row-right .svc-text-inner {
+        padding-left: 0;
+    }
+}

@@ -1,0 +1,75 @@
+/* ==========================================================
+   Component — Split Reveal (Row 3)
+   Layout terbelah permanen (gambar 56% / teks 44%) dengan potongan diagonal, tanpa bergantung pada hover. Dipakai pada kartu 'Quality Control'.
+   ========================================================== */
+
+/* ============================================================
+   Row 3 style — "Split Reveal": permanently visible split
+   layout with a diagonal cut between image and text (no hover
+   needed — deliberately different rhythm from row 1 & 2)
+============================================================= */
+.svc-card-split {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 560px;
+    background: var(--black-secondary);
+}
+
+.svc-split-media {
+    position: relative;
+    flex: 1 1 56%;
+    overflow: hidden;
+}
+
+.svc-split-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.svc-card-split:hover .svc-split-media img {
+    transform: scale(1.05);
+}
+
+.svc-split-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 68%, rgba(10, 10, 10, 0.9) 100%);
+    pointer-events: none;
+}
+
+.svc-split-text {
+    position: relative;
+    z-index: 2;
+    flex: 1 1 44%;
+    margin-left: -4%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 22px;
+    padding: 70px 8% 70px 9%;
+    background: var(--black-secondary);
+    clip-path: polygon(7% 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+@media (max-width: 900px) {
+    .svc-card-split {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .svc-split-media {
+        flex: none;
+        height: 300px;
+    }
+
+    .svc-split-text {
+        flex: none;
+        margin-left: 0;
+        clip-path: none;
+        padding: 36px 28px;
+    }
+}

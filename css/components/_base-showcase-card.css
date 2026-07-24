@@ -1,0 +1,76 @@
+/* ==========================================================
+   Base — Showcase Card Shell
+   Struktur dasar bersama untuk semua kartu full-bleed di section .svc-showcase (kontainer .svc-row, .svc-card, layer .svc-image). WAJIB di-load sebelum file komponen lain di bawah ini karena setiap komponen hanya berisi override di atas dasar ini.
+   ========================================================== */
+
+.svc-row {
+    width: 100%;
+    margin: 0;
+}
+
+/* card is now a full-width image; the text panel is revealed on hover,
+   not full width — sized to fit its own content instead */
+.svc-card {
+    position: relative;
+    display: block;
+    min-height: 640px;
+    background: var(--black-secondary);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+}
+
+.svc-row:last-child .svc-card {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* image panel — full width / full height of the card */
+.svc-image {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.svc-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.svc-card:hover .svc-image img {
+    transform: scale(1.06);
+}
+
+/* constant soft gradient so the card never reads as a flat photo,
+   even before the hover panel appears */
+.svc-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(180deg, rgba(8, 8, 8, 0) 45%, rgba(8, 8, 8, 0.55) 100%);
+    pointer-events: none;
+}
+
+@media (max-width: 900px) {
+    .svc-intro {
+        margin-bottom: 60px;
+    }
+
+    /* hover isn't reliable on touch — stack image on top,
+       panel below, always visible */
+    .svc-card {
+        min-height: auto;
+    }
+
+    .svc-image {
+        position: relative;
+        height: 320px;
+    }
+
+    .svc-image::after {
+        background: linear-gradient(180deg, rgba(8, 8, 8, 0) 55%, rgba(8, 8, 8, 0.6) 100%);
+    }
+}

@@ -1,0 +1,67 @@
+/* ==========================================================
+   Component — Ticker Reveal (Row 10)
+   Garis aksen tipis yang menggambar dari ujung ke ujung, diikuti caption ringkas yang settle di pojok saat hover. Dipakai pada kartu 'Flue Cured Virginia'.
+   ========================================================== */
+
+/* ============================================================
+   Row 10 style — "Ticker Reveal": a thin accent rule draws
+   edge-to-edge while a compact caption settles at the corner
+============================================================= */
+.svc-card-ticker {
+    position: relative;
+}
+
+.svc-ticker-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    height: 3px;
+    width: 0;
+    background: var(--gold-primary);
+    transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.svc-card-ticker:hover .svc-ticker-line {
+    width: 100%;
+}
+
+.svc-ticker-text {
+    position: absolute;
+    left: 6%;
+    bottom: 56px;
+    z-index: 4;
+    max-width: 440px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transform: translateY(12px);
+    opacity: 0;
+    transition: transform 0.5s ease 0.2s, opacity 0.5s ease 0.2s;
+}
+
+.svc-card-ticker:hover .svc-ticker-text {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.svc-ticker-text .svc-desc {
+    max-width: 380px;
+    font-size: 0.92rem;
+}
+
+@media (max-width: 900px) {
+    .svc-ticker-line {
+        width: 100%;
+    }
+
+    .svc-ticker-text {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        opacity: 1;
+        transform: none;
+        padding: 20px 28px 0;
+        max-width: 100%;
+    }
+}

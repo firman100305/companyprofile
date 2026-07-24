@@ -1,0 +1,84 @@
+/* ==========================================================
+   Component — Shutter Split (Compact Card D)
+   Dua belahan gambar yang terbuka ke kiri & kanan seperti tirai/shutter untuk menyingkap caption di tengah saat hover. Dipakai pada kartu kecil 'Leaf Selection'.
+   ========================================================== */
+
+/* ---- Card D — "Shutter Split" : halves part to reveal caption ---- */
+.cc-shutter {
+    position: relative;
+    min-height: 420px;
+}
+
+.cc-shutter-half {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    overflow: hidden;
+    z-index: 2;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cc-shutter-left {
+    left: 0;
+}
+
+.cc-shutter-right {
+    right: 0;
+}
+
+.cc-shutter-half img {
+    position: absolute;
+    top: 0;
+    width: 200%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cc-shutter-left img {
+    left: 0;
+}
+
+.cc-shutter-right img {
+    right: 0;
+}
+
+.cc-shutter:hover .cc-shutter-left {
+    transform: translateX(-100%);
+}
+
+.cc-shutter:hover .cc-shutter-right {
+    transform: translateX(100%);
+}
+
+.cc-shutter-body {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px;
+    gap: 14px;
+}
+
+.cc-shutter-body .cc-desc {
+    max-width: 300px;
+}
+
+@media (max-width: 900px) {
+    .cc-shutter {
+        min-height: 340px;
+    }
+
+    .cc-shutter-left,
+    .cc-shutter-right {
+        transform: none !important;
+    }
+
+    .cc-shutter-body {
+        background: rgba(10, 10, 10, 0.6);
+    }
+}

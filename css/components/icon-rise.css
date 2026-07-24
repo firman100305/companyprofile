@@ -1,0 +1,59 @@
+/* ==========================================================
+   Component — Icon Rise (Compact Card B)
+   Gambar zoom-in halus dan garis aksen yang tumbuh di bawah judul saat hover. Dipakai pada kartu kecil 'Processing Facility'.
+   ========================================================== */
+
+/* ---- Card B — "Icon Rise" : image zoom + accent rule grows ---- */
+.cc-rise {
+    display: flex;
+    flex-direction: column;
+    min-height: 420px;
+}
+
+.cc-rise-media {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+}
+
+.cc-rise-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cc-rise:hover .cc-rise-media img {
+    transform: scale(1.08);
+}
+
+.cc-rise-body {
+    position: relative;
+    padding: 30px 30px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+}
+
+.cc-rise-body::before {
+    content: "";
+    position: absolute;
+    left: 30px;
+    top: 0;
+    height: 2px;
+    width: 0;
+    background: var(--gold-primary);
+    transition: width 0.5s ease;
+}
+
+.cc-rise:hover .cc-rise-body::before {
+    width: 40px;
+}
+
+@media (max-width: 900px) {
+    .cc-rise {
+        min-height: auto;
+    }
+}

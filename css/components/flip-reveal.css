@@ -1,0 +1,87 @@
+/* ==========================================================
+   Component — Flip Reveal (Compact Card A)
+   Kartu yang membalik 180° secara 3D (front → back) saat di-hover. Dipakai pada kartu kecil 'Farmer Partnerships'.
+   ========================================================== */
+
+/* ---- Card A — "Flip Reveal" : mini 3D flip on hover ---- */
+.cc-flip {
+    min-height: 420px;
+    perspective: 1400px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.cc-flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+.cc-flip:hover .cc-flip-inner {
+    transform: rotateY(180deg);
+}
+
+.cc-flip-front,
+.cc-flip-back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cc-flip-front {
+    overflow: hidden;
+}
+
+.cc-flip-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.cc-flip-front::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(8, 8, 8, 0) 50%, rgba(8, 8, 8, 0.88) 100%);
+}
+
+.cc-flip-tag {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 24px 28px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cc-flip-back {
+    background: var(--black-secondary);
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px;
+    gap: 16px;
+}
+
+@media (max-width: 900px) {
+    .cc-flip {
+        min-height: 340px;
+    }
+
+    .cc-flip-inner {
+        transform: none !important;
+    }
+
+    .cc-flip-back {
+        display: none;
+    }
+}

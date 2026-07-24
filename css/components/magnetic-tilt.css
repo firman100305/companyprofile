@@ -1,0 +1,54 @@
+/* ==========================================================
+   Component — Magnetic Tilt (Row 7)
+   Kartu caption yang mengambang dan miring (3D tilt) beserta efek glow saat di-hover. Dipakai pada kartu 'Rajangan Grading'.
+   ========================================================== */
+
+/* ============================================================
+   Row 7 style — "Magnetic Tilt": floating caption card lifts
+   with a fixed 3D tilt and a soft glow on hover
+============================================================= */
+.svc-card-tilt {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 6% 60px;
+    perspective: 1400px;
+}
+
+.svc-tilt-card {
+    position: relative;
+    z-index: 4;
+    width: min(440px, 90%);
+    background: var(--black-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 40px 40px 44px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transform: rotateX(0deg) rotateY(0deg) translateY(0);
+    transform-style: preserve-3d;
+    box-shadow: 0 0 0 rgba(214, 214, 214, 0);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease, border-color 0.5s ease;
+}
+
+.svc-card-tilt:hover .svc-tilt-card {
+    transform: rotateX(4deg) rotateY(-6deg) translateY(-10px);
+    border-color: rgba(214, 214, 214, 0.5);
+    box-shadow: -18px 24px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(214, 214, 214, 0.08);
+}
+
+@media (max-width: 900px) {
+    .svc-card-tilt {
+        padding: 0;
+        align-items: stretch;
+        perspective: none;
+    }
+
+    .svc-tilt-card {
+        position: relative;
+        width: 100%;
+        transform: none !important;
+        box-shadow: none;
+        padding: 32px 28px 36px;
+    }
+}

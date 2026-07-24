@@ -1,0 +1,35 @@
+/* ==========================================================
+   Component — Slide Left Panel (Row 1)
+   Panel teks slide masuk dari kiri saat kartu di-hover. Dipakai pada kartu 'Working with Farmers'.
+   ========================================================== */
+
+/* ============================================================
+   Row 1 style — panel slides in from the left (like "Processing
+   Factory" in the gallery)
+============================================================= */
+.svc-row-left .svc-text {
+    left: 0;
+    background: rgba(10, 10, 10, 0.9);
+    transform: translateX(-100%);
+    transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.svc-row-left .svc-card:hover .svc-text,
+.svc-row-left .svc-card:focus-within .svc-text {
+    transform: translateX(0);
+}
+
+@media (max-width: 900px) {
+    .svc-row-left .svc-text {
+        position: relative;
+        top: auto;
+        bottom: auto;
+        left: auto;
+        right: auto;
+        width: 100%;
+        transform: none !important;
+        clip-path: none !important;
+        background: transparent;
+        padding: 36px 28px;
+    }
+}

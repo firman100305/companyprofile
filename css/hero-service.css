@@ -1,0 +1,275 @@
+/* =========================================================
+   SERVICES HERO — dedicated styles
+   Meniru desain .products-hero di products.css: background
+   terbelah 2 (kiri = tekstur daun, kanan = hitam solid) dengan
+   judul separuh putih / separuh masked-leaf.
+   Scope: hanya elemen di dalam .services-hero.
+   Catatan: --pp-gold dkk sudah didefinisikan secara global di
+   css/style.css, jadi tidak didefinisikan ulang di sini.
+   ========================================================= */
+
+.services-hero {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #000000;
+}
+
+.services-hero-split {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.services-hero-split-leaf {
+    position: relative;
+    flex: 0 0 50%;
+    width: 50%;
+    height: 100%;
+    background-image: url("../assets/images/service.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.services-hero-leaf-darken {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(10, 8, 6, 0.5) 0%,
+        rgba(10, 8, 6, 0.15) 45%,
+        rgba(10, 8, 6, 0.65) 100%
+    );
+    pointer-events: none;
+}
+
+.services-hero-split-leaf::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -1px;
+    width: 180px;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(0, 0, 0, 0.15),
+        rgba(0, 0, 0, 0.45),
+        #000
+    );
+    z-index: 2;
+}
+
+.services-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("../assets/images/noise.png");
+    opacity: 0.03;
+    mix-blend-mode: soft-light;
+    pointer-events: none;
+}
+
+/* Sisi hitam — juga menjadi wadah untuk dekorasi watermark daun */
+.services-hero-split-black {
+    flex: 0 0 50%;
+    width: 50%;
+    height: 100%;
+    background: #000000;
+    position: relative;
+    overflow: hidden;
+}
+
+.services-hero-masktitle {
+    text-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.45),
+        0 0 35px rgba(200, 155, 90, 0.08);
+}
+
+/* Dekorasi watermark daun di sisi hitam hero */
+.services-hero-black-leaf-1,
+.services-hero-black-leaf-2 {
+    position: absolute;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: rgba(200, 155, 90, 0.07);
+    pointer-events: none;
+    z-index: 1;
+    line-height: 1;
+}
+
+.services-hero-black-leaf-1 {
+    top: 60%;
+    right: -6%;
+    font-size: clamp(110px, 13vw, 200px);
+    transform: scaleX(-1) rotate(-15deg);
+}
+
+.services-hero-inner {
+    position: relative;
+    z-index: 2;
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.services-hero-masktitle {
+    position: relative;
+    display: flex;
+    align-items: baseline;
+    width: 100%;
+    margin: 0;
+    font-family: Georgia, serif;
+    font-weight: 700;
+    text-transform: uppercase !important;
+    letter-spacing: 0.02em;
+    line-height: 0.92;
+    font-size: clamp(52px, 10vw, 160px);
+    filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.45));
+}
+
+.services-hero-masktitle .title-white {
+    flex: 0 0 50%;
+    text-align: right;
+    text-transform: uppercase !important;
+    font-size: inherit;
+    color: #ffffff;
+    -webkit-text-fill-color: #ffffff;
+    white-space: nowrap;
+    display: inline-block;
+    opacity: 0;
+    animation: servicesHeroTitleFadeUp 0.9s cubic-bezier(0.25, 1, 0.35, 1) 0.1s forwards;
+}
+
+.services-hero-masktitle .title-masked {
+    flex: 0 0 50%;
+    text-align: left;
+    text-transform: uppercase !important;
+    font-size: inherit;
+    white-space: nowrap;
+    display: inline-block;
+
+    background-image: url("../assets/images/service.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+
+    filter: brightness(0.9) contrast(1) saturate(1.7);
+
+    opacity: 0;
+    animation: servicesHeroTitleFadeUp 0.9s cubic-bezier(0.25, 1, 0.35, 1) 0.3s forwards;
+}
+
+@keyframes servicesHeroTitleFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(28px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+    .services-hero-masktitle .title-masked {
+        background: none;
+        color: var(--pp-gold, #c89b5a);
+        -webkit-text-fill-color: initial;
+    }
+}
+
+/* Glow effect di bawah teks masked */
+.services-hero-masktitle .title-masked {
+    position: relative;
+}
+
+.services-hero-masktitle .title-masked::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -18%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 50%;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(200, 155, 90, 0.28) 0%,
+        rgba(200, 155, 90, 0.1) 45%,
+        transparent 75%
+    );
+    filter: blur(28px);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Tagline — pojok kiri bawah, dibatasi agar tidak melebihi lebar panel leaf (50%) */
+.services-hero-subtitle {
+    position: absolute;
+    left: clamp(20px, 4vw, 40px);
+    bottom: clamp(20px, 4vw, 40px);
+    z-index: 3;
+    max-width: min(460px, calc(50% - clamp(20px, 4vw, 40px) - 16px));
+    margin: 0;
+    font-size: clamp(12px, 1.6vw, 16px);
+    line-height: 1.6;
+    color: #ffffff;
+    font-weight: 300;
+    text-align: left;
+    opacity: 0;
+    word-wrap: break-word;
+    animation: servicesHeroTitleFadeUp 0.9s cubic-bezier(0.25, 1, 0.35, 1) 0.55s forwards;
+}
+
+.services-hero-subtitle .gold-text {
+    color: #ffffff;
+    font-style: normal;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .services-hero {
+        min-height: 62vh;
+    }
+    .services-hero-masktitle {
+        font-size: clamp(38px, 12vw, 90px);
+    }
+    .services-hero-black-leaf-1,
+    .services-hero-black-leaf-2 {
+        display: none;
+    }
+}
+
+@media (max-width: 380px) {
+    .services-hero-subtitle {
+        font-size: 11px;
+        line-height: 1.5;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .services-hero-split-leaf,
+    .services-hero-masktitle .title-white,
+    .services-hero-masktitle .title-masked,
+    .services-hero-subtitle {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}

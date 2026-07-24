@@ -1,0 +1,40 @@
+/* ==========================================================
+   Base — Sliding Text Panel
+   Wrapper .svc-text / .svc-text-inner yang dipakai bersama oleh komponen Slide Left Panel dan Diagonal Wipe Right (Row 1 & 2). Load sebelum kedua file tersebut.
+   ========================================================== */
+
+/* ---- text panel base : sized to its content, not full width ---- */
+.svc-text {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 4;
+    width: min(46%, 620px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 90px 80px;
+}
+
+.svc-text-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease 0.12s, transform 0.5s ease 0.12s;
+}
+
+.svc-card:hover .svc-text-inner,
+.svc-card:focus-within .svc-text-inner {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 900px) {
+    .svc-text-inner {
+        opacity: 1 !important;
+        transform: none !important;
+        gap: 22px;
+    }
+}

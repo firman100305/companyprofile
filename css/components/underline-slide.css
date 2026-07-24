@@ -1,0 +1,69 @@
+/* ==========================================================
+   Component — Underline Slide (Compact Card E)
+   Kartu banner lebar dengan garis bawah judul yang meluncur penuh saat hover. Dipakai pada kartu kecil 'Custom Blending'.
+   ========================================================== */
+
+/* ---- Card E — "Underline Slide" : wide banner, animated title rule ---- */
+.cc-underline {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 260px;
+}
+
+.cc-underline-media {
+    position: relative;
+    flex: 1 1 260px;
+    min-height: 220px;
+    overflow: hidden;
+}
+
+.cc-underline-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s ease;
+}
+
+.cc-underline:hover .cc-underline-media img {
+    transform: scale(1.05);
+}
+
+.cc-underline-body {
+    flex: 1 1 320px;
+    padding: 34px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
+}
+
+.cc-underline-title {
+    position: relative;
+    display: inline-block;
+}
+
+.cc-underline-rule {
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    height: 2px;
+    width: 0;
+    background: var(--gold-primary);
+    transition: width 0.5s ease;
+}
+
+.cc-underline:hover .cc-underline-rule {
+    width: 100%;
+}
+
+@media (max-width: 900px) {
+    .cc-underline {
+        flex-direction: column;
+    }
+
+    .cc-underline-media {
+        min-height: 200px;
+    }
+}

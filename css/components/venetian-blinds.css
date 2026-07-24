@@ -1,0 +1,98 @@
+/* ==========================================================
+   Component — Venetian Blinds (Row 6)
+   Strip-strip gelap yang membuka bergantian dari sisi kiri/kanan (seperti tirai venetian) untuk menampilkan panel caption saat hover. Dipakai pada kartu 'Curing & Drying'.
+   ========================================================== */
+
+/* ============================================================
+   Row 6 style — "Venetian Blinds": staggered strips wipe in
+   from alternating sides to seat a dark caption panel
+============================================================= */
+.svc-card-blinds {
+    position: relative;
+}
+
+.svc-blinds {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    pointer-events: none;
+}
+
+.svc-blinds span {
+    flex: 1;
+    background: rgba(10, 10, 10, 0.94);
+    transform: scaleX(0);
+    transition: transform 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+.svc-blinds span:nth-child(odd) {
+    transform-origin: left;
+}
+
+.svc-blinds span:nth-child(even) {
+    transform-origin: right;
+}
+
+.svc-card-blinds:hover .svc-blinds span {
+    transform: scaleX(1);
+}
+
+.svc-blinds span:nth-child(1) {
+    transition-delay: 0s;
+}
+
+.svc-blinds span:nth-child(2) {
+    transition-delay: 0.06s;
+}
+
+.svc-blinds span:nth-child(3) {
+    transition-delay: 0.12s;
+}
+
+.svc-blinds span:nth-child(4) {
+    transition-delay: 0.18s;
+}
+
+.svc-blinds span:nth-child(5) {
+    transition-delay: 0.24s;
+}
+
+.svc-blinds-text {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 90px 80px;
+    gap: 22px;
+    max-width: 560px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease 0.5s, transform 0.4s ease 0.5s;
+    pointer-events: none;
+}
+
+.svc-card-blinds:hover .svc-blinds-text {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+@media (max-width: 900px) {
+    .svc-blinds {
+        display: none;
+    }
+
+    .svc-blinds-text {
+        position: relative;
+        inset: auto;
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+        padding: 36px 28px;
+        max-width: 100%;
+    }
+}

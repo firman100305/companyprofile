@@ -1,939 +1,350 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>News Detail - Mangli Djaya Raya</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>News Detail - Mangli Djaya Raya</title>
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap"
+    rel="stylesheet" />
 
-    <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
-    <style>
-      .detail-hero {
-        position: relative;
-        min-height: 420px;
-        display: flex;
-        align-items: flex-end;
-        padding: 190px 0 60px;
-        overflow: hidden;
-        background: #0a0a0a;
-      }
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/news.css" />
+</head>
 
-      .detail-hero-bg {
-        position: absolute;
-        inset: 0;
-      }
+<body>
+  <div id="preloader">
+    <div class="loader">
+      <img src="assets/logo/logo.png" alt="Mangli Logo" />
+      <span></span>
+    </div>
+  </div>
 
-      .detail-hero-bg img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
+  <div id="navbar-container"></div>
 
-      .detail-hero-bg::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          0deg,
-          rgba(8, 8, 8, 0.95) 0%,
-          rgba(8, 8, 8, 0.55) 55%,
-          rgba(8, 8, 8, 0.35) 100%
-        );
-      }
+  <section class="about-hero">
+    <div class="news-hero-bg">
+      <img src="assets/images/newshero1.jpg" alt="News background" />
+    </div>
 
-      .detail-hero-content {
-        position: relative;
-        z-index: 2;
-        width: 90%;
-        max-width: 900px;
-        margin: 0 auto;
-      }
+    <div class="hero-overlay"></div>
 
-      .detail-breadcrumb {
-        display: flex;
-        gap: 10px;
-        font-size: 13px;
-        color: #cfcfcf;
-        margin-bottom: 20px;
-      }
+    <div class="about-content">
+      <h1 class="hero-title-outline">News</h1>
+    </div>
+  </section>
 
-      .detail-breadcrumb a {
-        color: #d4af37;
-        text-decoration: none;
-      }
+  <section class="detail-body">
 
-      .detail-meta {
-        color: #cfcfcf;
-        font-size: 14px;
-        margin-bottom: 16px;
-        display: block;
-      }
 
-      .detail-title {
-        font-family: "Playfair Display", Georgia, serif;
-        font-size: 42px;
-        line-height: 1.3;
-        font-weight: 700;
-        color: #fff;
-      }
+    <h1 class="detail-title">
+      Alliance targets unlawful tobacco exchange, with Arizona among top
+      states in stash
+    </h1>
 
-      body {
-        background: #0a0a0a;
-        color: #f0f0f0;
-      }
+    <span class="detail-meta">By Arisona Permadi | October 8th, 2021</span>
 
-      .detail-body {
-        width: 90%;
-        max-width: 900px;
-        margin: 70px auto 120px;
-      }
 
-      .detail-body img {
-        width: 100%;
-        height: 420px;
-        object-fit: cover;
-        border-radius: 3px;
-        margin-bottom: 45px;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-      }
+    <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1200&q=80"
+      alt="Article illustration" />
 
-      .detail-body p {
-        color: #b0b0b0;
-        line-height: 1.95;
-        font-size: 16px;
-        margin-bottom: 26px;
-      }
+    <p>
+      Mangli Djaya Raya remains committed to delivering premium-quality tobacco products while maintaining long-term
+      partnerships with farmers, suppliers, and customers across international markets. Every stage of production is
+      carefully managed to ensure consistency, traceability, and compliance with global quality standards.
 
-      .detail-back {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        margin-top: 20px;
-        color: #ffffff;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 14px;
-      }
+      Our production process combines decades of experience with continuous innovation. From selecting high-quality
+      tobacco leaves to curing, grading, and packaging, every product is handled with precision to preserve its natural
+      characteristics and meet the diverse requirements of our clients.
 
-      .detail-back:hover {
-        color: #999999;
-      }
+      Sustainability is an important part of our business philosophy. We work closely with local farming communities to
+      promote responsible agricultural practices, improve crop quality, and support the long-term development of
+      Indonesia's tobacco industry.
 
-      /* ==========================
-         RELATED NEWS (horizontal scroll)
-      ========================== */
-      .related-news {
-        width: 90%;
-        max-width: 900px;
-        margin: 60px auto 120px;
-      }
 
-      .related-news-heading {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        margin-bottom: 28px;
-      }
+    </p>
 
-      .related-news-heading .bar {
-        width: 5px;
-        height: 24px;
-        background: #ffffff;
-        border-radius: 3px;
-      }
+    <p> As market demands continue to evolve, Mangli Djaya Raya actively invests in technology, quality assurance, and
+      product development. These efforts enable us to remain competitive while providing reliable solutions for
+      customers in various international markets.
 
-      .related-news-heading h3 {
-        font-family: "Playfair Display", Georgia, serif;
-        font-size: 22px;
-        font-weight: 700;
-        color: #ffffff;
-      }
+      Looking ahead, the company will continue to strengthen its reputation as a trusted tobacco exporter by
+      prioritizing product excellence, customer satisfaction, and sustainable growth. Through innovation and strong
+      collaboration, Mangli Djaya Raya is prepared to meet future opportunities while preserving the values that have
+      guided the company since its establishment.</p>
 
-      .related-scroll-wrap {
-        overflow: hidden;
-      }
+    <p>
+      Mangli Djaya Raya remains committed to delivering premium-quality tobacco products while maintaining long-term
+      partnerships with farmers, suppliers, and customers across international markets. Every stage of production is
+      carefully managed to ensure consistency, traceability, and compliance with global quality standards.
 
-      .related-scroll {
-        display: flex;
-        gap: 20px;
-        overflow-x: auto;
-        scroll-behavior: smooth;
-        cursor: grab;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-      }
+      Our production process combines decades of experience with continuous innovation. From selecting high-quality
+      tobacco leaves to curing, grading, and packaging, every product is handled with precision to preserve its natural
+      characteristics and meet the diverse requirements of our clients.
 
-      .related-scroll.dragging {
-        cursor: grabbing;
-        scroll-behavior: auto;
-      }
+      Sustainability is an important part of our business philosophy. We work closely with local farming communities to
+      promote responsible agricultural practices, improve crop quality, and support the long-term development of
+      Indonesia's tobacco industry.
 
-      .related-scroll::-webkit-scrollbar {
-        display: none;
-      }
 
-      .related-card {
-        flex: 0 0 220px;
-        display: block;
-        text-decoration: none;
-        color: inherit;
-        border-radius: 3px;
-        overflow: hidden;
-        border: 1px solid #2a2a2a;
-        background: #141414;
-        transition: border-color 0.35s ease;
-      }
+    </p>
 
-      .related-card:hover {
-        border-color: rgba(255, 255, 255, 0.3);
-      }
+    <p> As market demands continue to evolve, Mangli Djaya Raya actively invests in technology, quality assurance, and
+      product development. These efforts enable us to remain competitive while providing reliable solutions for
+      customers in various international markets.
 
-      .related-card-image {
-        height: 140px;
-        overflow: hidden;
-      }
+      Looking ahead, the company will continue to strengthen its reputation as a trusted tobacco exporter by
+      prioritizing product excellence, customer satisfaction, and sustainable growth. Through innovation and strong
+      collaboration, Mangli Djaya Raya is prepared to meet future opportunities while preserving the values that have
+      guided the company since its establishment.</p>
 
-      .related-card-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-        pointer-events: none;
-      }
 
-      .related-card:hover .related-card-image img {
-        transform: scale(1.08);
-      }
+    <div class="detail-back-container">
+      <a href="news.html" class="detail-back">
+        <i class="fa-solid fa-arrow-left"></i>
+        Back to News
+      </a>
+    </div>
+  </section>
 
-      .related-card-content {
-        padding: 14px 16px 18px;
-      }
+  <section class="related-news">
+    <div class="related-news-heading">
+      <span class="bar"></span>
+      <h3>More News</h3>
+    </div>
 
-      .related-card-content small {
-        display: block;
-        color: #9a9a9a;
-        font-size: 11px;
-        margin-top: 8px;
-      }
+    <div class="related-scroll-wrap">
+      <div class="related-scroll" id="relatedScroll">
+        <div class="related-card">
+          <div class="related-card-image">
+            <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=500&q=80"
+              alt="Pressured to Ditch Tobacco Sponsors" />
+          </div>
+          <div class="related-card-content">
+            <h4>Pressured to Ditch Tobacco Sponsors</h4>
+            <small>By Arisona Permadi | October 8th, 2021</small>
+            <a href="news-detail.html" class="related-learn">Learn More</a>
+          </div>
+        </div>
 
-      .related-card-content h4 {
-        font-family: "Playfair Display", Georgia, serif;
-        font-size: 15px;
-        line-height: 1.4;
-        font-weight: 700;
-        color: #f5f5f5;
-      }
+        <div class="related-card">
+          <div class="related-card-image">
+            <img src="https://images.unsplash.com/photo-1541543315-c8c5e70b3c8f?auto=format&fit=crop&w=500&q=80"
+              alt="Drive In Denver Aims To Ban Flavored Tobacco Products" />
+          </div>
+          <div class="related-card-content">
+            <h4>Drive In Denver Aims To Ban Flavored Tobacco Products</h4>
+            <small>By Arisona Permadi | October 8th, 2021</small>
+            <a href="news-detail.html" class="related-learn">Learn More</a>
+          </div>
+        </div>
 
-      .related-progress-track {
-        position: relative;
-        width: 100%;
-        height: 3px;
-        background: #2a2a2a;
-        border-radius: 3px;
-        margin-top: 26px;
-        overflow: hidden;
-      }
+        <div class="related-card">
+          <div class="related-card-image">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=80"
+              alt="Laguna Beach to return to prohibiting deals of tobacco and vape items" />
+          </div>
+          <div class="related-card-content">
+            <h4>Laguna Beach to return to prohibiting deals of tobacco and vape items</h4>
+            <small>By Arisona Permadi | October 8th, 2021</small>
+            <a href="news-detail.html" class="related-learn">Learn More</a>
+          </div>
+        </div>
 
-      .related-progress-thumb {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 20%;
-        background: rgba(255, 255, 255, 0.35);
-        border-radius: 3px;
-        transform: translateX(0);
-      }
+        <div class="related-card">
+          <div class="related-card-image">
+            <img src="https://images.unsplash.com/photo-1527066236128-2ff79f7b9705?auto=format&fit=crop&w=500&q=80"
+              alt="Alliance targets unlawful tobacco exchange" />
+          </div>
+          <div class="related-card-content">
+            <h4>Alliance targets unlawful tobacco exchange, with Arizona among top states in stash</h4>
+            <small>By Arisona Permadi | October 8th, 2021</small>
+            <a href="news-detail.html" class="related-learn">Learn More</a>
+          </div>
+        </div>
 
-      @media (max-width: 576px) {
-        .related-card {
-          flex: 0 0 170px;
-        }
+        <div class="related-card">
+          <div class="related-card-image">
+            <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=500&q=80"
+              alt="Pressured to Ditch Tobacco Sponsors" />
+          </div>
+          <div class="related-card-content">
+            <h4>Pressured to Ditch Tobacco Sponsors</h4>
+            <small>By Arisona Permadi | October 8th, 2021</small>
+            <a href="news-detail.html" class="related-learn">Learn More</a>
+          </div>
+        </div>
 
-        .related-card-image {
-          height: 110px;
-        }
-      }
-    </style>
-  </head>
-
-  <body>
-    <div id="preloader">
-      <div class="loader">
-        <img src="assets/logo/logo.png" alt="Mangli Logo" />
-        <span></span>
+        <div class="related-card">
+          <div class="related-card-image">
+            <img src="https://images.unsplash.com/photo-1541543315-c8c5e70b3c8f?auto=format&fit=crop&w=500&q=80"
+              alt="Drive In Denver Aims To Ban Flavored Tobacco Products" />
+          </div>
+          <div class="related-card-content">
+            <h4>Drive In Denver Aims To Ban Flavored Tobacco Products</h4>
+            <small>By Arisona Permadi | October 8th, 2021</small>
+            <a href="news-detail.html" class="related-learn">Learn More</a>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div id="navbar-container"></div>
-
-    <section class="detail-hero">
-      <div class="detail-hero-bg">
-        <img
-          src="https://images.unsplash.com/photo-1527066236128-2ff79f7b9705?auto=format&fit=crop&w=1400&q=80"
-          alt="News detail"
-        />
-      </div>
-
-      <div class="detail-hero-content">
-        <!-- <div class="detail-breadcrumb">
-          <a href="index.html">Home</a>
-          <span>/</span>
-          <a href="news.html">News</a>
-          <span>/</span>
-          <span>Article</span>
-        </div> -->
-
-        <span class="detail-meta">By Arisona Permadi | October 8th, 2021</span>
-
-        <h1 class="detail-title">
-          Alliance targets unlawful tobacco exchange, with Arizona among top
-          states in stash
-        </h1>
-      </div>
-    </section>
-
-    <section class="detail-body">
-      <p>
-        This article is a placeholder for the full news story. Replace this
-        section with the complete write-up once the article content is
-        ready, including any relevant quotes, data, and context sourced from
-        the newsroom.
-      </p>
-
-      <img
-        src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1200&q=80"
-        alt="Article illustration"
-      />
-
-      <p>
-        Continue building out this page with additional paragraphs, pull
-        quotes, or media as needed. The layout, typography, and color palette
-        already match the rest of the Mangli Djaya Raya site so new content
-        will feel consistent.
-      </p>
-
-      <a href="news.html" class="detail-back">
-        <i class="fa-solid fa-arrow-left"></i> Back to News
-      </a>
-    </section>
-
-    <section class="related-news">
-      <div class="related-news-heading">
-        <span class="bar"></span>
-        <h3>More News</h3>
-      </div>
-
-      <div class="related-scroll-wrap">
-        <div class="related-scroll" id="relatedScroll">
-          <a href="news-detail.html" class="related-card">
-            <div class="related-card-image">
-              <img
-                src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=500&q=80"
-                alt="Pressured to Ditch Tobacco Sponsors" />
-            </div>
-            <div class="related-card-content">
-              <h4>Pressured to Ditch Tobacco Sponsors</h4>
-              <small>By Arisona Permadi | October 8th, 2021</small>
-            </div>
-          </a>
-
-          <a href="news-detail.html" class="related-card">
-            <div class="related-card-image">
-              <img
-                src="https://images.unsplash.com/photo-1541543315-c8c5e70b3c8f?auto=format&fit=crop&w=500&q=80"
-                alt="Drive In Denver Aims To Ban Flavored Tobacco Products" />
-            </div>
-            <div class="related-card-content">
-              <h4>Drive In Denver Aims To Ban Flavored Tobacco Products</h4>
-              <small>By Arisona Permadi | October 8th, 2021</small>
-            </div>
-          </a>
-
-          <a href="news-detail.html" class="related-card">
-            <div class="related-card-image">
-              <img
-                src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=80"
-                alt="Laguna Beach to return to prohibiting deals of tobacco and vape items" />
-            </div>
-            <div class="related-card-content">
-              <h4>Laguna Beach to return to prohibiting deals of tobacco and vape items</h4>
-              <small>By Arisona Permadi | October 8th, 2021</small>
-            </div>
-          </a>
-
-          <a href="news-detail.html" class="related-card">
-            <div class="related-card-image">
-              <img
-                src="https://images.unsplash.com/photo-1527066236128-2ff79f7b9705?auto=format&fit=crop&w=500&q=80"
-                alt="Alliance targets unlawful tobacco exchange" />
-            </div>
-            <div class="related-card-content">
-              <h4>Alliance targets unlawful tobacco exchange, with Arizona among top states in stash</h4>
-              <small>By Arisona Permadi | October 8th, 2021</small>
-            </div>
-          </a>
-
-          <a href="news-detail.html" class="related-card">
-            <div class="related-card-image">
-              <img
-                src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=500&q=80"
-                alt="Pressured to Ditch Tobacco Sponsors" />
-            </div>
-            <div class="related-card-content">
-              <h4>Pressured to Ditch Tobacco Sponsors</h4>
-              <small>By Arisona Permadi | October 8th, 2021</small>
-            </div>
-          </a>
-
-          <a href="news-detail.html" class="related-card">
-            <div class="related-card-image">
-              <img
-                src="https://images.unsplash.com/photo-1541543315-c8c5e70b3c8f?auto=format&fit=crop&w=500&q=80"
-                alt="Drive In Denver Aims To Ban Flavored Tobacco Products" />
-            </div>
-            <div class="related-card-content">
-              <h4>Drive In Denver Aims To Ban Flavored Tobacco Products</h4>
-              <small>By Arisona Permadi | October 8th, 2021</small>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <div class="related-progress-track">
-        <div class="related-progress-thumb" id="relatedProgressThumb"></div>
-      </div>
-    </section>
-
-     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700&family=Outfit:wght@300;400;500;600&display=swap"
-        rel="stylesheet" />
-
-    <footer id="contact" class="site-footer">
-        <style>
-            #contact {
-                --accent: #f2ac45;
-                font-family: "Outfit", "Poppins", sans-serif;
-                background: linear-gradient(180deg, #131214 0%, #0b0b0c 55%, #060606 100%);
-                position: relative;
-            }
-
-            #contact h2 {
-                font-family: "Cormorant Garamond", serif;
-            }
-
-            /* Layout */
-            #contact .footer-inner {
-                max-width: 1400px;
-                margin: 0 auto;
-                padding: 56px 16px;
-            }
-
-            #contact .footer-top {
-                display: grid;
-                grid-template-columns: 1fr;
-                gap: 48px;
-            }
-
-            #contact .footer-links-grid {
-                display: grid;
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            /* Brand */
-            #contact .footer-brand h2 {
-                font-size: 30px;
-                font-weight: 500;
-                color: #fff;
-                letter-spacing: 0.01em;
-            }
-
-            #contact .footer-brand p {
-                margin-top: 20px;
-                font-size: 14px;
-                line-height: 1.7;
-                color: #6b6b70;
-                max-width: 320px;
-            }
-
-            #contact .footer-socials {
-                margin-top: 28px;
-                display: flex;
-                align-items: center;
-                gap: 12px;
-            }
-
-            #contact .social-icon {
-                display: inline-flex;
-                height: 32px;
-                width: 32px;
-                align-items: center;
-                justify-content: center;
-                border-radius: 9999px;
-                border: 1px solid rgba(255, 255, 255, 0.15);
-                color: #6b6b70;
-                transition:
-                    color 0.25s ease,
-                    border-color 0.25s ease;
-            }
-
-            #contact .social-icon svg {
-                height: 14px;
-                width: 14px;
-                fill: currentColor;
-            }
-
-            #contact .social-icon:hover {
-                color: var(--accent);
-                border-color: var(--accent);
-            }
-
-            /* Column groups (Company / Products / News) */
-            #contact .fc-title {
-                font-size: 12px;
-                font-weight: 500;
-                text-transform: uppercase;
-                letter-spacing: 0.08em;
-                color: #d4d4d8;
-            }
-
-            #contact .fc-nav {
-                margin-top: 20px;
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 12px;
-            }
-
-            #contact .footer-link {
-                position: relative;
-                display: inline-block;
-                font-size: 14px;
-                color: #8b8b8f;
-                text-decoration: none;
-                transition: color 0.25s ease;
-            }
-
-            #contact .footer-link::after {
-                content: "";
-                position: absolute;
-                left: 0;
-                bottom: -3px;
-                width: 100%;
-                height: 1px;
-                background-color: var(--accent);
-                transform: scaleX(0);
-                transform-origin: left;
-                transition: transform 0.3s ease;
-            }
-
-            #contact .footer-link:hover {
-                color: #f2f2f2;
-            }
-
-            #contact .footer-link:hover::after {
-                transform: scaleX(1);
-            }
-
-            /* News list */
-            #contact .news-list {
-                margin-top: 20px;
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            #contact .news-link {
-                display: flex;
-                flex-direction: column;
-                gap: 4px;
-                text-decoration: none;
-            }
-
-            #contact .news-title {
-                font-size: 14px;
-                line-height: 1.5;
-                color: #a3a3a7;
-                transition: color 0.25s ease;
-            }
-
-            #contact .news-link:hover .news-title {
-                color: #f2f2f2;
-            }
-
-            #contact .news-date {
-                font-size: 11px;
-                color: #4b4b4f;
-            }
-
-            /* Bottom bar */
-            #contact .bottom-bar {
-                border-top: 1px solid rgba(255, 255, 255, 0.08);
-            }
-
-            #contact .bottom-bar-inner {
-                max-width: 1400px;
-                margin: 0 auto;
-                padding: 20px 16px;
-                display: flex;
-                flex-direction: column;
-                gap: 8px;
-                font-size: 12px;
-                color: #4b4b4f;
-            }
-
-            #contact .made-with {
-                display: flex;
-                align-items: center;
-                gap: 6px;
-            }
-
-            #contact .made-with svg {
-                height: 12px;
-                width: 12px;
-                fill: #fff;
-            }
-
-            /* Scroll to top */
-            #contact .scroll-top-btn {
-                position: fixed;
-                right: 22px;
-                bottom: 22px;
-                z-index: 40;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 40px;
-                height: 40px;
-                border-radius: 9999px;
-                border: 1px solid rgba(255, 255, 255, 0.14);
-                background: rgba(11, 11, 12, 0.9);
-                color: #cfcfd2;
-                cursor: pointer;
-                opacity: 0;
-                visibility: hidden;
-                transition:
-                    opacity 0.3s ease,
-                    visibility 0.3s ease,
-                    color 0.25s ease,
-                    border-color 0.25s ease;
-            }
-
-            #contact .scroll-top-btn.is-visible {
-                opacity: 1;
-                visibility: visible;
-            }
-
-            #contact .scroll-top-btn:hover {
-                color: var(--accent);
-                border-color: var(--accent);
-            }
-
-            #contact .scroll-top-btn svg {
-                height: 16px;
-                width: 16px;
-            }
-
-            /* Quiet entrance */
-            #contact .fade-up {
-                opacity: 0;
-                transform: translateY(10px);
-                animation: contactFadeUp 0.6s ease-out forwards;
-            }
-
-            #contact .fade-up:nth-child(2) {
-                animation-delay: 0.08s;
-            }
-
-            #contact .bottom-bar-inner {
-                opacity: 0;
-                animation: contactFadeUp 0.6s ease-out forwards;
-                animation-delay: 0.15s;
-            }
-
-            @keyframes contactFadeUp {
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-
-            /* Responsive */
-            @media (min-width: 640px) {
-                #contact .footer-inner {
-                    padding-left: 32px;
-                    padding-right: 32px;
-                }
-
-                #contact .footer-links-grid {
-                    grid-template-columns: repeat(3, 1fr);
-                    gap: 24px;
-                }
-
-                #contact .bottom-bar-inner {
-                    flex-direction: row;
-                    align-items: center;
-                    justify-content: space-between;
-                    padding-left: 32px;
-                    padding-right: 32px;
-                }
-            }
-
-            @media (min-width: 768px) {
-                #contact .footer-top {
-                    grid-template-columns: repeat(2, 1fr);
-                }
-
-                #contact .footer-inner {
-                    padding-left: 40px;
-                    padding-right: 40px;
-                }
-            }
-
-            @media (min-width: 1024px) {
-                #contact .footer-top {
-                    grid-template-columns: 1.2fr 2fr;
-                    gap: 64px;
-                }
-
-                #contact .footer-brand {
-                    padding-right: 32px;
-                }
-
-                #contact .footer-inner {
-                    padding-top: 80px;
-                    padding-bottom: 80px;
-                    padding-left: 48px;
-                    padding-right: 48px;
-                }
-
-                #contact .bottom-bar-inner {
-                    padding-left: 48px;
-                    padding-right: 48px;
-                }
-            }
-        </style>
-
-        <div class="footer-inner">
-            <div class="footer-top">
-                <!-- Brand -->
-                <div class="footer-brand fade-up">
-                    <h2>Mangli Djaya Raya</h2>
-
-                    <p>
-                        An Indonesian tobacco company established in 1965 in Jember,
-                        East Java. We focus on quality, consistency, and reliable
-                        supply for international markets.
-                    </p>
-
-                    <div class="footer-socials">
-                        <a href="#" aria-label="Facebook" class="social-icon">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path
-                                    d="M13.5 22v-7h2.35l.35-2.7H13.5V10.6c0-.78.22-1.32 1.36-1.32h1.45V6.87c-.25-.03-1.12-.1-2.13-.1-2.11 0-3.55 1.29-3.55 3.65v1.88H8v2.7h2.63v7h2.87z">
-                                </path>
-                            </svg>
-                        </a>
-
-                        <a href="mailto:info@manglidjayaraya.com" aria-label="Email" class="social-icon">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path
-                                    d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z">
-                                </path>
-                            </svg>
-                        </a>
-
-                        <a href="#" aria-label="Instagram" class="social-icon">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path
-                                    d="M12 2.2c3.2 0 3.58.01 4.85.07 1.24.06 2.08.25 2.56.42.62.24 1.07.52 1.54 1 .47.47.76.92 1 1.54.17.48.36 1.32.42 2.56.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.06 1.24-.25 2.08-.42 2.56-.24.62-.52 1.07-1 1.54-.47.47-.92.76-1.54 1-.48.17-1.32.36-2.56.42-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.24-.06-2.08-.25-2.56-.42-.62-.24-1.07-.52-1.54-1-.47-.47-.76-.92-1-1.54-.17-.48-.36-1.32-.42-2.56C2.21 15.58 2.2 15.2 2.2 12s.01-3.58.07-4.85c.06-1.24.25-2.08.42-2.56.24-.62.52-1.07 1-1.54.47-.47.92-.76 1.54-1 .48-.17 1.32-.36 2.56-.42C8.42 2.21 8.8 2.2 12 2.2zm0 2.1c-3.15 0-3.5.01-4.74.07-.94.04-1.45.2-1.79.32-.45.17-.77.37-1.11.71-.34.34-.54.66-.71 1.11-.12.34-.28.85-.32 1.79-.06 1.24-.07 1.59-.07 4.74s.01 3.5.07 4.74c.04.94.2 1.45.32 1.79.17.45.37.77.71 1.11.34.34.66.54 1.11.71.34.12.85.28 1.79.32 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c.94-.04 1.45-.2 1.79-.32.45-.17.77-.37 1.11-.71.34-.34.54-.66.71-1.11.12-.34.28-.85.32-1.79.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.04-.94-.2-1.45-.32-1.79a2.96 2.96 0 0 0-.71-1.11 2.96 2.96 0 0 0-1.11-.71c-.34-.12-.85-.28-1.79-.32-1.24-.06-1.59-.07-4.74-.07zM12 6.9A5.1 5.1 0 1 1 12 17.1 5.1 5.1 0 0 1 12 6.9zm0 2.1a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.38-2.48a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z">
-                                </path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Company / Products / News -->
-                <div class="footer-links-grid">
-                    <div class="fade-up">
-                        <h3 class="fc-title">Company</h3>
-
-                        <nav class="fc-nav">
-                            <a href="index.html" class="footer-link">Home</a>
-                            <a href="about.html" class="footer-link">About Us</a>
-                            <a href="products.html" class="footer-link">Products</a>
-                            <a href="#" class="footer-link">Services</a>
-                            <a href="#" class="footer-link">News</a>
-                            <a href="career.html" class="footer-link">Career</a>
-                            <a href="#" class="footer-link">Contact Us</a>
-                        </nav>
-                    </div>
-
-                    <div class="fade-up">
-                        <h3 class="fc-title">Products</h3>
-
-                        <nav class="fc-nav">
-                            <a href="product-detail.html?slug=rajangan" class="footer-link">Rajangan</a>
-                            <a href="product-detail.html?slug=sun-cured" class="footer-link">Sun Cured</a>
-                            <a href="product-detail.html?slug=burley" class="footer-link">Burley</a>
-                            <a href="product-detail.html?slug=flue-cured-virginia" class="footer-link">Flue Cured
-                                Virginia</a>
-                            <a href="product-detail.html?slug=dark-fired-cured" class="footer-link">Dark Fired Cured</a>
-                            <a href="product-detail.html?slug=dark-air-cured" class="footer-link">Dark Air Cured</a>
-                        </nav>
-                    </div>
-
-                    <div class="fade-up">
-                        <h3 class="fc-title">News</h3>
-
-                        <div class="news-list">
-                            <a href="#" class="news-link">
-                                <span class="news-title">Alliance targets unlawful tobacco exchange, with Arizona
-                                    among top states in stash</span>
-                                <span class="news-date">July 18, 2026</span>
-                            </a>
-
-                            <a href="#" class="news-link">
-                                <span class="news-title">Drive In Denver Aims To Ban Flavored Tobacco
-                                    Products</span>
-                                <span class="news-date">July 10, 2026</span>
-                            </a>
-
-                            <a href="#" class="news-link">
-                                <span class="news-title">Laguna Beach to return to prohibiting deals of tobacco
-                                    and vape items</span>
-                                <span class="news-date">June 29, 2026</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="related-progress-track">
+      <div class="related-progress-thumb" id="relatedProgressThumb"></div>
+    </div>
+  </section>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700&family=Outfit:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <footer id="contact" class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <!-- Brand -->
+        <div class="footer-brand fade-up">
+          <h2>Mangli Djaya Raya</h2>
+
+          <p>
+            An Indonesian tobacco company established in 1965 in Jember,
+            East Java. We focus on quality, consistency, and reliable
+            supply for international markets.
+          </p>
+
+          <div class="footer-stamp">
+            <span>Est. 1965</span>
+            <span class="dot"></span>
+            <span>Jember, East Java</span>
+          </div>
+
+          <div class="footer-socials">
+            <a href="#" aria-label="Facebook" class="social-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M13.5 22v-7h2.35l.35-2.7H13.5V10.6c0-.78.22-1.32 1.36-1.32h1.45V6.87c-.25-.03-1.12-.1-2.13-.1-2.11 0-3.55 1.29-3.55 3.65v1.88H8v2.7h2.63v7h2.87z">
+                </path>
+              </svg>
+            </a>
+
+            <a href="mailto:info@manglidjayaraya.com" aria-label="Email" class="social-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z">
+                </path>
+              </svg>
+            </a>
+
+            <a href="#" aria-label="Instagram" class="social-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 2.2c3.2 0 3.58.01 4.85.07 1.24.06 2.08.25 2.56.42.62.24 1.07.52 1.54 1 .47.47.76.92 1 1.54.17.48.36 1.32.42 2.56.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.06 1.24-.25 2.08-.42 2.56-.24.62-.52 1.07-1 1.54-.47.47-.92.76-1.54 1-.48.17-1.32.36-2.56.42-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.24-.06-2.08-.25-2.56-.42-.62-.24-1.07-.52-1.54-1-.47-.47-.76-.92-1-1.54-.17-.48-.36-1.32-.42-2.56C2.21 15.58 2.2 15.2 2.2 12s.01-3.58.07-4.85c.06-1.24.25-2.08.42-2.56.24-.62.52-1.07 1-1.54.47-.47.92-.76 1.54-1 .48-.17 1.32-.36 2.56-.42C8.42 2.21 8.8 2.2 12 2.2zm0 2.1c-3.15 0-3.5.01-4.74.07-.94.04-1.45.2-1.79.32-.45.17-.77.37-1.11.71-.34.34-.54.66-.71 1.11-.12.34-.28.85-.32 1.79-.06 1.24-.07 1.59-.07 4.74s.01 3.5.07 4.74c.04.94.2 1.45.32 1.79.17.45.37.77.71 1.11.34.34.66.54 1.11.71.34.12.85.28 1.79.32 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c.94-.04 1.45-.2 1.79-.32.45-.17.77-.37 1.11-.71.34-.34.54-.66.71-1.11.12-.34.28-.85.32-1.79.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.04-.94-.2-1.45-.32-1.79a2.96 2.96 0 0 0-.71-1.11 2.96 2.96 0 0 0-1.11-.71c-.34-.12-.85-.28-1.79-.32-1.24-.06-1.59-.07-4.74-.07zM12 6.9A5.1 5.1 0 1 1 12 17.1 5.1 5.1 0 0 1 12 6.9zm0 2.1a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.38-2.48a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z">
+                </path>
+              </svg>
+            </a>
+          </div>
         </div>
 
-        <!-- Bottom Bar -->
-        <div class="bottom-bar">
-            <div class="bottom-bar-inner">
-                <p>All rights reserved &nbsp;|&nbsp; Mangli Djaya Raya &copy; 2026</p>
+        <!-- Company / Products / News -->
+        <div class="footer-links-grid">
+          <div class="fade-up">
+            <h3 class="fc-title">Company</h3>
+            <nav class="fc-nav">
+              <a href="index.html" class="footer-link">Home</a>
+              <a href="about.html" class="footer-link">About Us</a>
+              <a href="products.html" class="footer-link">Products</a>
+              <a href="#" class="footer-link">Services</a>
+              <a href="#" class="footer-link">News</a>
+              <a href="career.html" class="footer-link">Career</a>
+              <a href="gallery.html" class="footer-link">Gallery</a>
+              <a href="#" class="footer-link">Contact Us</a>
+            </nav>
+          </div>
 
-                <p class="made-with">
-                    Made with
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path
-                            d="M12 21s-6.7-4.35-9.33-8.2C.86 10.1 1.4 6.6 4.3 5.1c2.2-1.15 4.7-.4 5.7 1.5.3.55.6 1.1 2 1.1s1.7-.55 2-1.1c1-1.9 3.5-2.65 5.7-1.5 2.9 1.5 3.44 5 1.63 7.7C18.7 16.65 12 21 12 21z">
-                        </path>
-                    </svg>
-                    by MDR Team
-                </p>
+          <div class="fade-up">
+            <h3 class="fc-title">Products</h3>
+            <nav class="fc-nav">
+              <a href="product-detail.html?slug=rajangan" class="footer-link">Rajangan</a>
+              <a href="product-detail.html?slug=sun-cured" class="footer-link">Sun Cured</a>
+              <a href="product-detail.html?slug=burley" class="footer-link">Burley</a>
+              <a href="product-detail.html?slug=flue-cured-virginia" class="footer-link">Flue Cured Virginia</a>
+              <a href="product-detail.html?slug=dark-fired-cured" class="footer-link">Dark Fired Cured</a>
+              <a href="product-detail.html?slug=dark-air-cured" class="footer-link">Dark Air Cured</a>
+            </nav>
+          </div>
+
+          <div class="fade-up">
+            <h3 class="fc-title">News</h3>
+            <div class="news-list">
+              <a href="#" class="news-link">
+                <span class="news-title">Alliance targets unlawful tobacco exchange, with Arizona
+                  among top states in stash</span>
+                <span class="news-date">July 18, 2026</span>
+              </a>
+
+              <a href="#" class="news-link">
+                <span class="news-title">Drive In Denver Aims To Ban Flavored Tobacco
+                  Products</span>
+                <span class="news-date">July 10, 2026</span>
+              </a>
+
+              <a href="#" class="news-link">
+                <span class="news-title">Laguna Beach to return to prohibiting deals of tobacco
+                  and vape items</span>
+                <span class="news-date">June 29, 2026</span>
+              </a>
             </div>
+          </div>
         </div>
+      </div>
+    </div>
 
-        <!-- Scroll to Top -->
-        <button id="scrollTopBtn" aria-label="Scroll to top" class="scroll-top-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M12 19V5"></path>
-                <path d="M5 12l7-7 7 7"></path>
-            </svg>
-        </button>
+    <!-- Bottom Bar -->
+    <div class="bottom-bar">
+      <div class="bottom-bar-inner">
+        <p>All rights reserved &nbsp;|&nbsp; Mangli Djaya Raya &copy; 2026</p>
 
-        <script>
-            (function () {
-                var btn = document.getElementById("scrollTopBtn");
-                if (!btn) return;
+        <p class="made-with">
+          Made with
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M12 21s-6.7-4.35-9.33-8.2C.86 10.1 1.4 6.6 4.3 5.1c2.2-1.15 4.7-.4 5.7 1.5.3.55.6 1.1 2 1.1s1.7-.55 2-1.1c1-1.9 3.5-2.65 5.7-1.5 2.9 1.5 3.44 5 1.63 7.7C18.7 16.65 12 21 12 21z">
+            </path>
+          </svg>
+          by MDR Team
+        </p>
+      </div>
+    </div>
 
-                function toggleBtn() {
-                    if (window.scrollY > 300) {
-                        btn.classList.add("is-visible");
-                    } else {
-                        btn.classList.remove("is-visible");
-                    }
-                }
+    <!-- Scroll to Top -->
+    <button id="scrollTopBtn" aria-label="Scroll to top" class="scroll-top-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M12 19V5"></path>
+        <path d="M5 12l7-7 7 7"></path>
+      </svg>
+    </button>
+  </footer>
 
-                window.addEventListener("scroll", toggleBtn, { passive: true });
-                toggleBtn();
 
-                btn.addEventListener("click", function () {
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                });
-            })();
-        </script>
-    </footer>
 
-      
+  <script src="js/navbar.js"></script>
+  <script src="js/preloader.js"></script>
+  <script src="js/reveal.js"></script>
+  <script src="js/cursor.js"></script>
+  <script src="js/magnetic.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/news.js"></script>
 
-    <script src="js/navbar.js"></script>
-    <script src="js/preloader.js"></script>
-    <script src="js/reveal.js"></script>
-    <script src="js/cursor.js"></script>
-    <script src="js/magnetic.js"></script>
-    <script src="js/script.js"></script>
 
-    <script>
-      // Progress bar untuk scroll horizontal "More News":
-      // track panjang + thumb kecil yang bergerak sesuai posisi scroll.
-      (function () {
-        const scrollEl = document.getElementById("relatedScroll");
-        const thumb = document.getElementById("relatedProgressThumb");
-        if (!scrollEl || !thumb) return;
+  <div class="cursor"></div>
+</body>
 
-        function updateProgress() {
-          const maxScroll = scrollEl.scrollWidth - scrollEl.clientWidth;
-          const visibleRatio = scrollEl.clientWidth / scrollEl.scrollWidth;
-          thumb.style.width = Math.min(Math.max(visibleRatio * 100, 10), 100) + "%";
-
-          const track = thumb.parentElement;
-          const maxTranslate = track.clientWidth - thumb.offsetWidth;
-          const progress = maxScroll > 0 ? scrollEl.scrollLeft / maxScroll : 0;
-          thumb.style.transform = `translateX(${progress * maxTranslate}px)`;
-        }
-
-        scrollEl.addEventListener("scroll", updateProgress, { passive: true });
-        window.addEventListener("resize", updateProgress);
-        updateProgress();
-
-        // Drag-to-scroll pakai mouse (buat desktop, karena mouse biasa
-        // nggak punya scroll horizontal bawaan)
-        let isDown = false;
-        let startX = 0;
-        let startScroll = 0;
-
-        scrollEl.addEventListener("mousedown", (e) => {
-          isDown = true;
-          scrollEl.classList.add("dragging");
-          startX = e.pageX;
-          startScroll = scrollEl.scrollLeft;
-        });
-
-        window.addEventListener("mouseup", () => {
-          isDown = false;
-          scrollEl.classList.remove("dragging");
-        });
-
-        window.addEventListener("mousemove", (e) => {
-          if (!isDown) return;
-          e.preventDefault();
-          scrollEl.scrollLeft = startScroll - (e.pageX - startX);
-        });
-      })();
-    </script>
-
-    <div class="cursor"></div>
-  </body>
 </html>

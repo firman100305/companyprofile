@@ -1,123 +1,1020 @@
+/* ============================================================
+   NEWS PAGES SHARED STYLESHEET
+   Dipakai bersama oleh news.html dan news-detail.html
+   ============================================================ */
 
+/* ==========================
+   PAGE BACKGROUND (dark theme)
+========================== */
+body {
+    background: #0a0a0a;
+    color: #f5f5f5;
+}
+
+/* ==========================
+   NEWS HERO (konsep sama dengan hero di servicev2.html)
+========================== */
+.news-hero {
+    position: relative;
+    min-height: 84vh;
+    display: flex;
+    align-items: flex-end;
+    padding: 190px 0 0;
+    overflow: hidden;
+    background: #0a0a0a;
+}
+
+.news-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.news-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.news-hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg,
+            rgba(10, 8, 6, 0.55) 0%,
+            rgba(10, 8, 6, 0.25) 45%,
+            rgba(10, 8, 6, 0.7) 100%);
+}
+
+.news-hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 2% 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.news-hero-title {
+    font-family: "Poppins", "Segoe UI", sans-serif;
+    font-size: clamp(4.5rem, 13vw, 10.5rem);
+    line-height: 0.85;
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    margin: 0;
+    padding-bottom: 0.05em;
+    color: transparent;
+    -webkit-text-stroke: 10px rgba(0, 0, 0, 0.9);
+    text-stroke: 10px rgba(0, 0, 0, 0.9);
+    text-transform: uppercase;
+    text-align: right;
+    --hero-shift: 20%;
+    animation: heroTitleUp 2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+@keyframes heroTitleUp {
+    0% {
+        opacity: 0;
+        transform: translateY(calc(var(--hero-shift) + 70px));
+    }
+
+    100% {
+        opacity: 0.85;
+        transform: translateY(var(--hero-shift));
+    }
+}
+
+@media (max-width: 576px) {
+    .news-hero-title {
+        font-size: 3.4rem;
+        --hero-shift: 20%;
+    }
+}
+
+/* ==========================
+   RECENT NEWS SECTION HEADING
+========================== */
+.recent-news-section {
+    padding: 0px 0 20px;
+    background: #0a0a0a;
+}
+
+.section-heading {
+    width: 90% !important;
+    max-width: 1400px !important;
+    margin: 56px auto 20px !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    background: #0a0a0a;
+}
+
+.section-heading .bar {
+    margin: 0 !important;
+    width: 3px;
+    height: 28px;
+    background: #f5f5f5;
+    border-radius: 3px;
+}
+
+.section-heading h2 {
+    font-family:  "Cormorant Garamond", serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: #f5f5f5;
+}
+
+/* ==========================
+   FEATURED GRID
+========================== */
+.featured-grid {
+    width: 90% !important;
+    max-width: 1400px !important;
+    margin: 0 auto 30px !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    display: grid;
+    grid-template-columns: 1.7fr 1fr;
+    gap: 16px;
+}
+
+/* ==========================
+   CARD REVEAL (khusus halaman ini — supaya bisa ditunda sampai
+   user benar-benar scroll, dan urutan munculnya bisa diatur manual)
+========================== */
+.card-reveal {
+    opacity: 0;
+    transform: translateY(80px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.featured-grid.in-view .card-reveal,
+.news-grid.in-view .card-reveal {
+    opacity: 1;
+    transform: none;
+}
+
+/* Urutan muncul 3 card atas: main (besar) -> kanan atas -> kanan bawah */
+.featured-main.card-reveal {
+    transition-delay: 0s;
+}
+
+.featured-side .featured-card.card-reveal:nth-child(1) {
+    transition-delay: 0.18s;
+}
+
+.featured-side .featured-card.card-reveal:nth-child(2) {
+    transition-delay: 0.36s;
+}
+
+.featured-main,
+.featured-card {
+    position: relative;
+    border-radius: 3px;
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.featured-main {
+    min-height: 500px;
+}
+
+.featured-side {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.featured-card {
+    flex: 1;
+    min-height: 235px;
+}
+
+.featured-main img,
+.featured-card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.featured-main:hover img,
+.featured-card:hover img {
+    transform: scale(1.08);
+}
+
+.featured-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg,
+            rgba(0, 0, 0, 0.95) 0%,
+            rgba(0, 0, 0, 0.65) 40%,
+            rgba(0, 0, 0, 0.1) 75%,
+            rgba(0, 0, 0, 0) 100%);
+}
+
+.featured-text {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    padding: 38px;
+}
+
+.featured-card .featured-text {
+    padding: 26px;
+}
+
+.featured-meta {
+    display: block;
+    color: #d8d8d8;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 14px;
+}
+
+.featured-main .featured-text h3 {
+    font-family:  "Cormorant Garamond", serif;
+    font-size: 36px;
+    line-height: 1.4;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+    max-width: 700px;
+}
+
+.featured-card .featured-text h3 {
+    font-family:  "Cormorant Garamond", serif;
+    font-size: 20px;
+    line-height: 1.45;
+    font-weight: 600;
+    color: #fff;
+}
+
+.featured-learn {
+    position: relative;
+    display: inline-block;
+    font-family: "Poppins", sans-serif;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    padding-bottom: 3px;
+    transition: color 0.3s ease;
+}
+
+.featured-learn::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+}
+
+.featured-learn:hover {
+    color: #d8d8d8;
+}
+
+.featured-learn:hover::after {
+    transform: scaleX(1);
+}
+
+/* ==========================
+   NEWS GRID (4 columns)
+   Card model disamakan dengan .related-card di news-detail
+========================== */
 .news {
-  padding: 120px 0;
-
-  background: #151515;
+    padding-top: 0;
+    background: #0a0a0a !important;
 }
 
 .news-grid {
-  width: 90%;
+    width: 100% !important;
+    max-width: 1400px !important;
+    margin: 0 auto 30px !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
 
-  max-width: 1400px;
-
-  margin: auto;
-
-  display: grid;
-
-  grid-template-columns: repeat(3, 1fr);
-
-  gap: 35px;
-}
-.news-card {
-  background: #1b1b1b;
-
-  border-radius: 22px;
-
-  overflow: hidden;
-
-  transition: 0.35s;
-
-  border: 1px solid rgba(255, 255, 255, 0.06);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 18px !important;
 }
 
-.news-card:hover {
-  transform: translateY(-10px);
-
-  border-color: #d4af37;
-
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+/* Grid ini memakai class .related-card yang sama dengan news-detail,
+   di sini hanya disesuaikan agar pas mengisi kolom grid (bukan flex-scroll) */
+.news-grid .related-card {
+    flex: none;
+    width: 100%;
 }
 
-.news-image {
-  position: relative;
-
-  height: 260px;
-
-  overflow: hidden;
+.news-grid .related-card-image {
+    height: 190px;
 }
 
-.news-image img {
-  width: 100%;
-
-  height: 100%;
-
-  object-fit: cover;
-
-  transition: 0.5s;
+/* ==========================
+   FOOTER (custom columns) - matches repo's default dark/gold footer
+========================== */
+.footer-container-news {
+    grid-template-columns: 1.7fr 1fr 1fr 1.3fr;
 }
 
-.news-card:hover img {
-  transform: scale(1.08);
+.footer-brand-title {
+    font-family:  "Cormorant Garamond", serif;
+    font-size: 26px;
+    color: #fff;
+    margin-bottom: 20px;
+    font-weight: 700;
 }
 
-.news-badge {
-  position: absolute;
-
-  top: 20px;
-
-  left: 20px;
-
-  background: #d4af37;
-
-  color: #111;
-
-  padding: 8px 18px;
-
-  border-radius: 30px;
-
-  font-size: 13px;
-
-  font-weight: 600;
+.footer-news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.news-content {
-  padding: 30px;
+.footer-news-list a {
+    display: block;
+    line-height: 1.6;
+    font-size: 14.5px;
 }
 
-.news-content small {
-  color: #d4af37;
-
-  display: block;
-
-  margin-bottom: 15px;
+.footer-bottom-split {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    text-align: left;
 }
 
-.news-content h3 {
-  font-size: 24px;
-
-  margin-bottom: 18px;
-
-  line-height: 1.4;
+.footer-bottom-split i {
+    color: #e0245e;
+    margin: 0 3px;
 }
 
-.news-content p {
-  color: #bdbdbd;
-
-  line-height: 1.8;
-
-  margin-bottom: 28px;
+/* ==========================
+   NEWS DETAIL HERO
+========================== */
+.detail-hero {
+    position: relative;
+    min-height: 420px;
+    display: flex;
+    align-items: flex-end;
+    padding: 190px 0 60px;
+    overflow: hidden;
+    background: #0a0a0a;
 }
 
-.news-content a {
-  color: #d4af37;
-
-  text-decoration: none;
-
-  font-weight: 600;
-
-  transition: 0.3s;
+.detail-hero-bg {
+    position: absolute;
+    inset: 0;
 }
 
-.news-content a:hover {
-  color: white;
+.detail-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.detail-hero-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg,
+            rgba(8, 8, 8, 0.95) 0%,
+            rgba(8, 8, 8, 0.55) 55%,
+            rgba(8, 8, 8, 0.35) 100%);
+}
+
+.detail-hero-content {
+    position: relative;
+    z-index: 2;
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.detail-breadcrumb {
+    display: flex;
+    gap: 10px;
+    font-size: 13px;
+    color: #cfcfcf;
+    margin-bottom: 20px;
+}
+
+.detail-breadcrumb a {
+    color: #d4af37;
+    text-decoration: none;
+}
+
+.detail-meta {
+    color: #cfcfcf;
+    font-size: 14px;
+    margin-bottom: 42px;
+    margin-top: 12px;
+    display: block;
+}
+
+.detail-title {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 42px;
+    line-height: 1.3;
+    font-weight: 700;
+    color: #fff;
+}
+
+.detail-body {
+    width: 90%;
+    max-width: 900px;
+    margin: 80px auto 80px;
+}
+
+.detail-body img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 3px;
+    margin-bottom: 45px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.detail-body p {
+     text-align: justify;
+    text-justify: inter-word;
+    text-indent: 2em;
+    color: #b0b0b0;
+    line-height: 1.95;
+    font-size: 18px;
+    margin-bottom: 26px;
+}
+
+/* .detail-back {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 20px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+} */
+.detail-back-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 32px;
+    
+}
+
+.detail-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+     color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.detail-back:hover {
+    color: #999999;
+}
+
+/* ==========================
+   RELATED NEWS (horizontal scroll) — INI ADALAH MODEL CARD ACUAN
+========================== */
+.related-news {
+    width: 90%;
+    max-width: 900px;
+    margin: 60px auto 120px;
+}
+
+.related-news-heading {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+}
+
+.related-news-heading .bar {
+    width: 3px;
+    height: 26px;
+    background: #ffffff;
+    border-radius: 3px;
+}
+
+.related-news-heading h3 {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.related-scroll-wrap {
+    overflow: hidden;
+}
+
+.related-scroll {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    cursor: grab;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.related-scroll.dragging {
+    cursor: grabbing;
+    scroll-behavior: auto;
+}
+
+.related-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.related-card {
+    flex: 0 0 220px;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 3px;
+    overflow: hidden;
+    border: 1px solid #2a2a2a;
+    background: #141414;
+    transition: border-color 0.35s ease;
+}
+
+.related-card:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.related-card-image {
+    height: 140px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.related-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+}
+
+.related-card:hover .related-card-image img {
+    transform: scale(1.08);
+}
+
+.related-card-content {
+    padding: 14px 16px 18px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.related-card-content small {
+    display: block;
+    color: #9a9a9a;
+    font-size: 11px;
+    margin-top: 8px;
+}
+
+.related-learn {
+    position: relative;
+    display: inline-block;
+    align-self: flex-start;
+    font-family: "Poppins", sans-serif;
+    color: #e8e8e8;
+    font-size: 12.5px;
+    font-weight: 500;
+    text-decoration: none;
+    margin-top: auto;
+    padding-top: 12px;
+    padding-bottom: 3px;
+    transition: color 0.3s ease;
+}
+
+.related-learn::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+}
+
+.related-learn:hover {
+    color: #ffffff;
+}
+
+.related-learn:hover::after {
+    transform: scaleX(1);
+}
+
+.related-card-content h4 {
+    font-family:"Cormorant Garamond", serif;
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #f5f5f5;
+}
+
+.related-card-content h5 {
+    font-family:"Cormorant Garamond", serif;
+    font-size: 22px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #f5f5f5;
+}
+
+.related-progress-track {
+    position: relative;
+    width: 100%;
+    height: 3px;
+    background: #2a2a2a;
+    border-radius: 3px;
+    margin-top: 26px;
+    overflow: hidden;
+}
+
+.related-progress-thumb {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 20%;
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 3px;
+    transform: translateX(0);
+}
+
+@media (max-width: 576px) {
+    .related-card {
+        flex: 0 0 170px;
+    }
+
+    .related-card-image {
+        height: 110px;
+    }
+}
+
+/* ==========================
+   RESPONSIVE (news.html / news-detail.html layout)
+========================== */
+@media (max-width: 1200px) {
+    .news-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+@media (max-width: 992px) {
+    .featured-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .news-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .footer-container-news {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .news-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .featured-side {
+        flex-direction: column;
+    }
+}
+
+/* ============================================================
+   FOOTER #contact (dipakai di semua halaman lewat footer partial)
+   ============================================================ */
+#contact {
+    --accent: #f2ac45;
+    font-family: "Outfit", "Poppins", sans-serif;
+    background: linear-gradient(180deg, #131214 0%, #0b0b0c 55%, #060606 100%);
+    position: relative;
+}
+
+#contact h2 {
+    font-family: "Cormorant Garamond", serif;
+}
+
+/* Layout */
+#contact .footer-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 56px 16px;
+}
+
+#contact .footer-top {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+}
+
+#contact .footer-links-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+}
+
+/* Brand */
+#contact .footer-brand h2 {
+    font-size: 30px;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: 0.01em;
+}
+
+#contact .footer-brand p {
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #6b6b70;
+    max-width: 320px;
+}
+
+#contact .footer-socials {
+    margin-top: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+#contact .social-icon {
+    display: inline-flex;
+    height: 32px;
+    width: 32px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #6b6b70;
+    transition:
+        color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+#contact .social-icon svg {
+    height: 14px;
+    width: 14px;
+    fill: currentColor;
+}
+
+#contact .social-icon:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+/* Column groups (Company / Products / News) */
+#contact .fc-title {
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #d4d4d8;
+}
+
+#contact .fc-nav {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+#contact .footer-link {
+    position: relative;
+    display: inline-block;
+    font-size: 14px;
+    color: #8b8b8f;
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+#contact .footer-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 100%;
+    height: 1px;
+    background-color: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+#contact .footer-link:hover {
+    color: #f2f2f2;
+}
+
+#contact .footer-link:hover::after {
+    transform: scaleX(1);
+}
+
+/* News list */
+#contact .news-list {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#contact .news-link {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-decoration: none;
+}
+
+#contact .news-title {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #a3a3a7;
+    transition: color 0.25s ease;
+}
+
+#contact .news-link:hover .news-title {
+    color: #f2f2f2;
+}
+
+#contact .news-date {
+    font-size: 11px;
+    color: #4b4b4f;
+}
+
+/* Bottom bar */
+#contact .bottom-bar {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#contact .bottom-bar-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 12px;
+    color: #4b4b4f;
+}
+
+#contact .made-with {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+#contact .made-with svg {
+    height: 12px;
+    width: 12px;
+    fill: #fff;
+}
+
+/* Scroll to top */
+#contact .scroll-top-btn {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(11, 11, 12, 0.9);
+    color: #cfcfd2;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+#contact .scroll-top-btn.is-visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+#contact .scroll-top-btn:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+#contact .scroll-top-btn svg {
+    height: 16px;
+    width: 16px;
+}
+
+/* Quiet entrance */
+#contact .fade-up {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: contactFadeUp 0.6s ease-out forwards;
+}
+
+#contact .fade-up:nth-child(2) {
+    animation-delay: 0.08s;
+}
+
+#contact .bottom-bar-inner {
+    opacity: 0;
+    animation: contactFadeUp 0.6s ease-out forwards;
+    animation-delay: 0.15s;
+}
+
+@keyframes contactFadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (min-width: 640px) {
+    #contact .footer-inner {
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+    #contact .footer-links-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+    }
+
+    #contact .bottom-bar-inner {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+}
+
+@media (min-width: 768px) {
+    #contact .footer-top {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #contact .footer-inner {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+}
+
+@media (min-width: 1024px) {
+    #contact .footer-top {
+        grid-template-columns: 1.2fr 2fr;
+        gap: 64px;
+    }
+
+    #contact .footer-brand {
+        padding-right: 32px;
+    }
+
+    #contact .footer-inner {
+        padding-top: 80px;
+        padding-bottom: 80px;
+        padding-left: 48px;
+        padding-right: 48px;
+    }
+
+    #contact .bottom-bar-inner {
+        padding-left: 48px;
+        padding-right: 48px;
+    }
 }

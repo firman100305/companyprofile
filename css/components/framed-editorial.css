@@ -1,0 +1,93 @@
+/* ==========================================================
+   Component — Framed Editorial (Row 5)
+   Foto bingkai dengan kartu caption yang tumpang tindih (overlap) di bagian bawah, disertai garis aksen yang menggambar saat hover. Dipakai pada kartu 'Logistics & Export'.
+   ========================================================== */
+
+   Row 5 style — "Framed Editorial": bordered photo frame with
+   an overlapping caption card and a line that draws across
+============================================================= */
+.svc-row-frame {
+    padding-bottom: 60px;
+}
+
+.svc-card-frame {
+    position: relative;
+    min-height: auto;
+    background: transparent;
+    padding: 60px 6% 0;
+    display: flex;
+    justify-content: flex-end;
+    overflow: visible;
+}
+
+.svc-frame-media {
+    position: relative;
+    width: 100%;
+    height: 560px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.svc-frame-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(0.4) contrast(1.05);
+    transition: filter 0.7s ease, transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.svc-card-frame:hover .svc-frame-media img {
+    filter: grayscale(0) contrast(1);
+    transform: scale(1.04);
+}
+
+.svc-frame-card {
+    position: absolute;
+    left: 6%;
+    bottom: -48px;
+    z-index: 5;
+    width: min(420px, 82%);
+    background: var(--black-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    padding: 40px 40px 44px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.svc-frame-line {
+    display: block;
+    height: 2px;
+    width: 0;
+    background: var(--gold-primary);
+    transition: width 0.7s ease;
+}
+
+.svc-card-frame:hover .svc-frame-line {
+    width: 56px;
+}
+
+@media (max-width: 900px) {
+    .svc-row-frame {
+        padding-bottom: 0;
+    }
+
+    .svc-card-frame {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .svc-frame-media {
+        height: 300px;
+    }
+
+    .svc-frame-card {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        width: 100%;
+        margin-top: -1px;
+        padding: 32px 28px 36px;
+    }
+}

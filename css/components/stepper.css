@@ -1,0 +1,67 @@
+/* ==========================================================
+   Component — Vertical Dash Stepper
+   Indikator step berbentuk garis vertikal (dash) yang dipakai di dalam kartu Slide Left Panel & Diagonal Wipe Right untuk navigasi antar paragraf deskripsi. Interaksi klik ditangani oleh js/components/stepper.js.
+   ========================================================== */
+
+/* ==========================
+ STEPPER (dash segments, vertical) — dark theme
+      ========================== */
+.svc-stepper {
+    max-width: 480px;
+    display: flex;
+    gap: 28px;
+    height: 48px;
+}
+
+.stepper-track {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-shrink: 0;
+    align-self: flex-start;
+}
+
+.stepper-dash {
+    width: 3px;
+    height: 16px;
+    border-radius: 2px;
+    border: none;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.18);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.stepper-dash.active {
+    background: var(--gold-primary);
+}
+
+.stepper-content {
+    position: relative;
+    flex: 1;
+}
+
+.stepper-text {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    color: var(--text-gray);
+    font-size: 0.98rem;
+    line-height: 1.85;
+    opacity: 0;
+    transform: translateX(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
+}
+
+.stepper-text.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+@media (max-width: 900px) {
+    .svc-stepper {
+        height: 190px;
+    }
+}
