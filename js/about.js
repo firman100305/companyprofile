@@ -27,6 +27,9 @@ const storySlides = document.querySelectorAll(".story-slide");
 const storyDots = document.querySelectorAll(".story-dot");
 const storySection = document.querySelector(".company-story");
 
+const prevBtn = document.querySelector(".story-prev");
+const nextBtn = document.querySelector(".story-next");
+
 let currentStory = 0;
 let storyInterval = null;
 
@@ -55,6 +58,16 @@ function nextStory() {
   showStory(currentStory);
 }
 
+function prevStory() {
+  currentStory--;
+
+  if (currentStory < 0) {
+    currentStory = storySlides.length - 1;
+  }
+
+  showStory(currentStory);
+}
+
 function stopStory() {
   clearInterval(storyInterval);
 }
@@ -69,17 +82,24 @@ if (storySlides.length) {
   storyDots.forEach((dot, index) => {
     dot.addEventListener("click", () => {
       showStory(index);
-
       startStory();
     });
   });
 
-  storySection.addEventListener("mouseenter", stopStory);
+  prevBtn.addEventListener("click", () => {
+    prevStory();
+    startStory();
+  });
 
+  nextBtn.addEventListener("click", () => {
+    nextStory();
+    startStory();
+  });
+
+  storySection.addEventListener("mouseenter", stopStory);
   storySection.addEventListener("mouseleave", startStory);
 
   showStory(0);
-
   startStory();
 }
 
@@ -163,63 +183,46 @@ const cards = document.querySelectorAll(".parallax-card");
 let cardsPlayed = false;
 
 function animateCards() {
+  if (!parallaxSpace) return;
 
-    if (!parallaxSpace) return;
+  const rect = parallaxSpace.getBoundingClientRect();
 
-    const rect = parallaxSpace.getBoundingClientRect();
+  const progress =
+    (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
 
-    const progress =
-        (window.innerHeight - rect.top) /
-        (window.innerHeight + rect.height);
+  const inView = progress > 0.18 && progress < 0.82;
 
-    const inView = progress > 0.18 && progress < 0.82;
+  if (inView && !cardsPlayed) {
+    cardsPlayed = true;
 
-    if (inView && !cardsPlayed) {
+    cards.forEach((card, index) => {
+      setTimeout(() => {
+        card.classList.add("active");
 
-        cardsPlayed = true;
+        const counter = card.querySelector(".counter");
 
-        cards.forEach((card, index) => {
+        if (counter) {
+          counter.textContent = "0";
 
-            setTimeout(() => {
+          animateCounter(counter);
+        }
+      }, index * 250);
+    });
+  }
 
-                card.classList.add("active");
+  if (!inView && cardsPlayed) {
+    cardsPlayed = false;
 
-                const counter = card.querySelector(".counter");
+    cards.forEach((card) => {
+      card.classList.remove("active");
 
-                if (counter) {
+      const counter = card.querySelector(".counter");
 
-                    counter.textContent = "0";
-
-                    animateCounter(counter);
-
-                }
-
-            }, index * 250);
-
-        });
-
-    }
-
-    if (!inView && cardsPlayed) {
-
-        cardsPlayed = false;
-
-        cards.forEach(card => {
-
-            card.classList.remove("active");
-
-            const counter = card.querySelector(".counter");
-
-            if (counter) {
-
-                counter.textContent = "0";
-
-            }
-
-        });
-
-    }
-
+      if (counter) {
+        counter.textContent = "0";
+      }
+    });
+  }
 }
 
 window.addEventListener("scroll", animateCards);
@@ -233,37 +236,29 @@ window.addEventListener("load", animateCards);
 const counters = document.querySelectorAll(".counter");
 
 function animateCounter(counter) {
+  cancelAnimationFrame(counter.animationFrame);
 
-    cancelAnimationFrame(counter.animationFrame);
+  const target = Number(counter.dataset.target);
 
-    const target = Number(counter.dataset.target);
+  const duration = 1800;
 
-    const duration = 1800;
+  const start = performance.now();
 
-    const start = performance.now();
+  function update(now) {
+    const progress = Math.min((now - start) / duration, 1);
 
-    function update(now) {
+    const ease = 1 - Math.pow(1 - progress, 3);
 
-        const progress = Math.min((now - start) / duration, 1);
+    const value = Math.floor(target * ease);
 
-        const ease = 1 - Math.pow(1 - progress, 3);
+    counter.textContent = value.toLocaleString();
 
-        const value = Math.floor(target * ease);
-
-        counter.textContent = value.toLocaleString();
-
-        if (progress < 1) {
-
-            counter.animationFrame = requestAnimationFrame(update);
-
-        } else {
-
-            counter.textContent = target.toLocaleString();
-
-        }
-
+    if (progress < 1) {
+      counter.animationFrame = requestAnimationFrame(update);
+    } else {
+      counter.textContent = target.toLocaleString();
     }
+  }
 
-    counter.animationFrame = requestAnimationFrame(update);
-
+  counter.animationFrame = requestAnimationFrame(update);
 }
