@@ -1,4 +1,5 @@
 /* =========================================================
+/* =========================================================
     PRODUCTS PAGE — dedicated styles
     Scope: only elements inside .products-hero,
     .product-showcase-section, and #productModal.
@@ -134,11 +135,76 @@
     terlihat utuh, tidak terpotong parah oleh overflow:hidden panel */
   .hero-black-leaf-1 {
     top: 17%;
+    top: 17%;
     right: -6%;
     font-size: clamp(110px, 13vw, 200px);
     transform: scaleX(-1) rotate(-15deg);
   }
 
+  /* ---------------------------------------------------------
+    ORNAMEN POJOK KANAN BAWAH — garis emas tipis + diamond kecil,
+    supaya sudut panel hitam tidak terasa kosong (senada dengan
+    aksen gold-on-black yang dipakai di bagian lain halaman)
+  --------------------------------------------------------- */
+  .hero-corner-ornament {
+    position: absolute;
+    bottom: clamp(28px, 5vw, 56px);
+    right: clamp(28px, 5vw, 56px);
+    width: clamp(90px, 11vw, 150px);
+    height: clamp(90px, 11vw, 150px);
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+    animation: heroTitleFadeUp 1.4s cubic-bezier(0.25, 1, 0.35, 1) 1.4s forwards;
+  }
+
+  .hero-corner-line {
+    position: absolute;
+  }
+
+  .hero-corner-line-h {
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to left, rgba(200, 155, 90, 0.55), transparent);
+  }
+
+  .hero-corner-line-v {
+    bottom: 0;
+    right: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to top, rgba(200, 155, 90, 0.55), transparent);
+  }
+
+  /* Titik kecil di ujung garis, kesan detail frame klasik */
+  .hero-corner-ornament::before,
+  .hero-corner-ornament::after {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(200, 155, 90, 0.7);
+    box-shadow: 0 0 8px rgba(200, 155, 90, 0.5);
+  }
+
+  .hero-corner-ornament::before {
+    bottom: -2.5px;
+    right: 0;
+  }
+
+  .hero-corner-ornament::after {
+    bottom: 0;
+    right: -2.5px;
+  }
+
+  @media (max-width: 768px) {
+    .hero-corner-ornament {
+      display: none;
+    }
+  }
   /* ---------------------------------------------------------
     ORNAMEN POJOK KANAN BAWAH — garis emas tipis + diamond kecil,
     supaya sudut panel hitam tidak terasa kosong (senada dengan
@@ -231,6 +297,22 @@
     animation: heroTitleFadeUp 1.6s cubic-bezier(0.25, 1, 0.35, 1) 0s forwards;
   }
 
+  /* "Our" pretitle — centered above the masked "Products" title */
+  .products-hero-pretitle {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-family: Georgia, serif;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #c89b5a;
+    font-size: clamp(14px, 1.8vw, 22px);
+    margin-bottom: 10px;
+    opacity: 0;
+    animation: heroTitleFadeUp 1.6s cubic-bezier(0.25, 1, 0.35, 1) 0s forwards;
+  }
+
   .products-hero-masktitle {
     position: relative;
     display: flex;
@@ -256,6 +338,7 @@
     white-space: nowrap;
     display: inline-block;
     opacity: 0;
+    animation: heroTitleFadeUp 1.6s cubic-bezier(0.25, 1, 0.35, 1) 0.25s forwards;
     animation: heroTitleFadeUp 1.6s cubic-bezier(0.25, 1, 0.35, 1) 0.25s forwards;
   }
 
@@ -285,12 +368,14 @@
 
     opacity: 0;
     animation: heroTitleFadeUp 1.6s cubic-bezier(0.25, 1, 0.35, 1) 0.6s forwards;
+    animation: heroTitleFadeUp 1.6s cubic-bezier(0.25, 1, 0.35, 1) 0.6s forwards;
   }
 
 
   @keyframes heroTitleFadeUp {
     from {
       opacity: 0;
+      transform: translateY(40px);
       transform: translateY(40px);
     }
     to {
@@ -341,15 +426,20 @@
     /* max-width dihitung dari 50% (lebar panel leaf) dikurangi jarak kiri-kanan,
       jadi teks tidak akan pernah menyentuh/melewati sisi hitam */
     max-width: min(520px, calc(50% - clamp(20px, 4vw, 40px) - 16px));
+    max-width: min(520px, calc(50% - clamp(20px, 4vw, 40px) - 16px));
     margin: 0;
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(16px, 2.2vw, 24px);
     font-family: "Cormorant Garamond", serif;
     font-size: clamp(16px, 2.2vw, 24px);
     line-height: 1.6;
     color: #ffffff;
     font-weight: 400;
+    font-weight: 400;
     text-align: left;
     opacity: 0;
     word-wrap: break-word;
+    animation: heroTitleFadeUp 1.6s cubic-bezier(0.25, 1, 0.35, 1) 1.05s forwards;
     animation: heroTitleFadeUp 1.6s cubic-bezier(0.25, 1, 0.35, 1) 1.05s forwards;
   }
 
@@ -460,12 +550,18 @@
     TEKS "Our Tobacco Products" & paragraf deskripsi — animasi
     fade-up yang lebih lama & bertahap (h2 dulu, lalu p menyusul)
   --------------------------------------------------------- */
+  /* ---------------------------------------------------------
+    TEKS "Our Tobacco Products" & paragraf deskripsi — animasi
+    fade-up yang lebih lama & bertahap (h2 dulu, lalu p menyusul)
+  --------------------------------------------------------- */
   .showcase-header h2 {
     font-family: cormorant, serif;
     font-weight: 400;
     font-size: 38px;
     color: #f5f0e8;
     letter-spacing: -0.01em;
+    opacity: 0;
+    animation: heroTitleFadeUp 1.7s cubic-bezier(0.25, 1, 0.35, 1) 0.1s forwards;
     opacity: 0;
     animation: heroTitleFadeUp 1.7s cubic-bezier(0.25, 1, 0.35, 1) 0.1s forwards;
   }
@@ -479,9 +575,12 @@
     margin-top: 14px;
     color: #a89f92;
     font-family: "Poppins", sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 15px;
     line-height: 1.8;
     font-weight: 300;
+    opacity: 0;
+    animation: heroTitleFadeUp 1.7s cubic-bezier(0.25, 1, 0.35, 1) 0.45s forwards;
     opacity: 0;
     animation: heroTitleFadeUp 1.7s cubic-bezier(0.25, 1, 0.35, 1) 0.45s forwards;
   }
@@ -650,18 +749,24 @@
   }
 
   /* Badge — product name, positioned bottom-right of the image */
+  /* Badge — product name, positioned bottom-right of the image */
   .card-badge {
     position: absolute;
+    bottom: 18px;
+    right: 18px;
     bottom: 18px;
     right: 18px;
     z-index: 5;
 
     font-family: "Cormorant Garamond", serif;
     font-size: 16px;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 16px;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: #afaeae;
+    text-align: right;
     text-align: right;
 
     background: transparent;
@@ -699,7 +804,20 @@
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 4;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
+  }
+
+  /* Setiap kali sebuah kartu menjadi aktif (class is-active ditambahkan
+    ulang oleh products.js saat navigasi carousel), badge & deskripsinya
+    memutar ulang animasi fade-up ini — jadi teks kartu yang sedang
+    difokuskan selalu "masuk" dengan jelas, bukan cuma statis diam. */
+  .product-card-3d.is-active .card-badge {
+    animation: heroTitleFadeUp 1s cubic-bezier(0.25, 1, 0.35, 1) 0.05s both;
+  }
+
+  .product-card-3d.is-active .card-desc {
+    animation: heroTitleFadeUp 1s cubic-bezier(0.25, 1, 0.35, 1) 0.2s both;
   }
 
   /* Setiap kali sebuah kartu menjadi aktif (class is-active ditambahkan
@@ -724,6 +842,8 @@
     gap: 6px;
     margin: 22px auto auto;
     padding-bottom: 3px;
+    font-family: "poppins", serif;
+    font-size: 14px;
     font-family: "poppins", serif;
     font-size: 14px;
     font-weight: 600;
@@ -753,6 +873,7 @@
     width: 100%;
     height: 1px;
     background: currentColor;
+    transform: scaleX(0);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.4s cubic-bezier(0.25, 1, 0.35, 1), background 0.3s ease;
@@ -919,6 +1040,12 @@
     .product-card-3d.pop-in,
     .products-hero-masktitle .title-white,
     .products-hero-masktitle .title-masked,
+    .products-hero-pretitle,
+    .products-hero-subtitle,
+    .showcase-header h2,
+    .showcase-header p,
+    .product-card-3d.is-active .card-badge,
+    .product-card-3d.is-active .card-desc {
     .products-hero-pretitle,
     .products-hero-subtitle,
     .showcase-header h2,
