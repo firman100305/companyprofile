@@ -118,12 +118,14 @@
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
+    overflow: visible;
 }
 
 .job-grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 60px;
+    overflow: visible;
 }
 
 /* Main Content (Kiri) */
@@ -137,8 +139,8 @@
 
 /* ✅ TITLE: Georgia */
 .job-section h2 {
-    font-family: "Georgia", serif;
-    font-size: 32px;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 40px;
     font-weight: 700;
     color: #fff;
     margin: 0 0 24px 0;
@@ -188,6 +190,7 @@
 /* Sidebar (Kanan) - Apply Box */
 .job-sidebar {
     position: relative;
+    overflow: visible;
 }
 
 .apply-box {
@@ -197,11 +200,15 @@
     position: sticky;
     top: 100px;
     border: 1px solid #e8e8e8;
+
+    will-change: transform;
+    transform: translateZ(0); 
+    backface-visibility: hidden;
 }
 
 /* ✅ TITLE: Georgia */
 .apply-box h3 {
-    font-family: "Georgia", serif;
+    font-family: "Cormorant Garamond", serif;
     font-size: 24px;
     color: #1a1a1a;
     margin: 0 0 12px 0;

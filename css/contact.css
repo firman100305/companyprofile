@@ -121,9 +121,9 @@
     text-align: center;
 }
 
-/* ✅ TITLE: Georgia */
+/* ✅ TITLE: Cormorant Garamond */
 .section-content h2 {
-    font-family: "Georgia", serif;
+    font-family: "Cormorant Garamond", serif;
     font-size: 42px;
     font-weight: 700;
     color: #fff;
@@ -206,7 +206,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: #c89b5a;
+    background: rgba(255, 255, 255, 0.18);
     transform: translateY(101%);
     transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
     z-index: 0;
@@ -219,7 +219,7 @@
 .info-card:hover {
     transform: translateY(-10px);
     border-color: transparent;
-    box-shadow: 0 25px 50px rgba(212, 175, 55, 0.25);
+    box-shadow: 0 25px 50px rgba(255, 255, 255, 0.18);
 }
 
 .info-card:hover .card-icon-bg {
@@ -261,7 +261,7 @@
 
 /* ✅ TITLE: Georgia */
 .info-text h4 {
-    font-family: "Georgia", serif;
+    font-family: "Cormorant Garamond", serif;
     font-size: 18px;
     font-weight: 700;
     color: #fff;
@@ -387,7 +387,7 @@
 /* ✅ TITLE: Georgia */
 .form-title-simple {
     text-align: center;
-    font-family: "Georgia", serif;
+    font-family: "Cormorant Garamond", serif;
     font-size: 30px;
     font-weight: 700;
     color: #fff;
@@ -510,7 +510,7 @@
 
 /* ✅ TITLE: Georgia */
 .maps-header h2 {
-    font-family: "Georgia", serif;
+    font-family: "Cormorant Garamond", serif;
     font-size: 42px;
     font-weight: 700;
     color: #fff;
@@ -630,7 +630,7 @@
 
 /* ✅ TITLE: Georgia */
 .cta-content h2 {
-    font-family: "Georgia", serif;
+    font-family: "Cormorant Garamond", serif;
     font-size: 48px;
     font-weight: 700;
     line-height: 1.3;
@@ -640,7 +640,7 @@
 
 /* ✅ SUBTITLE: Cormorant Garamond (untuk span yang berwarna gold) */
 .cta-content h2 span {
-    font-family: "Georgia", serif;
+    font-family: "Cormorant Garamond", serif;
     color: #c89b5a;
     display: block;
     font-size: 56px; /* Sedikit lebih besar agar elegan */
