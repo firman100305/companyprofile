@@ -13,9 +13,9 @@
 }
 
 .svc-title {
-    font-family: "Playfair Display", Georgia, serif;
-    font-size: clamp(1.4rem, 2vw, 1.9rem);
-    font-weight: 600;
+    font-family:  "Cormorant Garamond", serif;
+    font-size: clamp(2.4rem, 4vw, 2.9rem);
+    font-weight: 500;
     color: #fff;
     line-height: 1.25;
     margin: 0;
@@ -24,7 +24,7 @@
 
 .svc-divider {
     display: block;
-    width: 70px;
+    width: 480px;
     height: 3px;
     background: var(--gold-primary);
     border-radius: 2px;

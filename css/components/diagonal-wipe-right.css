@@ -8,9 +8,14 @@
    "Rajangan Grading" in the gallery)
 ============================================================= */
 .svc-row-right .svc-text {
+    /* panel diperbesar dari top:50% -> ~35% supaya cukup ruang
+       untuk overline + title + stepper + deskripsi tanpa kepotong */
+    top: 35%;
+    bottom: 24px;
     right: 0;
-    width: min(52%, 680px);
+    width: min(54%, 700px);
     background: rgba(10, 10, 10, 0.9);
+    padding: 30px 80px 90px 150px;
     clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
     transition: clip-path 0.65s cubic-bezier(0.7, 0, 0.3, 1);
 }
@@ -21,7 +26,20 @@
 }
 
 .svc-row-right .svc-text-inner {
-    padding-left: 6%;
+    gap: 12px;
+}
+
+/* title & deskripsi dikecilkan khusus di panel kanan, karena
+   ruangnya lebih sempit dibanding panel kiri (Row 1) */
+.svc-row-right .svc-title {
+    font-size: clamp(2.15rem, 2.5vw, 2.5rem);
+}
+
+.svc-row-right .svc-desc,
+.svc-row-right .stepper-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 100%;
 }
 
 @media (max-width: 900px) {
@@ -40,5 +58,11 @@
 
     .svc-row-right .svc-text-inner {
         padding-left: 0;
+    }
+
+    .svc-row-right .svc-desc,
+    .svc-row-right .stepper-text {
+        font-size: 1rem;
+        line-height: 1.85;
     }
 }

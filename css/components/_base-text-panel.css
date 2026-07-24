@@ -13,13 +13,13 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 90px 80px;
+    padding: 120px 80px;
 }
 
 .svc-text-inner {
     display: flex;
     flex-direction: column;
-    gap: 26px;
+    gap: 10px;
     opacity: 0;
     transform: translateY(16px);
     transition: opacity 0.5s ease 0.12s, transform 0.5s ease 0.12s;

@@ -20,6 +20,9 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/news.css" />
+    <link rel="stylesheet" href="css/servicev2.css" />
+    <link rel="stylesheet" href="css/hero-service.css" />
+
 </head>
 
 <body>
@@ -34,17 +37,26 @@
     <!-- Navbar -->
     <div id="navbar-container"></div>
 
-    <!-- News Hero -->
-    <section class="about-hero">
-        <div class="news-hero-bg">
-            <img src="assets/images/newshero.png" alt="News background" />
+    <!-- News Hero (konsep sama dengan hero di servicev2.html) -->
+     <section class="services-hero">
+        <!-- Background terbagi 2: kiri = gambar daun kering, kanan = hitam solid -->
+        <div class="services-hero-split" aria-hidden="true">
+            <div class="services-hero-split-leaf">
+                <div class="services-hero-leaf-darken"></div>
+            </div>
+            <div class="services-hero-split-black">
+                <i class="fa-solid fa-leaf services-hero-black-leaf-1" aria-hidden="true"></i>
+                <i class="fa-solid fa-leaf services-hero-black-leaf-2" aria-hidden="true"></i>
+            </div>
         </div>
 
-        <div class="hero-overlay"></div>
-
-        <div class="about-content">
-            <h1 class="hero-title-outline">News</h1>
+        <div class="services-hero-inner">
+            <h1 class="services-hero-masktitle">
+                <span class="title-white">Ne</span><span class="title-masked">ws</span>
+            </h1>
         </div>
+
+        
     </section>
 
     <!-- Recent News -->

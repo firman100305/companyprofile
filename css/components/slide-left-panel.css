@@ -17,6 +17,7 @@
 .svc-row-left .svc-card:hover .svc-text,
 .svc-row-left .svc-card:focus-within .svc-text {
     transform: translateX(0);
+    
 }
 
 @media (max-width: 900px) {
