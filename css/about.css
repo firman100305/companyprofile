@@ -303,7 +303,7 @@
 
   font-family: "Cormorant Garamond", serif;
 
-  font-size: 60px;
+  font-size: 50px;
 
   font-weight: 400;
 
@@ -599,21 +599,21 @@
 
 .parallax-card{
 
-    width:300px;
+    width:60px;
 
     height:200px;
 
     flex:0 0 300px;
 
-    border-radius:10px;
+    border-radius:5px;
 
-    background:rgba(255,255,255,.08);
+    text-align:center;
 
-    border:1px solid rgba(201,161,93,.25);
-
-    backdrop-filter:blur(14px);
+    padding:40px 28px;
 
     display:flex;
+
+    box-sizing:border-box;
 
     flex-direction:column;
 
@@ -627,15 +627,7 @@
 
     transform:translateY(40px);
 
-    transition:
-
-        opacity .6s ease,
-
-        transform .35s ease,
-
-        box-shadow .35s ease,
-
-        border-color .35s ease;
+    
 
 }
 
@@ -647,27 +639,6 @@
 
 }
 
-.placeholder-icon{
-
-    font-size:48px;
-
-    color:#c9a15d;
-
-    margin-bottom:18px;
-
-}
-
-.parallax-card h3{
-
-    margin:0;
-
-    color:#fff;
-
-    font-size:34px;
-
-    font-family:"Cormorant Garamond",serif;
-
-}
 
 .sticky-content{
 
@@ -854,3 +825,217 @@
 
 }
 
+/*==================================
+        COUNTER CARD
+==================================*/
+
+.counter-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    display:flex;
+
+     flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px 15px;
+
+  
+
+}
+
+.counter-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-120%;
+
+    width:80%;
+
+    height:100%;
+
+
+    transition:1.1s;
+
+}
+
+.counter-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:#c9a15d;
+
+}
+
+.counter-card:hover::before{
+
+    left:140%;
+
+}
+
+/*==================================
+        NUMBER
+==================================*/
+
+.counter-number{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    margin-bottom:12px;
+
+    font-family:Georgia, serif;
+
+    color:#ffffff;
+
+    line-height:1;
+
+}
+
+.counter-number .counter{
+
+    font-size:50px;
+
+    font-weight:500;
+
+    letter-spacing:1px;
+
+}
+
+.counter-number span:last-child{
+
+    font-size:30px;
+
+    margin-top:20px;
+
+    margin-left:4px;
+
+    color:#ffffff;
+
+}
+
+/*==================================
+        DIVIDER
+==================================*/
+
+.counter-line{
+
+    width:80px;
+
+    height:2px;
+
+    background:#ffffff;
+
+    margin:0 auto 24px;
+
+    opacity:.9;
+
+}
+
+/*==================================
+        TITLE
+==================================*/
+
+.counter-card h3{
+
+    margin:10px 0 14px;
+
+    color:#ffffff;
+
+    font-family:Georgia, serif;
+
+    font-size:35px;
+
+    font-weight:500;
+
+    margin-bottom:18px;
+
+     line-height:1.2;
+
+}
+
+
+
+/*==================================
+        ACTIVE EFFECT
+==================================*/
+
+.parallax-card.active .counter-number{
+
+    animation:counterGlow .9s ease;
+
+}
+
+@keyframes counterGlow{
+
+    0%{
+
+        opacity:0;
+
+        transform:translateY(20px) scale(.9);
+
+        filter:blur(6px);
+
+    }
+
+    100%{
+
+        opacity:1;
+
+        transform:translateY(0) scale(1);
+
+        filter:blur(0);
+
+    }
+
+}
+
+/*==================================
+        RESPONSIVE
+==================================*/
+
+@media(max-width:992px){
+
+    .counter-card{
+
+        width:100%;
+
+        max-width:420px;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .counter-number .counter{
+
+        font-size:58px;
+
+    }
+
+    .counter-card h3{
+
+        font-size:28px;
+
+    }
+
+    .counter-card p{
+
+        font-size:15px;
+
+    }
+
+}
