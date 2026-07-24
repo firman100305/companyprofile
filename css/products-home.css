@@ -280,9 +280,7 @@ PRODUCT CARD
 
   background: rgba(0, 0, 0, 0.3);
 
-  backdrop-filter: blur(12px);
 
-  -webkit-backdrop-filter: blur(12px);
 
   transition: 0.7s ease;
 }
@@ -292,7 +290,6 @@ PRODUCT CARD
 
   backdrop-filter: blur(0px);
 
-  -webkit-backdrop-filter: blur(0px);
 }
 
 .product-glass::before {
@@ -448,4 +445,65 @@ PRODUCT MODAL
 
 body.modal-open {
   overflow: hidden;
+}
+
+
+.product-modal-content{
+    position: relative;
+}
+
+.product-nav{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:56px;
+    height:56px;
+
+    border:none;
+    border-radius:50%;
+
+    background:rgba(0,0,0,.45);
+    color:#fff;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    z-index:20;
+
+    transition:.3s;
+}
+
+.product-nav:hover{
+    background:#fff;
+    color:#111;
+}
+
+.product-prev{
+    left:20px;
+}
+
+.product-next{
+    right:20px;
+}
+
+.product-description{
+    padding:40px 60px;
+}
+
+#modalTitle{
+    font-family: "Cormorant Garamond", serif;
+    font-size:48px;
+    font-weight:300;
+    color:#fff;
+
+    margin:0 0 30px;
+    line-height:1;
+}
+
+#modalDescription{
+    font-family:Poppins,sans-serif;
+    font-size:20px;
+    line-height:2;
+    color:#d8d8d8;
 }
