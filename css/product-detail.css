@@ -19,7 +19,7 @@
   --pd-text-muted: #c9c9c9;
   --pd-ease: cubic-bezier(0.22, 1, 0.36, 1);
   /* Font roles: title / subtitle / description */
-  --pd-title-font: 'cormorant Garamond', serif;
+  --pd-title-font: 'Cormorant Garamond', serif;
   --pd-subtitle-font: 'Cormorant Garamond', serif;
   --pd-desc-font: 'Poppins', sans-serif;
 }
@@ -49,8 +49,6 @@
   overflow: hidden;
 }
 
-/* Removed the radial vignette ::after — flat linear gradient reads
-   cleaner and less "aged photograph". */
 .pd-hero-overlay {
   position: absolute;
   inset: 0;
@@ -64,8 +62,6 @@
   max-width: 800px;
 }
 
-/* Display face for the hero title swapped to Cormorant Garamond
-   per request — an elegant serif for "Quality You can Trust..." */
 .pd-hero-title {
   font-family: var(--pd-title-font);
   font-size: 50px;
@@ -77,7 +73,6 @@
   animation: pdFadeUp 0.9s var(--pd-ease) 0.3s forwards;
 }
 
-/* Highlight now reads as emphasis through color + weight, not italics */
 .pd-hero-title .highlight {
   color: var(--pd-gold-light);
   font-style: normal;
@@ -162,8 +157,6 @@
   color: var(--pd-gold-light);
 }
 
-/* Leaf icon simplified: no more rotate/scale flourish on hover —
-   it just brightens, which reads calmer and more contemporary. */
 .pd-ribbon-item .leaf-icon {
   width: 14px;
   height: 14px;
@@ -176,13 +169,6 @@
   opacity: 0.9;
 }
 
-/* FIX: shift distance is now driven by --pd-marquee-shift, which JS sets
-   to the exact pixel width of one item-group (measured at runtime, after
-   fonts finish loading). The old fixed "-50%" assumed exactly 2 groups
-   whose combined width always exceeded the viewport — with only 6
-   products that assumption broke on wide screens, causing the ribbon to
-   run out of content and show a blank gap mid-scroll. The "-50%" fallback
-   below only applies if JS hasn't run yet. */
 @keyframes marqueeRightToLeft {
   0% { transform: translateX(0); }
   100% { transform: translateX(var(--pd-marquee-shift, -50%)); }
@@ -265,7 +251,6 @@
   margin: 0 0 10px 0;
 }
 
-/* Product title — same grotesk display face as the hero, no serif */
 .pd-product-title {
   font-family: var(--pd-title-font);
   font-size: 46px;
@@ -344,8 +329,6 @@
 .pd-quote-wrapper {
   opacity: 1;
   transform: translateY(0);
-  /* Curly-quote pull-quote treatment removed; a left accent bar
-     reads as modern editorial rather than antique letterhead. */
   border-left: 2px solid rgba(181, 144, 94, 0.4);
   padding-left: 20px;
   transition: opacity 0.28s var(--pd-ease), transform 0.28s var(--pd-ease);
@@ -522,10 +505,11 @@
   margin-bottom: 26px;
 }
 
-/* Brand title now matches the modern grotesk display face used
-   everywhere else — no more mismatched serif in the footer. */
+/* FIX: was var(--pd-display), a variable that didn't exist anywhere
+   in :root, so the browser fell back to its default font. Now uses
+   the real title-font variable, matching hero/product titles. */
 .footer-brand-title {
-  font-family: var(--pd-display);
+  font-family: var(--pd-title-font);
   font-size: 26px;
   color: #ffffff;
   font-weight: 700;
@@ -542,6 +526,30 @@
   max-width: 400px;
   margin-bottom: 28px;
   font-weight: 300;
+}
+
+/* FIX: .footer-stamp and .dot are used in the HTML markup
+   ("Est. 1965 • Jember, East Java") but had no rules at all —
+   added here so the row lays out with a small gold dot separator. */
+.footer-stamp {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 26px;
+}
+
+.footer-stamp .dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--pd-gold);
+  display: inline-block;
+  flex-shrink: 0;
 }
 
 .footer-socials {
@@ -562,6 +570,12 @@
   font-size: 13px;
   text-decoration: none;
   transition: all 0.3s ease;
+}
+
+.social-icon svg {
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
 }
 
 .social-icon:hover {
@@ -647,7 +661,12 @@
   padding: 24px 0;
 }
 
-.bottom-bar-container {
+/* FIX: HTML markup uses class="bottom-bar-inner", but this rule was
+   targeting ".bottom-bar-container" which doesn't exist in the HTML —
+   so the flex layout (space-between, centered items) never applied
+   and the copyright / "Made with" lines stacked awkwardly instead of
+   sitting on one row. Renamed to match the actual markup. */
+.bottom-bar-inner {
   max-width: 1350px;
   margin: 0 auto;
   padding: 0 60px;
@@ -658,12 +677,36 @@
   color: #555555;
 }
 
+.bottom-bar-inner p {
+  margin: 0;
+}
+
+/* FIX: .made-with wraps a heart svg + text but had no rule, so the
+   icon and text didn't align inline. */
+.made-with {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.made-with svg {
+  width: 14px;
+  height: 14px;
+  fill: var(--pd-gold);
+}
+
 .bottom-bar .heart {
   color: var(--pd-gold);
 }
 
+/* FIX: .scroll-top-btn was position: absolute with no positioned
+   ancestor guaranteed near the bottom of a long page, and no
+   fixed positioning — meaning it could end up pinned to the
+   footer instead of following the viewport as the user scrolls.
+   Changed to position: fixed so it behaves like a real
+   "back to top" button. */
 .scroll-top-btn {
-  position: absolute;
+  position: fixed;
   right: 28px;
   bottom: 24px;
   width: 42px;
@@ -677,7 +720,14 @@
   justify-content: center;
   text-decoration: none;
   font-size: 13px;
+  cursor: pointer;
+  z-index: 50;
   transition: all 0.3s ease;
+}
+
+.scroll-top-btn svg {
+  width: 18px;
+  height: 18px;
 }
 
 .scroll-top-btn:hover {
@@ -698,10 +748,11 @@
   .footer-grid {
     grid-template-columns: 1fr;
   }
-  .bottom-bar-container {
+  .bottom-bar-inner {
     flex-direction: column;
     gap: 12px;
     text-align: center;
+    padding: 0 24px;
   }
   .footer-container {
     padding: 50px 24px 40px 24px;
