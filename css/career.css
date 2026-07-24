@@ -259,7 +259,7 @@
 
 /* ✅ TITLE: Georgia */
 .openings-title {
-    font-family: "Georgia", serif;
+    font-family: "Cormorant Garamond", serif;
     font-size: 48px;
     font-weight: 700;
     color: #fff;
@@ -324,7 +324,7 @@
 
 /* ✅ TITLE: Georgia */
 .overlay-content h3 {
-    font-family: "Georgia", serif;
+    font-family: "Cormorant Garamond", serif;
     font-size: 36px;
     color: #fff;
     margin: 0 0 12px 0;
@@ -439,9 +439,9 @@
     max-width: 600px;
 }
 
-/* ✅ TITLE: Georgia */
+/* ✅ TITLE: Cormorant Garamond */
 .job-card-content h3 {
-    font-family: "Georgia", serif;
+    font-family: "C", serif;
     font-size: 36px;
     color: #fff;
     margin: 0 0 16px 0;
@@ -695,9 +695,9 @@
     margin-bottom: 32px;
 }
 
-/* ✅ TITLE: Georgia */
+/* ✅ TITLE: Cormorant Garamond */
 .modal-section h3 {
-    font-family: "Georgia", serif;
+    font-family: "C", serif;
     font-size: 24px;
     color: #1a1a1a;
     margin: 0 0 16px 0;

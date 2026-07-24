@@ -121,9 +121,9 @@
     text-align: center;
 }
 
-/* ✅ TITLE: Georgia */
+/* ✅ TITLE: Cormorant Garamond */
 .section-content h2 {
-    font-family: "Georgia", serif;
+    font-family: "Cormorant Garamond", serif;
     font-size: 42px;
     font-weight: 700;
     color: #fff;
@@ -387,7 +387,7 @@
 /* ✅ TITLE: Georgia */
 .form-title-simple {
     text-align: center;
-    font-family: "Georgia", serif;
+    font-family: "Cormorant Garamond", serif;
     font-size: 30px;
     font-weight: 700;
     color: #fff;
