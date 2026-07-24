@@ -640,7 +640,7 @@
 
 /* ✅ SUBTITLE: Cormorant Garamond (untuk span yang berwarna gold) */
 .cta-content h2 span {
-    font-family: "Georgia", serif;
+    font-family: "Cormorant Garamond", serif;
     color: #c89b5a;
     display: block;
     font-size: 56px; /* Sedikit lebih besar agar elegan */
