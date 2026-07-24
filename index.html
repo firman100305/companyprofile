@@ -327,7 +327,12 @@
       </div>
 
       <div class="product-grid">
-        <a href="#" class="product-card">
+       <a
+    href="javascript:void(0)"
+    class="product-card"
+    data-image="assets/images/rajangan.jpg"
+    data-description="Rajangan is one of Indonesia's most distinctive tobacco styles — a hand-cut rag produced directly on smallholder farms rather than in industrial processing lines. It is deeply woven into the country's traditional kretek culture."
+>
           <img src="assets/images/rajangan.jpg" alt="Rajangan" />
           <div class="product-glass"></div>
           <div class="product-overlay"></div>
@@ -337,7 +342,12 @@
           </div>
         </a>
 
-        <a href="#" class="product-card">
+        <a
+    href="javascript:void(0)"
+    class="product-card"
+    data-image="assets/images/burley.jpg"
+    data-description="Burley is the quiet workhorse of a tobacco blend — light in color, mild in flavor, and exceptionally good at carrying casings and flavorings, which makes it a foundational component across many finished products."
+>
           <img src="assets/images/burley.jpg" alt="Burley" />
           <div class="product-glass"></div>
           <div class="product-overlay"></div>
@@ -347,7 +357,12 @@
           </div>
         </a>
 
-        <a href="#" class="product-card">
+        <a
+    href="javascript:void(0)"
+    class="product-card"
+    data-image="assets/images/suncured.jpg"
+    data-description="Sun-Cured tobacco represents one of Indonesia's oldest and most regionally diverse leaf categories, with dozens of named varieties grown across East Java and beyond, each tied to a specific growing area."
+>
           <img src="assets/images/suncured.jpg" alt="Sun Cured" />
           <div class="product-glass"></div>
           <div class="product-overlay"></div>
@@ -357,7 +372,12 @@
           </div>
         </a>
 
-        <a href="#" class="product-card">
+        <a
+    href="javascript:void(0)"
+    class="product-card"
+    data-image="assets/images/darkair.jpg"
+    data-description="Dark Air-Cured tobacco is defined by patience: the leaf is given weeks of unhurried, ambient drying time to develop the deep color and full body that lighter, faster-cured styles cannot match."
+>
           <img src="assets/images/darkair.jpg" alt="Dark Air Cured" />
           <div class="product-glass"></div>
           <div class="product-overlay"></div>
@@ -367,7 +387,12 @@
           </div>
         </a>
 
-        <a href="#" class="product-card">
+       <a
+    href="javascript:void(0)"
+    class="product-card"
+    data-image="assets/images/darkfired.jpg"
+    data-description="Dark Fired-Cured tobacco is the boldest style in the portfolio, defined by direct exposure to hardwood smoke during curing — a labor-intensive method reserved for leaf destined to add real character to a blend."
+>
           <div class="product-glass"></div>
           <img src="assets/images/darkfired.jpg" alt="Dark Fired Cured" />
 
@@ -378,7 +403,12 @@
           </div>
         </a>
 
-        <a href="#" class="product-card">
+        <a
+    href="javascript:void(0)"
+    class="product-card"
+    data-image="assets/images/fluecured.jpg"
+    data-description="Flue-Cured Virginia is one of the most widely cultivated tobacco styles in Indonesia, grown primarily across Lombok and Bali. It forms the backbone of many blended cigarette products thanks to its bright color, natural sweetness, and reliable combustibility."
+>
           <div class="product-glass"></div>
           <img src="assets/images/fluecured.jpg" alt="Flue Cured Virginia" />
 
@@ -389,6 +419,23 @@
           </div>
         </a>
       </div>
+
+<div class="product-modal" id="productModal">
+
+    <div class="product-modal-content">
+
+        <button class="product-close">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <img id="modalImage" src="" alt="">
+
+        <div class="product-description" id="modalDescription"></div>
+
+    </div>
+
+</div>
+
     </section>
 
     <!-- ================= NEWS ================= -->
@@ -655,35 +702,6 @@
           <i class="fa-solid fa-arrow-right"></i>
         </a>
       </div>
-
-<div class="news-modal" id="newsModal">
-
-    <div class="news-modal-content">
-
-        <button class="news-close">&times;</button>
-
-        <div class="news-modal-image">
-            <img id="modalImage" src="" alt="">
-        </div>
-
-        <div class="news-modal-body">
-
-            
-
-            <div class="news-modal-meta">
-                <span id="modalAuthor"></span>
-                <span>|</span>
-                <span id="modalDate"></span>
-            </div>
-
-            <div class="news-modal-text" id="modalDescription"></div>
-
-        </div>
-
-    </div>
-
-</div>
-
     </section>
     <!-- ================= END NEWS ================= -->
 
@@ -846,7 +864,8 @@
     <script src="js/news-home.js"></script>
     <script src="js/footer.js"></script>
     <script src="js/preloader.js"></script>
-    <script src="js/news-modal.js"></script>
+<script src="js/product-modal.js"></script>
+
   </body>
 
   <!-- PRELOADER -->
