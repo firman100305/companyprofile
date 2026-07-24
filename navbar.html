@@ -1,112 +1,119 @@
 <link
-href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&family=Manrope:wght@500;700;800&family=Archivo+Black&display=swap"
-rel="stylesheet" />
+  href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&family=Manrope:wght@500;700;800&family=Archivo+Black&display=swap"
+  rel="stylesheet"
+/>
 
 <nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <!-- Logo -->
 
-    <div class="nav-container">
+    <a href="index.html" class="logo">
+      <img src="assets/logo/logo.png" alt="Logo" />
 
-        <!-- Logo -->
+      <span>MANGLI DJAYA RAYA</span>
+    </a>
 
-        <a href="index.html" class="logo">
+    <!-- Menu -->
 
-            <img src="assets/logo/logo.png" alt="Logo">
+    <ul class="nav-menu">
+      <li>
+        <a href="index.html" class="nav-link">HOME</a>
+      </li>
 
-            <span>MANGLI DJAYA RAYA</span>
+      <li class="dropdown">
+        <a href="about.html" class="nav-link">
+          ABOUT US
+          <i class="fa-solid fa-chevron-down"></i>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="about-opsi.html">OPSI</a></li>
+        </ul>
+      </li>
 
+
+      <li class="dropdown">
+        <a href="products.html" class="nav-link">
+          PRODUCTS  
+
+          <i class="fa-solid fa-chevron-down"></i>
         </a>
 
-        <!-- Menu -->
+        <ul class="dropdown-menu">
+          <li><a href="products2.html">Product2</a></li>
+          <li><a href="product-detail.html?slug=rajangan">Rajangan</a></li>
+          <li><a href="product-detail.html?slug=burley">Burley</a></li>
+          <li><a href="product-detail.html?slug=sun-cured">Sun Cured</a></li>
+          <li>
+            <a href="product-detail.html?slug=dark-air-cured">Dark Air Cured</a>
+          </li>
+          <li>
+            <a href="product-detail.html?slug=dark-fired-cured"
+              >Dark Fired Cured</a
+            >
+          </li>
+          <li>
+            <a href="product-detail.html?slug=flue-cured-virginia"
+              >Flue Cured Virginia</a
+            >
+          </li>
+        </ul>
+      </li>
 
-        <ul class="nav-menu">
-
-            <li>
-                <a href="index.html" class="nav-link">HOME</a>
-            </li>
-
-            <li>
-                <a href="about.html" class="nav-link">ABOUT US</a>
-            </li>
-
-            <li class="dropdown">
-
-                <a href="products.html" class="nav-link">
-
-                    PRODUCTS
-
-                    <i class="fa-solid fa-chevron-down"></i>
-
-                </a>
-
-                <ul class="dropdown-menu">
-                    <li><a href="products2.html">Product2</a></li>
-                    <li><a href="product-detail.html?slug=rajangan">Rajangan</a></li>
-                    <li><a href="product-detail.html?slug=burley">Burley</a></li>
-                    <li><a href="product-detail.html?slug=sun-cured">Sun Cured</a></li>
-                    <li><a href="product-detail.html?slug=dark-air-cured">Dark Air Cured</a></li>
-                    <li><a href="product-detail.html?slug=dark-fired-cured">Dark Fired Cured</a></li>
-                    <li><a href="product-detail.html?slug=flue-cured-virginia">Flue Cured Virginia</a></li>
-                </ul>
-
-            </li>
-
-            <!-- <li>
+      <!-- <li>
                 <a href="service.html" class="nav-link">SERVICES</a>
             </li> -->
 
-             <li class="dropdown">
-                <a href="#" class="nav-link">
-                    SERVICES
-                    <i class="fa-solid fa-chevron-down"></i>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="servicev2.html">Version 1</a></li>
-                    <li><a href="servicev3.html">version 2</a></li>
-                </ul>
-            </li>
-
-            <li>
-                <a href="news.html" class="nav-link">NEWS</a>
-            </li>
-
-            <li class="dropdown">
-                <a href="career.html" class="nav-link">
-                    CAREER
-                    <i class="fa-solid fa-chevron-down"></i>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="career-opsi.html">Opsi</a></li>
-                </ul>
-            </li>
-
-              <li>
-                <a href="gallery.html" class="nav-link">GALLERY</a>
-            </li>
-
+      <li class="dropdown">
+        <a href="#" class="nav-link">
+          SERVICES
+          <i class="fa-solid fa-chevron-down"></i>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="servicev2.html">Version 1</a></li>
+          <li><a href="servicev3.html">version 2</a></li>
         </ul>
+      </li>
 
-        <!-- Button -->
+      <li>
+        <a href="news.html" class="nav-link">NEWS</a>
+      </li>
 
-        <div class="nav-right">
-            <div class="contact-dropdown">
-                <!-- Ubah button menjadi <a> agar bisa diklik langsung ke contact.html -->
-                <a href="contact.html" class="contact-btn">
-                    CONTACT US
-                    <i class="fa-solid fa-chevron-down"></i>
-                </a>
-                
-                <!-- Dropdown hanya berisi Opsi -->
-                <ul class="dropdown-menu-contact">
-                    <li><a href="contact-opsi.html">Opsi</a></li>
-                </ul>
-            </div>
-        </div>
+      <li class="dropdown">
+        <a href="career.html" class="nav-link">
+          CAREER
+          <i class="fa-solid fa-chevron-down"></i>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="career-opsi.html">Opsi</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="gallery.html" class="nav-link">GALLERY</a>
+      </li>
+    </ul>
+
+    <!-- Button -->
+
+    <div class="nav-right">
+      <div class="contact-dropdown">
+        <!-- Ubah button menjadi <a> agar bisa diklik langsung ke contact.html -->
+        <a href="contact.html" class="contact-btn">
+          CONTACT US
+          <i class="fa-solid fa-chevron-down"></i>
+        </a>
+
+        <!-- Dropdown hanya berisi Opsi -->
+        <ul class="dropdown-menu-contact">
+          <li><a href="contact-opsi.html">Opsi</a></li>
+        </ul>
+      </div>
+    </div>
 
     <button class="menu-toggle" id="menuToggle">
-        <span></span>
-        <span></span>
-        <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
-</div>
-
+  </div>
 </nav>
