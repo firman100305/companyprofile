@@ -18,6 +18,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const product = data.find((p) => p.slug === slug);
 
   // 1. Render Running Marquee Ribbon Navigation
+  //
+  // FIX: previously this always rendered exactly 2 duplicated groups and
+  // animated translateX(-50%). That only loops seamlessly when a single
+  // group is at least as wide as the ribbon container. With just 6
+  // products, on wide screens one group ends up narrower than the
+  // viewport, so the ribbon runs out of content mid-scroll and a blank
+  // gap flashes by (the bug in the screenshot).
+  //
+  // Now we measure the real rendered width of one group (after fonts
+  // have loaded, since Cormorant Garamond loads async and can reflow
+  // things), clone as many groups as needed to always exceed the
+  // container width, and shift by an exact pixel amount instead of a
+  // fixed percentage so the loop stays seamless no matter the count.
   if (ribbon && data.length > 0) {
     const leafSvg = `
       <svg class="leaf-icon" viewBox="0 0 24 24">
@@ -37,12 +50,59 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .join("");
 
-    ribbon.innerHTML = `
-      <div class="pd-ribbon-track">
-        <div class="pd-ribbon-group">${itemsHtml}</div>
-        <div class="pd-ribbon-group">${itemsHtml}</div>
-      </div>
-    `;
+    const track = document.createElement("div");
+    track.className = "pd-ribbon-track";
+    ribbon.innerHTML = "";
+    ribbon.appendChild(track);
+
+    // Render one group first, just to measure its real width.
+    const measureGroup = document.createElement("div");
+    measureGroup.className = "pd-ribbon-group";
+    measureGroup.innerHTML = itemsHtml;
+    track.appendChild(measureGroup);
+
+    const SPEED_PX_PER_SECOND = 45; // constant visual speed, independent of item count
+
+    function buildSeamlessMarquee() {
+      const groupWidth = measureGroup.offsetWidth;
+      const containerWidth = ribbon.clientWidth;
+
+      if (!groupWidth) {
+        // Layout not ready yet (e.g. ribbon hidden/zero width) — try again next frame.
+        requestAnimationFrame(buildSeamlessMarquee);
+        return;
+      }
+
+      // Enough copies so the track is always wider than the visible
+      // container, with one extra group as a buffer.
+      const repeats = Math.max(2, Math.ceil(containerWidth / groupWidth) + 1);
+
+      track.innerHTML = "";
+      for (let i = 0; i < repeats; i++) {
+        const group = document.createElement("div");
+        group.className = "pd-ribbon-group";
+        group.innerHTML = itemsHtml;
+        track.appendChild(group);
+      }
+
+      const duration = groupWidth / SPEED_PX_PER_SECOND;
+
+      track.style.setProperty("--pd-marquee-shift", `-${groupWidth}px`);
+      track.style.animationDuration = `${duration}s`;
+    }
+
+    // Build once fonts are confirmed ready (accurate width), and also
+    // immediately on next frame as a safe first pass.
+    requestAnimationFrame(buildSeamlessMarquee);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(buildSeamlessMarquee);
+    }
+
+    let resizeTimeout;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(buildSeamlessMarquee, 200);
+    });
   }
 
   if (!product) {

@@ -3,13 +3,11 @@
    Mangli Djaya Raya
 ========================================================= */
 
-/* Modern geometric display face to replace Georgia/Times.
+/* Cormorant Garamond used for subtitle text (product eyebrow label).
    Loaded here so you don't need to touch the <head> — but for
    best performance, move this <link> into product-detail.html
-   next to the Poppins import:
-   https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap
+   next to the Poppins import.
 */
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap');
 
 :root {
@@ -20,8 +18,10 @@
   --pd-content-bg: #000000;
   --pd-text-muted: #c9c9c9;
   --pd-ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --pd-display: 'Bricolage Grotesque', 'Poppins', sans-serif;
-  --pd-hero-display: 'Cormorant Garamond', serif;
+  /* Font roles: title / subtitle / description */
+  --pd-title-font: 'cormorant Garamond', serif;
+  --pd-subtitle-font: 'Cormorant Garamond', serif;
+  --pd-desc-font: 'Poppins', sans-serif;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -67,7 +67,7 @@
 /* Display face for the hero title swapped to Cormorant Garamond
    per request — an elegant serif for "Quality You can Trust..." */
 .pd-hero-title {
-  font-family: var(--pd-hero-display);
+  font-family: var(--pd-title-font);
   font-size: 50px;
   font-weight: 600;
   color: #ffffff;
@@ -176,9 +176,16 @@
   opacity: 0.9;
 }
 
+/* FIX: shift distance is now driven by --pd-marquee-shift, which JS sets
+   to the exact pixel width of one item-group (measured at runtime, after
+   fonts finish loading). The old fixed "-50%" assumed exactly 2 groups
+   whose combined width always exceeded the viewport — with only 6
+   products that assumption broke on wide screens, causing the ribbon to
+   run out of content and show a blank gap mid-scroll. The "-50%" fallback
+   below only applies if JS hasn't run yet. */
 @keyframes marqueeRightToLeft {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  100% { transform: translateX(var(--pd-marquee-shift, -50%)); }
 }
 
 /* ---------------------------------------------------------
@@ -249,7 +256,7 @@
 }
 
 .pd-product-eyebrow {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--pd-subtitle-font);
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.2em;
@@ -260,7 +267,7 @@
 
 /* Product title — same grotesk display face as the hero, no serif */
 .pd-product-title {
-  font-family: var(--pd-display);
+  font-family: var(--pd-title-font);
   font-size: 46px;
   font-weight: 600;
   color: var(--pd-gold-light);
@@ -350,7 +357,7 @@
 }
 
 .pd-quote-text {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--pd-desc-font);
   font-size: 15px;
   line-height: 1.8;
   color: var(--pd-text-muted);
@@ -456,7 +463,7 @@
 }
 
 .pd-notfound h1 {
-  font-family: var(--pd-display);
+  font-family: var(--pd-title-font);
   font-weight: 600;
   color: var(--pd-gold);
 }
