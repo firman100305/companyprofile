@@ -80,20 +80,25 @@ rel="stylesheet" />
         <!-- Button -->
 
         <div class="nav-right">
-
-   <div class="nav-right">
-
-    <a href="contact.html" class="contact-btn">
-        CONTACT US
-    
-    </a>
+            <div class="contact-dropdown">
+                <!-- Ubah button menjadi <a> agar bisa diklik langsung ke contact.html -->
+                <a href="contact.html" class="contact-btn">
+                    CONTACT US
+                    <i class="fa-solid fa-chevron-down"></i>
+                </a>
+                
+                <!-- Dropdown hanya berisi Opsi -->
+                <ul class="dropdown-menu-contact">
+                    <li><a href="contact-opsi.html">Opsi</a></li>
+                </ul>
+            </div>
+        </div>
 
     <button class="menu-toggle" id="menuToggle">
         <span></span>
         <span></span>
         <span></span>
     </button>
-
 </div>
 
 </nav>

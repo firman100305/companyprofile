@@ -1,19 +1,11 @@
-
 .navbar {
   position: fixed;
-
   top: 25px;
-
   left: 0;
-
   width: 100%;
-
   display: flex;
-
   justify-content: center;
-
   z-index: 999;
-
   transition: 0.45s ease;
 }
 
@@ -23,19 +15,12 @@
 
 .nav-container {
   width: 90%;
-
   max-width: 1400px;
-
   display: grid;
-
   grid-template-columns: 300px auto 180px;
-
   align-items: center;
-
   padding: 0 35px;
-
   height: 72px;
-
   transition: 0.45s;
 }
 
@@ -45,29 +30,21 @@
 
 .logo {
   display: flex;
-
   align-items: center;
-
   gap: 12px;
-
   text-decoration: none;
 }
 
 .logo img {
   width: 42px;
-
   transition: 0.4s;
 }
 
 .logo span {
   color: #c89b5a;
-
   font-size: 22px;
-
   font-family: "Cormorant Garamond", serif;
-
   font-weight: 500;
-
   letter-spacing: 1px;
 }
 
@@ -77,31 +54,20 @@
 
 .nav-menu {
   display: flex;
-
   justify-content: center;
-
   align-items: center;
-
   list-style: none;
-
   gap: 30px;
 }
 
 .nav-link {
   position: relative;
-
   text-decoration: none;
-
   color: white;
-
   font-family: "Poppins", "Segoe UI", sans-serif;
-
   font-size: 16px;
-
   font-weight: 200;
-
   letter-spacing: 1px;
-
   transition: 0.3s;
 }
 
@@ -113,21 +79,13 @@
 
 .nav-link::after {
   content: "";
-
   position: absolute;
-
   left: 50%;
-
   bottom: -8px;
-
   width: 0;
-
   height: 2px;
-
   background: #c89b5a;
-
   transform: translateX(-50%);
-
   transition: 0.35s;
 }
 
@@ -150,15 +108,12 @@
 
 .dropdown > a {
   display: flex;
-
   align-items: center;
-
   gap: 6px;
 }
 
 .dropdown i {
   font-size: 10px;
-
   transition: 0.3s;
 }
 
@@ -168,37 +123,23 @@
 
 .dropdown-menu {
   position: absolute;
-
   top: 45px;
-
   left: 50%;
-
   transform: translateX(-50%) translateY(15px);
-
   width: 220px;
-
   list-style: none;
-
   background: #141414;
-
   border-radius: 12px;
-
   overflow: hidden;
-
   opacity: 0;
-
   visibility: hidden;
-
   transition: 0.35s;
-
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
 }
 
 .dropdown:hover .dropdown-menu {
   opacity: 1;
-
   visibility: visible;
-
   transform: translateX(-50%) translateY(0);
 }
 
@@ -212,31 +153,20 @@
 
 .dropdown-menu a {
   display: block;
-
   padding: 18px 22px;
-
   color: #bdbdbd;
-
   text-decoration: none;
-
   font-family: "Poppins", "Segoe UI", sans-serif;
-
   font-size: 15px;
-
   font-weight: 400;
-
   letter-spacing: 0.5px;
-
   transition: 0.3s;
 }
 
 .dropdown-menu a:hover {
   background: rgba(20, 20, 20, 0.55);
-
   color: white;
 }
-
-
 
 /* ==========================
    SCROLL EFFECT
@@ -250,11 +180,8 @@
   background: rgba(20, 20, 20, 0.55);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-
   border: none;
-
   border-radius: 999px;
-
   box-shadow:
       inset 0 0 0 1px rgba(255,255,255,.08),
       0 15px 45px rgba(0,0,0,.35);
@@ -268,6 +195,9 @@
   font-size: 18px;
 }
 
+/* ==========================
+   NAV RIGHT (Contact Dropdown + Menu Toggle)
+========================== */
 
 .nav-right {
   display: flex;
@@ -276,78 +206,171 @@
   gap: 18px;
 }
 
+/* ✅ CONTACT DROPDOWN - Wrapper */
+.contact-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* ✅ Tombol Contact yang jadi toggle dropdown */
 .contact-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
-  padding: 10px 14px;
-
+  gap: 8px;
+  padding: 10px 20px;
   border-radius: 999px;
-
   text-decoration: none;
-
   background: transparent;
-
   border: 2px solid #ffffff;
-
   color: #ffffff;
-
   font-family: "Poppins", "Segoe UI", sans-serif;
-
   font-size: 15px;
-
   font-weight: 400;
-
   letter-spacing: 0.5px;
-
   transition: 0.35s;
+  cursor: pointer;
+}
+
+.contact-btn i {
+  font-size: 10px;
+  transition: transform 0.3s ease;
+}
+
+.contact-dropdown:hover .contact-btn i {
+  transform: rotate(180deg);
 }
 
 .navbar.scrolled .contact-btn {
   background: #ffffff;
-
   color: #111;
-
   border-color: #ffffff;
 }
 
 .contact-btn:hover {
   background: #ffffff;
-
   color: #111;
-
   transform: translateY(-2px);
 }
 
+/* ✅ Dropdown Menu untuk Contact (rata kanan) */
+.contact-dropdown .dropdown-menu-contact {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 220px;
+  list-style: none;
+  background: #141414;
+  border-radius: 12px;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+  transition: 0.35s;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  padding: 0;
+  margin: 0;
+  z-index: 1000;
+}
+
+/* Panah kecil di atas dropdown */
+.contact-dropdown .dropdown-menu-contact::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  right: 24px;
+  width: 12px;
+  height: 12px;
+  background: #141414;
+  transform: rotate(45deg);
+  z-index: -1;
+}
+
+.contact-dropdown:hover .dropdown-menu-contact {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.contact-dropdown .dropdown-menu-contact li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.contact-dropdown .dropdown-menu-contact li:last-child {
+  border-bottom: none;
+}
+
+.contact-dropdown .dropdown-menu-contact a {
+  display: block;
+  padding: 18px 22px;
+  color: #bdbdbd;
+  text-decoration: none;
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  transition: 0.3s;
+}
+
+.contact-dropdown .dropdown-menu-contact a:hover {
+  background: rgba(200, 155, 90, 0.1);
+  color: #c89b5a;
+  padding-left: 26px;
+}
+
+/* ==========================
+   MENU TOGGLE (Mobile)
+========================== */
+
 .menu-toggle {
   width: 48px;
-
   height: 48px;
-
   display: none;
-
   background: none;
-
   border: none;
-
   cursor: pointer;
-
   justify-content: center;
-
   align-items: center;
-
   flex-direction: column;
-
   gap: 6px;
 }
 
 .menu-toggle span {
   width: 28px;
-
   height: 2px;
-
   background: white;
-
   transition: 0.35s;
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media (max-width: 992px) {
+  .nav-container {
+    grid-template-columns: auto 1fr auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-dropdown .dropdown-menu-contact {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    margin-top: 10px;
+    width: 100%;
+  }
+  
+  .contact-dropdown .dropdown-menu-contact::before {
+    display: none;
+  }
+  
+  .contact-dropdown .dropdown-menu-contact a {
+    padding: 14px 20px;
+  }
 }
