@@ -144,13 +144,10 @@
     position: relative;
     background: #3a3734;
     border-radius: 5px;
-    padding: 32px 24px 28px;
+    padding: 0;
     color: #000;
     overflow: hidden;
-    min-height: 250px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    min-height: 320px;
     text-align: left;
     transition: transform 0.3s ease;
 }
@@ -159,50 +156,91 @@
     transform: translateY(-6px);
 }
 
-.benefit-icon {
+/* Foto orang */
+.benefit-card-image {
     position: absolute;
-    top: 50%;
-    right: -60px;
-    left: auto;
-    transform: translateY(-50%);
-    font-size: 260px;
-    color: rgba(255, 255, 255, 0.18);
-    line-height: 1;
-    z-index: 0;
-    user-select: none;
+    top: 0;
+    bottom: 0;
+    right: -40%;
+    width: 85%;
+    z-index: 1;
     pointer-events: none;
+    transition: right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.benefit-icon svg {
-    width: 260px;
-    height: 260px;
-    fill: rgba(25, 24, 24, 0.18);
-    transform: scaleX(-1) !important;
-    transform-origin: center center;
+.benefit-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: left bottom;
     display: block;
 }
 
-/* ✅ TITLE: Cormorant Garamond (judul card benefit) */
+.benefit-card:hover .benefit-card-image {
+    right: -2%;
+}
+
+/* Overlay gelap: default TIDAK terlihat */
+.benefit-card-overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 55%;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.88) 0%,
+        rgba(0, 0, 0, 0.55) 55%,
+        rgba(0, 0, 0, 0) 100%
+    );
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* Overlay gelap muncul saat hover */
+.benefit-card:hover .benefit-card-overlay {
+    opacity: 1;
+}
+
+/* Judul: selalu terlihat di kanan atas */
 .benefit-card h3 {
-    font-family: "", serif;
+    font-family: "Cormorant Garamond", serif;
     font-size: 22px;
     font-weight: 700;
     color: #fff;
     line-height: 1.3;
-    margin: 0 0 12px 0;
-    position: relative;
-    z-index: 1;
+    margin: 0;
+    position: absolute;
+    top: 28px;
+    left: 24px;
+    z-index: 3;
+    text-align: left;
+    max-width: 65%;
 }
 
-/* ✅ DESCRIPTION: Poppins */
+/* Deskripsi: default TIDAK terlihat, muncul saat hover */
 .benefit-card p {
     font-family: "Poppins", sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     color: #fff;
     line-height: 1.6;
     margin: 0;
-    position: relative;
-    z-index: 1;
+    position: absolute;
+    left: 24px;
+    right: 24px;
+    bottom: 24px;
+    z-index: 3;
+    max-width: 75%;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.benefit-card:hover p {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 @media (max-width: 992px) {
@@ -213,21 +251,26 @@
 }
 
 @media (max-width: 576px) {
-    .benefit-icon {
-        font-size: 200px;
-        right: -40px;
-        left: auto;
+    .benefit-card {
+        min-height: 260px;
+        padding: 20px;
     }
-    .benefit-icon svg {
-        width: 200px;
-        height: 200px;
-        transform: scaleX(-1) !important;
+    .benefit-card-image {
+        right: -65%;
+        width: 75%;
+    }
+    .benefit-card:hover .benefit-card-image {
+        right: -5%;
     }
     .benefits-title {
         font-size: 32px;
     }
     .benefit-card h3 {
         font-size: 20px;
+        max-width: 75%;
+    }
+    .benefit-card p {
+        max-width: 90%;
     }
 }
 
