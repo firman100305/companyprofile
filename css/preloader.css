@@ -1,33 +1,24 @@
-/*==================================================
-                    PRELOADER
-==================================================*/
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:Arial,Helvetica,sans-serif;
+    overflow:hidden;
+    background:#000;
+
+}
+
+/* ===================== */
 
 #preloader{
+
     position:fixed;
+
     inset:0;
-    background:#070707;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    z-index:99999;
-    transition:opacity .8s ease,
-               visibility .8s ease;
-}
-
-#preloader.hide{
-    opacity:0;
-    visibility:hidden;
-}
-
-/*============================*/
-
-.loader{
-
-    position:relative;
-
-    width:180px;
-
-    height:180px;
 
     display:flex;
 
@@ -35,163 +26,94 @@
 
     align-items:center;
 
-}
+    background:#000;
 
-/*============================*/
-
-.loader-logo{
-
-    width:120px;
-
-    position:relative;
-
-    z-index:2;
-
-    animation:
-        logoFade 1.8s ease,
-        pulse 2.5s ease infinite;
-
-    filter:
-        drop-shadow(0 0 12px rgba(212,170,82,.35));
+    z-index:9999;
 
 }
 
-/*============================*/
+/* VIDEO */
 
-.loader-ring{
+.loader-video{
 
-    position:absolute;
+    width: 180px;
 
-    width:170px;
+    height:auto;
 
-    height:170px;
+    display:block;
 
-    border-radius:50%;
+    object-fit:contain;
 
-    border:2px solid rgba(255,255,255,.06);
+    background:#000;
 
 }
 
-.loader-ring::before{
+#preloader::before{
 
     content:"";
 
     position:absolute;
 
-    inset:-2px;
-
-    border-radius:50%;
-
-    border:2px solid transparent;
-
-    border-top-color:#d8b05a;
-
-    border-right-color:#d8b05a;
-
-    animation:spin 1.3s linear infinite;
-
-}
-
-/*============================*/
-
-.loader::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:230px;
-
-    height:230px;
+    width:350px;
+    height:350px;
 
     border-radius:50%;
 
     background:radial-gradient(circle,
-    rgba(212,170,82,.18) 0%,
-    rgba(212,170,82,.05) 45%,
-    transparent 70%);
+        rgba(212,175,55,.45) 0%,
+        rgba(212,175,55,.18) 45%,
+        transparent 80%);
 
-    animation:glow 3s ease infinite;
+    filter:blur(45px);
 
-}
-
-/*============================*/
-
-@keyframes spin{
-
-    to{
-
-        transform:rotate(360deg);
-
-    }
-
-}
-
-@keyframes pulse{
-
-    0%{
-
-        transform:scale(.95);
-
-    }
-
-    50%{
-
-        transform:scale(1.05);
-
-    }
-
-    100%{
-
-        transform:scale(.95);
-
-    }
+    animation:glow 3s ease-in-out infinite;
 
 }
 
 @keyframes glow{
 
-    0%{
-
+    0%,100%{
         transform:scale(.9);
-
-        opacity:.3;
-
+        opacity:.5;
     }
 
     50%{
-
-        transform:scale(1.05);
-
+        transform:scale(1.2);
         opacity:1;
-
-    }
-
-    100%{
-
-        transform:scale(.9);
-
-        opacity:.3;
-
     }
 
 }
 
-@keyframes logoFade{
+#preloader::after{
+
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background-image:
+
+        radial-gradient(#d4af37 1px, transparent 1px);
+
+    background-size:120px 120px;
+
+    opacity:.15;
+
+    animation:stars 15s linear infinite;
+
+}
+
+@keyframes stars{
 
     from{
 
-        opacity:0;
-
-        transform:scale(.75);
+        transform:translateY(0);
 
     }
 
     to{
 
-        opacity:1;
-
-        transform:scale(1);
+        transform:translateY(-120px);
 
     }
 

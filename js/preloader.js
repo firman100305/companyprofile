@@ -1,19 +1,44 @@
-document.addEventListener("DOMContentLoaded", () => {
+const video = document.getElementById("loaderVideo");
+const preloader = document.getElementById("preloader");
 
-    const preloader = document.getElementById("preloader");
+let hidden = false;
 
-    window.addEventListener("load", () => {
+// Mempercepat video (opsional)
+video.playbackRate = 1.5;
 
-        setTimeout(() => {
+// Paksa play
+video.play().catch(console.error);
 
-            preloader.classList.add("hide");
+// Maksimal tampil 2 detik
+const maxDuration = setTimeout(() => {
 
-            document.body.style.overflow = "auto";
+    hidePreloader();
 
-        }, 1200);
+}, 5000);
 
-    });
+// Jika video selesai lebih cepat
+video.addEventListener("ended", () => {
+
+    hidePreloader();
 
 });
 
-document.body.style.overflow = "hidden";
+function hidePreloader(){
+
+    if(hidden) return;
+
+    hidden = true;
+
+    clearTimeout(maxDuration);
+
+    preloader.classList.add("hide");
+
+    document.body.style.overflow = "auto";
+
+    setTimeout(() => {
+
+        preloader.remove();
+
+    }, 600);
+
+}
