@@ -185,7 +185,19 @@
           </div>
       </section>
 
-      <!-- MAPS SECTION -->
+    </main>
+
+        <div class="cta-parallax-wrapper">
+
+        <div class="cta-sticky-bg">
+            <img src="assets/images/gantung.jfif" alt="Tobacco Background" />
+            <div class="cta-overlay"></div>
+            <div class="cta-content reveal">
+                <h2>Let's Grow Your Business<br><span>Together With Us</span></h2>
+            </div>
+        </div>
+
+              <!-- MAPS SECTION -->
 <section class="maps-section">
     <img src="assets/images/leaf2.png" class="leaf leaf-left-contact" alt="" aria-hidden="true">
     <img src="assets/images/leaf2.png" class="leaf leaf-right-contact" alt="" aria-hidden="true">
@@ -210,19 +222,7 @@
           </div>
       </section>
 
-      <!-- CTA SECTION -->
-      <section class="cta-section" id="ctaParallaxSection">
-          <div class="cta-background">
-              <img src="assets/images/gantung.jfif" alt="Tobacco Background" />
-          </div>
-          <div class="cta-overlay"></div>
-
-          <div class="cta-content reveal">
-              <h2>Let's Grow Your Business<br><span>Together With Us</span></h2>
-          </div>
-      </section>
-
-    </main>
+        <div class="cta-reveal-space"></div>
 
     <!-- ======================
          FOOTER (SAMA PERSIS DENGAN SERVICE.HTML)
@@ -469,33 +469,6 @@
                 ticking = false;
             });
             ticking = true;
-        }
-    });
-    </script>
-
-    <script>
-    // Parallax Effect untuk CTA Section
-    let tickingCta = false;
-    window.addEventListener('scroll', function() {
-        if (!tickingCta) {
-            window.requestAnimationFrame(function() {
-                const scrolled = window.pageYOffset;
-                const ctaSection = document.getElementById('ctaParallaxSection');
-                if (ctaSection) {
-                    const parallaxBg = ctaSection.querySelector('.cta-background');
-                    const sectionTop = ctaSection.offsetTop;
-                    const sectionHeight = ctaSection.offsetHeight;
-                    const windowHeight = window.innerHeight;
-                    
-                    if (scrolled < sectionTop + sectionHeight && scrolled + windowHeight > sectionTop) {
-                        const speed = 0.5;
-                        const yPos = (scrolled - sectionTop) * speed;
-                        parallaxBg.style.transform = `translate3d(0, ${yPos}px, 0)`;
-                    }
-                }
-                tickingCta = false;
-            });
-            tickingCta = true;
         }
     });
     </script>

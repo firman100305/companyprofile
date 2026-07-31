@@ -478,7 +478,7 @@
 ========================== */
 .maps-section {
     position: relative;
-    z-index: 10;
+    z-index: 20;
     padding: 80px 0 0 0;
     background-color: #000;
     overflow: hidden;
@@ -579,36 +579,30 @@
 }
 
 /* ==========================
-   CTA SECTION
+   CTA STICKY WRAPPER (sama pola dgn .sticky-image di About Us)
 ========================== */
-.cta-section {
+.cta-parallax-wrapper {
     position: relative;
-    z-index: 10;
-    padding: 100px 20px;
-    min-height: 450px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    background-color: #000;
+    overflow: visible;
 }
 
-.cta-background {
-    position: absolute;
-    top: -50%;
-    left: 0;
+.cta-sticky-bg {
+    position: sticky;
+    top: 0;
     width: 100%;
-    height: 200%;
+    height: 100vh;
+    overflow: hidden;
     z-index: 0;
-    will-change: transform;
+    margin-bottom: -100vh; /* trik supaya section berikutnya bisa menimpa */
 }
 
-.cta-background img {
+.cta-sticky-bg img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
-    display: block;
 }
 
 .cta-overlay {
@@ -619,16 +613,16 @@
 }
 
 .cta-content {
-    position: relative;
+    position: absolute;
+    inset: 0;
     z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    color: white;
     padding: 0 20px;
-    max-width: 900px;
-    margin: 0 auto;
 }
 
-/* ✅ TITLE: Georgia */
 .cta-content h2 {
     font-family: "Cormorant Garamond", serif;
     font-size: 48px;
@@ -636,69 +630,43 @@
     line-height: 1.3;
     color: #fff;
     margin: 0;
+    max-width: 900px;
 }
 
-/* ✅ SUBTITLE: Cormorant Garamond (untuk span yang berwarna gold) */
 .cta-content h2 span {
     font-family: "Cormorant Garamond", serif;
     color: #c89b5a;
     display: block;
-    font-size: 56px; /* Sedikit lebih besar agar elegan */
+    font-size: 56px;
     font-weight: 600;
-    font-style: italic; /* Tambah italic untuk Cormorant Garamond */
+    font-style: italic;
     margin-top: 8px;
 }
 
-/* ==========================
-   RESPONSIVE
-========================== */
+/* ruang kosong transparan, biar CTA sempat "diam" kelihatan sebelum ketutup footer */
+.cta-reveal-space {
+    position: relative;
+    width: 100%;
+    height: 55vh;
+    z-index: 5;
+}
+
+/* footer harus punya z-index lebih tinggi biar bisa menimpa CTA yang sticky */
+.cta-parallax-wrapper .site-footer {
+    position: relative;
+    z-index: 20;
+}
+
 @media (max-width: 768px) {
-    .form-parallax-section {
-        padding: 80px 15px;
-        min-height: auto;
+    .cta-sticky-bg {
+        height: 70vh;
+        margin-bottom: -70vh;
     }
-    
-    .form-floating-container {
-        padding: 35px 25px;
-        margin-top: -30px;
-        margin-bottom: -30px;
-        animation: none;
+    .cta-reveal-space {
+        height: 35vh;
     }
-    
-    .form-title-simple {
-        font-size: 24px;
-        margin-bottom: 25px;
-    }
-    
-    .form-group-simple input,
-    .form-group-simple textarea {
-        padding: 14px 16px;
-    }
-    
-    .btn-send-simple {
-        padding: 16px;
-        font-size: 14px;
-    }
-    
-    .maps-header h2 {
-        font-size: 32px;
-    }
-    
-    .maps-wrapper iframe {
-        height: 300px;
-    }
-    
-    .maps-section {
-        padding-top: 70px;
-    }
-    
-    .cta-content h2 {
-        font-size: 32px;
-    }
-    
-    .cta-content h2 span {
-        font-size: 40px;
-    }
+    .cta-content h2 { font-size: 32px; }
+    .cta-content h2 span { font-size: 40px; }
 }
 
 /* ==========================

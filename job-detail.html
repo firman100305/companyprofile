@@ -19,10 +19,14 @@
 </head>
 <body>
 
+<<<<<<< Updated upstream
       <!-- ==========================
          PRELOADER
     =========================== -->
 
+=======
+    <!-- Preloader -->
+>>>>>>> Stashed changes
     <div id="preloader">
 
         <video
@@ -39,10 +43,10 @@
 
     </div>
     
-    <!-- Navbar Container (Sama seperti career.html) -->
+    <!-- Navbar Container -->
     <div id="navbar-container"></div>
 
-    <!-- HERO SECTION DENGAN GAMBAR DINAMIS -->
+    <!-- HERO SECTION -->
     <section class="job-detail-hero" id="jobHero">
         <div class="container">
             <div class="detail-breadcrumb" style="display: none;">
@@ -55,51 +59,97 @@
         </div>
     </section>
 
-    <!-- Job Content -->
+    <!-- JOB CONTENT -->
     <section class="job-content">
         <div class="container">
-            <div class="job-grid">
-                
-                <!-- KOLOM KIRI: Job Details -->
-                <div class="job-main">
-                    <div class="job-section">
-                        <h2>Job Description</h2>
-                        <p id="jobDescription">Loading...</p>
-                        <ul id="jobResponsibilities"></ul>
-                    </div>
-
-                    <div class="job-section">
-                        <h2>Requirements</h2>
-                        <ul id="jobRequirements"></ul>
-                    </div>
-
-                    <div class="job-section">
-                        <h2>Benefits</h2>
-                        <ul id="jobBenefits"></ul>
-                    </div>
+            <div class="job-main full-width">
+                <div class="job-section">
+                    <h2>Job Description</h2>
+                    <p id="jobDescription">Loading...</p>
+                    <ul id="jobResponsibilities"></ul>
                 </div>
 
-                <!-- KOLOM KANAN: Application Form -->
-                <div class="job-sidebar">
-                    <div class="apply-box">
-                        <h3>Apply for this position</h3>
-                        <p>Send us your CV and cover letter</p>
-                        <form class="apply-form" enctype="multipart/form-data" onsubmit="event.preventDefault(); alert('Application submitted successfully!'); this.reset();">
-                            <input type="text" placeholder="Full Name *" required>
-                            <input type="email" placeholder="Email Address *" required>
-                            <input type="tel" placeholder="Phone Number *" required>
-                            <input type="file" accept=".pdf,.doc,.docx" required>
-                            <textarea placeholder="Cover Letter (optional)" rows="4"></textarea>
-                            <button type="submit" class="btn-submit-application">Submit Application</button>
-                        </form>
-                        <p class="apply-note">Or send directly to: <a href="mailto:career@manglijaya.com">career@manglijaya.com</a></p>
-                    </div>
+                <div class="job-section">
+                    <h2>Requirements</h2>
+                    <ul id="jobRequirements"></ul>
                 </div>
 
+                <div class="job-section">
+                    <h2>Benefits</h2>
+                    <ul id="jobBenefits"></ul>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- APPLICATION SECTION -->
+    <section class="application-section" id="applySection">
+        <div class="container">
+            <div class="section-header">
+                <h2>Ready to Join Us?</h2>
+                <p>Review the pamphlet below and submit your application.</p>
+            </div>
+            
+            <div class="application-grid">
+                <!-- Kolom Kiri: Pamflet -->
+                <div class="pamphlet-column">
+                    <div class="pamphlet-box" id="pamphletContainer" style="display: none;">
+                        <h3>Job Pamphlet</h3>
+                        <p>Complete visual guide for this position.</p>
+                        
+                        <!-- ✅ DIPERBAIKI: Tag img yang bersih dan valid -->
+                        <div class="pamphlet-preview" id="pamphletPreviewContainer">
+                            <img id="pamphletImage" src="" alt="Job Pamphlet Preview">
+                            <div class="pamphlet-zoom-hint">
+                                <i class="fa-solid fa-magnifying-glass-plus"></i> Click to enlarge
+                            </div>
+                        </div>
+                        
+                        <a href="#" id="downloadPamphletBtn" class="btn-download-pamphlet" download>
+                            <i class="fa-solid fa-download"></i> Download Pamflet
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Kolom Kanan: Form Aplikasi -->
+                <div class="form-column">
+                    <div class="apply-box-bottom">
+                        <h3>Apply for this position</h3>
+                        <p>Send us your CV and cover letter</p>
+                        <form class="apply-form" enctype="multipart/form-data" onsubmit="event.preventDefault(); alert('Application submitted successfully!'); this.reset();">
+                            <div class="form-row">
+                                <input type="text" placeholder="Full Name *" required>
+                                <input type="email" placeholder="Email Address *" required>
+                            </div>
+                            <input type="tel" placeholder="Phone Number *" required>
+                            <input type="file" accept=".pdf,.doc,.docx" required>
+                            <textarea placeholder="Cover Letter (Tell us why you are a great fit)" rows="6"></textarea>
+                            <button type="submit" class="btn-submit-application">Submit Application</button>
+                        </form>
+                        <p class="apply-note">Or send directly to: <a href="mailto:career@manglijaya.com">career@manglijaya.com</a></p>
+                    </div>
+                                        <!-- ✅ BARU: Tombol Back di Bawah Form -->
+                    <div class="back-to-career-wrapper">
+                        <a href="career.html" class="btn-back-career-bottom">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            <span>Back to All Careers</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ✅ MODAL LIGHTBOX PAMPHLET (Diletakkan sebelum penutup body) -->
+    <div class="pamphlet-modal" id="pamphletModal">
+        <div class="pamphlet-modal-overlay" id="pamphletModalOverlay"></div>
+        <div class="pamphlet-modal-content">
+            <button class="pamphlet-modal-close" id="pamphletModalClose" title="Close">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <img id="pamphletModalImage" src="" alt="Pamphlet Full View">
+        </div>
+    </div>
 
     <!-- Load Navbar -->
     <script>
@@ -109,19 +159,20 @@
         .catch(error => console.error('Gagal memuat navbar:', error));
     </script>
 
-    <!-- Script untuk Load Data Pekerjaan secara Dinamis -->
+    <!-- Script Utama -->
     <script>
         const jobData = {
             'agricultural-specialist': {
                 title: 'Agricultural Specialist',
-                image: 'job1.jfif', // Pastikan gambar ini ada di assets/images/
+                image: 'job1.jfif',
                 location: 'Indonesia',
                 type: 'Full Time',
                 salary: 'Competitive',
                 description: 'Partner with tobacco farmers to ensure premium quality and sustainable cultivation. Provide expert guidance on best farming practices across Indonesia.',
                 responsibilities: ['Monitor and improve tobacco leaf quality', 'Provide training to farmers', 'Conduct field research', 'Ensure compliance with agricultural standards'],
                 requirements: ["Bachelor's degree in Agriculture", 'Minimum 3 years experience', 'Willing to travel across Indonesia'],
-                benefits: ['Competitive salary', 'Health insurance', 'Travel allowances', 'Career development']
+                benefits: ['Competitive salary', 'Health insurance', 'Travel allowances', 'Career development'],
+                pamphlet: 'assets/pamphlets/pamphlet-agricultural-specialist.jpeg'
             },
             'production-supervisor': {
                 title: 'Production Supervisor',
@@ -132,7 +183,8 @@
                 description: 'Oversee daily operations in our tobacco processing facility. Manage production teams and ensure quality standards are met.',
                 responsibilities: ['Supervise daily production operations', 'Manage production teams', 'Ensure quality control standards', 'Implement safety protocols'],
                 requirements: ["Bachelor's degree in Engineering", 'Minimum 4 years experience in manufacturing', 'Strong leadership skills'],
-                benefits: ['Competitive salary', 'Health insurance', 'Shift allowances', 'Performance bonuses']
+                benefits: ['Competitive salary', 'Health insurance', 'Shift allowances', 'Performance bonuses'],
+                pamphlet: 'assets/pamphlets/pamphlet-production-supervisor.jpeg'
             },
             'quality-control-analyst': {
                 title: 'Quality Control Analyst',
@@ -143,35 +195,36 @@
                 description: 'Conduct rigorous quality checks on tobacco products. Analyze samples and ensure compliance with industry standards.',
                 responsibilities: ['Perform quality testing', 'Analyze samples using lab equipment', 'Document test results', 'Ensure compliance with standards'],
                 requirements: ["Bachelor's degree in Chemistry", 'Minimum 2 years experience in QC', 'Attention to detail'],
-                benefits: ['Competitive salary', 'Health insurance', 'Lab training opportunities', 'Stable work environment']
+                benefits: ['Competitive salary', 'Health insurance', 'Lab training opportunities', 'Stable work environment'],
+                pamphlet: 'assets/pamphlets/pamphlet-qc-analyst.jpeg'
             }
         };
 
         document.addEventListener('DOMContentLoaded', function() {
             const urlParams = new URLSearchParams(window.location.search);
-            const jobKey = urlParams.get('job') || 'agricultural-specialist'; // Default fallback
+            const jobKey = urlParams.get('job') || 'agricultural-specialist';
             const job = jobData[jobKey];
 
             if (job) {
                 document.title = job.title + ' - Career | Mangli Djaya Raya';
                 
-                // Set background image hero
+                // 1. Set Hero
                 const heroSection = document.getElementById('jobHero');
                 heroSection.style.backgroundImage = `url('assets/images/${job.image}')`;
 
-                // Set text content
+                // 2. Set Text
                 document.getElementById('breadcrumbJobTitle').textContent = job.title;
                 document.getElementById('heroJobTitle').textContent = job.title;
                 document.getElementById('jobDescription').textContent = job.description;
 
-                // Set tags
+                // 3. Set Tags
                 document.getElementById('jobTags').innerHTML = `
                     <span><i class="fa-solid fa-location-dot"></i> ${job.location}</span>
                     <span><i class="fa-solid fa-briefcase"></i> ${job.type}</span>
                     <span><i class="fa-solid fa-coins"></i> ${job.salary}</span>
                 `;
 
-                // Helper function to populate lists
+                // 4. Populate Lists
                 const populateList = (elementId, dataArray) => {
                     const list = document.getElementById(elementId);
                     list.innerHTML = '';
@@ -181,15 +234,69 @@
                         list.appendChild(li);
                     });
                 };
-
                 populateList('jobResponsibilities', job.responsibilities);
                 populateList('jobRequirements', job.requirements);
                 populateList('jobBenefits', job.benefits);
+
+                // ✅ 5. LOGIKA PAMFLET (Diperbaiki & Ditambahkan)
+                const pamphletContainer = document.getElementById('pamphletContainer');
+                const pamphletImage = document.getElementById('pamphletImage');
+                const downloadBtn = document.getElementById('downloadPamphletBtn');
+                
+                if (job.pamphlet) {
+                    pamphletContainer.style.display = 'block';
+                    pamphletImage.src = job.pamphlet;
+                    downloadBtn.href = job.pamphlet;
+                    
+                    // Pastikan ekstensi file ikut tersimpan saat download
+                    const fileExtension = job.pamphlet.split('.').pop();
+                    downloadBtn.download = `Pamflet_${job.title.replace(/\s+/g, '_')}_MangliDjaya.${fileExtension}`;
+                }
             }
+
+            // ==========================
+            // 6. LOGIKA LIGHTBOX MODAL
+            // ==========================
+            const modal = document.getElementById('pamphletModal');
+            const modalImage = document.getElementById('pamphletModalImage');
+            const previewContainer = document.getElementById('pamphletPreviewContainer');
+            const modalClose = document.getElementById('pamphletModalClose');
+            const modalOverlay = document.getElementById('pamphletModalOverlay');
+            const previewImage = document.getElementById('pamphletImage');
+
+            // Buka modal saat gambar preview diklik
+            if (previewContainer && previewImage) {
+                previewContainer.addEventListener('click', function() {
+                    if (previewImage.src && previewImage.src !== window.location.href) {
+                        modalImage.src = previewImage.src;
+                        modalImage.alt = previewImage.alt;
+                        modal.classList.add('active');
+                        document.body.style.overflow = 'hidden'; // Kunci scroll
+                    }
+                });
+            }
+
+            // Fungsi tutup modal
+            function closeModal() {
+                modal.classList.remove('active');
+                document.body.style.overflow = ''; // Buka kunci scroll
+                setTimeout(() => { modalImage.src = ''; }, 300); // Bersihkan src setelah animasi
+            }
+
+            // Event listener untuk menutup modal
+            if (modalClose) modalClose.addEventListener('click', closeModal);
+            if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
+            
+            // Tutup dengan tombol ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    closeModal();
+                }
+            });
         });
     </script>
 
-        <script src="js/navbar.js"></script>
+    <script src="js/navbar.js"></script>
     <script src="js/preloader.js"></script>
     <script src="js/reveal.js"></script>
     <script src="js/script.js"></script>
