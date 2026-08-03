@@ -4,7 +4,7 @@ const preloader = document.getElementById("preloader");
 let hidden = false;
 
 // Mempercepat video (opsional)
-video.playbackRate = 1.5;
+video.playbackRate = 2;
 
 // Paksa play
 video.play().catch(console.error);
@@ -14,7 +14,7 @@ const maxDuration = setTimeout(() => {
 
     hidePreloader();
 
-}, 5000);
+}, 4000);
 
 // Jika video selesai lebih cepat
 video.addEventListener("ended", () => {
